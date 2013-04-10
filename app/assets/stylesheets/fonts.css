@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'HelveticaNeue-UltraLight';
+  src: url('/fonts/helveticaneueultralight.eot');
+  src: url('/fonts/helveticaneueultralight.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/helveticaneueultralight.woff') format('woff'),
+       url('/fonts/helveticaneueultralight.ttf') format('truetype'),
+       url('/fonts/helveticaneueultralight.svg#helveticaneueultralight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato_lightregular';
+    src: url('/fonts/lato-lig-webfont.eot');
+    src: url('/fonts/lato-lig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/lato-lig-webfont.woff') format('woff'),
+         url('/fonts/lato-lig-webfont.ttf') format('truetype'),
+         url('/fonts/lato-lig-webfont.svg#lato_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
