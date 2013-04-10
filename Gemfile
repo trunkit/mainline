@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 # Core framework
 gem 'rails',     github: 'rails/rails'
 gem 'arel',      github: 'rails/arel'
