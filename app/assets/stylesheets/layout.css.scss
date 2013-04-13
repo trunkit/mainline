@@ -1,0 +1,92 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+
+  > header {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 40px;
+    background: #fff;
+
+    > .content {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 980px;
+      height: 40px;
+      margin: 0 0 0 -490px;
+
+      a.tagline {
+        float: left;
+        font: 28px/40px HelveticaNeue-UltraLight, sans-serif;
+        color: #000;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      nav {
+        position: absolute;
+        left: 300px;
+        top: 0;
+        font: 20px bebas_neueregular, sans-serif;
+        text-transform: uppercase;
+
+        ul {
+          margin: 0;
+          padding: 0;
+
+          li {
+            float: left;
+            padding: 0 15px;
+            list-style: none;
+
+            a {
+              display: block;
+              float: left;
+              height: 20px;
+              padding: 10px 0 ;
+              text-decoration: none;
+              color: #000;
+
+              &.active, &:hover {
+                padding: 10px 0 6px;
+                border-bottom: 4px solid #00B3FF;
+              }
+            }
+          }
+        }
+      }
+
+      .right {
+        float: right;
+
+        .cart {
+          position: relative;
+          width: 23px;
+          height: 16px;
+          margin: 12px;
+          background: image-url("layout/cart.png");
+
+          > span {
+            position: absolute;
+            top: -5px;
+            left: 3px;
+            width: 20px;
+            font: bold 12px/12px lato, sans-serif;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  #container {
+    width: 980px;
+    margin: 0 auto;
+  }
+}

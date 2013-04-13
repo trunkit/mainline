@@ -6,9 +6,31 @@
   <%= javascript_include_tag("application") %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body>
+	<header>
+		<div class="content">
+			<a href="/" class="tagline">Swayly</a>
+
+			<nav>
+				<ul>
+					<%= content_tag(:li, link_to("Stream", "#", class: "stream active")) %>
+					<%= content_tag(:li, link_to("Discover", "#", class: "discover")) %>
+					<%= content_tag(:li, link_to("Favorites", "#", class: "favorites")) %>
+					<%= content_tag(:li, link_to("Search", "#", class: "search")) %>
+				</ul>
+			</nav>
+
+			<div class="right">
+				<div class="cart">
+					<span>0</span>
+				</div>
+
+				<div class="user">
+				</div>
+			</div>
+		</div>
+	</header>
 
 	<div id="container">
 		<%= yield %>
