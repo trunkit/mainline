@@ -8,6 +8,9 @@ gem 'rails', '4.0.0.beta1'
 # Persistence
 gem 'mongoid', github: 'mongoid/mongoid'
 
+# Miscellaneous
+gem 'configatron'
+
 # Assets support
 gem 'sass-rails',   '~> 4.0.0.beta1'
 gem 'uglifier',     '~> 1.3'
