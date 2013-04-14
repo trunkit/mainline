@@ -1,0 +1,33 @@
+<div id="feed">
+	<% 1.upto(8) do %>
+		<article class="item">
+			<div>
+				<%= image_tag("//s7d4.scene7.com/is/image/BrooksBrothers/MK00224_NAVY") %>
+
+				<div class="details">
+					<span class="price">$1,085</span>
+					<%= link_to(image_tag("feed/star-checked.png"), "#", class: "star") %>
+
+					<p class="name">
+						<span>Milano Navy Suit</span><br>
+						from the 1818 Collection<br>
+						by Brooks Brothers
+					</p>
+
+					<%= link_to("Buy", "#", class: "buy") %>
+
+					<div class="social">
+						<%= link_to(image_tag("feed/facebook.png"), "#") %>
+						<%= link_to(image_tag("feed/twitter.png"), "#") %>
+						<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+					</div>
+				</div>
+			</div>
+
+			<div class="info">
+				<span class="store">Van Boven</span>
+				<span class="city">ARB</span>
+			</div>
+		</article>
+	<% end %>
+</div>
