@@ -1,0 +1,119 @@
+div#feed {
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+
+  > .item {
+    float: left;
+    width: 215px;
+    min-height: 100px;
+    padding: 10px;
+    margin: 10px 5px;
+    background: #fff;
+    text-align: center;
+
+    > div {
+      position: relative;
+
+      > img {
+        max-width: 215px;
+        max-height: 215px;
+      }
+
+      > div.details {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #efefef;
+
+        span.price {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          font: lighter 18px lato, sans-serif;
+        }
+
+        a.star {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+
+        p.name {
+          position: absolute;
+          top: 30px;
+          left: 10px;
+          width: 195px;
+          font: bold 14px/20px lato, sans-serif;
+          text-align: center;
+
+          span {
+            font: 18px/20px bebas_neue, sans-serif;
+            text-transform: uppercase;
+          }
+        }
+
+        a.buy {
+          display: block;
+          position: absolute;
+          top: 145px;
+          left: 67px;
+          width: 80px;
+          height: 25px;
+          font: bold 12px/25px lato, sans-serif;
+          text-transform: uppercase;
+          text-decoration: none;
+          background: #000;
+          color: #fff;
+        }
+
+        div.social {
+          position: absolute;
+          bottom: 10px;
+          left: 40px;
+          width: 140px;
+          text-align: center;
+
+          a {
+            float: left;
+            width: 33.3%;
+            text-align: center;
+          }
+        }
+      }
+
+      &:hover > div.details { display: block; }
+    }
+
+    > div.info {
+      display: table-row;
+      float: left;
+      width: 100%;
+      padding: 7px 0 0;
+
+      span.store {
+        overflow: hidden;
+        display: table-cell;
+        width: 160px;
+        padding: 0 5px 0 0;
+        font: lighter 14px lato, sans-serif;
+        vertical-align: middle;
+        text-align: left;
+        text-overflow: ellipsis;
+      }
+
+      span.city {
+        display: table-cell;
+        width: 45px;
+        padding: 0 0 0 5px;
+        text-align: right;
+        font: 24px HelveticaNeue-UltraLight, sans-serif;
+        text-transform: uppercase;
+        color: #B0B0B0;
+      }
+    }
+  }
+}
