@@ -14,7 +14,21 @@
 
 			<nav>
 				<ul>
-					<%= content_tag(:li, link_to("Stream", "#", class: "stream active")) %>
+					<li class="active">
+						<%= link_to("Stream", "#", class: "stream") %>
+
+						<span></span>
+
+						<ul>
+							<%= content_tag(:li, link_to("All", "#")) %>
+							<%= content_tag(:li, link_to("Clothing", "#")) %>
+							<%= content_tag(:li, link_to("Shoes", "#")) %>
+							<%= content_tag(:li, link_to("Accessories", "#")) %>
+							<%= content_tag(:li, link_to("Bags", "#")) %>
+							<%= content_tag(:li, link_to("Following", "#"), class: "following") %>
+						</ul>
+					</li>
+
 					<%= content_tag(:li, link_to("Discover", "#", class: "discover")) %>
 					<%= content_tag(:li, link_to("Favorites", "#", class: "favorites")) %>
 					<%= content_tag(:li, link_to("Search", "#", class: "search")) %>
