@@ -1,0 +1,64 @@
+#following {
+  width: 100%;
+  padding: 10px 0;
+
+  > article {
+    float: left;
+    width: 100%;
+    padding: 10px 0 0;
+
+    section {
+      width: 960px;
+      padding: 10px;
+      background: #fff;
+
+      .photos img {
+        float: left;
+        max-width: 230px;
+        max-height: 230px;
+        margin: 5px;
+      }
+
+      .info {
+        float: left;
+        width: 100%;
+        margin: 5px 0 0;
+
+        span {
+          float: left;
+          margin: 0 10px 0 0;
+
+          &.name {
+            font: lighter 16px/30px lato, sans-serif;
+            text-transform: uppercase;
+          }
+
+          &.counts {
+            font: 14px/30px lato, sans-serif;
+            color: #979797;
+          }
+
+          &.city {
+            float: right;
+            font: 25px/30px HelveticaNeue-UltraLight, sans-serif;
+            color: #979797;
+          }
+        }
+      }
+    }
+
+    a.unfollow {
+      display: block;
+      float: right;
+      width: 80px;
+      height: 25px;
+      margin: 10px 0 0;
+      font: 14px/25px bebas_neue, sans-serif;
+      letter-spacing: 1px;
+      background: #B8B8B8;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+}
