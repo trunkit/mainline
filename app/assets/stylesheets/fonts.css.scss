@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'HelveticaNeue-UltraLight';
+  src: asset-url('helveticaneueultralight.eot');
+  src: asset-url('helveticaneueultralight.eot?#iefix') format('embedded-opentype'),
+       asset-url('helveticaneueultralight.woff') format('woff'),
+       asset-url('helveticaneueultralight.ttf') format('truetype'),
+       asset-url('helveticaneueultralight.svg#helveticaneueultralight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: asset-url('lato-bol-webfont.eot');
+    src: asset-url('lato-bol-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('lato-bol-webfont.woff') format('woff'),
+         asset-url('lato-bol-webfont.ttf') format('truetype'),
+         asset-url('lato-bol-webfont.svg#latobold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: asset-url('lato-lig-webfont.eot');
+    src: asset-url('lato-lig-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('lato-lig-webfont.woff') format('woff'),
+         asset-url('lato-lig-webfont.ttf') format('truetype'),
+         asset-url('lato-lig-webfont.svg#lato_lightregular') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bebas_neue';
+    src: asset-url('bebasneue-webfont.eot');
+    src: asset-url('bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('bebasneue-webfont.woff') format('woff'),
+         asset-url('bebasneue-webfont.ttf') format('truetype'),
+         asset-url('bebasneue-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
