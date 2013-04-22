@@ -1,0 +1,33 @@
+<div id="profile">
+	<%= content_tag(:div, "", style: "background-image: url(http://upload.wikimedia.org/wikipedia/commons/0/0e/AnnArborLibertyStreet.JPG)", class: "banner") do %>
+		<div class="gradient"></div>
+	<% end %>
+
+	<div class="details">
+		<div class="bg"></div>
+
+		<section>
+			<%= content_tag(:div, "", class: "photo", style: "background-image: url(https://sphotos-a.xx.fbcdn.net/hphotos-prn1/544546_410983472249925_322215139_n.jpg)") %>
+
+			<h1>Van Boven</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi</p>
+
+			<div class="bottom">
+				<address>
+					326 S State St<br>
+					Ann Arbor, MI 48104
+				</address>
+
+				<a href="#" class="website">Facebook.com/VanBovenMensWear</a>
+
+				<div class="social">
+					<%= link_to(image_tag("feed/facebook.png"), "#") %>
+					<%= link_to(image_tag("feed/twitter.png"), "#") %>
+					<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<%= render(template: "contents/consumer") %>
+</div>

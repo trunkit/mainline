@@ -1,0 +1,37 @@
+<div id="profile">
+	<%= content_tag(:div, "", style: "background-image: url(https://sphotos-a.xx.fbcdn.net/hphotos-ash3/532141_557862827569610_1863824723_n.jpg)", class: "banner") do %>
+		<div class="gradient"></div>
+	<% end %>
+
+	<div class="details">
+		<div class="bg"></div>
+
+		<section>
+			<%= content_tag(:div, "", class: "photo", style: "background-image: url(https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c10.10.160.160/383021_557862917569601_51196783_n.jpg)") %>
+
+			<h1>Brooks Brothers</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi</p>
+
+			<div class="bottom">
+				<span class="city">NYC</span>
+
+				<a class="website" href="#">BrooksBrothers.com</a>
+
+				<div class="social">
+					<%= link_to(image_tag("feed/facebook.png"), "#") %>
+					<%= link_to(image_tag("feed/twitter.png"), "#") %>
+					<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="designer feed">
+		<% 1.upto(8) do %>
+		<a href="/consumer/discover/category/mens-clothing" class="item">
+			<%= image_tag("//s7d4.scene7.com/is/image/BrooksBrothers/MK00224_NAVY") %>
+			<span>+10 Stores</span>
+		</article>
+		<% end %>
+	</div>
+</div>
