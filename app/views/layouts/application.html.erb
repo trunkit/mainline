@@ -42,9 +42,12 @@
 					</li>
 
 					<%= content_tag(:li, link_to("Favorites", "/consumer/favorites", class: "favorites")) %>
-					<%= content_tag(:li, link_to("Search", "/consumer/search", class: "search")) %>
+					<%= content_tag(:li, link_to("Search", "#", class: "search")) %>
 				</ul>
 			</nav>
+
+			<div class="search">
+			</div>
 
 			<div class="right">
 				<div class="cart">
