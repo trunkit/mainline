@@ -13,6 +13,17 @@ div#discover {
       max-height: 215px;
     }
 
+    a.city {
+      display: block;
+      width: 215px;
+      height: 144px;
+      padding: 36px 0 35px;
+      font: lighter 60px/72px HelveticaNeue-UltraLight, sans-serif;
+      text-decoration: none;
+      color: #FFF233;
+      background: #1d1d1d;
+    }
+
     > div.info {
       display: table-row;
       float: left;
