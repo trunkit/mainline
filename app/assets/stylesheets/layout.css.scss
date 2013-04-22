@@ -60,7 +60,7 @@ body {
             &:hover {
               > span {
                 position: absolute;
-                z-index: 2;
+                z-index: 5;
                 top: 40px;
                 left: 0;
                 display: block;
@@ -72,7 +72,7 @@ body {
               > ul {
                 display: block;
                 position: absolute;
-                z-index: 3;
+                z-index: 5;
                 top: 40px;
                 left: 50%;
                 width: 980px;
