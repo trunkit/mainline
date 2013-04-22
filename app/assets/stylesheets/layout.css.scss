@@ -128,14 +128,46 @@ body {
         }
 
         .user {
+          position: relative;
           float: left;
           height: 25px;
-          margin: 7px 0 0;
-          padding: 0 0 0 20px;
+          margin: 0 0 0 15px;
+          padding: 7px 7px 8px;
 
           img { vertical-align: middle; }
 
           span { margin: 0 5px; }
+
+          ul {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 130px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            background: #FAF8F8;
+
+            li {
+              float: left;
+              width: 100%;
+
+              a {
+                float: left;
+                width: 120px;
+                padding: 5px;
+                font: bold 12px/14px lato, sans-serif;
+                color: #000;
+                text-decoration: none;
+              }
+            }
+          }
+
+          &:hover {
+            background: #FAF8F8;
+            ul { display: block; }
+          }
         }
       }
     }

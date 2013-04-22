@@ -55,6 +55,15 @@
 					<%= image_tag("layout/user-photo.png") %>
 					<span>Sam</span>
 					<%= link_to(image_tag("layout/dropdown-arrow.png"), "#") %>
+
+					<ul>
+						<%= content_tag(:li, link_to("settings", "/consumer/settings")) %>
+						<%= content_tag(:li, link_to("invite friends", "/consumer/invite")) %>
+						<%= content_tag(:li, link_to("help", "/help")) %>
+						<%= content_tag(:li, link_to("about swayly", "/about-swayly")) %>
+						<%= content_tag(:li, link_to("terms of service", "/terms-of-service")) %>
+						<%= content_tag(:li, link_to("sign out", "#")) %>
+					</ul>
 				</div>
 			</div>
 		</div>
