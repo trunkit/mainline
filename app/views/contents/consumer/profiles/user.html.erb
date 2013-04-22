@@ -1,0 +1,24 @@
+<div id="profile">
+	<%= content_tag(:div, "", style: "background-image: url(https://sphotos-a.xx.fbcdn.net/hphotos-ash4/397861_2606583238540_1380424409_n.jpg)", class: "banner") do %>
+		<div class="gradient"></div>
+	<% end %>
+
+	<div class="details">
+		<div class="bg"></div>
+
+		<section>
+			<%= content_tag(:div, "", class: "photo", style: "background-image: url(https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c129.37.463.463/207897_1814159948453_1224934_n.jpg)") %>
+
+			<h1>Sam Felsenthal</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi</p>
+
+			<div class="bottom">
+				<div class="social">
+					<%= link_to(image_tag("feed/facebook.png"), "#") %>
+					<%= link_to(image_tag("feed/twitter.png"), "#") %>
+					<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
