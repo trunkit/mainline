@@ -115,4 +115,36 @@ div#profile {
       }
     }
   }
+
+  > div.feed {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+
+    &.designer > .item {
+      float: left;
+      width: 215px;
+      min-height: 100px;
+      padding: 10px;
+      margin: 10px 5px;
+      background: #fff;
+      text-align: center;
+
+      > img {
+        max-width: 215px;
+        max-height: 215px;
+      }
+
+      > span {
+        float: left;
+        width: 100%;
+        padding: 7px 0 0;
+        font: 18px lato, sans-serif;
+        text-align: center;
+        color: #000;
+      }
+    }
+  }
 }
