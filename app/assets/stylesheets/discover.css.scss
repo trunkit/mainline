@@ -1,0 +1,44 @@
+div#discover {
+  > .category {
+    float: left;
+    width: 215px;
+    min-height: 100px;
+    padding: 10px;
+    margin: 10px 5px;
+    background: #fff;
+    text-align: center;
+
+    a.photo > img {
+      max-width: 215px;
+      max-height: 215px;
+    }
+
+    > div.info {
+      display: table-row;
+      float: left;
+      width: 100%;
+      padding: 7px 0 0;
+
+      span.name {
+        overflow: hidden;
+        display: table-cell;
+        width: 75px;
+        padding: 0 5px 0 0;
+        font: lighter 14px/16px lato, sans-serif;
+        vertical-align: middle;
+        text-align: left;
+        text-overflow: ellipsis;
+      }
+
+      span.count {
+        display: table-cell;
+        width: 130px;
+        padding: 0 0 0 5px;
+        text-align: right;
+        font: 12px/16px lato, sans-serif;
+        text-transform: uppercase;
+        color: #B0B0B0;
+      }
+    }
+  }
+}

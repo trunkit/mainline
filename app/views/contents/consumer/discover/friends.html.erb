@@ -1,0 +1,57 @@
+<div id="following">
+	<% 1.upto(2) do %>
+	<article>
+		<section>
+			<div class="photos">
+				<%= content_tag(:div, image_tag("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/c129.37.463.463/207897_1814159948453_1224934_n.jpg")) %>
+
+				<div>
+					<%= image_tag("https://sphotos-a.xx.fbcdn.net/hphotos-prn1/45675_154445854570356_6557169_n.jpg") %>
+
+					<div class="quick-follow">
+						<h6>
+							Van Boven<br>
+							<span>Ann Arbor, MI</span>
+						</h6>
+
+						<%= link_to("Follow", "#", class: "follow") %>
+					</div>
+				</div>
+
+				<div>
+					<%= image_tag("https://sphotos-a.xx.fbcdn.net/hphotos-prn1/15972_557622874252650_1484990125_n.jpg") %>
+
+					<div class="quick-follow">
+						<h6>
+							Van Boven<br>
+							<span>Ann Arbor, MI</span>
+						</h6>
+
+						<%= link_to("Unfollow", "#", class: "unfollow") %>
+					</div>
+				</div>
+
+				<div>
+					<%= image_tag("https://sphotos-b.xx.fbcdn.net/hphotos-ash4/481634_557622870919317_1149295644_n.jpg") %>
+
+					<div class="quick-follow">
+						<h6>
+							Van Boven<br>
+							<span>Ann Arbor, MI</span>
+						</h6>
+
+						<%= link_to("Follow", "#", class: "follow") %>
+					</div>
+				</div>
+			</div>
+
+			<div class="info">
+				<span class="name">Sam Felsenthal</span>
+				<a href="#" class="view-all">view all</a>
+			</div>
+
+			<div class="cb"></div>
+		</section>
+	</article>
+	<% end %>
+</div>

@@ -29,7 +29,18 @@
 						</ul>
 					</li>
 
-					<%= content_tag(:li, link_to("Discover", "/consumer/discover", class: "discover")) %>
+					<li>
+						<%= link_to("Discover", "#", class: "discover") %>
+
+						<span></span>
+
+						<ul>
+							<%= content_tag(:li, link_to("Category", "/consumer/discover/category")) %>
+							<%= content_tag(:li, link_to("City", "/consumer/discover/city")) %>
+							<%= content_tag(:li, link_to("Friends", "/consumer/discover/friends")) %>
+						</ul>
+					</li>
+
 					<%= content_tag(:li, link_to("Favorites", "/consumer/favorites", class: "favorites")) %>
 					<%= content_tag(:li, link_to("Search", "/consumer/search", class: "search")) %>
 				</ul>
