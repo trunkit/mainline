@@ -52,9 +52,14 @@ div#feed {
           font: bold 14px/20px lato, sans-serif;
           text-align: center;
 
-          span {
-            font: 18px/20px bebas_neue, sans-serif;
-            text-transform: uppercase;
+          a {
+            text-decoration: none;
+            color: #000;
+
+            &.item-name {
+              font: 18px/20px bebas_neue, sans-serif;
+              text-transform: uppercase;
+            }
           }
         }
 
