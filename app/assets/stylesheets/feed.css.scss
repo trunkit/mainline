@@ -29,7 +29,7 @@ div#feed {
         left: 0;
         width: 100%;
         height: 100%;
-        background: #efefef;
+        background: rgba(255,255,255,0.95);
 
         span.price {
           position: absolute;
@@ -50,6 +50,7 @@ div#feed {
           left: 10px;
           width: 195px;
           font: bold 14px/20px lato, sans-serif;
+          letter-spacing: 2px;
           text-align: center;
 
           a {
@@ -58,6 +59,7 @@ div#feed {
 
             &.item-name {
               font: 18px/20px bebas_neue, sans-serif;
+              letter-spacing: 2px;
               text-transform: uppercase;
             }
           }
