@@ -9,8 +9,9 @@ div#discover {
     text-align: center;
 
     a.photo > img {
-      max-width: 215px;
-      max-height: 215px;
+      max-width: 280px;
+      max-height: 280px;
+      overflow: hidden;
     }
 
     a.city {

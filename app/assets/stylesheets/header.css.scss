@@ -12,7 +12,7 @@ body {
     z-index: 1000000;
     float: left;
     width: 100%;
-    height: 40px;
+    height: 70px;
     background: rgba(255,255,255,0.95);
     margin: auto;
     /* Group: */
@@ -23,21 +23,22 @@ body {
 
     > .content {
       width: 980px;
-      height: 40px;
+      height: 75px;
       margin: 0 auto 0 auto;
 
       a.tagline {
         float: left;
-        font: 28px/40px HelveticaNeue-UltraLight, sans-serif;
+        padding-top: 15px;
+        font: 40px/40px HelveticaNeue-UltraLight, sans-serif;
         color: #000;
         text-decoration: none;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 4px;
       }
 
       nav {
         float: left;
-        margin: 0 0 0 180px;
+        margin: 0 0 0 110px;
         font: 16px bebas_neue, sans-serif;
         letter-spacing: 3px;
         text-transform: uppercase;
@@ -48,7 +49,7 @@ body {
 
           > li {
             float: left;
-            padding: 0 20px;
+            padding: 15px 20px;
             list-style: none;
 
             > ul, > span { display: none; }
@@ -63,28 +64,27 @@ body {
             }
 
             &.active > a, &:hover > a {
-              padding: 10px 0 6px;
-              border-bottom: 4px solid #00B3FF;
+              padding: 10px 0px 0px;
+              border-bottom: 1px solid #000;
             }
 
             &:hover {
               > span {
                 position: absolute;
                 z-index: 5;
-                top: 40px;
+                top: 70px;
                 left: 0;
                 display: block;
                 width: 100%;
-                height: 40px;
+                height: 50px;
                 background: rgba(184,184,184,0.95);
                 /* Rectangle 35: */
               }
-
               > ul {
                 display: block;
                 position: absolute;
-                z-index: 5;
-                top: 40px;
+                z-index: 1000000;
+                top: 75px;
                 left: 50%;
                 width: 980px;
                 padding: 0;
@@ -94,7 +94,7 @@ body {
                 li {
                   display: inline;
                   list-style: none;
-                  margin: 0 15px;
+                  margin: 0 12px;
                   line-height: 40px;
                   font-size: 14px;
                   letter-spacing: 3px;
@@ -120,14 +120,14 @@ body {
 
       .right {
         float: right;
-
+        padding-top: 15px;
         .cart {
           position: relative;
           float: left;
           width: 23px;
           height: 16px;
-          padding: 12px;
-          background: image-url("layout/cart.png") no-repeat 12px 12px;
+          padding: 10px;
+          background: image-url("header/cart.png") no-repeat 12px 12px;
 
           > span {
             position: absolute;
@@ -141,30 +141,34 @@ body {
 
         .user {
           position: relative;
+          vertical-align: top;
           float: left;
-          height: 25px;
-          margin: 0 0 0 15px;
-          padding: 7px 7px 8px;
+          top: -25px;
+          height: 70px;
+          margin: 2px;
+          padding: 30px 8px 8px;
 
           img { vertical-align: middle; }
 
           > span {
-            margin: 0 5px;
+            padding-top: 70px;
+            margin: 15px 15px;
             font-family: bebas_neue, sans-serif;
             letter-spacing: 2px;
+            text-align: left;
           }
 
           ul {
             display: none;
             position: absolute;
             z-index: 2;
-            top: 40px;
+            top: 78px;
             right: 0;
             width: 130px;
             padding: 0;
             margin: 0;
             list-style: none;
-            background: rgba(184,184,184,0.95);
+            background: rgba(255,255,255,0.95);
 
             li {
               float: left;
@@ -176,20 +180,20 @@ body {
                 width: 120px;
                 padding: 5px;
                 font: 12px/14px lato, sans-serif;
-                color: #fff;
+                color: #000;
                 text-decoration: none;
 
                 &:hover {
-                  color: #fff;
-                  background: rgba(184,184,184,0.1);
+                  color: #000;
+                  background: rgba(255,255,255,0.1);
                 }
               }
             }
           }
 
           &:hover {
-            background: rgba(184,184,184,0.95);
-            color: #fff;
+            background: rgba(255,255,255,0.95);
+            color: #000;
             ul { display: block; }
           }
         }

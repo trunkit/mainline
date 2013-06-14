@@ -1,0 +1,63 @@
+<header>
+	<div class="content">
+		<a href="/" class="tagline">Trunkit</a>
+
+		<nav>
+			<ul>
+				<li class="active">
+					<%= link_to("Stream", "/consumer", class: "stream") %>
+
+					<span></span>
+
+					<ul>
+						<%= content_tag(:li, link_to("All", "#")) %>
+						<%= content_tag(:li, link_to("Clothing", "#")) %>
+						<%= content_tag(:li, link_to("Shoes", "#")) %>
+						<%= content_tag(:li, link_to("Accessories", "#")) %>
+						<%= content_tag(:li, link_to("Bags", "#")) %>
+						<%= content_tag(:li, link_to("Following", "/consumer/following"), class: "following") %>
+					</ul>
+				</li>
+
+				<li>
+					<%= link_to("Discover", "#", class: "discover") %>
+
+					<span></span>
+
+					<ul>
+						<%= content_tag(:li, link_to("Category", "/consumer/discover/category")) %>
+						<%= content_tag(:li, link_to("City", "/consumer/discover/city")) %>
+						<%= content_tag(:li, link_to("Friends", "/consumer/discover/friends")) %>
+					</ul>
+				</li>
+
+				<%= content_tag(:li, link_to("Favorites", "/consumer/favorites", class: "favorites")) %>
+				<%= content_tag(:li, link_to("Search", "#", class: "search")) %>
+			</ul>
+		</nav>
+
+		<div class="search">
+		</div>
+
+		<div class="right">
+			<div class="cart">
+				<span>1</span>
+			</div>
+
+			<div class="user">
+				<%= image_tag("header/user-photo.png") %>
+				<span>Sam</span>
+				<%= link_to(image_tag("header/dropdown-arrow.png"), "#") %>
+
+				<ul>
+					<%= content_tag(:li, link_to("Settings", "/consumer/settings")) %>
+					<%= content_tag(:li, link_to("Invite Friends", "/consumer/invite")) %>
+					<%= content_tag(:li, link_to("Help", "/help")) %>
+					<%= content_tag(:li, link_to("About Trunkit", "/about-swayly")) %>
+					<%= content_tag(:li, link_to("Terms of Service", "/terms-of-service")) %>
+					<%= content_tag(:li, link_to("Sign Out", "#")) %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
