@@ -3,39 +3,77 @@ div#feed {
   z-index: 2;
   float: left;
   width: 100%;
-  padding: 10px 0;
+  padding: 38px 0;
 
   > .item {
     float: left;
-    width: 215px;
+    width: 280px;
+    height: 280px;
+    padding: 0px 0px 0px 0px;
     min-height: 100px;
-    padding: 10px 8px 5px 8px;
-    margin: 5px;
+    margin: 2px;
     background: #fff;
     text-align: center;
+
 
     > div {
       position: relative;
 
-      > img {
-        max-width: 215px;
-        max-height: 215px;
+      .img {
+        max-width: 280px;
+        max-height: 280px;
+        overflow: scroll;
+        
+      }
+      > div.info {
+      display: table-row;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      float: left;
+      height: 58px;
+      width: 100%;
+      background: rgba(12,12,12,0.70);
+
+      span.store {
+        overflow: hidden;
+        display: table-cell;
+        width: 200px;
+        font: lighter 18px lato, sans-serif;
+        vertical-align: middle;
+        text-align: left;
+        text-overflow: hidden;
+        text-transform: uppercase;
+        color: #fff;
+        padding-left: 5px;
       }
 
+      span.city {
+        display: table-cell;
+        width: 70px;
+        padding: 0 20 0 0px;
+        text-align: right;
+        font:  40px lato, sans-serif;
+        font-weight: 100;
+        text-transform: uppercase;
+        color: #B0B0B0;
+      }
+    }
       > div.details {
         display: none;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        background: rgba(255,255,255,0.95);
+        height: 222px;
+        background: rgba(12,12,12,0.70);
 
         span.price {
           position: absolute;
           top: 10px;
           left: 10px;
-          font: lighter 18px lato, sans-serif;
+          font: 16px lato, sans-serif;
+          color: #fff;
         }
 
         a.star {
@@ -47,20 +85,23 @@ div#feed {
         p.name {
           position: absolute;
           top: 30px;
-          left: 10px;
-          width: 195px;
-          font: bold 14px/20px lato, sans-serif;
+          left: 0px;
+          width: 280px;
+          font: 15px/15px lato, sans-serif;
+          font-weight: 100;
+          letter-spacing: 0px;
           text-align: center;
 
           a {
-            font: bold 11px/20px lato, sans-serif;
-            letter-spacing: 1px;
+            font: 15px/20px lato, sans-serif;
+            font-weight: 200;
+            letter-spacing: 0px;
             text-decoration: none;
-            color: #000;
+            color: #fff;
 
             &.item-name {
-              font: 16px/20px bebas_neue, sans-serif;
-              letter-spacing: 2px;
+              font: 18px/35px bebas_neue, sans-serif;
+              letter-spacing: 6px;
               text-transform: uppercase;
             }
           }
@@ -69,16 +110,22 @@ div#feed {
         a.buy {
           display: block;
           position: absolute;
-          top: 130px;
+          top: 140px;
           left: 67px;
-          width: 80px;
-          height: 25px;
-          font: 14px/25px bebas_neue, sans-serif;
-          letter-spacing: 2px;
+          width: 140px;
+          height: 27px;
+          font: 20px/20px bebas_neue, sans-serif;
+          letter-spacing: 4px;
           text-transform: uppercase;
           text-decoration: none;
-          background: #000;
+          background: rgba(0,0,0,0.5);
           color: #fff;
+          padding-top: 7px;
+
+          &:hover {
+                  color: #fff;
+                  background: rgba(0,0,0,0.2);
+                }
         }
 
         div.social {
@@ -87,6 +134,7 @@ div#feed {
           left: 40px;
           width: 140px;
           text-align: center;
+          color: #fff;
 
           a {
             float: left;
@@ -99,32 +147,6 @@ div#feed {
       &:hover > div.details { display: block; }
     }
 
-    > div.info {
-      display: table-row;
-      float: left;
-      width: 100%;
-      padding: 7px 0 0;
-
-      span.store {
-        overflow: hidden;
-        display: table-cell;
-        width: 160px;
-        padding: 0 5px 0 0;
-        font: lighter 14px lato, sans-serif;
-        vertical-align: middle;
-        text-align: left;
-        text-overflow: ellipsis;
-      }
-
-      span.city {
-        display: table-cell;
-        width: 45px;
-        padding: 0 0 0 5px;
-        text-align: right;
-        font: 24px HelveticaNeue-UltraLight, sans-serif;
-        text-transform: uppercase;
-        color: #B0B0B0;
-      }
-    }
+    
   }
 }

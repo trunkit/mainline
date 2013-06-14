@@ -1,18 +1,25 @@
+
 html, body {
   width: 100%;
   height: 100%;
 }
 
 body {
-  background: #eee;
+  background: #fff;
 
   > header {
-    position: relative;
-    z-index: 5;
+    position: fixed;
+    z-index: 1000000;
     float: left;
     width: 100%;
     height: 40px;
-    background: #fff;
+    background: rgba(255,255,255,0.95);
+    margin: auto;
+    /* Group: */
+
+
+/* Group: */
+
 
     > .content {
       width: 980px;
@@ -25,12 +32,13 @@ body {
         color: #000;
         text-decoration: none;
         text-transform: uppercase;
+        letter-spacing: 2px;
       }
 
       nav {
         float: left;
         margin: 0 0 0 180px;
-        font: 17px bebas_neue, sans-serif;
+        font: 16px bebas_neue, sans-serif;
         letter-spacing: 3px;
         text-transform: uppercase;
 
@@ -68,7 +76,8 @@ body {
                 display: block;
                 width: 100%;
                 height: 40px;
-                background: #B8B8B8;
+                background: rgba(184,184,184,0.95);
+                /* Rectangle 35: */
               }
 
               > ul {
@@ -87,7 +96,8 @@ body {
                   list-style: none;
                   margin: 0 15px;
                   line-height: 40px;
-                  font-size: 16px;
+                  font-size: 14px;
+                  letter-spacing: 3px;
 
                   a {
                     color: #fff;
@@ -127,69 +137,6 @@ body {
             font: bold 12px/12px lato, sans-serif;
             text-align: center;
           }
-
-          > div.dropdown {
-            display: none;
-            position: absolute;
-            z-index: 2;
-            top: 40px;
-            right: 0;
-            width: 250px;
-            padding: 5px 5px 27px;
-            font: 12px/14px lato, sans-serif;
-            background: #FAF8F8;
-
-            table {
-              width: 100%;
-
-              th {
-                padding: 0 0 3px;
-                border-bottom: 1px solid #ccc;
-                font-weight: normal;
-                text-align: left;
-
-                &:last-child { text-align: right; }
-              }
-
-              tbody td {
-                padding: 5px 0 0 3px;
-
-                &:first-child { padding-left: 0; }
-
-                img {
-                  max-width: 38px;
-                  max-height: 38px;
-                  border: 1px solid #ccc;
-                }
-              }
-
-              tfoot td {
-                padding: 3px 0 0;
-                border-top: 1px solid #ccc;
-              }
-            }
-
-            > a {
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              width: 100%;
-              height: 22px;
-              font: 16px/22px bebas_neue, sans-serif;
-              letter-spacing: 2px;
-              letter-spacing: 1px;
-              text-transform: uppercase;
-              text-decoration: none;
-              text-align: center;
-              background: #000;
-              color: #fff;
-            }
-          }
-
-          &:hover {
-            background: #FAF8F8 image-url("layout/cart.png") no-repeat 12px 12px;
-            > div.dropdown { display: block; }
-          }
         }
 
         .user {
@@ -217,7 +164,7 @@ body {
             padding: 0;
             margin: 0;
             list-style: none;
-            background: #FAF8F8;
+            background: rgba(184,184,184,0.95);
 
             li {
               float: left;
@@ -228,20 +175,21 @@ body {
                 float: left;
                 width: 120px;
                 padding: 5px;
-                font: bold 12px/14px lato, sans-serif;
-                color: #000;
+                font: 12px/14px lato, sans-serif;
+                color: #fff;
                 text-decoration: none;
 
                 &:hover {
                   color: #fff;
-                  background: #B8B8B8;
+                  background: rgba(184,184,184,0.1);
                 }
               }
             }
           }
 
           &:hover {
-            background: #FAF8F8;
+            background: rgba(184,184,184,0.95);
+            color: #fff;
             ul { display: block; }
           }
         }

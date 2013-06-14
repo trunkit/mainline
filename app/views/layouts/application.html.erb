@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swayly</title>
+  <title>Trunkit</title>
   <%= stylesheet_link_tag("application", media: "all") %>
   <%= javascript_include_tag("application") %>
   <%= csrf_meta_tags %>
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">-->
 </head>
 
 <body>
 	<header>
 		<div class="content">
-			<a href="/" class="tagline">Swayly</a>
+			<a href="/" class="tagline">Trunkit</a>
 
 			<nav>
 				<ul>
@@ -52,35 +54,6 @@
 			<div class="right">
 				<div class="cart">
 					<span>1</span>
-
-					<div class="dropdown">
-						<table>
-							<tr>
-								<th colspan="2">Description</th>
-								<th class="ac">QTY</th>
-								<th class="ar">Per Unit</th>
-							</tr>
-
-							<tbody>
-								<tr>
-									<td><%= image_tag("//s7d4.scene7.com/is/image/BrooksBrothers/MK00224_NAVY") %></td>
-									<td>Milano Navy Suit</td>
-									<td class="ac">1</td>
-									<td class="ar">$1,098</td>
-								</tr>
-							</tbody>
-
-							<tfoot>
-								<tr>
-									<td colspan="2">Sub Total</td>
-									<td>&nbsp;</td>
-									<td class="ar">$1,098</td>
-								</tr>
-							</tfoot>
-						</table>
-
-						<a href="#">Checkout</a>
-					</div>
 				</div>
 
 				<div class="user">
@@ -89,12 +62,12 @@
 					<%= link_to(image_tag("layout/dropdown-arrow.png"), "#") %>
 
 					<ul>
-						<%= content_tag(:li, link_to("settings", "/consumer/settings")) %>
-						<%= content_tag(:li, link_to("invite friends", "/consumer/invite")) %>
-						<%= content_tag(:li, link_to("help", "/help")) %>
-						<%= content_tag(:li, link_to("about swayly", "/about-swayly")) %>
-						<%= content_tag(:li, link_to("terms of service", "/terms-of-service")) %>
-						<%= content_tag(:li, link_to("sign out", "#")) %>
+						<%= content_tag(:li, link_to("Settings", "/consumer/settings")) %>
+						<%= content_tag(:li, link_to("Invite Friends", "/consumer/invite")) %>
+						<%= content_tag(:li, link_to("Help", "/help")) %>
+						<%= content_tag(:li, link_to("About Trunkit", "/about-swayly")) %>
+						<%= content_tag(:li, link_to("Terms of Service", "/terms-of-service")) %>
+						<%= content_tag(:li, link_to("Sign Out", "#")) %>
 					</ul>
 				</div>
 			</div>
