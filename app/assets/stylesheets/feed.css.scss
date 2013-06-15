@@ -33,11 +33,13 @@ div#feed {
       height: 58px;
       width: 100%;
       background: rgba(12,12,12,0.70);
+      text-decoration: none;
+      color: #fff;
 
       span.store {
         overflow: hidden;
         display: table-cell;
-        width: 215px;
+        width: 210px;
         word-wrap: break-word;
         font: 18px lato, sans-serif;
         font-weight: 100;
@@ -50,17 +52,18 @@ div#feed {
         padding-left: 10px;
         text-decoration: none;
       }
-
       span.city {
         display: table-cell;
         width: 70px;
-        padding: 0 20 0 0px;
         text-align: right;
         font:  40px lato, sans-serif;
         font-weight: 100;
         text-transform: uppercase;
         color: #B0B0B0;
         padding-top: 4px
+      }
+      a:link, a:hover, a:active {
+        text-decoration: none;
       }
     }
       > div.details {
