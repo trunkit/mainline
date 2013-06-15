@@ -1,33 +1,59 @@
 <div id="profile">
-	<%= content_tag(:div, "", style: "background-image: url(http://upload.wikimedia.org/wikipedia/commons/0/0e/AnnArborLibertyStreet.JPG)", class: "banner") do %>
-		<div class="gradient"></div>
-	<% end %>
-
-	<div class="details">
-		<div class="bg"></div>
-
-		<section>
-			<%= content_tag(:div, "", class: "photo", style: "background-image: url(https://sphotos-a.xx.fbcdn.net/hphotos-prn1/544546_410983472249925_322215139_n.jpg)") %>
-
-			<h1>Van Boven</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi</p>
-
-			<div class="bottom">
-				<address>
-					326 S State St<br>
-					Ann Arbor, MI 48104
-				</address>
-
-				<a href="#" class="website">Facebook.com/VanBovenMensWear</a>
-
-				<div class="social">
-					<%= link_to(image_tag("feed/facebook.png"), "#") %>
-					<%= link_to(image_tag("feed/twitter.png"), "#") %>
-					<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+	<article class="storeprofile">
+		<div>
+			<div class="img">
+				<%= link_to(image_tag("feed/weekends.jpg"), "#", class: "img") %>
+			</div>
+			<div class="binfo">
+				<span class="bname">Boulder Boutique</span>
+				<%= link_to("Unfollow", "#", class: "unfollow") %>
+				<div class="contact">
+					<address>326 S State St, Ann Arbor, MI 48104</address>
+					<phone>303 123 4567</phone>
+				</div>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi
+				</p>
+				<div class="bottom">
+					<div class="social">
+						<%= link_to(image_tag("feed/facebook.png"), "#") %>
+						<%= link_to(image_tag("feed/twitter.png"), "#") %>
+						<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+					</div>
+					<a href="#" class="website">boulderboutique.com</a>
 				</div>
 			</div>
-		</section>
-	</div>
+		</div>
+	</article>
+	<% 1.upto(8) do %>
+		<article class="item">
+			<div>
+				<div class="img">
+					<%= link_to(image_tag("feed/dress.jpg"), "#", class: "img") %>
+				</div>
+				<div class="details">
+					<span class="price">$1,085</span>
+					<%= link_to(image_tag("feed/star.png"), "#", class: "star") %>
 
-	<%= render(template: "contents/consumer") %>
+					<p class="name">
+						<a class="item-name" href="#">Dress abc</a><br>
+						<a href="#">by Designer A</a><br>
+						<a href="#">Spring 2013</a>
+					</p>
+
+					<%= link_to("Buy", "#", class: "buy") %>
+
+					<div class="social">
+						<%= link_to(image_tag("feed/facebook.png"), "#") %>
+						<%= link_to(image_tag("feed/twitter.png"), "#") %>
+						<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+					</div>
+				</div>
+				<div class="info">
+					<span class="store">Boulder Boutique</span>
+					<span class="city">MI</span>
+				</div>
+			</div>
+		</article>
+	<% end %>
 </div>

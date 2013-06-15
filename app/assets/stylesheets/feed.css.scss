@@ -1,5 +1,3 @@
-
-
 div#feed {
   position: relative;
   z-index: 2;
@@ -50,6 +48,7 @@ div#feed {
         color: #fff;
         padding-top: 6px;
         padding-left: 10px;
+        text-decoration: none;
       }
 
       span.city {
@@ -123,8 +122,8 @@ div#feed {
           left: 67px;
           width: 160px;
           height: 34px;
-          font: 20px/27px bebas_neue, sans-serif;
-          letter-spacing: 4px;
+          font: 16px/27px bebas_neue, sans-serif;
+          letter-spacing: 6px;
           text-transform: uppercase;
           text-decoration: none;
           background: rgba(0,0,0,0.7);
@@ -133,7 +132,7 @@ div#feed {
 
           &:hover {
                   color: #fff;
-                  background: rgba(0,0,0,0.5);
+                  background: rgba(0,0,0,0.4);
                 }
         }
 
@@ -217,8 +216,8 @@ div#feed {
           left: 67px;
           width: 160px;
           height: 34px;
-          font: 20px/27px bebas_neue, sans-serif;
-          letter-spacing: 4px;
+          font: 16px/27px bebas_neue, sans-serif;
+          letter-spacing: 6px;
           text-transform: uppercase;
           text-decoration: none;
           background: rgba(0,0,0,0.7);
@@ -227,10 +226,10 @@ div#feed {
 
           &:hover {
                   color: #fff;
-                  background: rgba(0,0,0,0.5);
+                  background: rgba(0,0,0,0.4);
                 }
         }
-      p.location {
+      p.support {
           position: absolute;
           bottom: 40px;
           left: 0px;
