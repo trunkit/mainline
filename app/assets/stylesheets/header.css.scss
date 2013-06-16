@@ -62,12 +62,12 @@ body {
               text-decoration: none;
               color: #000;
             }
-            
+
             &.active > a, &:hover > a {
               padding: 10px 0px 0px;
               border-bottom: 1px solid #000;
             }
-            
+
             &:hover {
               > span {
                 position: absolute;
@@ -79,7 +79,6 @@ body {
                 height: 50px;
                 background: rgba(184,184,184,0.95);
                 /* Rectangle 35: */
-
               }
               > ul {
                 display: block;
