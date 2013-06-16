@@ -39,7 +39,7 @@ div#feed {
       span.store {
         overflow: hidden;
         display: table-cell;
-        width: 210px;
+        width: 215px;
         word-wrap: break-word;
         font: 18px lato, sans-serif;
         font-weight: 100;
@@ -55,6 +55,7 @@ div#feed {
       span.city {
         display: table-cell;
         width: 70px;
+        padding: 0 20 0 0px;
         text-align: right;
         font:  40px lato, sans-serif;
         font-weight: 100;
