@@ -25,7 +25,6 @@ div#feed {
         overflow: hidden;
       }
       > div.info {
-      display: table-row;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -60,7 +59,7 @@ div#feed {
         font:  40px lato, sans-serif;
         font-weight: 100;
         text-transform: uppercase;
-        color: #B0B0B0;
+        color: #fff;
         padding-top: 4px
       }
       a:link, a:hover, a:active {

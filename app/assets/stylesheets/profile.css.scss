@@ -7,7 +7,7 @@ div#profile {
 
 > .storeprofile {
     float: left;
-    width: 906px;
+    width: 904px;
     height: 300px;
     padding: 0px 0px 0px 0px;
     min-height: 300px;
@@ -19,7 +19,7 @@ div#profile {
       position: relative;
 
       .img {
-        max-width: 906px;
+        max-width: 904px;
         max-height: 300px;
         overflow: hidden;
       }
@@ -31,45 +31,43 @@ div#profile {
         width: 100%;
         height: 300px;
         background: rgba(12,12,12,0.60);
-
-          span.bname {
+        }
+        span.bname {
           position: absolute;
           top: 10px;
           left: 0px;
-          width: 906px;
+          width: 904px;
           font: 30px/35px bebas_neue, sans-serif;
           letter-spacing: 10px;
           color: #fff;
           text-transform: uppercase;
           text-align: center;
-          } 
-          div.contact {
-          position: absolute;
-          text-align: center;
-          left: 0;
-          padding: 50px 0px 0px 0px;
-          font: 16px/20px lato, sans-serif;
-          font-weight: 100;
-          word-spacing: 2px;
-          width: 906px;
-          font-style: normal;
+         }
+        .description {
+          top: 50px;
+          padding-left: 103px;
+          position: relative;
+          height: 120px;
+          width: 700px;
           color: #fff;
-          }
         }
-          p {
+        .content {
           position: absolute;
-          top: 90px;
-          left: 53px;
-          width: 800px;
-          height: 30px;
-          font: 18px/20px lato, sans-serif;
+          display: table;
+          font: 18px lato, sans-serif;
           font-weight: 200;
-          letter-spacing: 0px;
-          text-align: center;
+          text-overflow: ellipsis;
           color: #fff;
-          }
-        
+          height: 120px;
+        }
+        p {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+        }
+          
         a.unfollow {
+          z-index: 10;
           display: block;
           position: absolute;
           top: 180px;
@@ -83,43 +81,117 @@ div#profile {
           background: rgba(0,0,0,0.7);
           color: #fff;
           padding-top: 7px;
-
           &:hover {
-                  color: #fff;
-                  background: rgba(0,0,0,0.4);
-                }
+            color: #fff;
+            background: rgba(0,0,0,0.4);
+            }
         }
-      
         div.bottom {
+        position: absolute;
+        bottom: 0px;
+        height: 125px;
+        width: 904px;
+        font: 12px/14px lato, sans-serif;
+          
+          span.website {
+          overflow: hidden;
+          position: absolute;
+          left: 10px;
+          bottom: 10px;
+          width: 130px;
+          text-align: center;
+          text-overflow: ellipsis;
+          text-decoration: none;
+          color: #fff;
+          }
+          span.social {
           position: absolute;
           bottom: 10px;
-          width: 906px;
-          font: 12px/14px lato, sans-serif;
-            
-            a.website {
-            overflow: hidden;
-            position: absolute;
-            left: 388px;
-            bottom: 0;
-            width: 130px;
-            text-align: center;
-            text-overflow: ellipsis;
-            text-decoration: none;
-            color: #fff;
-          }
-          div.social {
-            position: absolute;
-            bottom: 20px;
-            left: 380px;
-            width: 140px;
-            text-align: center;
-            color: #fff;
+          left: 380px;
+          width: 140px;
+          text-align: center;
+          color: #fff;
             a {
               float: left;
               width: 33.3%;
               text-align: center;
             }              
           }
+          span.contact1 {
+            position: absolute;
+            height: 30px;
+            width: 300px;
+            bottom: 10px;
+            right: 10px;
+            text-align: right;
+            font-style: normal;
+            color: #fff;
+
+            span.address {
+            position: absolute;
+            text-align: right;
+            bottom: 15px;
+            right: 10px;
+            }
+            
+            span.phone {
+            position: absolute;
+            text-align: right;
+            right: 10px;
+            bottom: 0px;
+           }
+          }
+          span.contact2 {
+            position: absolute;
+            height: 30px;
+            width: 300px;
+            bottom: 45px;
+            right: 10px;
+            text-align: right;
+            font-style: normal;
+            color: #fff;
+
+            span.address {
+            position: absolute;
+            text-align: right;
+            bottom: 15px;
+            right: 10px;
+            }
+            
+            span.phone {
+            position: absolute;
+            text-align: right;
+            right: 10px;
+            bottom: 0px;
+           }
+          }
+           span.contact3 {
+            position: absolute;
+            height: 30px;
+            width: 300px;
+            bottom: 80px;
+            right: 10px;
+            text-align: right;
+            font-style: normal;
+            color: #fff;
+
+            span.address {
+            position: absolute;
+            text-align: right;
+            bottom: 15px;
+            right: 10px;
+            text-align: right;
+            font-style: normal;
+            color: #fff;
+            }
+            
+            span.phone {
+            position: absolute;
+            text-align: right;
+            right: 10px;
+            bottom: 0px;
+            }
+          }   
         }
       }
     }
@@ -176,7 +248,7 @@ div#profile {
         font:  40px lato, sans-serif;
         font-weight: 100;
         text-transform: uppercase;
-        color: #B0B0B0;
+        color: #fff;
         padding-top: 4px
       }
     }
