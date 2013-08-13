@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Swayly::Application.load_tasks
+Trunkit::Application.load_tasks
