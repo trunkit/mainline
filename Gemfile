@@ -10,7 +10,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 # Miscellaneous
 gem 'configatron'
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Payments
 gem 'avalara', github: 'vizjerai/avalara'
