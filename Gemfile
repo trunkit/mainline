@@ -12,6 +12,10 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'configatron'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Social Networks
+gem 'koala', github: 'arsduo/koala'
+gem 'twitter'
+
 # Payments
 gem 'avalara', github: 'vizjerai/avalara'
 gem 'balanced'
