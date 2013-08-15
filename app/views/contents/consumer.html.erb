@@ -1,33 +1,5 @@
-<div id="feed">
+<div id="stream">
 	<% 1.upto(20) do %>
-		<article class="item">
-			<div>
-				<div class="img">
-					<%= link_to(image_tag("feed/dress.jpg"), "#", class: "img") %>
-				</div>
-				<div class="details">
-					<span class="price">$1,085</span>
-					<%= link_to(image_tag("feed/star.png"), "#", class: "star") %>
-
-					<p class="name">
-						<a class="item-name" href="#">Dress abc</a><br>
-						<a href="#">by Designer A</a><br>
-						<a href="#">Spring 2013</a>
-					</p>
-
-					<%= link_to("Buy", "#", class: "buy") %>
-
-					<div class="social">
-						<%= link_to(image_tag("feed/facebook.png"), "#") %>
-						<%= link_to(image_tag("feed/twitter.png"), "#") %>
-						<%= link_to(image_tag("feed/pinterest.png"), "#") %>
-					</div>
-				</div>
-				<div class="info">
-					<span class="store">Boulder shop</span>
-					<span class="city">co</span>
-				</div>
-			</div>
-		</article>
+		<%= render("stream/item") %>
 	<% end %>
 </div>
