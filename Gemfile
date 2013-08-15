@@ -12,6 +12,10 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'configatron'
 gem 'bcrypt-ruby'
 
+# Payments
+gem 'avalara', github: 'vizjerai/avalara'
+gem 'balanced'
+
 # Assets support
 gem 'sass-rails',   '~> 4.0.0'
 gem 'uglifier',     '~> 1.3'

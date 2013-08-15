@@ -8,6 +8,15 @@ GIT
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
 
+GIT
+  remote: git://github.com/vizjerai/avalara.git
+  revision: cc7c3b2fd49b15522f7294ddccd60f34037b94a0
+  specs:
+    avalara (0.0.2)
+      hashie (~> 2.0)
+      httparty (~> 0.11)
+      multi_json (~> 1.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +53,9 @@ GEM
       activemodel
       fog (>= 1.8.0)
     atomic (1.1.12)
+    balanced (0.7.4)
+      faraday (>= 0.8.6)
+      faraday_middleware (~> 0.9.0)
     bcrypt-ruby (3.1.1)
     builder (3.1.4)
     coffee-rails (4.0.0)
@@ -59,6 +71,10 @@ GEM
     excon (0.25.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     fog (1.14.0)
       builder
       excon (~> 0.25.0)
@@ -70,7 +86,11 @@ GEM
       nokogiri (~> 1.5)
       ruby-hmac
     formatador (0.2.4)
+    hashie (2.0.5)
     hike (1.2.3)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.5)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -85,6 +105,8 @@ GEM
     minitest (4.7.5)
     moped (1.5.1)
     multi_json (1.7.9)
+    multi_xml (0.5.5)
+    multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.8)
@@ -149,6 +171,8 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   asset_sync
+  avalara!
+  balanced
   bcrypt-ruby
   coffee-rails (~> 4.0.0)
   configatron
