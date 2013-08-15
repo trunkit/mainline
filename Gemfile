@@ -10,6 +10,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 # Miscellaneous
 gem 'configatron'
+gem 'bcrypt-ruby'
 
 # Assets support
 gem 'sass-rails',   '~> 4.0.0'
