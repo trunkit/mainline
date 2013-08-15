@@ -9,9 +9,19 @@
 		</div>
 
 		<div class="right">
-			<%= link_to("Shop with Twitter", class: "twitter") %>
-			<%= link_to("Shop with Facebook", class: "facebook") %>
-			<%= link_to("Shop with Email", class: "email") %>
+			<%= link_to(class: "twitter") do %>
+				<%= image_tag("home/twitter.png") %>
+				<span>Shop with Twitter</span>
+			<% end %>
+
+			<%= link_to(class: "facebook") do %>
+				<%= image_tag("home/facebook.png") %>
+				<span>Shop with Facebook</span>
+			<% end %>
+
+			<%= link_to(class: "email") do %>
+				<span>Shop with Email</span>
+			<% end %>
 		</div>
 	</form>
 </section>
