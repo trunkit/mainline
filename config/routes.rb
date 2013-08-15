@@ -1,5 +1,5 @@
 Trunkit::Application.routes.draw do
-  root to: "contents#show"
+  root to: "contents#index"
 
   # Checkout and Shopping Cart
   resource :cart
