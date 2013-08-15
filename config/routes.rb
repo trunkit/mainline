@@ -1,6 +1,14 @@
 Trunkit::Application.routes.draw do
   root to: "contents#index"
 
+  # User / Session Management
+  resource :session
+
+  # Catalog
+  get "stream" => "stream#index"
+
+  resources :items
+
   # Checkout and Shopping Cart
   resource :cart
 
