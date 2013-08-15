@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Trunkit</title>
+		<%= stylesheet_link_tag("application", media: "all") %>
+		<%= javascript_include_tag("application") %>
+		<%= csrf_meta_tags %>
+
+	</head>
+
+	<body>
+		<header>
+			<a href="/" class="tagline">Trunkit</a>
+		</header>
+
+		<%= yield %>
+
+		<footer>
+			<span class="copyright">&copy; 2013 Trunkit LLC. All rights reserved.</span>
+		</footer>
+	</body>
+</html>
