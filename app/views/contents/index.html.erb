@@ -1,0 +1,25 @@
+<section id="account-login-signup">
+	<%= form_tag() %>
+		<h2>Curated by your favorite boutiques.</h2>
+
+		<div class="left">
+			<%= email_field_tag(:email, "", placeholder: "Email") %>
+			<%= password_field_tag(:password, "", placeholder: "Password") %>
+			<%= submit_tag("Begin Shopping") %>
+		</div>
+
+		<div class="right">
+			<%= link_to("Shop with Twitter", class: "twitter") %>
+			<%= link_to("Shop with Facebook", class: "facebook") %>
+			<%= link_to("Shop with Email", class: "email") %>
+		</div>
+	</form>
+</section>
+
+<h3>Trending</h3>
+
+<section id="stream">
+	<% 1.upto(18) do %>
+		<%= render("stream/item") %>
+	<% end %>
+</section>

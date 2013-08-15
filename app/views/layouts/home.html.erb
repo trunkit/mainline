@@ -9,14 +9,16 @@
 	</head>
 
 	<body>
-		<header>
-			<a href="/" class="tagline">Trunkit</a>
-		</header>
+		<div id="container">
+			<header>
+				<a href="/" class="tagline">Trunkit</a>
+			</header>
 
-		<%= yield %>
+			<%= content_tag(:div, yield, id: "content") %>
 
-		<footer>
-			<span class="copyright">&copy; 2013 Trunkit LLC. All rights reserved.</span>
-		</footer>
+			<footer>
+				<span class="copyright">&copy; 2013 Trunkit LLC. All rights reserved.</span>
+			</footer>
+		</div>
 	</body>
 </html>
