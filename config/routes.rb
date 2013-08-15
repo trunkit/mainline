@@ -21,7 +21,7 @@ Trunkit::Application.routes.draw do
 
   # Administrative Interfaces
   namespace :admin do
-    resources :brands, :boutiques
+    resources :brands, :boutiques do
       resources :items
     end
 
