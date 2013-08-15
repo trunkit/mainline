@@ -19,6 +19,15 @@ Trunkit::Application.routes.draw do
     resource  :order
   end
 
+  # Administrative Interfaces
+  namespace :admin do
+    resources :brands, :boutiques
+      resources :items
+    end
+
+    resources :items, :orders, :users
+  end
+
   # Catch-all, generic routing
   get "*path" => "contents#show"
 end
