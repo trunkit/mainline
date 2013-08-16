@@ -15,6 +15,6 @@ configatron.facebook do |f|
 end
 
 configatron.twitter do |t|
-  t.consumer_key    = "pTbSvWnV35lgpm6DlIovZw"
-  t.consumer_secret = "qWta4OSntTgtu867ew8wCIrl5han3VIjJEZZpPfnAdk"
+  t.consumer_key    = "QsBW1ibb2IW6JmWrQY9iw"
+  t.consumer_secret = "V90sTc3Fw0sqGF25pc2qBV2SZEkNxbdEopzX2N8nk"
 end
