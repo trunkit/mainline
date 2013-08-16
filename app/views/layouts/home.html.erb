@@ -3,9 +3,12 @@
 	<head>
 		<title>Trunkit</title>
 		<%= stylesheet_link_tag("home", media: "all") %>
-		<%= javascript_include_tag("home") %>
-		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css") %>
 
+		<%= javascript_include_tag("home") %>
+		<%= javascript_include_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js") %>
+
+		<%= csrf_meta_tags %>
 	</head>
 
 	<body>
