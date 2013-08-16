@@ -36,8 +36,8 @@ body > #container {
       background: image-url("home/banner.png");
 
       form {
-        width: 700px;
-        margin: 0 102px;
+        width: 705px;
+        margin: 0 100px 0 99px;
 
         h2 {
           font: 38px/45px bebas_neue;
@@ -49,10 +49,10 @@ body > #container {
 
         > div {
           float: left;
-          width: 270px;
+          width: 300px;
 
           &.left {
-            padding: 0 5px 0 75px;
+            padding: 0 5px 0 35px;
           }
         }
 
@@ -60,7 +60,7 @@ body > #container {
         input[type="email"],
         input[type="password"] {
           float: left;
-          width: 250px;
+          width: 280px;
           height: 22px;
           margin: 5px 0 0;
           padding: 10px;
@@ -74,10 +74,10 @@ body > #container {
           float: left;
           margin: 5px 0 0;
           padding: 0 10px;
-          width: 250px;
+          width: 280px;
           height: 42px;
           border: 0;
-          font: 16px/42px bebas_neue;
+          font: 16px/42px bebas_neue, sans-serif;
           letter-spacing: 6px;
           text-align: center;
           text-decoration: none;
@@ -85,10 +85,12 @@ body > #container {
           color: #fff;
 
           img {
-            padding: 0 10px 0 0;
+            padding: 0 5px 0 0;
             vertical-align: middle;
           }
         }
+
+        input[type="submit"] { width: 300px; }
 
         div.right a {
           text-align: left;
