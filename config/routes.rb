@@ -2,7 +2,8 @@ Trunkit::Application.routes.draw do
   root to: "contents#index"
 
   # User / Session Management
-  resource :session
+  get  "sign-in" => "sessions#new"
+  post "sign-in" => "sessions#create"
 
   # Catalog
   get "stream" => "stream#index"
