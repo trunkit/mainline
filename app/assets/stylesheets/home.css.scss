@@ -18,6 +18,15 @@ body > #container {
     letter-spacing: 4px;
   }
 
+  > header a.login {
+    float: right;
+    padding: 25px 0 0;
+    font: 16px/19px bebas_neue, sans-serif;
+    letter-spacing: 3px;
+    text-decoration: none;
+    color: #000;
+  }
+
   #content {
     #account-login-signup {
       float: left;
