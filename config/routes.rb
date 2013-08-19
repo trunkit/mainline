@@ -1,9 +1,15 @@
 Trunkit::Application.routes.draw do
   root to: "contents#index"
 
-  # User / Session Management
-  get  "sign-in" => "sessions#new"
-  post "sign-in" => "sessions#create"
+  scope ":user_type" do
+    # User / Session Management
+    resource :session
+
+    resources :users, only: [:new, :create] do
+      get "twitter",  on: :new
+      get "facebook", on: :new
+    end
+  end
 
   # Catalog
   get "stream" => "stream#index"
