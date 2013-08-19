@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.from_session(session)
   end
+
+  def subdomain_redirect
+    case request.subdomain.split('.').last
+    when "boutique"
+      redirect_to("/boutique")
+    when "brand"
+      redirect_to("/brand")
+    end
+  end
 end
