@@ -1,5 +1,5 @@
 <section id="account-login-signup">
-	<%= form_tag() %>
+	<%= form_tag(new_user_path(user_type: "shopper"), method: :get) %>
 		<h2>Curated by your favorite boutiques.</h2>
 
 		<div class="left">
