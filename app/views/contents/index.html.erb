@@ -1,8 +1,18 @@
 <section id="account-signup">
-	<div class="wrapper">
+	<%= form_for(:user, url: user_path(user_type: "shopper")) do |f| %>
 		<h2>Curated by your favorite boutiques.</h2>
 
-		<div class="banners">
+		<div class="left">
+			<%= f.text_field(:first_name, placeholder: "First Name") %>
+			<%= f.text_field(:last_name, placeholder: "Last Name") %>
+			<%= f.email_field(:email, placeholder: "Email") %>
+		</div>
+
+		<div class="right">
+			<%= link_to("#", class: "email") do %>
+				<span>Sign Up with Email</span>
+			<% end %>
+
 			<%= link_to("#", class: "twitter") do %>
 				<%= image_tag("home/twitter.png") %>
 				<span>Sign Up with Twitter</span>
@@ -12,12 +22,8 @@
 				<%= image_tag("home/facebook.png") %>
 				<span>Sign Up with Facebook</span>
 			<% end %>
-
-			<%= link_to(new_user_path(user_type: "shopper"), class: "email") do %>
-				<span>Sign Up with Email</span>
-			<% end %>
 		</div>
-	</div>
+	<% end %>
 </section>
 
 <h3>Trending</h3>
@@ -27,3 +33,11 @@
 		<%= render("stream/item") %>
 	<% end %>
 </section>
+
+<script>
+$(function() {
+	$("a.email").click(function() {
+		$("form").submit();
+	});
+})
+</script>

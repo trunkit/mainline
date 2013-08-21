@@ -29,7 +29,7 @@ body > #container {
       margin: 0 1px;
       background: image-url("home/banner.png");
 
-      >div.wrapper {
+      >form {
         width: 705px;
         margin: 0 100px 0 99px;
 
@@ -44,7 +44,8 @@ body > #container {
         > div {
           float: left;
           width: 300px;
-          padding: 0 0 0 200px;
+
+          &.left { margin: 0 20px 0 40px; }
         }
 
         input[type="text"],
