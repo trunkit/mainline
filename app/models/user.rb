@@ -20,7 +20,7 @@ class User
   has_secure_password validations: false
 
   cattr_reader :roles
-  @@roles = [:shopper, :boutique, :brand, :admin]
+  @@roles = [:shopper, :boutique, :brand]
 
   cattr_reader :user_states
   @@user_states = [:initializing, :ready, :confirmed]
