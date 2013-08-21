@@ -14,14 +14,27 @@ class User
   field :r,  as: :role,            type: Symbol
 
   has_secure_password
+  field :s,  as: :state,           type: Symbol
+
+  field :p,  as: :picture,         type: String
+
 
   cattr_reader :roles
   @@roles = [:shopper, :boutique, :brand, :admin]
 
-  before_save :validate_role
+  cattr_reader :user_states
+  @@user_states = [:initializing, :ready, :confirmed]
+
+  before_validation :validate_role
+  before_create     :initialize_state
+
 
   def self.from_session(sess)
     User.where("_id" => sess["user_id"]).first
+  end
+
+  def ready?
+    state == :ready || state == :confirmed
   end
 
   private
@@ -31,5 +44,15 @@ class User
       errors.add(:role, "is invalid")
       false
     end
+  end
+
+  def initialize_state
+    self.user_state = case role
+    when :shopper then :initializing
+    when :admin   then :confirmed
+    else               :ready
+    end
+
+    true
   end
 end
