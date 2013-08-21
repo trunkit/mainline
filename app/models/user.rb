@@ -50,7 +50,7 @@ class User
   end
 
   def initialize_state
-    self.user_state = case role
+    self.state = case role
     when :shopper then :initializing
     when :admin   then :confirmed
     else               :ready
