@@ -5,9 +5,17 @@ Trunkit::Application.routes.draw do
     # User / Session Management
     resource :session
 
-    resources :users, only: [:new, :create] do
+    resource :user, only: [:new, :create] do
       get "twitter",  on: :new
       get "facebook", on: :new
+
+      member do
+        get  "categories" => "user_categories#index", as: :categories
+        post "categories" => "user_categories#create"
+
+        get  "boutiques"  => "user_boutiques#index",  as: :boutiques
+        post "boutiques"  => "user_boutiques#create"
+      end
     end
   end
 

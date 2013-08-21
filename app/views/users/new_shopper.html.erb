@@ -1,0 +1,41 @@
+<div id="signup">
+	<h1>Join with Email</h1>
+
+	<%= form_for(:user) do |f| %>
+		<div class="picture">
+			<%= image_tag("signup/picture.png") %>
+
+			<%= link_to("New Picture", "#", class: "new")  %>
+			<%= f.file_field(:picture) %>
+		</div>
+
+		<div class="left">
+			<%= f.label(:first_name) %>
+			<%= f.text_field(:first_name) %>
+
+			<%= f.label(:last_name) %>
+			<%= f.text_field(:last_name) %>
+
+			<%= f.label(:gender) %>
+			<%= f.select(:gender, ["", "Male", "Female"]) %>
+		</div>
+
+		<div class="right">
+			<%= f.label(:email) %>
+			<%= f.email_field(:email) %>
+
+			<%= f.label(:password) %>
+			<%= f.password_field(:password) %>
+
+			<%= f.label(:password_confirmation) %>
+			<%= f.password_field(:password_confirmation) %>
+		</div>
+
+		<div class="submit">
+			<span>By creating an account you agree to Trunkit's</span><br>
+			<%= link_to("terms of service", "/terms-of-service") %><br>
+			<br>
+			<%= submit_tag("Join with Email") %>
+		</div>
+	<% end %>
+</div>
