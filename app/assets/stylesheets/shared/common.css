@@ -3,3 +3,5 @@
 .ar { text-align: right; }
 
 .cb { clear: both; }
+
+.hidden { display: none; }

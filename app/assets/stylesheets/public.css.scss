@@ -22,14 +22,14 @@ body > #container {
   }
 
   #content {
-    #account-login-signup {
+    #account-signup {
       float: left;
       width: 904px;
       height: 342px;
       margin: 0 1px;
       background: image-url("home/banner.png");
 
-      form {
+      >div.wrapper {
         width: 705px;
         margin: 0 100px 0 99px;
 
@@ -44,10 +44,7 @@ body > #container {
         > div {
           float: left;
           width: 300px;
-
-          &.left {
-            padding: 0 5px 0 35px;
-          }
+          padding: 0 0 0 200px;
         }
 
         input[type="text"],
