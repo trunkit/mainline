@@ -1,2 +1,4 @@
-class StreamController < ApplicationController
+class StreamController < CatalogAbstractController
+  def index
+  end
 end
