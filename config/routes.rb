@@ -1,21 +1,13 @@
 Trunkit::Application.routes.draw do
   root to: "contents#index"
 
-  scope ":user_type" do
-    # User / Session Management
-    resource :session
+  # User / Session Management
+  resource :session
 
-    resource :user, only: [:new, :create] do
+  scope ":user_type" do
+    resource :user, only: [:create] do
       get "twitter",  on: :new
       get "facebook", on: :new
-
-      member do
-        get  "categories" => "user_categories#index", as: :categories
-        post "categories" => "user_categories#create"
-
-        get  "boutiques"  => "user_boutiques#index",  as: :boutiques
-        post "boutiques"  => "user_boutiques#create"
-      end
     end
   end
 
