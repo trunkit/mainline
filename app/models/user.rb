@@ -14,8 +14,6 @@ class User
   field :r,  as: :role,            type: Symbol
   field :a,  as: :admin,           type: Boolean, default: false
 
-  field :s,  as: :state,           type: Symbol
-
   field :p,  as: :picture,         type: String
 
   has_secure_password validations: false
@@ -23,11 +21,7 @@ class User
   cattr_reader :roles
   @@roles = [:shopper, :boutique, :brand]
 
-  cattr_reader :user_states
-  @@user_states = [:initializing, :ready, :confirmed]
-
   before_validation :validate_role
-  before_create     :initialize_state
 
   validates_presence_of :password, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
 
@@ -48,15 +42,5 @@ class User
       errors.add(:role, "is invalid")
       false
     end
-  end
-
-  def initialize_state
-    self.state = case role
-    when :shopper then :initializing
-    when :admin   then :confirmed
-    else               :ready
-    end
-
-    true
   end
 end
