@@ -4,6 +4,8 @@ Trunkit::Application.routes.draw do
   # User / Session Management
   resource :session
 
+  get "logout" => "sessions#destroy"
+
   scope ":user_type" do
     resource :user, only: [:create] do
       get "twitter",  on: :new
