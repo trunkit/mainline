@@ -31,10 +31,6 @@ class User
     User.where("_id" => sess["user_id"]).first
   end
 
-  def ready?
-    state == :ready || state == :confirmed
-  end
-
   private
 
   def validate_role
