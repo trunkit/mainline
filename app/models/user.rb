@@ -12,6 +12,7 @@ class User
   field :f,  as: :facebook_id,     type: String
 
   field :r,  as: :role,            type: Symbol
+  field :a,  as: :admin,           type: Boolean, default: false
 
   field :s,  as: :state,           type: Symbol
 
@@ -43,7 +44,7 @@ class User
   private
 
   def validate_role
-    if !self.class.roles.include?(role)
+    if !self.class.roles.include?(role) && !admin?
       errors.add(:role, "is invalid")
       false
     end
