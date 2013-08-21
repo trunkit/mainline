@@ -1,0 +1,2 @@
+module UserBoutiquesHelper
+end
