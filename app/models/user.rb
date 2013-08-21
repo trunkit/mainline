@@ -13,11 +13,11 @@ class User
 
   field :r,  as: :role,            type: Symbol
 
-  has_secure_password
   field :s,  as: :state,           type: Symbol
 
   field :p,  as: :picture,         type: String
 
+  has_secure_password validations: false
 
   cattr_reader :roles
   @@roles = [:shopper, :boutique, :brand, :admin]
@@ -28,6 +28,9 @@ class User
   before_validation :validate_role
   before_create     :initialize_state
 
+  validates_presence_of :password, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
+
+  validates_uniqueness_of :email, :twitter_id, :facebook_id, allow_blank: true
 
   def self.from_session(sess)
     User.where("_id" => sess["user_id"]).first
