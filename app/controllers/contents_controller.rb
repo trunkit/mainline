@@ -1,8 +1,10 @@
 class ContentsController < ApplicationController
   def index
-    redirect_to(stream_path) if current_user
-
-    render(action: :index, layout: "home")
+    if current_user
+      redirect_to(stream_path)
+    else
+      render(action: :index, layout: "home")
+    end
   end
 
   def show
