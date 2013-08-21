@@ -18,6 +18,14 @@ Trunkit::Application.routes.draw do
 
   resources :items
 
+  # Product discovery
+  get "discover" => redirect("/discover/boutiques"), as: :discover
+
+  namespace :discover do
+    resources :boutiques, only: [:index]
+    resources :items,     only: [:index]
+  end
+
   # Checkout and Shopping Cart
   resource :cart
 
