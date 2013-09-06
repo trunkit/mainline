@@ -23,7 +23,10 @@ class User
 
   before_validation :validate_role
 
-  validates_presence_of :password, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
+  before_create :generate_password
+  after_create  :send_welcome_email
+
+  validates_presence_of :password, on: :update, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
 
   validates_uniqueness_of :email, :twitter_id, :facebook_id, allow_blank: true
 
@@ -33,10 +36,18 @@ class User
 
   private
 
+  def generate_password
+    self.password = self.password_confirmation = SecureRandom.hex[0,8]
+  end
+
   def validate_role
     if !self.class.roles.include?(role) && !admin?
       errors.add(:role, "is invalid")
       false
     end
+  end
+
+  def send_welcome_email
+    Notifier.welcome_email(self).deliver
   end
 end
