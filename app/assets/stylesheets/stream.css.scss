@@ -79,7 +79,8 @@
           position: absolute;
           top: 10px;
           left: 10px;
-          font: 18px lato, sans-serif;
+          font: 17px bebas_neue, sans-serif;
+          letter-spacing: 3px;
           font-weight: 100;
           color: #fff;
         }
@@ -113,8 +114,8 @@
               text-transform: uppercase;
             }
             &:hover {
-                  text-decoration: underline;;
-                }
+              color: rgba(255,255,255,.8);
+            }
           }
         }
 
@@ -135,7 +136,7 @@
 
           &:hover {
                   color: #fff;
-                  background: rgba(0,0,0,0.4);
+                  background: rgba(0,0,0,1);
                 }
         }
 
@@ -207,8 +208,8 @@
               text-transform: uppercase;
             }
             &:hover {
-                  text-decoration: underline;;
-                }
+              text-decoration: underline;;
+            }
           }
         }
 
