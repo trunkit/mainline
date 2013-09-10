@@ -27,7 +27,9 @@ class User
   after_create  :send_welcome_email
 
   validates_presence_of :first_name, :last_name, :email, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
-  validates_presence_of :password, on: :update, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
+
+  validates_presence_of     :password, on: :update, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
+  validates_confirmation_of :password, on: :update, if: lambda {|u| u.twitter_id.blank? && u.facebook_id.blank? }
 
   validates_uniqueness_of :email, :twitter_id, :facebook_id, allow_blank: true
 
