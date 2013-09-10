@@ -22,7 +22,6 @@
 
 <div class="right">
 	<div class="cart">
-		<span>0</span>
 	</div>
 
 	<div class="user">
@@ -32,10 +31,10 @@
 
 		<ul>
 			<%= content_tag(:li, link_to("Settings", "/consumer/settings")) %>
-			<%= content_tag(:li, link_to("Invite Friends", "/consumer/invite")) %>
+			<%= content_tag(:li, link_to("Invite", "/consumer/invite")) %>
 			<%= content_tag(:li, link_to("Help", "/help")) %>
-			<%= content_tag(:li, link_to("About Trunkit", "/about-trunkit")) %>
-			<%= content_tag(:li, link_to("Terms of Service", "/terms-of-service")) %>
+			<%= content_tag(:li, link_to("About", "/about-trunkit")) %>
+			<%= content_tag(:li, link_to("Terms", "/terms-of-service")) %>
 			<%= content_tag(:li, link_to("Sign Out", logout_path)) %>
 		</ul>
 	</div>
