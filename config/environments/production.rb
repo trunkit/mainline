@@ -86,7 +86,7 @@ Trunkit::Application.configure do
     domain:                "trunkit.com",
     user_name:             "sfelsey",
     password:              "sssfff222",
-    authentication:        :plain
+    authentication:        :plain,
     enable_startttls_auto: true
   }
 end
