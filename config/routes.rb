@@ -2,7 +2,7 @@ Trunkit::Application.routes.draw do
   root to: "contents#index"
 
   # User / Session Management
-  resource :session
+  resource :session, only: [:new, :create, :destroy]
 
   get "logout" => "sessions#destroy"
 
