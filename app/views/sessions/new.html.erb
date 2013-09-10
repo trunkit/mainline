@@ -1,0 +1,28 @@
+<div id="login">
+	<h1>Sign In</h1>
+
+	<%= form_tag(session_path) do %>
+		<div class="left">
+			<%= email_field_tag(:email, "", placeholder: "Email") %>
+			<%= password_field_tag(:password, "", placeholder: "Password") %>
+			<%= submit_tag("Sign In") %>
+		</div>
+
+		<div class="right">
+			<%= link_to("#", class: "twitter") do %>
+				<%= image_tag("home/twitter.png") %>
+				<span>Sign Up with Twitter</span>
+			<% end %>
+
+			<%= link_to("#", class: "facebook") do %>
+				<%= image_tag("home/facebook.png") %>
+				<span>Sign Up with Facebook</span>
+			<% end %>
+		</div>
+
+		<span class="cb">Or</span>
+
+		<%= link_to("Boutique Sign In", "#", class: "left") %>
+		<%= link_to("Brand Sign In", 		"#", class: "right") %>
+	<% end %>
+</div>
