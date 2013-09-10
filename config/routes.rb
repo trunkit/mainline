@@ -4,7 +4,7 @@ Trunkit::Application.routes.draw do
   # User / Session Management
   resource :session, only: [:new, :create, :destroy]
 
-  get "logout" => "sessions#destroy"
+  get "logout" => "sessions#destroy", as: :logout
 
   scope ":user_type" do
     resource :user, only: [:create] do
