@@ -1,0 +1,2 @@
+module Discover::ItemsHelper
+end

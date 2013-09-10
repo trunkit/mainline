@@ -1,0 +1,2 @@
+module Discover::BoutiquesHelper
+end
