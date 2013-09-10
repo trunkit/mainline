@@ -5,12 +5,13 @@ class UsersController < ApplicationController
     @user      = User.new(user_params)
     @user.role = params[:user_type]
 
-    if @user.save
-      session["user_id"] = @user.id
+    session["user_id"] = @user.id if @user.save
 
-      case @user.role
-      when :shopper
-        redirect_to(discover_path)
+    respond_to do |format|
+      format.js do
+        if !session["user_id"].present?
+          flash[:errors] = @user.errors
+        end
       end
     end
   end

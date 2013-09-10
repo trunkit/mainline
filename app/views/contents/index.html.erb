@@ -1,5 +1,5 @@
 <section id="account-signup">
-	<%= form_for(:user, url: user_path(user_type: "shopper")) do |f| %>
+	<%= form_for(:user, url: user_path(user_type: "shopper"), remote: true) do |f| %>
 		<h2>Curated by your favorite boutiques.</h2>
 
 		<div class="left">
@@ -39,5 +39,9 @@ $(function() {
 	$("a.email").click(function() {
 		$("form").submit();
 	});
+
+	<% if flash[:errors] %>
+	alert("Could not account because <%= j(flash[:errors].full_messages.join(", ")) %>");
+	<% end %>
 })
 </script>
