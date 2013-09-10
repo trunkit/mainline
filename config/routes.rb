@@ -20,7 +20,7 @@ Trunkit::Application.routes.draw do
 
   resources :items
 
-  resources :boutiques
+  resources :boutiques, :brands, only: [:show]
 
   # Product discovery
   get "discover" => redirect("/discover/boutiques"), as: :discover
