@@ -5,6 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.where(email: params[:email]).first
+
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to(stream_path)
+    else
+      render(action: :new)
+    end
   end
 
   def destroy
