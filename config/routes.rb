@@ -14,9 +14,13 @@ Trunkit::Application.routes.draw do
   end
 
   # Catalog
-  get "stream" => "stream#index"
+  get "stream"           => "stream#index",     as: :stream
+  get "stream/following" => "stream#following", as: :stream_following
+  get "favorites"        => "favorites#index",  as: :favorites
 
   resources :items
+
+  resources :boutiques
 
   # Product discovery
   get "discover" => redirect("/discover/boutiques"), as: :discover
