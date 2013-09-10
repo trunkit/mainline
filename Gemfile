@@ -33,4 +33,5 @@ gem 'newrelic_rpm'
 
 group :production do
   gem 'unicorn'
+  gem 'rails_12factor'
 end
