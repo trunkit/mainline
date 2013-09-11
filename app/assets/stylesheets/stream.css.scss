@@ -38,7 +38,7 @@
       span.store {
         overflow: hidden;
         display: table-cell;
-        width: 215px;
+        width: 190px;
         word-wrap: break-word;
         font: 18px lato, sans-serif;
         font-weight: 100;
@@ -48,13 +48,15 @@
         text-transform: uppercase;
         color: #fff;
         padding-top: 6px;
-        padding-left: 10px;
+        padding-left: 16px;
         text-decoration: none;
       }
       span.city {
         display: table-cell;
-        width: 70px;
-        padding: 0 20 0 0px;
+        width: 68px;
+        padding-right: 16px;
+        padding-left: 10px;
+        margin-left: 100px;
         text-align: right;
         font:  40px lato, sans-serif;
         font-weight: 100;
