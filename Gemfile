@@ -9,7 +9,7 @@ gem 'rails', '4.0.1'
 gem 'pg'
 gem 'pg_array_parser'
 gem 'paranoia'
-gem 'paper_trail'
+gem 'paper_trail', '3.0.0.rc2'
 
 # Miscellaneous
 gem 'configatron'
