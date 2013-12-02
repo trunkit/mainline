@@ -19,6 +19,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'certified' # For OpenSSL verify errors
 
 # Social Networks
 gem 'koala', github: 'arsduo/koala'
