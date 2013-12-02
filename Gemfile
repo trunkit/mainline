@@ -22,7 +22,7 @@ gem 'omniauth-twitter'
 gem 'certified' # For OpenSSL verify errors
 
 # Social Networks
-gem 'koala', github: 'arsduo/koala'
+gem 'koala', '1.8.0.rc1'
 gem 'twitter'
 
 # Payments

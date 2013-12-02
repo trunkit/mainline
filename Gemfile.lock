@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/arsduo/koala.git
-  revision: e028a74c6cf45cc39a981f1191509ab34e5c155a
-  specs:
-    koala (1.8.0rc1)
-      addressable
-      faraday
-      multi_json
-
-GIT
   remote: git://github.com/vizjerai/avalara.git
   revision: 3850c801d2ca5b1b6937d5c7c9fd0cb8a5e0f173
   specs:
@@ -111,6 +102,10 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     kgio (2.8.1)
+    koala (1.8.0rc1)
+      addressable
+      faraday
+      multi_json
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -245,7 +240,7 @@ DEPENDENCIES
   configatron
   devise
   jquery-rails
-  koala!
+  koala (= 1.8.0.rc1)
   newrelic_rpm
   omniauth
   omniauth-facebook
