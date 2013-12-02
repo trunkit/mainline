@@ -49,6 +49,10 @@ GEM
     bcrypt-ruby (3.0.1)
     buftok (0.2.0)
     builder (3.1.4)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     certified (0.1.1)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -95,6 +99,9 @@ GEM
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.5)
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -235,10 +242,12 @@ DEPENDENCIES
   asset_sync
   avalara!
   balanced
+  carrierwave
   certified
   coffee-rails (~> 4.0.0)
   configatron
   devise
+  jquery-fileupload-rails
   jquery-rails
   koala (= 1.8.0.rc1)
   newrelic_rpm

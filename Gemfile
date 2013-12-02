@@ -21,6 +21,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'certified' # For OpenSSL verify errors
 
+# File upload support
+gem 'carrierwave'
+gem 'jquery-fileupload-rails'
+
 # Social Networks
 gem 'koala', '1.8.0.rc1'
 gem 'twitter'
