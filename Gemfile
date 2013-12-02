@@ -11,8 +11,9 @@ gem 'pg_array_parser'
 gem 'paranoia'
 gem 'paper_trail', '3.0.0.rc2'
 
-# Configuration
+# Miscellaneous
 gem 'configatron'
+gem 'uuid'
 
 # User authentication
 gem 'devise'
