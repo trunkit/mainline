@@ -2,16 +2,7 @@ Trunkit::Application.routes.draw do
   root to: "contents#index"
 
   # User / Session Management
-  resource :session, only: [:new, :create, :destroy]
-
-  get "logout" => "sessions#destroy", as: :logout
-
-  scope ":user_type" do
-    resource :user, only: [:create] do
-      get "twitter",  on: :new
-      get "facebook", on: :new
-    end
-  end
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # Catalog
   get "stream"           => "stream#index",     as: :stream
