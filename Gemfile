@@ -16,7 +16,10 @@ gem 'configatron'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # User authentication
+gem 'devise'
 gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # Social Networks
 gem 'koala', github: 'arsduo/koala'
