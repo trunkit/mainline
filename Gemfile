@@ -15,6 +15,9 @@ gem 'paper_trail', '3.0.0.rc2'
 gem 'configatron'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# User authentication
+gem 'omniauth'
+
 # Social Networks
 gem 'koala', github: 'arsduo/koala'
 gem 'twitter'
