@@ -7,6 +7,9 @@ gem 'rails', '4.0.1'
 
 # Persistence
 gem 'pg'
+gem 'pg_array_parser'
+gem 'paranoia'
+gem 'paper_trail'
 
 # Miscellaneous
 gem 'configatron'
