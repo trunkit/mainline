@@ -1,5 +1,5 @@
 <section id="account-signup">
-	<%= form_for(:user, url: user_path(user_type: "shopper"), remote: true) do |f| %>
+	<%= form_for(:user, url: user_registration_path, remote: true) do |f| %>
 		<h2>Curated by your favorite boutiques.</h2>
 
 		<div class="left">
@@ -13,12 +13,12 @@
 				<span>Sign Up with Email</span>
 			<% end %>
 
-			<%= link_to("#", class: "twitter") do %>
+			<%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
 				<%= image_tag("home/twitter.png") %>
 				<span>Sign Up with Twitter</span>
 			<% end %>
 
-			<%= link_to("#", class: "facebook") do %>
+			<%= link_to(omniauth_authorize_path("user", "facebook"), class: "facebook") do %>
 				<%= image_tag("home/facebook.png") %>
 				<span>Sign Up with Facebook</span>
 			<% end %>

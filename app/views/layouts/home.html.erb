@@ -15,7 +15,7 @@
 		<div id="container">
 			<header>
 				<a href="/" class="tagline">Trunkit</a>
-				<%= link_to("Sign In", new_session_path(user_type: "shopper"), class: "login") %>
+				<%= link_to("Sign In", new_user_session_path, class: "login") %>
 			</header>
 
 			<%= content_tag(:div, yield, id: "content") %>
