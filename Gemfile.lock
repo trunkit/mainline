@@ -239,7 +239,6 @@ DEPENDENCIES
   asset_sync
   avalara!
   balanced
-  bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 4.0.0)
   configatron
   devise
