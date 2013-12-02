@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Core framework
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.1'
 
 # Persistence
-gem 'mongoid', github: 'mongoid/mongoid'
+gem 'pg'
 
 # Miscellaneous
 gem 'configatron'
@@ -33,5 +33,6 @@ gem 'newrelic_rpm'
 
 group :production do
   gem 'unicorn'
+  gem 'unicorn-worker-killer'
   gem 'rails_12factor'
 end
