@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
+  before_validation :generate_password
+  before_create     :expand_raw_name
+
   class << self
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
       user = User.where(provider: auth.provider, uid: auth.uid).first
@@ -32,7 +35,7 @@ class User < ActiveRecord::Base
       unless user
         user = User.create(
           raw_name: auth.info.name,
-          email:    "#{UUID.generate}@twitter.fake",
+          email:    "#{UUID.generate}@fake",
           provider: auth.provider,
           uid:      auth.uid,
           password: Devise.friendly_token[0,20])
@@ -48,8 +51,21 @@ class User < ActiveRecord::Base
     provider == "twitter"
   end
 
-  def email
-    val = self[:email]
-    val = "" if val.index("@twitter.fake")
+  private
+
+  def generate_password
+    return if provider.present? || password.present?
+    self.password =
+      self.password_confirmation =
+      Devise.friendly_token.first(8)
+  end
+
+  def expand_raw_name
+    if self.first_name.blank?
+      name = self.raw_name.split(' ', 2)
+
+      self.first_name = name.first
+      self.last_name  = name.last
+    end
   end
 end
