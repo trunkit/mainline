@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
       unless user
         user = User.create(
           raw_name: auth.info.name,
-          email:    "#{UUID.generate}@twitter.fake"
+          email:    "#{UUID.generate}@twitter.fake",
           provider: auth.provider,
           uid:      auth.uid,
           password: Devise.friendly_token[0,20])
