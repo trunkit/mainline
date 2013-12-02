@@ -3,5 +3,5 @@ class User
 
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable,
-         omniauthable: [:facebook, :twitter]
+         :omniauthable, omniauth_providers: [:facebook, :twitter]
 end
