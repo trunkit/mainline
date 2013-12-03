@@ -41,7 +41,7 @@ $(function() {
 	});
 
 	<% if flash[:errors] %>
-	alert("Could not account because <%= j(flash[:errors].full_messages.join(", ")) %>");
+	alert("Could not create account because <%= j(flash[:errors].full_messages.join(", ")) %>");
 	<% end %>
-})
+});
 </script>
