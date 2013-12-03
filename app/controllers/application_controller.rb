@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :referring_boutique
 
-  before_filter :subdomain_redirect
+  before_filter :subdomain_redirect, :track_referral_code
   before_filter :configure_devise_params, if: :devise_controller?
 
   private
@@ -22,9 +22,14 @@ class ApplicationController < ActionController::Base
       redirect_to("/brand")
     else
       if b = Boutique.where(short_code: name).first
-        session[:referring_boutique_id] = b.id
-        redirect_to(url_for(subdomain: remainder))
+        redirect_to(url_for(subdomain: remainder, referral_code: "br-#{b.id}"))
       end
+    end
+  end
+
+  def track_referral_code
+    if params[:referral_code] =~ /br\-([\d]+)/
+      session[:referring_boutique_id] = $1
     end
   end
 
