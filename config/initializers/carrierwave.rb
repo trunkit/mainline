@@ -6,4 +6,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory = (Rails.env.production? ? "trunkit-content" : "trunkit-content-development")
+  config.asset_host    = "http://#{config.fog_directory}.s3.amazonaws.com"
 end
