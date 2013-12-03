@@ -3,6 +3,9 @@ class ContentsController < ApplicationController
     if current_user
       redirect_to(stream_path)
     else
+      @items = referring_boutique ? referring_boutique.items : Item
+      @items = @items.order('updated_at').limit(18)
+
       render(action: :index)
     end
   end

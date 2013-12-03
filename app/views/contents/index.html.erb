@@ -1,6 +1,6 @@
 <section id="account-signup">
-	<%= form_for(:user, url: user_registration_path, remote: true) do |f| %>
-		<h2>Curated by your favorite boutiques.</h2>
+	<%= form_for(:user, url: user_registration_path) do |f| %>
+		<%= content_tag(:h2, "Curated by #{referring_boutique ? referring_boutique.name : 'your favorite boutiques'}.") %>
 
 		<div class="left">
 			<%= f.text_field(:first_name, placeholder: "First Name") %>
@@ -26,11 +26,11 @@
 	<% end %>
 </section>
 
-<h3>Trending</h3>
+<%= content_tag(:h3, "Trending") if @items.present? %>
 
 <section id="stream">
-	<% 1.upto(18) do %>
-		<%= render("stream/item") %>
+	<% @items.each do |item| %>
+		<%= render("stream/item", item: item) %>
 	<% end %>
 </section>
 
