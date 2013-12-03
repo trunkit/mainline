@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   before_validation :generate_password
   before_create     :expand_raw_name
 
+  mount_uploader :photo, UserPhotoUploader
+
   class << self
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
       user = User.where(provider: auth.provider, uid: auth.uid).first
