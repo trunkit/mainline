@@ -15,5 +15,8 @@
 /log/*.log
 /tmp
 
+# Ignore the local cache from carrierwave
+/public/uploads
+
 # Ignore the bundler ruby cache
 /vendor/ruby
