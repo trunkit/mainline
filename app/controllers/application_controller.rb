@@ -7,16 +7,24 @@ class ApplicationController < ActionController::Base
 
   helper_method :referring_boutique
 
+  before_filter :subdomain_redirect
   before_filter :configure_devise_params, if: :devise_controller?
 
   private
 
   def subdomain_redirect
-    case request.subdomain.split('.').last
+    name, remainder = request.subdomain.split('.', 2)
+
+    case name
     when "boutique"
       redirect_to("/boutique")
     when "brand"
       redirect_to("/brand")
+    else
+      if b = Boutique.where(short_code: name).first
+        session[:referring_boutique_id] = b.id
+        redirect_to(url_for(subdomain: remainder))
+      end
     end
   end
 
