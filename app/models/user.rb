@@ -19,13 +19,14 @@ class User < ActiveRecord::Base
 
       unless user
         user = User.create(
-          raw_name:   auth.info.name,
-          first_name: auth.info.first_name,
-          last_name:  auth.info.last_name,
-          provider:   auth.provider,
-          uid:        auth.uid,
-          email:      auth.info.email,
-          password:   Devise.friendly_token[0,20])
+          raw_name:         auth.info.name,
+          first_name:       auth.info.first_name,
+          last_name:        auth.info.last_name,
+          provider:         auth.provider,
+          uid:              auth.uid,
+          email:            auth.info.email,
+          password:         Devise.friendly_token[0,20],
+          remote_photo_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large")
       end
 
       user
@@ -36,12 +37,15 @@ class User < ActiveRecord::Base
 
       unless user
         user = User.create(
-          raw_name: auth.info.name,
-          email:    "#{UUID.generate}@host.fake",
-          provider: auth.provider,
-          uid:      auth.uid,
-          password: Devise.friendly_token[0,20])
+          raw_name:         auth.info.name,
+          email:            "#{UUID.generate}@host.fake",
+          provider:         auth.provider,
+          uid:              auth.uid,
+          password:         Devise.friendly_token[0,20],
+          remote_photo_url: auth.extra.raw_info.profile_image_url)
       end
+
+      user
     end
   end
 
