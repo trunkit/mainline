@@ -5,8 +5,9 @@ class Boutique < ActiveRecord::Base
 
   before_create :generate_short_code
 
+  validates_presence_of   :name, :short_code
   validates_uniqueness_of :short_code
-  validates_format_of     :short_code, with: /a-zA-Z0-9-_/
+  validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
 private
   def generate_short_code
