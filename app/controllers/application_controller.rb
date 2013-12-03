@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   layout Proc.new {|controller| controller.current_user ? "application" : "home" }
 
+  helper_method :referring_boutique
+
   private
 
   def subdomain_redirect
@@ -14,5 +16,9 @@ class ApplicationController < ActionController::Base
     when "brand"
       redirect_to("/brand")
     end
+  end
+
+  def referring_boutique
+    @referring_boutique ||= Boutique.find(session[:referring_boutique_id]) if session[:referring_boutique_id]
   end
 end

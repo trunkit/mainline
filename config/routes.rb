@@ -40,6 +40,9 @@ Trunkit::Application.routes.draw do
     resources :items, :orders, :users
   end
 
+  # Match on boutique routing
+  get "/br/:short_code" => "boutiques#redirect"
+
   # Catch-all, generic routing
   get "*path" => "contents#show"
 end
