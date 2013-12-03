@@ -11,6 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery_ujs
-//= require fancybox
 
 window.SiteBindings = {};
