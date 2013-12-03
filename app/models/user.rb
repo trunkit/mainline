@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
           last_name:        auth.info.last_name,
           provider:         auth.provider,
           uid:              auth.uid,
-          email:            auth.info.email,
+          email:            (auth.info.email.present? ? auth.info.email : "#{UUID.generate}@host.fake"),
           password:         Devise.friendly_token[0,20],
           remote_photo_url: "http://graph.facebook.com/#{auth.uid}/picture?type=large")
       end
