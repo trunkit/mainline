@@ -255,6 +255,7 @@ DEPENDENCIES
   configatron
   dalli
   devise
+  fog
   jquery-fileupload-rails
   jquery-rails
   koala (= 1.8.0.rc1)

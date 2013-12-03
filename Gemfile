@@ -27,6 +27,7 @@ gem 'omniauth-twitter'
 gem 'certified' # For OpenSSL verify errors
 
 # File upload support
+gem 'fog'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 
