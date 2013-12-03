@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :referring_boutique
 
+  before_filter :configure_devise_params, if: :devise_controller?
+
   private
 
   def subdomain_redirect
@@ -20,5 +22,9 @@ class ApplicationController < ActionController::Base
 
   def referring_boutique
     @referring_boutique ||= Boutique.find(session[:referring_boutique_id]) if session[:referring_boutique_id]
+  end
+
+  def configure_devise_params
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
   end
 end
