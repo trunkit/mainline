@@ -1,6 +1,7 @@
 class Boutique < ActiveRecord::Base
   has_many :locations, as: :company
-  has_many :users, as: :parent
+  has_many :users,     as: :parent
+  has_many :items
 
   before_create :generate_short_code
 
