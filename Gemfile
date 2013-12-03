@@ -30,6 +30,7 @@ gem 'certified' # For OpenSSL verify errors
 gem 'fog'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
+gem 'mini_magick'
 
 # Social Networks
 gem 'koala', '1.8.0.rc1'
