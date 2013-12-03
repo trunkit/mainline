@@ -15,6 +15,10 @@ gem 'paper_trail', '3.0.0.rc2'
 gem 'configatron'
 gem 'uuid'
 
+# Memcache support
+gem 'memcachier'
+gem 'dalli'
+
 # User authentication
 gem 'devise'
 gem 'omniauth'
