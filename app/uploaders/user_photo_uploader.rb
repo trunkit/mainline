@@ -12,7 +12,7 @@ class UserPhotoUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [1000,1000]
 
   version :thumb do
-    process scale: [25, 25]
+    process resize_to_fill: [25, 25]
   end
 
   def extension_white_list
