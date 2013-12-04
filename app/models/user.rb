@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include RoleModel
-  roles :system_admin, :admin
+  roles :system, :admin
 
   belongs_to :parent, polymorphic: true
 
