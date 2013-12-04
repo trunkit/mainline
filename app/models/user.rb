@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include RoleModel
+  roles :system_admin, :admin
+
   belongs_to :parent, polymorphic: true
 
   has_many :addresses
