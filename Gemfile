@@ -14,17 +14,19 @@ gem 'paper_trail', '3.0.0.rc2'
 # Miscellaneous
 gem 'configatron'
 gem 'uuid'
+gem 'certified' # For OpenSSL verify errors
 
 # Memcache support
 gem 'memcachier'
 gem 'dalli'
 
-# User authentication
+# User authentication, authorization, and access control
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'certified' # For OpenSSL verify errors
+gem 'role_model'
+gem 'cancan'
 
 # File upload support
 gem 'fog'
