@@ -3,10 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  layout(Proc.new do |controller|
-    return false if request.xhr?
-    controller.current_user ? "application" : "home"
-  end)
+  layout ->(controller) { return false if request.xhr? }
 
   helper_method :referring_boutique
 

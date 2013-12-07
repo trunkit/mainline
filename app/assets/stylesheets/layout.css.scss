@@ -31,6 +31,15 @@ body {
         letter-spacing: 4px;
       }
 
+      a.login {
+        float: right;
+        padding: 26px 0 0;
+        font: 16px/19px bebas_neue, sans-serif;
+        letter-spacing: 4px;
+        text-decoration: none;
+        color: #000;
+      }
+
       nav {
         float: left;
         margin: 0 0 0 120px;

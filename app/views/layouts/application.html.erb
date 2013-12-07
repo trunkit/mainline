@@ -10,24 +10,28 @@
 		<%= javascript_include_tag("application") %>
 
 		<%= csrf_meta_tags %>
-
 	</head>
 
 	<body>
 		<header>
 			<div class="content">
 				<a href="/" class="tagline">Trunkit</a>
-
 				<%= main_nav(@hide_main_nav) %>
 			</div>
 		</header>
 
 		<div id="container">
-			<%= yield %>
+			<%= content_tag(:div, yield, id: "content") %>
 
 			<footer>
 				<span class="copyright">&copy; 2013 Trunkit LLC. All rights reserved.</span>
 			</footer>
 		</div>
+
+		<script>
+		$(function() {
+			$("a.fancybox").fancybox();
+		});
+		</script>
 	</body>
 </html>
