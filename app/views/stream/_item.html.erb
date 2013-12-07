@@ -1,30 +1,30 @@
 <article class="item">
 	<div>
 		<div class="img">
-			<%= link_to(image_tag("feed/dress.jpg"), "#", class: "img") %>
+			<%= link_to(image_tag("feed/dress.jpg"), item_path("1"), class: "img") %>
 		</div>
 
 		<div class="details">
-			<%= link_to(image_tag("feed/favorite.png"), "#", class: "favorite") %>
+			<%= link_to(image_tag("feed/favorite.png"), item_favorite_path("1"), method: :put, class: "favorite") %>
 
 			<p class="name">
-				<a class="item-name" href="#">Dress abc</a><br>
-				<a href="#">Designed By Rag</a>
+				<%= link_to("Dress ABC", item_path("1"), class: "fancybox", :"data-fancybox-type" => "ajax") %><br>
+				<%= link_to("Designed By Rag", item_path("1")) %>
 			</p>
 
-			<span class="price"><em>$1,085</em></span>
+			<%= content_tag(:span, "<em>$250</em>".html_safe, class: "price") %>
 
-			<p class="sizes">
+			<%= content_tag(:p, class: "sizes") do %>
 				Available Sizes:<br>
 				S,M,XL
-			</p>
+			<% end %>
 
-			<%= link_to("Buy", "#", class: "buy") %>
+			<%= link_to("Buy", item_path("1"), class: "buy") %>
 
 			<div class="social">
-				<%= link_to(image_tag("feed/facebook.png"), "#") %>
-				<%= link_to(image_tag("feed/twitter.png"), "#") %>
-				<%= link_to(image_tag("feed/pinterest.png"), "#") %>
+				<%= link_to(image_tag("feed/facebook.png"), item_path("1")) %>
+				<%= link_to(image_tag("feed/twitter.png"), item_path("1")) %>
+				<%= link_to(image_tag("feed/pinterest.png"), item_path("1")) %>
 			</div>
 		</div>
 
