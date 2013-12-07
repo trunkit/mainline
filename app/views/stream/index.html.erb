@@ -1,5 +1,13 @@
 <div id="stream">
-	<% 1.upto(20) do %>
-		<%= render("stream/item") %>
+	<%= render("stream/item") %>
+
+	<% @items.each do |item| %>
+		<%= render("stream/item", item: item) %>
 	<% end %>
 </div>
+
+<script>
+$(function() {
+	$("a.fancybox").fancybox();
+});
+</script>
