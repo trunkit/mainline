@@ -9,7 +9,9 @@ Trunkit::Application.routes.draw do
   get "stream/following" => "stream#following", as: :stream_following
   get "favorites"        => "favorites#index",  as: :favorites
 
-  resources :items
+  resources :items do
+    put "favorite" => "items#favorite"
+  end
 
   resources :boutiques, :brands, only: [:show]
 
