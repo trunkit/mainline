@@ -5,13 +5,18 @@
 		</div>
 
 		<div class="details">
-			<span class="price">$1,085</span>
-			<%= link_to(image_tag("feed/star.png"), "#", class: "star") %>
+			<%= link_to(image_tag("feed/favorite.png"), "#", class: "favorite") %>
 
 			<p class="name">
 				<a class="item-name" href="#">Dress abc</a><br>
-				<a href="#">Spring 2013</a><br>
-				<a href="#">by Designer A</a>
+				<a href="#">Designed By Rag</a>
+			</p>
+
+			<span class="price"><em>$1,085</em></span>
+
+			<p class="sizes">
+				Available Sizes:<br>
+				S,M,XL
 			</p>
 
 			<%= link_to("Buy", "#", class: "buy") %>
@@ -24,8 +29,8 @@
 		</div>
 
 		<div class="info">
-			<span class="store">Boulder shop</span>
-			<span class="city">co</span>
+			<span class="curator">Curated by Boulder shop</span>
+			<span class="supplier">Supplied by Aspen Boutique</span>
 		</div>
 	</div>
 </article>

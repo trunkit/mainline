@@ -7,87 +7,73 @@
 
   > .item {
     float: left;
-    width: 300px;
-    height: 300px;
+    width: 296px;
+    height: 358px;
     padding: 0px 0px 0px 0px;
     min-height: 100px;
     margin: 1px;
     background: #fff;
     text-align: center;
-
+    border: 2px solid #000000;
 
     > div {
       position: relative;
+      height: 100%;
 
       .img {
         max-width: 300px;
         max-height: 300px;
         overflow: hidden;
       }
-      > div.info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      float: left;
-      height: 58px;
-      width: 100%;
-      background: rgba(12,12,12,0.70);
-      text-decoration: none;
-      color: #fff;
 
-      span.store {
-        overflow: hidden;
-        display: table-cell;
-        width: 190px;
-        word-wrap: break-word;
-        font: 18px lato, sans-serif;
-        font-weight: 100;
-        vertical-align: middle;
-        text-align: left;
-        text-overflow: ellipsis;
-        text-transform: uppercase;
-        color: #fff;
-        padding-top: 6px;
-        padding-left: 16px;
+      > div.info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        float: left;
+        height: 56px;
+        width: 100%;
+        border-top: 2px solid #000;
         text-decoration: none;
-      }
-      span.city {
-        display: table-cell;
-        width: 68px;
-        padding-right: 16px;
-        padding-left: 10px;
-        margin-left: 100px;
-        text-align: right;
-        font:  40px lato, sans-serif;
-        font-weight: 100;
-        text-transform: uppercase;
         color: #fff;
-        padding-top: 4px
+
+        span.curator {
+          overflow: hidden;
+          display: table-cell;
+          float: left;
+          width: 266px;
+          font: 18px/21px bebas_neue, sans-serif;
+          letter-spacing: 2px;
+          vertical-align: middle;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #000;
+          padding: 6px 15px 0;
+        }
+
+        span.supplier {
+          display: table-cell;
+          float: left;
+          clear: left;
+          width: 266px;
+          padding: 0 15px;
+          font: 16px/19px HelveticaNeue-UltraLight, sans-serif;
+          letter-spacing: 1px;
+          color: #000;
+          padding-top: 4px
+        }
       }
-      a:link, a:hover, a:active {
-        text-decoration: none;
-      }
-    }
+
       > div.details {
         display: none;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 242px;
+        height: 300px;
         background: rgba(12,12,12,0.70);
 
-        span.price {
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          font: 17px bebas_neue, sans-serif;
-          letter-spacing: 3px;
-          font-weight: 100;
-          color: #fff;
-        }
-
-        a.star {
+        a.favorite {
           position: absolute;
           top: 10px;
           right: 10px;
@@ -115,17 +101,41 @@
               letter-spacing: 6px;
               text-transform: uppercase;
             }
-            &:hover {
-              color: rgba(255,255,255,.8);
-            }
           }
+        }
+
+        span.price {
+          position: absolute;
+          top: 105px;
+          left: 0;
+          width: 296px;
+          font: 17px bebas_neue, sans-serif;
+          letter-spacing: 3px;
+          color: #fff;
+
+          em {
+            font-style: normal;
+            padding: 2px 0;
+            border-top: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+          }
+        }
+
+        p.sizes {
+          position: absolute;
+          top: 130px;
+          left: 0;
+          width: 296px;
+          font: 18px HelveticaNeue-UltraLight, sans-serif;
+          letter-spacing: 1px;
+          color: #fff;
         }
 
         a.buy {
           display: block;
           position: absolute;
-          top: 130px;
-          left: 67px;
+          top: 200px;
+          left: 68px;
           width: 160px;
           height: 34px;
           font: 16px/27px bebas_neue, sans-serif;
