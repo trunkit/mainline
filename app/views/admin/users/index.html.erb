@@ -25,11 +25,11 @@
 				<%= content_tag(:td, user.created_at.strftime("%m/%d/%Y %I:%M %p")) %>
 				<td>
 					<div class="dropdown">
-					  <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+					  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
 							Manage <span class="caret"></span>
 					  </button>
 
-					  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+					  <ul class="dropdown-menu" role="menu">
 							<%= content_tag(:li, link_to("Edit", [:edit, :admin, user], tabindex: "-1", role: "menuitem")) %>
 							<% unless current_user == user %>
 							<%= content_tag(:li, link_to("Assume Identity", [:admin, user, :masquerade], method: :put, tabindex: "-1", role: "menuitem")) %>
