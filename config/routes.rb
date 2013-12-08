@@ -13,7 +13,7 @@ Trunkit::Application.routes.draw do
     put "favorite" => "items#favorite"
   end
 
-  resources :boutiques, :designers, only: [:show]
+  resources :boutiques, :brands, only: [:show]
 
   # Product discovery
   get "discover" => redirect("/discover/boutiques"), as: :discover
@@ -35,7 +35,7 @@ Trunkit::Application.routes.draw do
 
   # Administrative Interfaces
   namespace :admin do
-    resources :designers, :boutiques, :items, :orders
+    resources :brands, :boutiques, :items, :orders
 
     resources :users, except: [:new, :show] do
       put "masquerade" => "users#masquerade"

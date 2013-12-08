@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208220937) do
+ActiveRecord::Schema.define(version: 20131208231234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 20131208220937) do
 
   add_index "boutiques", ["short_code"], name: "index_boutiques_on_short_code", unique: true, using: :btree
 
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
   create_table "cart_items", force: true do |t|
     t.integer  "cart_id",      null: false
     t.integer  "item_id",      null: false
@@ -52,13 +59,6 @@ ActiveRecord::Schema.define(version: 20131208220937) do
   create_table "carts", force: true do |t|
     t.integer  "order_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "deleted_at"
-  end
-
-  create_table "designers", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20131208220937) do
     t.datetime "updated_at"
     t.string   "photos",             default: [], array: true
     t.integer  "parent_id"
-    t.integer  "designer_id"
+    t.integer  "brand_id"
   end
 
   add_index "items", ["parent_id"], name: "index_items_on_parent_id", using: :btree
