@@ -36,6 +36,10 @@ Trunkit::Application.routes.draw do
   # Administrative Interfaces
   namespace :admin do
     resources :brands, :boutiques, :items, :orders, :users
+
+    resources :users do
+      put "masquerade" => "users#masquerade"
+    end
   end
 
   get "admin" => "admin/dashboards#index"
