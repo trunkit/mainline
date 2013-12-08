@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :subdomain_redirect, :track_referral_code
   before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :masquerade_user
   before_filter :set_time_zone, if: :current_user
 
   private
@@ -40,6 +41,10 @@ class ApplicationController < ActionController::Base
 
   def configure_devise_params
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
+  end
+
+  def masquerade_user
+    @current_user = User.find(session[:masquerade_user]) if session[:masquerade_user].present?
   end
 
   def set_time_zone
