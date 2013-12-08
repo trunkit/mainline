@@ -35,11 +35,7 @@ Trunkit::Application.routes.draw do
 
   # Administrative Interfaces
   namespace :admin do
-    resources :brands, :boutiques do
-      resources :items
-    end
-
-    resources :items, :orders, :users
+    resources :brands, :boutiques, :items, :orders, :users
   end
 
   # Catch-all, generic routing
