@@ -1,4 +1,7 @@
 class Boutique < ActiveRecord::Base
+  acts_as_paranoid
+  has_paper_trail
+
   has_many :locations, as: :company
   has_many :users,     as: :parent
   has_many :items
