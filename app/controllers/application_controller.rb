@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :subdomain_redirect, :track_referral_code
   before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :set_time_zone, if: :current_user
 
   private
 
@@ -39,5 +40,9 @@ class ApplicationController < ActionController::Base
 
   def configure_devise_params
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
+  end
+
+  def set_time_zone
+    Time.zone = current_user.time_zone if current_user.time_zone
   end
 end
