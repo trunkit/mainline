@@ -1,2 +1,2 @@
-class Admin::DashboardsController < ApplicationController
+class Admin::DashboardsController < Admin::AbstractController
 end

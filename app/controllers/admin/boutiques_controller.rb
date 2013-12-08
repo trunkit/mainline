@@ -1,2 +1,2 @@
-class Admin::BoutiquesController < ApplicationController
+class Admin::BoutiquesController < Admin::AbstractController
 end

@@ -1,2 +1,2 @@
-class Admin::DesignersController < ApplicationController
+class Admin::DesignersController < Admin::AbstractController
 end
