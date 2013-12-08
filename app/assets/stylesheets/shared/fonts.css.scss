@@ -14,30 +14,30 @@
 
 @font-face {
   font: {
-    family: ""Bebas Neue"";
+    family: "Lato";
     weight: bold;
     style:  normal;
   }
 
-  src: asset-url('"Bebas Neue"-bol-webfont.eot');
-  src: asset-url('"Bebas Neue"-bol-webfont.eot?#iefix') format('embedded-opentype'),
-       asset-url('"Bebas Neue"-bol-webfont.woff') format('woff'),
-       asset-url('"Bebas Neue"-bol-webfont.ttf') format('truetype'),
-       asset-url('"Bebas Neue"-bol-webfont.svg#"Bebas Neue"bold') format('svg');
+  src: asset-url('lato-bol-webfont.eot');
+  src: asset-url('lato-bol-webfont.eot?#iefix') format('embedded-opentype'),
+       asset-url('lato-bol-webfont.woff') format('woff'),
+       asset-url('lato-bol-webfont.ttf') format('truetype'),
+       asset-url('lato-bol-webfont.svg#latobold') format('svg');
 }
 
 @font-face {
   font: {
-    family: ""Bebas Neue"";
+    family: "Lato";
     weight: lighter;
     style:  normal;
   }
 
-  src: asset-url('"Bebas Neue"-lig-webfont.eot');
-  src: asset-url('"Bebas Neue"-lig-webfont.eot?#iefix') format('embedded-opentype'),
-       asset-url('"Bebas Neue"-lig-webfont.woff') format('woff'),
-       asset-url('"Bebas Neue"-lig-webfont.ttf') format('truetype'),
-       asset-url('"Bebas Neue"-lig-webfont.svg#"Bebas Neue"_lightregular') format('svg');
+  src: asset-url('lato-lig-webfont.eot');
+  src: asset-url('lato-lig-webfont.eot?#iefix') format('embedded-opentype'),
+       asset-url('lato-lig-webfont.woff') format('woff'),
+       asset-url('lato-lig-webfont.ttf') format('truetype'),
+       asset-url('lato-lig-webfont.svg#lato_lightregular') format('svg');
 }
 
 @font-face {
@@ -51,5 +51,5 @@
   src: asset-url('bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
        asset-url('bebasneue-webfont.woff') format('woff'),
        asset-url('bebasneue-webfont.ttf') format('truetype'),
-       asset-url('bebasneue-webfont.svg#"Bebas Neue"regular') format('svg');
+       asset-url('bebasneue-webfont.svg#bebas_neueregular') format('svg');
 }
