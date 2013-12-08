@@ -9,21 +9,21 @@
 				<%= f.label(:parent_id) %>
 
 				<div class="row">
-					<div class="col-lg-4">
+					<div class="col-lg-4 col-xs-12">
 						<div class="input-group">
 							<%= content_tag(:span, "Name", class: "input-group-addon") %>
 							<%= f.text_field(:parent_type, value: "Van Boven", disabled: true, class: "form-control") %>
 						</div>
 					</div>
 
-					<div class="col-lg-4">
+					<div class="col-lg-4 col-xs-12">
 						<div class="input-group">
 							<%= content_tag(:span, "Type", class: "input-group-addon") %>
 							<%= f.text_field(:parent_type, value: "Boutique", disabled: true, class: "form-control") %>
 						</div>
 					</div>
 
-					<div class="col-lg-4">
+					<div class="col-lg-4 col-xs-12">
 						<div class="input-group">
 							<%= content_tag(:span, "ID", class: "input-group-addon") %>
 							<%= f.text_field(:parent_type, value: "137", disabled: true, class: "form-control") %>
@@ -33,14 +33,14 @@
 			<% end if @user.parent %>
 
 			<div class="row">
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 				  <div class="form-group">
 						<%= f.label(:first_name) %>
 						<%= f.text_field(:first_name, class: "form-control") %>
 				  </div>
 				</div>
 
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 				  <div class="form-group">
 						<%= f.label(:last_name) %>
 						<%= f.text_field(:last_name, class: "form-control") %>
@@ -49,14 +49,14 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 				  <div class="form-group">
 						<%= f.label(:email) %>
 						<%= f.email_field(:email, class: "form-control") %>
 				  </div>
 				</div>
 
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 				  <div class="form-group">
 						<%= f.label(:gender) %>
 						<%= f.select(:gender, ["", "Male", "Female", "Transgender"], {}, class: "form-control") %>
@@ -72,12 +72,12 @@
 			<hr>
 
 			<div class="row">
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 					<p><strong>Current User Photo</strong></p>
 					<%= image_tag(@user.photo, height: "200px") %>
 				</div>
 
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 					<div class="form-group">
 						<%= f.label(:photo, "or Upload a New Photo") %>
 						<%= f.file_field(:photo, class: "form-control") %>
@@ -88,14 +88,14 @@
 			<hr>
 
 			<div class="row">
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 					<div class="form-group">
 						<%= f.label(:password) %>
 						<%= f.password_field(:password, class: "form-control", placeholder: "Leave this blank to keep current password") %>
 				  </div>
 				</div>
 
-				<div class="col-lg-6 col-sm-12">
+				<div class="col-lg-6 col-xs-12">
 				  <div class="form-group">
 						<%= f.label(:password_confirmation) %>
 						<%= f.password_field(:password_confirmation, class: "form-control", placeholder: "Must match password") %>
