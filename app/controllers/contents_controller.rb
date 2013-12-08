@@ -1,7 +1,9 @@
 class ContentsController < ApplicationController
   def index
     if current_user
-      redirect_to(stream_path)
+      current_user.has_role?(:system) ?
+        redirect_to(:admin) :
+        redirect_to(stream_path)
     else
       @items = referring_boutique ? referring_boutique.items : Item
       @items = @items.order('updated_at').limit(18)
