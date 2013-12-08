@@ -38,6 +38,8 @@ Trunkit::Application.routes.draw do
     resources :brands, :boutiques, :items, :orders, :users
   end
 
+  get "admin" => "admin/dashboards#index"
+
   # Catch-all, generic routing
   get "*path" => "contents#show"
 end
