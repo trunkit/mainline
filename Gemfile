@@ -15,6 +15,7 @@ gem 'paper_trail', '3.0.0.rc2'
 gem 'configatron'
 gem 'uuid'
 gem 'certified' # For OpenSSL verify errors
+gem 'will_paginate'
 
 # Memcache support
 gem 'memcachier'
