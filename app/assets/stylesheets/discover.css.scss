@@ -19,7 +19,7 @@ div#discover {
       width: 215px;
       height: 144px;
       padding: 36px 0 35px;
-      font: lighter 48px/60px HelveticaNeue-UltraLight, sans-serif;
+      font: 100 48px/60px "Helvetica Neue", sans-serif;
       text-decoration: none;
       color: #fff;
       background: #1d1d1d;
@@ -36,7 +36,7 @@ div#discover {
         display: table-cell;
         width: 75px;
         padding: 0 5px 0 0;
-        font: lighter 14px/16px lato, sans-serif;
+        font: lighter 14px/16px Lato, sans-serif;
         vertical-align: middle;
         text-align: left;
         text-overflow: ellipsis;
@@ -47,7 +47,7 @@ div#discover {
         width: 130px;
         padding: 0 0 0 5px;
         text-align: right;
-        font: 12px/16px lato, sans-serif;
+        font: 12px/16px Lato, sans-serif;
         text-transform: uppercase;
         color: #B0B0B0;
       }

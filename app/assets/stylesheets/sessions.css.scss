@@ -3,7 +3,7 @@
   width: 605px;
 
   h1 {
-    font: 57px/68px HelveticaNeue-UltraLight, sans-serif;
+    font: 100 57px/68px "Helvetica Neue", sans-serif;
     letter-spacing: 4px;
   }
 
@@ -28,7 +28,7 @@
       border-bottom: 2px solid #000;
       background: #efefef;
     }
-    
+
 
     a, input[type="submit"] {
       display: block;
@@ -38,7 +38,7 @@
       width: 300px;
       height: 42px;
       border: 0;
-      font: 16px/42px bebas_neue, sans-serif;
+      font: 16px/42px "Bebas Neue", sans-serif;
       letter-spacing: 6px;
       text-align: center;
       text-decoration: none;
@@ -56,7 +56,7 @@
       clear: both;
       width: 100%;
       padding: 20px 0;
-      font: 16px bebas_neue, sans-serif;
+      font: 16px "Bebas Neue", sans-serif;
       letter-spacing: 6px;
       text-align: center;
     }

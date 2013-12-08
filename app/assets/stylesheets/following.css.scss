@@ -39,11 +39,11 @@
               top: 30px;
               left: 10px;
               width: 195px;
-              font: bold 14px/20px lato, sans-serif;
+              font: bold 14px/20px Lato, sans-serif;
               text-align: center;
 
               span {
-                font: 18px/20px bebas_neue, sans-serif;
+                font: 18px/20px "Bebas Neue", sans-serif;
                 text-transform: uppercase;
               }
             }
@@ -70,18 +70,18 @@
           margin: 0 10px 0 0;
 
           &.name {
-            font: lighter 16px/30px lato, sans-serif;
+            font: lighter 16px/30px Lato, sans-serif;
             text-transform: uppercase;
           }
 
           &.counts {
-            font: 14px/30px lato, sans-serif;
+            font: 14px/30px Lato, sans-serif;
             color: #979797;
           }
 
           &.city {
             float: right;
-            font: 25px/30px HelveticaNeue-UltraLight, sans-serif;
+            font: 100 25px/30px "Helvetica Neue", sans-serif;
             color: #979797;
           }
         }
@@ -91,7 +91,7 @@
           margin: 0 10px 0 0;
           text-align: right;
           text-decoration: none;
-          font: 14px/30px lato, sans-serif;
+          font: 14px/30px Lato, sans-serif;
           color: #B0B0B0;
         }
       }
@@ -103,7 +103,7 @@
       width: 80px;
       height: 25px;
       margin: 10px 0 0;
-      font: 14px/25px bebas_neue, sans-serif;
+      font: 14px/25px "Bebas Neue", sans-serif;
       letter-spacing: 1px;
       background: #B8B8B8;
       color: #fff;
@@ -117,7 +117,7 @@
       width: 80px;
       height: 25px;
       margin: 10px 0 0;
-      font: 14px/25px bebas_neue, sans-serif;
+      font: 14px/25px "Bebas Neue", sans-serif;
       letter-spacing: 1px;
       background: #000;
       color: #fff;
