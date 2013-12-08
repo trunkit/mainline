@@ -1,5 +1,19 @@
 @font-face {
   font: {
+    family: "Helvetica LT Std";
+    weight: normal;
+    style:  normal;
+  }
+
+  src: asset-url('helveticaneueultralight.eot');
+  src: asset-url('helveticaneueultralight.eot?#iefix') format('embedded-opentype'),
+       asset-url('helveticaneueultralight.woff') format('woff'),
+       asset-url('helveticaneueultralight.ttf') format('truetype'),
+       asset-url('helveticaneueultralight.svg#helveticaneueultralight') format('svg');
+}
+
+@font-face {
+  font: {
     family: "Helvetica Neue";
     weight: 100;
     style:  normal;
