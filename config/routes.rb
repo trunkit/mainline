@@ -35,9 +35,9 @@ Trunkit::Application.routes.draw do
 
   # Administrative Interfaces
   namespace :admin do
-    resources :designers, :boutiques, :items, :orders, :users
+    resources :designers, :boutiques, :items, :orders
 
-    resources :users do
+    resources :users, except: [:new, :show] do
       put "masquerade" => "users#masquerade"
     end
   end
