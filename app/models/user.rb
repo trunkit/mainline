@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   include RoleModel
   roles :system, :admin
 
+  has_paper_trail
+  acts_as_paranoid
+
   belongs_to :parent, polymorphic: true
 
   has_many :addresses
