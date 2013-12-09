@@ -3,14 +3,14 @@
 	<head>
 		<title>Trunkit</title>
 		<%= stylesheet_link_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css") %>
-		<%= stylesheet_link_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css") %>
-		<%= stylesheet_link_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css") %>
+		<%= stylesheet_link_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css") if current_user.try(:has_role?, :system) %>
+		<%= stylesheet_link_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css") if current_user.try(:has_role?, :system) %>
 
 		<%= stylesheet_link_tag("application", media: "all") %>
 
 		<%= javascript_include_tag("//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js") %>
 		<%= javascript_include_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js") %>
-		<%= javascript_include_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js") %>
+		<%= javascript_include_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js") if current_user.try(:has_role?, :system) %>
 		<%= javascript_include_tag("application") %>
 
 		<%= csrf_meta_tags %>
