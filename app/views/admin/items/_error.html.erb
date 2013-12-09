@@ -1,0 +1,13 @@
+<%= content_tag(:div, class: "panel panel-danger") do %>
+	<div class="panel-heading">
+		<h5>Error</h5>
+	</div>
+
+	<div class="panel-body">
+		<ul>
+			<% @item.errors.full_messages.each do |m| %>
+			<%= content_tag(:li, m) %>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
