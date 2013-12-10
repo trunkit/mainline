@@ -7,6 +7,7 @@ class Item < ActiveRecord::Base
   belongs_to :brand
 
   has_many :options, class_name: "ItemOptions"
+  has_many :photos,  class_name: "ItemPhoto"
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 end
