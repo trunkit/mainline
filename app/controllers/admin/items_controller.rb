@@ -30,7 +30,7 @@ class Admin::ItemsController < Admin::AbstractController
   def update
     @item = Item.find(params[:id])
 
-    if item.errors.blank?
+    if @item.errors.blank?
       redirect([:edit, :admin, @item])
     else
       @brands = Brand.order("name")
