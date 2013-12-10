@@ -1,6 +1,4 @@
 <div id="stream">
-	<%= render("stream/item") %>
-
 	<% @items.each do |item| %>
 		<%= render("stream/item", item: item) %>
 	<% end %>
