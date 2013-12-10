@@ -10,4 +10,12 @@ class Item < ActiveRecord::Base
   has_many :photos,  class_name: "ItemPhoto"
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
+
+  def primary_photo
+    photos.first
+  end
+
+  def supplier
+    parent ? parent.boutique : boutique
+  end
 end
