@@ -9,3 +9,34 @@
 		<%= render("form") %>
 	</div>
 </div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= content_tag(:h5, "Manage Photos for #{@item.name}") %>
+	</div>
+
+	<div class="panel-body">
+		<%= form_for(:photo, url: admin_item_photos_path(@item), role: "form") do |f| %>
+			<% @item.photos.each do |photo| %>
+			<%= image_tag(photo.url.thumb) %>
+			<% end %>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<div class="form-group">
+						<%= f.label(:url, "New Photo") %>
+						<%= f.file_field(:url) %>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-xs-12">
+					<div class="form-group">
+						<%= button_tag("Upload", type: "submit", class: "btn btn-default") %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
