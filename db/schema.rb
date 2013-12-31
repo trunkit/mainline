@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230211431) do
+ActiveRecord::Schema.define(version: 20131231034450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(version: 20131230211431) do
 
   create_table "boutiques", force: true do |t|
     t.string   "name"
-    t.string   "short_code",   null: false
-    t.string   "cover_photo"
+    t.string   "short_code",  null: false
     t.integer  "items_count"
     t.datetime "deleted_at"
-    t.string   "stream_photo"
   end
 
   add_index "boutiques", ["short_code"], name: "index_boutiques_on_short_code", unique: true, using: :btree
@@ -105,8 +103,9 @@ ActiveRecord::Schema.define(version: 20131230211431) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "primary",    default: false
-    t.string   "photo"
+    t.boolean  "primary",      default: false
+    t.string   "cover_photo"
+    t.string   "stream_photo"
   end
 
   create_table "orders", force: true do |t|
