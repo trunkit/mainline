@@ -55,5 +55,25 @@
 
 	<hr>
 
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<%= f.label(:cover_photo) %>
+				<%= f.file_field(:cover_photo, class: "form-control") %>
+				<%= link_to(image_tag(@location.cover_photo.thumb.url), @location.cover_photo.url, target: "_blank") %>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-xs-12">
+			<div class="form-group">
+				<%= f.label(:stream_photo) %>
+				<%= f.file_field(:stream_photo, class: "form-control") %>
+				<%= link_to(image_tag(@location.stream_photo.thumb.url), @location.stream_photo.url, target: "_blank") %>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
 	<%= button_tag((@location.persisted? ? "Update Location" : "Create Location"), class: "btn btn-default") %>
 <% end %>
