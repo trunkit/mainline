@@ -4,6 +4,6 @@ class StreamController < CatalogAbstractController
   end
 
 	def following
-		@boutiques = Boutique.joins(:top_items).includes({ locations: :address })
+		@boutiques = Boutique.includes({ locations: :address })
 	end
 end
