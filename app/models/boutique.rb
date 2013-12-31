@@ -2,8 +2,8 @@ class Boutique < ActiveRecord::Base
   acts_as_paranoid
   has_paper_trail
 
-  has_many :locations, as: :company
-  has_many :users,     as: :parent
+  has_many :locations, as: :company, dependent: :destroy
+  has_many :users,     as: :parent,  dependent: :destroy
   has_many :items, 		 dependent: :destroy
 
   before_create :generate_short_code
