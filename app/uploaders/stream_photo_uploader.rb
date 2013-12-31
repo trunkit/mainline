@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ItemPhotoUploader < CarrierWave::Uploader::Base
+class StreamPhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   storage :fog
