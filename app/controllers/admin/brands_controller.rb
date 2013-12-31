@@ -10,7 +10,6 @@ class Admin::BrandsController < Admin::AbstractController
 
   def create
     brand = Brand.create(brand_params)
-    return render nothing: true, status: 200
 
     respond_to do |format|
       format.html { redirect_to([:edit, :admin, brand]) }
