@@ -10,7 +10,7 @@ class CoverPhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :banner do
-    process resize_to_fill: [915, 200]
+    process resize_to_fill: [915, 300]
   end
 
   version :thumb do
