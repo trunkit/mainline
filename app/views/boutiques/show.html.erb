@@ -15,15 +15,15 @@
 
   <section class="contact">
     <div class="social">
-      <%= link_to(image_tag("feed/facebook.png"), "#") %>
-      <%= link_to(image_tag("feed/twitter.png"), "#") %>
-      <%= link_to(image_tag("feed/pinterest.png"), "#") %>
+      <%= link_to(image_tag("feed/facebook.png"), @boutique.facebook, target: "_blank") if @boutique.facebook.present? %>
+      <%= link_to(image_tag("feed/twitter.png"), @boutique.twitter, target: "_blank") if @boutique.twitter.present? %>
+      <%= link_to(image_tag("feed/pinterest.png"), @boutique.pinterest, target: "_blank") if @boutique.pinterest.present? %>
     </div>
 
     <div class="locations">
       <%= link_to("More Locations", "#", class: "button") %>
       <%= content_tag(:address, @boutique.primary_location.to_s) %>
-      <span class="phone">555 555 1212</span>
+      <%= content_tag(:span, @boutique.primary_location.phone_number, class: "phone") %>
     </div>
   </section>
 
