@@ -1,6 +1,6 @@
 class Admin::BrandsController < Admin::AbstractController
   def index
-    @brands = Brand.order("name")
+    @brands = Brand.order(:name)
 
     respond_to do |format|
       format.html

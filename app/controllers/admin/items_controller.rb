@@ -5,8 +5,8 @@ class Admin::ItemsController < Admin::AbstractController
 
   def new
     @item      = Item.new
-    @brands = Brand.order("name")
-    @boutiques = Boutique.order("name")
+    @brands = Brand.order(:name)
+    @boutiques = Boutique.order(:name)
   end
 
   def create
@@ -15,26 +15,26 @@ class Admin::ItemsController < Admin::AbstractController
     if @item.errors.blank?
       redirect_to([:edit, :admin, @item])
     else
-      @brands = Brand.order("name")
-      @boutiques = Boutique.order("name")
+      @brands = Brand.order(:name)
+      @boutiques = Boutique.order(:name)
       render(action: :new)
     end
   end
 
   def edit
     @item      = Item.find(params[:id])
-    @brands    = Brand.order("name")
-    @boutiques = Boutique.order("name")
+    @brands    = Brand.order(:name)
+    @boutiques = Boutique.order(:name)
   end
 
   def update
     @item = Item.find(params[:id])
 
     if @item.errors.blank?
-      redirect([:edit, :admin, @item])
+      redirect_to([:edit, :admin, @item])
     else
-      @brands = Brand.order("name")
-      @boutiques = Boutique.order("name")
+      @brands = Brand.order(:name)
+      @boutiques = Boutique.order(:name)
     end
   end
 
