@@ -1,2 +1,2 @@
-class CartController < ApplicationController
+class CartController < CatalogAbstractController
 end

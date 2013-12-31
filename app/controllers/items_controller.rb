@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class ItemsController < CatalogAbstractController
   def show
   end
 end
