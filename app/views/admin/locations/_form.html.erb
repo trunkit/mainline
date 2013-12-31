@@ -1,0 +1,59 @@
+<%= form_for([:admin, boutique, @location], role: "form") do |f| %>
+	<div class="row">
+		<div class="col-xs-12">
+		  <div class="form-group">
+				<%= f.label(:name) %>
+				<%= f.text_field(:name, class: "form-control") %>
+		  </div>
+		</div>
+	</div>
+
+	<hr>
+
+	<%= f.fields_for(:address_attributes, @location.address) do |fl| %>
+	<%= fl.hidden_field(:id) %>
+
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+		  <div class="form-group">
+				<%= fl.label(:street) %>
+				<%= fl.text_field(:street, class: "form-control") %>
+		  </div>
+		</div>
+
+		<div class="col-md-6 col-xs-12">
+		  <div class="form-group">
+				<%= fl.label(:street2) %>
+				<%= fl.text_field(:street2, class: "form-control") %>
+		  </div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 col-xs-12">
+		  <div class="form-group">
+				<%= fl.label(:city) %>
+				<%= fl.text_field(:city, class: "form-control") %>
+		  </div>
+		</div>
+
+		<div class="col-md-4 col-xs-12">
+		  <div class="form-group">
+				<%= fl.label(:state) %>
+				<%= fl.select(:state, us_states, { include_blank: true }, class: "form-control") %>
+		  </div>
+		</div>
+
+		<div class="col-md-4 col-xs-12">
+		  <div class="form-group">
+				<%= fl.label(:postal_code) %>
+				<%= fl.text_field(:postal_code, class: "form-control") %>
+		  </div>
+		</div>
+	</div>
+	<% end %>
+
+	<hr>
+
+	<%= button_tag((@location.persisted? ? "Update Location" : "Create Location"), class: "btn btn-default") %>
+<% end %>
