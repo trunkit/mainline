@@ -26,8 +26,7 @@
   </nav>
 
 <div class="right">
-  <div class="cart">
-  </div>
+  <%= link_to(image_tag("header/bag.png"), cart_path, class: "cart fancybox fancybox.ajax") %>
 
   <div class="user">
     <%= image_tag(current_user.photo.thumb.url) %>
