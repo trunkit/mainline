@@ -7,5 +7,5 @@ class Location < ActiveRecord::Base
   mount_uploader :cover_photo,  CoverPhotoUploader
   mount_uploader :stream_photo, StreamPhotoUploader
 
-  delegate :street, :street2, :city, :state, :postal_code, to: :address
+  delegate :street, :street2, :city, :state, :postal_code, :to_s, to: :address
 end
