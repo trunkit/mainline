@@ -17,11 +17,11 @@ class StreamPhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :details do
-    process resize_to_fit: [288, 378]
+    process resize_to_fill: [288, 378]
   end
 
   version :thumb do
-    process resize_to_fit: [62, 62]
+    process resize_to_fill: [62, 62]
   end
 
   def extension_white_list
