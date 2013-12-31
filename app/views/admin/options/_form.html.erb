@@ -1,0 +1,36 @@
+<%= form_for([:admin, item, option], role: "form") do |f| %>
+  <div class="row">
+    <div class="col-md-3 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:name) %>
+        <%= f.text_field(:name, class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:value) %>
+        <%= f.text_field(:value, class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="col-md-2 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:price) %>
+
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field(:price, value: number_to_currency(option.price, unit: ""), class: "form-control") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label style="width: 100%;">&nbsp;</label>
+        <%= button_tag((option.persisted? ? "Update Option" : "Create Option"), class: "btn btn-default") %>
+        <%= link_to("Delete Option", [:admin, item, option], class: "btn btn-danger", data: { method: :delete, confirm: "Are you sure that you want to delete this option?" }) if option.persisted? %>
+      </div>
+    </div>
+  </div>
+<% end %>
