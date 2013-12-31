@@ -6,4 +6,8 @@ class BoutiquesController < CatalogAbstractController
 
     redirect_to(root_path)
   end
+
+  def show
+    @boutique = Boutique.includes(:items).find(params[:id])
+  end
 end
