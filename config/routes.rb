@@ -24,7 +24,9 @@ Trunkit::Application.routes.draw do
   end
 
   # Checkout and Shopping Cart
-  resource :cart
+  resource :cart do
+    resources :cart_items
+  end
 
   namespace :checkout do
     resources :shipping_addresses
