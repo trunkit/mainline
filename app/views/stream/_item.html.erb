@@ -1,36 +1,36 @@
 <article class="item">
-	<div>
-		<div class="img">
-			<%= link_to(image_tag(item.primary_photo.url.stream), item, class: "img fancybox fancybox.ajax") %>
-		</div>
+  <div>
+    <div class="img">
+      <%= link_to(image_tag(item.primary_photo.url.stream), item, class: "img fancybox fancybox.ajax") %>
+    </div>
 
-		<div class="details">
-			<%= link_to(image_tag("feed/favorite.png"), item_favorite_path("1"), method: :put, class: "favorite") %>
+    <div class="details">
+      <%= link_to(image_tag("feed/favorite.png"), item_favorite_path("1"), method: :put, class: "favorite") %>
 
-			<p class="name">
-				<%= link_to(item.name, item, class: "fancybox fancybox.ajax") %><br>
-				<%= link_to("Designed By #{item.brand.name}", item, class: "fancybox fancybox.ajax") %>
-			</p>
+      <p class="name">
+        <%= link_to(item.name, item, class: "fancybox fancybox.ajax") %><br>
+        <%= link_to("Designed By #{item.brand.name}", item, class: "fancybox fancybox.ajax") %>
+      </p>
 
-			<%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
+      <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
 
-			<%= content_tag(:p, class: "sizes") do %>
-				Available Sizes:<br>
-				S,M,XL
-			<% end %>
+      <%= content_tag(:p, class: "sizes") do %>
+        Available Sizes:<br>
+        S,M,XL
+      <% end %>
 
-			<%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
+      <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
 
-			<div class="social">
-				<%= link_to(image_tag("feed/facebook.png"), item) %>
-				<%= link_to(image_tag("feed/twitter.png"), item) %>
-				<%= link_to(image_tag("feed/pinterest.png"), item) %>
-			</div>
-		</div>
+      <div class="social">
+        <%= link_to(image_tag("feed/facebook.png"), item) %>
+        <%= link_to(image_tag("feed/twitter.png"), item) %>
+        <%= link_to(image_tag("feed/pinterest.png"), item) %>
+      </div>
+    </div>
 
-		<div class="info">
-			<%= content_tag(:span, "Curated by #{item.boutique.name}", class: "curator") %>
-			<%= content_tag(:span, "Supplied by #{item.supplier.name}", class: "supplier") %>
-		</div>
-	</div>
+    <div class="info">
+      <%= content_tag(:span, "Curated by #{item.boutique.name}", class: "curator") %>
+      <%= content_tag(:span, "Supplied by #{item.supplier.name}", class: "supplier") %>
+    </div>
+  </div>
 </article>

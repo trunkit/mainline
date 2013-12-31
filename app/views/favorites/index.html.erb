@@ -1,9 +1,9 @@
 <div id="stream">
-	<% @items_by_boutique.each do |boutique, items| %>
-		<%= render("stream/boutique", boutique: boutique) %>
-		<% items.each do |item| %>
-		<%= render("stream/item", item: item) %>
-		<% end %>
-		<div class="cb"></div>
-	<% end %>
+  <% @items_by_boutique.each do |boutique, items| %>
+    <%= render("stream/boutique", boutique: boutique) %>
+    <% items.each do |item| %>
+    <%= render("stream/item", item: item) %>
+    <% end %>
+    <div class="cb"></div>
+  <% end %>
 </div>

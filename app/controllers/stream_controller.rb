@@ -3,7 +3,7 @@ class StreamController < CatalogAbstractController
     @items = Item.all
   end
 
-	def following
-		@boutiques = Boutique.includes({ locations: :address })
-	end
+  def following
+    @boutiques = Boutique.includes({ locations: :address })
+  end
 end

@@ -1,51 +1,51 @@
 <div class="admin">
-	<%= link_to("Add New Item", [:new, :admin, :item], class: "btn btn-default") %>
-	<hr>
+  <%= link_to("Add New Item", [:new, :admin, :item], class: "btn btn-default") %>
+  <hr>
 
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Description</th>
-				<th>Brand</th>
-				<th>Curating Boutique</th>
-				<th>Source</th>
-				<th>&nbsp;</th>
-			</tr>
-		</thead>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Brand</th>
+        <th>Curating Boutique</th>
+        <th>Source</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
 
-		<tbody>
-			<% @items.each do |item| %>
-			<tr>
-				<%= content_tag(:td, item.id) %>
-				<%= content_tag(:td, item.name) %>
-				<%= content_tag(:td, number_to_currency(item.price)) %>
-				<%= content_tag(:td, truncate(item.description)) %>
-				<%= content_tag(:td, item.brand.name) %>
-				<%= content_tag(:td, item.boutique.name) %>
-				<%= content_tag(:td, item.parent ? item.parent.boutique.name : "N/A") %>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <%= content_tag(:td, item.id) %>
+        <%= content_tag(:td, item.name) %>
+        <%= content_tag(:td, number_to_currency(item.price)) %>
+        <%= content_tag(:td, truncate(item.description)) %>
+        <%= content_tag(:td, item.brand.name) %>
+        <%= content_tag(:td, item.boutique.name) %>
+        <%= content_tag(:td, item.parent ? item.parent.boutique.name : "N/A") %>
 
-				<td>
-					<div class="dropdown">
-					  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
-							Manage <span class="caret"></span>
-					  </button>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+              Manage <span class="caret"></span>
+            </button>
 
-					  <ul class="dropdown-menu" role="menu">
-							<%= content_tag(:li, link_to("Edit", [:edit, :admin, item], tabindex: "-1", role: "menuitem")) %>
-					    <li role="presentation" class="divider"></li>
-					    <li role="presentation" class="dropdown-header">Danger Zone</li>
-							<%= content_tag(:li, link_to("Delete", [:admin, item], confirm: "Are you sure you want to delete this item?", method: :delete, tabindex: "-1", role: "menuitem")) %>
-					  </ul>
-					</div>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+            <ul class="dropdown-menu" role="menu">
+              <%= content_tag(:li, link_to("Edit", [:edit, :admin, item], tabindex: "-1", role: "menuitem")) %>
+              <li role="presentation" class="divider"></li>
+              <li role="presentation" class="dropdown-header">Danger Zone</li>
+              <%= content_tag(:li, link_to("Delete", [:admin, item], confirm: "Are you sure you want to delete this item?", method: :delete, tabindex: "-1", role: "menuitem")) %>
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-	<hr>
-	<%= link_to("Add New Item", [:new, :admin, :item], class: "btn btn-default") %>
+  <hr>
+  <%= link_to("Add New Item", [:new, :admin, :item], class: "btn btn-default") %>
 </div>

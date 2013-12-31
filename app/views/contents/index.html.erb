@@ -1,47 +1,47 @@
 <section id="account-signup">
-	<%= form_for(:user, url: user_registration_path) do |f| %>
-		<%= content_tag(:h2, "Curated by #{referring_boutique ? referring_boutique.name : 'your favorite boutiques'}.") %>
+  <%= form_for(:user, url: user_registration_path) do |f| %>
+    <%= content_tag(:h2, "Curated by #{referring_boutique ? referring_boutique.name : 'your favorite boutiques'}.") %>
 
-		<div class="left">
-			<%= f.text_field(:first_name, placeholder: "First Name") %>
-			<%= f.text_field(:last_name, placeholder: "Last Name") %>
-			<%= f.email_field(:email, placeholder: "Email") %>
-		</div>
+    <div class="left">
+      <%= f.text_field(:first_name, placeholder: "First Name") %>
+      <%= f.text_field(:last_name, placeholder: "Last Name") %>
+      <%= f.email_field(:email, placeholder: "Email") %>
+    </div>
 
-		<div class="right">
-			<%= link_to("#", class: "email") do %>
-				<span>Sign Up with Email</span>
-			<% end %>
+    <div class="right">
+      <%= link_to("#", class: "email") do %>
+        <span>Sign Up with Email</span>
+      <% end %>
 
-			<%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
-				<%= image_tag("home/twitter.png") %>
-				<span>Sign Up with Twitter</span>
-			<% end %>
+      <%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
+        <%= image_tag("home/twitter.png") %>
+        <span>Sign Up with Twitter</span>
+      <% end %>
 
-			<%= link_to(omniauth_authorize_path("user", "facebook"), class: "facebook") do %>
-				<%= image_tag("home/facebook.png") %>
-				<span>Sign Up with Facebook</span>
-			<% end %>
-		</div>
-	<% end %>
+      <%= link_to(omniauth_authorize_path("user", "facebook"), class: "facebook") do %>
+        <%= image_tag("home/facebook.png") %>
+        <span>Sign Up with Facebook</span>
+      <% end %>
+    </div>
+  <% end %>
 </section>
 
 <%= content_tag(:h3, "Trending") if @items.present? %>
 
 <section id="stream">
-	<% @items.each do |item| %>
-		<%= render("stream/item", item: item) %>
-	<% end %>
+  <% @items.each do |item| %>
+    <%= render("stream/item", item: item) %>
+  <% end %>
 </section>
 
 <script>
 $(function() {
-	$("a.email").click(function() {
-		$("form").submit();
-	});
+  $("a.email").click(function() {
+    $("form").submit();
+  });
 
-	<% if flash[:errors] %>
-	alert("Could not create account because <%= j(flash[:errors].full_messages.join(", ")) %>");
-	<% end %>
+  <% if flash[:errors] %>
+  alert("Could not create account because <%= j(flash[:errors].full_messages.join(", ")) %>");
+  <% end %>
 });
 </script>

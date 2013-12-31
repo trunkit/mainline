@@ -1,54 +1,54 @@
 <div id="profile">
-	<article class="storeprofile">
-		<div>
-			<div class="img">
-				<!--NEED TO WRITE IF STATEMENT ABOUT WHAT TO DISPLAY WHEN A USER CHOOSES NOT TO UPLOAD A PICTURE-->
-				<!--<%= link_to(image_tag("feed/weekends.jpg"), "#", class: "img") %>-->
-			</div>
-			<div class="binfo">
-				<span class="bname">Sam Felsenthal</span>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi
-				</p>
-				<div class="bottom">
-					<div class="social">
-						<%= link_to(image_tag("feed/facebook.png"), "#") %>
-						<%= link_to(image_tag("feed/twitter.png"), "#") %>
-						<%= link_to(image_tag("feed/pinterest.png"), "#") %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</article>
-	<% 1.upto(8) do %>
-		<article class="item">
-			<div>
-				<div class="img">
-					<%= link_to(image_tag("feed/dress.jpg"), "#", class: "img") %>
-				</div>
-				<div class="details">
-					<span class="price">$1,085</span>
-					<%= link_to(image_tag("feed/star.png"), "#", class: "star") %>
+  <article class="storeprofile">
+    <div>
+      <div class="img">
+        <!--NEED TO WRITE IF STATEMENT ABOUT WHAT TO DISPLAY WHEN A USER CHOOSES NOT TO UPLOAD A PICTURE-->
+        <!--<%= link_to(image_tag("feed/weekends.jpg"), "#", class: "img") %>-->
+      </div>
+      <div class="binfo">
+        <span class="bname">Sam Felsenthal</span>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor /incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi
+        </p>
+        <div class="bottom">
+          <div class="social">
+            <%= link_to(image_tag("feed/facebook.png"), "#") %>
+            <%= link_to(image_tag("feed/twitter.png"), "#") %>
+            <%= link_to(image_tag("feed/pinterest.png"), "#") %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <% 1.upto(8) do %>
+    <article class="item">
+      <div>
+        <div class="img">
+          <%= link_to(image_tag("feed/dress.jpg"), "#", class: "img") %>
+        </div>
+        <div class="details">
+          <span class="price">$1,085</span>
+          <%= link_to(image_tag("feed/star.png"), "#", class: "star") %>
 
-					<p class="name">
-						<a class="item-name" href="#">Dress abc</a><br>
-						<a href="#">by Designer A</a><br>
-						<a href="#">Spring 2013</a>
-					</p>
+          <p class="name">
+            <a class="item-name" href="#">Dress abc</a><br>
+            <a href="#">by Designer A</a><br>
+            <a href="#">Spring 2013</a>
+          </p>
 
-					<%= link_to("Buy", "#", class: "buy") %>
+          <%= link_to("Buy", "#", class: "buy") %>
 
-					<div class="social">
-						<%= link_to(image_tag("feed/facebook.png"), "#") %>
-						<%= link_to(image_tag("feed/twitter.png"), "#") %>
-						<%= link_to(image_tag("feed/pinterest.png"), "#") %>
-					</div>
-				</div>
-				<div class="info">
-					<span class="store">Boulder Boutique</span>
-					<span class="city">MI</span>
-				</div>
-			</div>
-		</article>
-	<% end %>
+          <div class="social">
+            <%= link_to(image_tag("feed/facebook.png"), "#") %>
+            <%= link_to(image_tag("feed/twitter.png"), "#") %>
+            <%= link_to(image_tag("feed/pinterest.png"), "#") %>
+          </div>
+        </div>
+        <div class="info">
+          <span class="store">Boulder Boutique</span>
+          <span class="city">MI</span>
+        </div>
+      </div>
+    </article>
+  <% end %>
 </div>

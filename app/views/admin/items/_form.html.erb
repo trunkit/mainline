@@ -1,130 +1,130 @@
 <%= form_for([:admin, @item], role: "form") do |f| %>
-	<div class="row">
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:name) %>
-				<%= f.text_field(:name, class: "form-control") %>
-		  </div>
-		</div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:name) %>
+        <%= f.text_field(:name, class: "form-control") %>
+      </div>
+    </div>
 
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:price) %>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:price) %>
 
-				<div class="input-group">
-					<span class="input-group-addon">$</span>
-					<%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), class: "form-control") %>
-				</div>
-		  </div>
-		</div>
-	</div>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), class: "form-control") %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<div class="row">
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:description) %>
-				<%= f.text_area(:description, class: "form-control") %>
-				<p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
-		  </div>
-		</div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:description) %>
+        <%= f.text_area(:description, class: "form-control") %>
+        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+      </div>
+    </div>
 
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:fit) %>
-				<%= f.text_area(:fit, class: "form-control") %>
-				<p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
-		  </div>
-		</div>
-	</div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:fit) %>
+        <%= f.text_area(:fit, class: "form-control") %>
+        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+      </div>
+    </div>
+  </div>
 
-	<div class="row">
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:construction) %>
-				<%= f.text_area(:construction, class: "form-control") %>
-				<p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
-		  </div>
-		</div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:construction) %>
+        <%= f.text_area(:construction, class: "form-control") %>
+        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+      </div>
+    </div>
 
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:model_measurements) %>
-				<%= f.text_area(:model_measurements, class: "form-control") %>
-				<p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
-		  </div>
-		</div>
-	</div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:model_measurements) %>
+        <%= f.text_area(:model_measurements, class: "form-control") %>
+        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+      </div>
+    </div>
+  </div>
 
-	<hr>
+  <hr>
 
-	<div class="row">
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:brand_id) %>
-				<%= f.select(:brand_id, (@brands.map{|d| [d.name, d.id] } << ["(Add a New Brand)", -1]), {}, class: "form-control") %>
-		  </div>
-		</div>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:brand_id) %>
+        <%= f.select(:brand_id, (@brands.map{|d| [d.name, d.id] } << ["(Add a New Brand)", -1]), {}, class: "form-control") %>
+      </div>
+    </div>
 
-		<div class="col-md-6 col-xs-12 hidden">
-		  <div class="form-group">
-				<%= label_tag(:brand_name, "Add a New Brand") %>
+    <div class="col-md-6 col-xs-12 hidden">
+      <div class="form-group">
+        <%= label_tag(:brand_name, "Add a New Brand") %>
 
-				<div class="input-group">
-					<%= text_field_tag(:brand_name, "", placeholder: "Before continuing, add a new brand", class: "form-control") %>
-					<%= content_tag(:span, button_tag("Add Brand", class: "btn btn-xs btn-primary"), class: "input-group-addon", id: "add-brand") %>
-				</div>
-		  </div>
-		</div>
+        <div class="input-group">
+          <%= text_field_tag(:brand_name, "", placeholder: "Before continuing, add a new brand", class: "form-control") %>
+          <%= content_tag(:span, button_tag("Add Brand", class: "btn btn-xs btn-primary"), class: "input-group-addon", id: "add-brand") %>
+        </div>
+      </div>
+    </div>
 
-		<div class="col-md-6 col-xs-12">
-		  <div class="form-group">
-				<%= f.label(:boutique_id) %>
-				<%= f.select(:boutique_id, @boutiques.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
-		  </div>
-		</div>
-	</div>
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:boutique_id) %>
+        <%= f.select(:boutique_id, @boutiques.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
+      </div>
+    </div>
+  </div>
 
-	<hr>
+  <hr>
 
-	<%= button_tag((@item.persisted? ? "Update Item" : "Create Item"), class: "btn btn-default") %>
+  <%= button_tag((@item.persisted? ? "Update Item" : "Create Item"), class: "btn btn-default") %>
 <% end %>
 
 <script>
 $(function() {
-	$("#item_brand_id").change(function() {
-		var s = $(this);
+  $("#item_brand_id").change(function() {
+    var s = $(this);
 
-		if(s.val() == "-1") {
-			s.parents("form").find("form, input:visible, button:visible, select, textarea").attr("disabled", true);
-			s.parent().parent().addClass("hidden").siblings(".hidden").removeClass("hidden");
-		}
+    if(s.val() == "-1") {
+      s.parents("form").find("form, input:visible, button:visible, select, textarea").attr("disabled", true);
+      s.parent().parent().addClass("hidden").siblings(".hidden").removeClass("hidden");
+    }
 
-		return true;
-	}).trigger("change");
+    return true;
+  }).trigger("change");
 
-	$("#add-brand").click(function() {
-		e		= $(this).parents(".form-group").parent();
-		val = $(this).parent().find("input").val();
+  $("#add-brand").click(function() {
+    e    = $(this).parents(".form-group").parent();
+    val = $(this).parent().find("input").val();
 
-		data = {"brand": { "name": val }};
+    data = {"brand": { "name": val }};
 
-		$.ajax({ url: "/admin/brands.json", type: "POST", data: data, complete: function() {
-			$.getJSON("/admin/brands.json", function(data) {
-				e.parents("form").find("form, input, button:visible, select, textarea").removeAttr("disabled");
+    $.ajax({ url: "/admin/brands.json", type: "POST", data: data, complete: function() {
+      $.getJSON("/admin/brands.json", function(data) {
+        e.parents("form").find("form, input, button:visible, select, textarea").removeAttr("disabled");
 
-				s = e.addClass("hidden").siblings(".hidden").removeClass("hidden").find("select");
-				s.empty();
+        s = e.addClass("hidden").siblings(".hidden").removeClass("hidden").find("select");
+        s.empty();
 
-				for(i = 0; i < data.length; i++) {
-					brand = data[i];
-					s.append($("<option></option>").text(brand.name).val(brand.id));
-				}
+        for(i = 0; i < data.length; i++) {
+          brand = data[i];
+          s.append($("<option></option>").text(brand.name).val(brand.id));
+        }
 
-				s.append($("<option></option>").text("(Add a New Brand)").val("-1"));
-			});
-		}});
+        s.append($("<option></option>").text("(Add a New Brand)").val("-1"));
+      });
+    }});
 
-		return false;
-	});
+    return false;
+  });
 });
 </script>

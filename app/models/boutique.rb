@@ -4,8 +4,8 @@ class Boutique < ActiveRecord::Base
 
   has_many :locations, as: :company, dependent: :destroy
   has_many :users,     as: :parent,  dependent: :destroy
-  has_many :items, 		 dependent: :destroy
-	has_many :top_items, class_name: "Item", limit: 2
+  has_many :items,      dependent: :destroy
+  has_many :top_items, class_name: "Item", limit: 2
 
   before_create :generate_short_code
 
@@ -13,20 +13,20 @@ class Boutique < ActiveRecord::Base
   validates_uniqueness_of :short_code
   validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
-	delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
+  delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
 
-	def primary_location
-		locations.where(primary: true).first
-	end
+  def primary_location
+    locations.where(primary: true).first
+  end
 
-	# TODO: Add fallback photos
-	def primary_photo(size = nil)
-		if primary_location
-			p = primary_location.stream_photo
-			p ? p.stream.url : nil
-		else
-		end
-	end
+  # TODO: Add fallback photos
+  def primary_photo(size = nil)
+    if primary_location
+      p = primary_location.stream_photo
+      p ? p.stream.url : nil
+    else
+    end
+  end
 
 private
   def generate_short_code

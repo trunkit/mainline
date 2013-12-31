@@ -1,109 +1,109 @@
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<%= content_tag(:h5, "Update User: #{@user.first_name} #{@user.last_name}".strip) %>
-	</div>
+  <div class="panel-heading">
+    <%= content_tag(:h5, "Update User: #{@user.first_name} #{@user.last_name}".strip) %>
+  </div>
 
-	<div class="panel-body">
-		<%= form_for([:admin, @user], role: "form") do |f| %>
-			<%= content_tag(:section, class: "form-group") do %>
-				<%= f.label(:parent_id) %>
+  <div class="panel-body">
+    <%= form_for([:admin, @user], role: "form") do |f| %>
+      <%= content_tag(:section, class: "form-group") do %>
+        <%= f.label(:parent_id) %>
 
-				<div class="row">
-					<div class="col-md-4 col-xs-12">
-						<div class="input-group">
-							<%= content_tag(:span, "Name", class: "input-group-addon") %>
-							<%= f.text_field(:parent_type, value: "Van Boven", disabled: true, class: "form-control") %>
-						</div>
-					</div>
+        <div class="row">
+          <div class="col-md-4 col-xs-12">
+            <div class="input-group">
+              <%= content_tag(:span, "Name", class: "input-group-addon") %>
+              <%= f.text_field(:parent_type, value: "Van Boven", disabled: true, class: "form-control") %>
+            </div>
+          </div>
 
-					<div class="col-md-4 col-xs-12">
-						<div class="input-group">
-							<%= content_tag(:span, "Type", class: "input-group-addon") %>
-							<%= f.text_field(:parent_type, value: "Boutique", disabled: true, class: "form-control") %>
-						</div>
-					</div>
+          <div class="col-md-4 col-xs-12">
+            <div class="input-group">
+              <%= content_tag(:span, "Type", class: "input-group-addon") %>
+              <%= f.text_field(:parent_type, value: "Boutique", disabled: true, class: "form-control") %>
+            </div>
+          </div>
 
-					<div class="col-md-4 col-xs-12">
-						<div class="input-group">
-							<%= content_tag(:span, "ID", class: "input-group-addon") %>
-							<%= f.text_field(:parent_type, value: "137", disabled: true, class: "form-control") %>
-						</div>
-					</div>
-				</div>
-			<% end if @user.parent %>
+          <div class="col-md-4 col-xs-12">
+            <div class="input-group">
+              <%= content_tag(:span, "ID", class: "input-group-addon") %>
+              <%= f.text_field(:parent_type, value: "137", disabled: true, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+      <% end if @user.parent %>
 
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-				  <div class="form-group">
-						<%= f.label(:first_name) %>
-						<%= f.text_field(:first_name, class: "form-control") %>
-				  </div>
-				</div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:first_name) %>
+            <%= f.text_field(:first_name, class: "form-control") %>
+          </div>
+        </div>
 
-				<div class="col-md-6 col-xs-12">
-				  <div class="form-group">
-						<%= f.label(:last_name) %>
-						<%= f.text_field(:last_name, class: "form-control") %>
-				  </div>
-				</div>
-			</div>
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:last_name) %>
+            <%= f.text_field(:last_name, class: "form-control") %>
+          </div>
+        </div>
+      </div>
 
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-				  <div class="form-group">
-						<%= f.label(:email) %>
-						<%= f.email_field(:email, class: "form-control") %>
-				  </div>
-				</div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:email) %>
+            <%= f.email_field(:email, class: "form-control") %>
+          </div>
+        </div>
 
-				<div class="col-md-6 col-xs-12">
-				  <div class="form-group">
-						<%= f.label(:gender) %>
-						<%= f.select(:gender, ["", "Male", "Female", "Transgender"], {}, class: "form-control") %>
-				  </div>
-				</div>
-			</div>
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:gender) %>
+            <%= f.select(:gender, ["", "Male", "Female", "Transgender"], {}, class: "form-control") %>
+          </div>
+        </div>
+      </div>
 
-		  <div class="form-group">
-				<%= f.label(:time_zone) %>
-				<%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones.reverse, { include_blank: true }, class: "form-control") %>
-		  </div>
+      <div class="form-group">
+        <%= f.label(:time_zone) %>
+        <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones.reverse, { include_blank: true }, class: "form-control") %>
+      </div>
 
-			<hr>
+      <hr>
 
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-					<p><strong>Current User Photo</strong></p>
-					<%= image_tag(@user.photo, height: "200px") %>
-				</div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <p><strong>Current User Photo</strong></p>
+          <%= image_tag(@user.photo, height: "200px") %>
+        </div>
 
-				<div class="col-md-6 col-xs-12">
-					<div class="form-group">
-						<%= f.label(:photo, "or Upload a New Photo") %>
-						<%= f.file_field(:photo, class: "form-control") %>
-					</div>
-				</div>
-			</div>
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:photo, "or Upload a New Photo") %>
+            <%= f.file_field(:photo, class: "form-control") %>
+          </div>
+        </div>
+      </div>
 
-			<hr>
+      <hr>
 
-			<div class="row">
-				<div class="col-md-6 col-xs-12">
-					<div class="form-group">
-						<%= f.label(:password) %>
-						<%= f.password_field(:password, class: "form-control", placeholder: "Leave this blank to keep current password") %>
-				  </div>
-				</div>
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:password) %>
+            <%= f.password_field(:password, class: "form-control", placeholder: "Leave this blank to keep current password") %>
+          </div>
+        </div>
 
-				<div class="col-md-6 col-xs-12">
-				  <div class="form-group">
-						<%= f.label(:password_confirmation) %>
-						<%= f.password_field(:password_confirmation, class: "form-control", placeholder: "Must match password") %>
-				  </div>
-				</div>
-			</div>
+        <div class="col-md-6 col-xs-12">
+          <div class="form-group">
+            <%= f.label(:password_confirmation) %>
+            <%= f.password_field(:password_confirmation, class: "form-control", placeholder: "Must match password") %>
+          </div>
+        </div>
+      </div>
 
-			<%= button_tag("Update User", type: "submit", class: "btn btn-default") %>
-		<% end %>
-	</div>
+      <%= button_tag("Update User", type: "submit", class: "btn btn-default") %>
+    <% end %>
+  </div>
 </div>

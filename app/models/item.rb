@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
 
   has_many :options,  class_name: "ItemOptions"
   has_many :photos,   class_name: "ItemPhoto"
-	has_many :children, class_name: "Item", foreign_key: :parent_id, dependent: :destroy
+  has_many :children, class_name: "Item", foreign_key: :parent_id, dependent: :destroy
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 
