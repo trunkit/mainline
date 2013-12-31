@@ -8,6 +8,6 @@ class BoutiquesController < CatalogAbstractController
   end
 
   def show
-    @boutique = Boutique.includes(:items).find(params[:id])
+    @boutique = Boutique.includes(:items, :primary_location).find(params[:id])
   end
 end

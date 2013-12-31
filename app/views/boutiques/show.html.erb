@@ -1,83 +1,38 @@
-<div id="profile">
-  <article class="storeprofile">
-    <div>
-      <div class="img">
-        <%= link_to(image_tag("feed/weekends.jpg"), "#", class: "img") %>
-      </div>
-      <div class="binfo">
-        <span class="bname">Boulder Boutique</span>
-        <div class="description">
-          <span class="content">
-            <p>incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor sit ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor sit ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s</P>
-          </span>
-        </div>
-        <%= link_to("Unfollow", "#", class: "unfollow") %>
-        <div class="bottom">
-          <span class="website"
-            <a href="#" class="website">boulderboutique.com</a>
-          </span>
-          <span class="social">
-            <%= link_to(image_tag("feed/facebook.png"), "#") %>
-            <%= link_to(image_tag("feed/twitter.png"), "#") %>
-            <%= link_to(image_tag("feed/pinterest.png"), "#") %>
-          </span>
-          <span class="contact1">
-            <span class="address">
-              326 Pearl St, Boulder, CO 80302
-            </span>
-            <span class="phone">
-              303 123 456
-            </span>
-          </span>
-          <span class="contact2">
-            <span class="address">
-              326 Pearl St, Boulder, CO 80302
-            </span>
-            <span class="phone">
-              303 123 456
-            </span>
-          </span>
-          <span class="contact3">
-            <span class="address">
-              326 Pearl St, Boulder, CO 80302
-            </span>
-            <span class="phone">
-              303 123 456
-            </span>
-          </span>
-        </div>
-      </div>
+<article class="boutique">
+  <section class="cover-photo">
+    <div class="shroud"></div>
+    <%= image_tag(@boutique.cover_photo.banner.url) %>
+  </section>
+
+  <section class="info">
+    <%= content_tag(:span, @boutique.name, class: "name") %>
+    <%= link_to("boulderboutique.com", "#", target: "_blank", class: "website") %>
+
+    <p>incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor sit ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor sit ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s</p>
+
+    <%= link_to("Follow", "#", class: "button follow") %>
+  </section>
+
+  <section class="contact">
+    <div class="social">
+      <%= link_to(image_tag("feed/facebook.png"), "#") %>
+      <%= link_to(image_tag("feed/twitter.png"), "#") %>
+      <%= link_to(image_tag("feed/pinterest.png"), "#") %>
     </div>
-  </article>
-  <% 1.upto(8) do %>
-    <article class="item">
-      <div>
-        <div class="img">
-          <%= link_to(image_tag("feed/dress.jpg"), "#", class: "img") %>
-        </div>
-        <div class="details">
-          <span class="price">$1,085</span>
-          <%= link_to(image_tag("feed/star.png"), "#", class: "star") %>
 
-          <p class="name">
-            <a class="item-name" href="#">Dress abc</a><br>
-            <a href="#">by Designer A</a><br>
-            <a href="#">Spring 2013</a>
-          </p>
+    <div class="locations">
+      <%= link_to("More Locations", "#", class: "button") %>
+      <%= content_tag(:address, @boutique.primary_location.to_s) %>
+      <span class="phone">555 555 1212</span>
+    </div>
+  </section>
 
-          <%= link_to("Buy", "#", class: "buy") %>
+  <div class="cb"></div>
+</article>
 
-          <div class="social">
-            <%= link_to(image_tag("feed/facebook.png"), "#") %>
-            <%= link_to(image_tag("feed/twitter.png"), "#") %>
-            <%= link_to(image_tag("feed/pinterest.png"), "#") %>
-          </div>
-        </div>
-        <div class="info">
-          <span class="store">Boulder Boutique</span>
-          <span class="city">MI</span>
-        </div>
-      </div>
-    </article>
+<div id="stream">
+  <% @boutique.items.each do |item| %>
+    <%= render("stream/item", item: item) %>
   <% end %>
 </div>
+
