@@ -12,6 +12,8 @@ class Boutique < ActiveRecord::Base
   validates_uniqueness_of :short_code
   validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
+	delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
+
 	def primary_location
 		locations.where(primary: true).first
 	end
