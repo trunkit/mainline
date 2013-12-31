@@ -6,8 +6,8 @@
 
     <div class="details">
       <p class="name">
-        <%= link_to(boutique.name, boutique, class: "fancybox fancybox.ajax") %><br>
-        <%= link_to("#{boutique.city}, #{boutique.state}") %>
+        <%= link_to(boutique.name, boutique) %><br>
+        <%= link_to("#{boutique.city}, #{boutique.state}", boutique) %>
       </p>
 
       <%= link_to("Follow", boutique, class: "follow") %>
