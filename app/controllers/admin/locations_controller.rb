@@ -37,7 +37,7 @@ class Admin::LocationsController < Admin::AbstractController
 private
 
   def location_params
-    params.require(:location).permit(:name, :cover_photo, :stream_photo, address_attributes: [:id, :street, :street2, :city, :state, :postal_code])
+    params.require(:location).permit(:name, :phone_number, :cover_photo, :stream_photo, address_attributes: [:id, :street, :street2, :city, :state, :postal_code])
   end
 
   def boutique
