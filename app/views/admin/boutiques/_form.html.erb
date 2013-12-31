@@ -1,13 +1,13 @@
 <%= form_for([:admin, @boutique], role: "form") do |f| %>
 	<div class="row">
-		<div class="col-lg-6 col-xs-12">
+		<div class="col-md-6 col-xs-12">
 		  <div class="form-group">
 				<%= f.label(:name) %>
 				<%= f.text_field(:name, class: "form-control") %>
 		  </div>
 		</div>
 
-		<div class="col-lg-6 col-xs-12">
+		<div class="col-md-6 col-xs-12">
 		  <div class="form-group">
 				<%= f.label(:short_code) %>
 				<%= f.text_field(:short_code, class: "form-control") %>
