@@ -18,6 +18,15 @@ class Boutique < ActiveRecord::Base
 		locations.where(primary: true).first
 	end
 
+	# TODO: Add fallback photos
+	def primary_photo(size = nil)
+		if primary_location
+			p = primary_location.stream_photo
+			p ? p.stream.url : nil
+		else
+		end
+	end
+
 private
   def generate_short_code
     self.short_code = (0...6).map{ ('a'..'z').to_a[rand(26)] }.join if short_code.blank?
