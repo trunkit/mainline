@@ -16,6 +16,7 @@ gem 'configatron'
 gem 'uuid'
 gem 'certified' # For OpenSSL verify errors
 gem 'will_paginate'
+gem 'redcarpet'
 
 # Memcache support
 gem 'memcachier'
