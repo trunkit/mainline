@@ -13,6 +13,10 @@ class CoverPhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [915, 200]
   end
 
+  version :thumb do
+    process resize_to_fit: [62, 62]
+  end
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end
