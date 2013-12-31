@@ -9,7 +9,7 @@
 				<%= content_tag(:li, link_to("Shoes", "#")) %>
 				<%= content_tag(:li, link_to("Accessories", "#")) %>
 				<%= content_tag(:li, link_to("Bags", "#")) %>
-				<%= content_tag(:li, link_to("Following", stream_following_path, class: "following")) %>
+				<%= content_tag(:li, link_to("Following", stream_following_path, class: "button")) %>
 			</ul>
 		<% end %>
 
@@ -40,7 +40,7 @@
 			<%= content_tag(:li, link_to("Help", "/help")) %>
 			<%= content_tag(:li, link_to("About", "/about-trunkit")) %>
 			<%= content_tag(:li, link_to("Terms", "/terms-of-service")) %>
-			<%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete)) %>
+			<%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
 		</ul>
 	</div>
 </div>
