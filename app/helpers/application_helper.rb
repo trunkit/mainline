@@ -1,4 +1,6 @@
 module ApplicationHelper
+  @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, filter_html: true, no_images: true, no_links: true, no_styles: true).freeze
+
   def main_nav
     return render("layouts/public_nav") unless current_user
 
@@ -71,5 +73,9 @@ module ApplicationHelper
         ['Wisconsin', 'WI'],
         ['Wyoming', 'WY']
       ]
+  end
+
+  def markdown(string)
+    @@markdown.render(string).html_safe
   end
 end
