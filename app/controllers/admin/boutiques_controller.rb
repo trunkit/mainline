@@ -38,6 +38,6 @@ class Admin::BoutiquesController < Admin::AbstractController
 
 private
   def boutique_params
-    params.require(:boutique).permit([:name, :short_code, :stream_photo, :cover_photo])
+    params.require(:boutique).permit([:name, :short_code, :website, :facebook, :twitter, :pinterest, :stream_photo, :cover_photo])
   end
 end
