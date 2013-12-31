@@ -1,1 +1,62 @@
-This is awesome!
+<article class="item">
+  <section class="photos">
+    <%= image_tag(@item.primary_photo.url.details) %>
+
+    <div class="thumbs">
+      <% @item.photos.each do |photo| %>
+      <%= link_to(image_tag(photo.url.thumb.to_s), photo.url.details.to_s) %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="info">
+    <%= content_tag(:h1, @item.name) %>
+    <%= content_tag(:h2, "Designed by #{@item.brand.name}") %>
+    <%= content_tag(:span, number_to_currency(@item.price)) %>
+
+    <div class="social">
+      <%= link_to(image_tag("items/facebook.png"), "#") %>
+      <%= link_to(image_tag("items/twitter.png"), "#") %>
+      <%= link_to(image_tag("items/pinterest.png"), "#") %>
+      <%= link_to(image_tag("items/favorite.png"), "#") %>
+    </div>
+
+    <hr>
+    <p class="delivery">Please allow up to 2 weeks for delivery.</p>
+    <hr>
+
+    <div class="cart">
+      <%= form_for([:cart, @cart_item]) do |f| %>
+        <% @item.options.group_by(&:name).each do |group, options| %>
+        <%= select_tag("cart_item[options][#{group}]", item_options_for_select(group, options)) %>
+        <% end %>
+
+        <%= f.select(:quantity, item_quantities) %>
+
+        <%= button_tag("Add to Cart", type: "submit") %>
+      <% end %>
+    </div>
+
+    <hr>
+
+    <%= content_tag(:div, class: "description") do %>
+      <span>About the Clothes:</span>
+      <%= markdown(@item.description) %>
+    <% end if @item.description.present? %>
+
+    <%= content_tag(:div, class: "description") do %>
+      <span>How Do They Fit?</span>
+      <%= markdown(@item.fit) %>
+    <% end if @item.fit.present? %>
+
+    <%= content_tag(:div, class: "description") do %>
+      <span>What Are The Clothes Made Of?</span>
+      <%= markdown(@item.construction) %>
+    <% end if @item.construction.present? %>
+
+    <%= content_tag(:div, class: "description") do %>
+      <span>Model Measurements:</span>
+      <%= markdown(@item.model_measurements) %>
+    <% end if @item.model_measurements.present? %>
+  </section>
+</article>
