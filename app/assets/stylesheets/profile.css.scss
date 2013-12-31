@@ -19,6 +19,7 @@ article.boutique {
   section.cover-photo {
     position: relative;
     float: left;
+    height: 300px;
 
     .shroud {
       @include position(absolute, 0px 0 0 0px);
