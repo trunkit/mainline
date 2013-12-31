@@ -11,4 +11,8 @@ module ApplicationHelper
       render("layouts/#{type}_nav")
     end
   end
+
+	def active_css_class(regexp)
+		regexp.match(request.path) ? "active" : nil
+	end
 end

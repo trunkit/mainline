@@ -1,9 +1,7 @@
 <nav>
 	<ul>
-		<li class="active">
+		<%= content_tag(:li, class: active_css_class(/^\/(stream|items)/)) do %>
 			<%= link_to("Stream", stream_path, class: "stream") %>
-
-			<span></span>
 
 			<ul>
 				<%= content_tag(:li, link_to("All", "#")) %>
@@ -11,13 +9,20 @@
 				<%= content_tag(:li, link_to("Shoes", "#")) %>
 				<%= content_tag(:li, link_to("Accessories", "#")) %>
 				<%= content_tag(:li, link_to("Bags", "#")) %>
-				<%= content_tag(:li, link_to("Following", stream_following_path), class: "following") %>
+				<%= content_tag(:li, link_to("Following", stream_following_path, class: "following")) %>
 			</ul>
-		</li>
+		<% end %>
 
-		<%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites")) %>
+		<%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
 
-		<%= content_tag(:li, link_to("Discover", discover_path, class: "discover")) %>
+		<%= content_tag(:li, class: active_css_class(/^\/discover/)) do %>
+			<%= link_to("Discover", discover_path, class: "discover") %>
+
+			<ul>
+				<%= content_tag(:li, link_to("Goods", "#")) %>
+				<%= content_tag(:li, link_to("Boutiques", "#")) %>
+			</ul>
+		<% end %>
 	</nav>
 
 <div class="right">
