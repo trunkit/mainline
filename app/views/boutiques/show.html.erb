@@ -6,9 +6,9 @@
 
   <section class="info">
     <%= content_tag(:span, @boutique.name, class: "name") %>
-    <%= link_to("boulderboutique.com", "#", target: "_blank", class: "website") %>
+    <%= link_to(@boutique.website, @boutique.website, target: "_blank", class: "website") %>
 
-    <p>incididunt ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor sit ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor sit ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s ame ut labore et dolore/ magna aliqua. Ut enim ad mi Lorem ipsum dolor s</p>
+    <%= content_tag(:p, @boutique.description) %>
 
     <%= link_to("Follow", "#", class: "button follow") %>
   </section>
