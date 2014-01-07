@@ -41,6 +41,7 @@ article.boutique {
   section.info {
     @include position(absolute, 0px 0 0 0px);
     z-index: 3;
+    width: 100%;
     text-align: center;
 
     span.name {
