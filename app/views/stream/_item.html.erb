@@ -29,8 +29,8 @@
     </div>
 
     <div class="info">
-      <%= content_tag(:span, "Curated by #{item.boutique.name}", class: "curator") %>
-      <%= content_tag(:span, "Supplied by #{item.supplier.name}", class: "supplier") %>
+      <%= link_to("Curated by #{item.boutique.name}", item.boutique, class: "curator") %>
+      <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier") %>
     </div>
   </div>
 </article>
