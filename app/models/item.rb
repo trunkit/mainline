@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 
   def primary_photo
-    photos.first
+    photos.first || photos.build
   end
 
   def supplier
