@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231190458) do
+ActiveRecord::Schema.define(version: 20140107180123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131231190458) do
     t.string   "facebook"
     t.string   "twitter"
     t.string   "pinterest"
-    t.string   "description"
+    t.text     "description"
   end
 
   add_index "boutiques", ["short_code"], name: "index_boutiques_on_short_code", unique: true, using: :btree
