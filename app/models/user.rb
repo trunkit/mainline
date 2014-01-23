@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :addresses
   has_many :orders
 
+  has_many :favorites
+  has_many :favorite_items, class_name: "Item", through: :favorites, source: :item
+
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
