@@ -10,6 +10,8 @@ class Item < ActiveRecord::Base
   has_many :photos,   class_name: "ItemPhoto"
   has_many :children, class_name: "Item", foreign_key: :parent_id, dependent: :destroy
 
+  has_and_belongs_to_many :categories
+
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 
   def primary_photo
