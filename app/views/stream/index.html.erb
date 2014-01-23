@@ -3,3 +3,9 @@
     <%= render("stream/item", item: item) %>
   <% end %>
 </div>
+
+<script>
+$(function() {
+  SiteBindings.item.favorite();
+});
+</script>
