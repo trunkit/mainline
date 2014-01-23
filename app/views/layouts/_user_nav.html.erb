@@ -4,11 +4,11 @@
       <%= link_to("Stream", stream_path, class: "stream") %>
 
       <ul>
-        <%= content_tag(:li, link_to("All", "#")) %>
-        <%= content_tag(:li, link_to("Clothing", "#")) %>
-        <%= content_tag(:li, link_to("Shoes", "#")) %>
-        <%= content_tag(:li, link_to("Accessories", "#")) %>
-        <%= content_tag(:li, link_to("Bags", "#")) %>
+        <%= content_tag(:li, link_to("All", stream_path)) %>
+        <%= content_tag(:li, link_to("Clothing", stream_path(category: "Clothing"))) %>
+        <%= content_tag(:li, link_to("Shoes", stream_path(category: "Shoes"))) %>
+        <%= content_tag(:li, link_to("Accessories", stream_path(category: "Accessories"))) %>
+        <%= content_tag(:li, link_to("Bags", stream_path(category: "Bags"))) %>
         <%= content_tag(:li, link_to("Following", stream_following_path, class: "button")) %>
       </ul>
     <% end %>

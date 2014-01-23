@@ -19,6 +19,12 @@ class Item < ActiveRecord::Base
     includes(:categories).references(:categories).where(conditions)
   }
 
+  def self.for_stream(params)
+    scope = all
+    scope = scope.for_category(params[:category]) if params[:category].present?
+    scope.order(created_at: :desc)
+  end
+
   def primary_photo
     photos.first || photos.build
   end
