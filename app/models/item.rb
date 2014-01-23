@@ -14,6 +14,11 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 
+  scope :for_category, ->(name_or_id) {
+    conditions = name_or_id.is_a?(Fixnum) ? { "categories.id" => name_or_id } : { "categories.name" => name_or_id }
+    includes(:categories).references(:categories).where(conditions)
+  }
+
   def primary_photo
     photos.first || photos.build
   end
