@@ -16,11 +16,11 @@
     <%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
 
     <%= content_tag(:li, class: active_css_class(/^\/discover/)) do %>
-      <%= link_to("Discover", discover_path, class: "discover") %>
+      <%= link_to("Discover", '#', class: "discover") %>
 
       <ul>
-        <%= content_tag(:li, link_to("Goods", "#")) %>
-        <%= content_tag(:li, link_to("Boutiques", "#")) %>
+        <%= content_tag(:li, link_to("Goods", discover_items_path)) %>
+        <%= content_tag(:li, link_to("Boutiques", discover_boutiques_path)) %>
       </ul>
     <% end %>
   </nav>
