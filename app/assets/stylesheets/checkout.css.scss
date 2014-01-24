@@ -1,0 +1,32 @@
+.checkout {
+  width: 680px;
+
+  > h1 {
+    padding: 0;
+    margin: 0;
+    font: 57px/68px "Helvetica LT Std", sans-serif;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  > nav > ul {
+    width: 450px;
+    margin: 0 auto;
+    padding: 10px 0 0;
+    text-align: center;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      width: 75px;
+      padding: 0 0 2px;
+      font: 16px/20px "Bebas Neue", sans-serif;
+      letter-spacing: 2px;
+      color: #000;
+
+      &.active { border-bottom: 2px solid #000; }
+    }
+  }
+}
