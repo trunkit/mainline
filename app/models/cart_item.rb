@@ -8,6 +8,30 @@ class CartItem < ActiveRecord::Base
 
   before_save :validate_item_options
 
+  def item
+    return @item if @item
+
+    @item = Item.find(item_id)
+
+    if @item.version > item_version
+      @item = @item.versions[item_version].reify
+    end
+
+    @item
+  end
+
+  def option_values
+    item_options.map{|group, id| item.options.find(id) }
+  end
+
+  def unit_price
+    price = option_values.inject(item.price) {|price, option| price += option.price }
+  end
+
+  def total_price
+    quantity * unit_price
+  end
+
   private
 
   # TODO: Add item option validations
