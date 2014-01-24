@@ -14,11 +14,6 @@
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
 
-      <%= content_tag(:p, class: "sizes") do %>
-        Available Sizes:<br>
-        S,M,XL
-      <% end %>
-
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
 
       <div class="social">
