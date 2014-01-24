@@ -1,9 +1,6 @@
 Trunkit::Application.routes.draw do
   root to: "contents#index"
 
-  # User / Session Management
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-
   # Catalog
   get "stream"           => "stream#index",     as: :stream
   get "stream/following" => "stream#following", as: :stream_following
@@ -34,6 +31,16 @@ Trunkit::Application.routes.draw do
     resources :payment_methods
     resource  :order
   end
+
+  # User information
+  resource  :user, only: [:update] do
+    get "settings"
+  end
+
+  resources :addresses
+
+  # Session Management
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # Administrative Interfaces
   namespace :admin do
