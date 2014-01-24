@@ -18,7 +18,7 @@
       <%= link_to(image_tag("items/facebook.png"), "#") %>
       <%= link_to(image_tag("items/twitter.png"), "#") %>
       <%= link_to(image_tag("items/pinterest.png"), "#") %>
-      <%= link_to(image_tag("items/favorite.png"), "#") %>
+      <%= link_to(image_tag("items/favorite.png"), item_favorite_path(@item.id), method: :put, class: "favorite") %>
     </div>
 
     <hr>
