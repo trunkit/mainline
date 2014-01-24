@@ -1,0 +1,44 @@
+<div id="user-settings">
+  <h2>User Information</h2>
+
+  <%= form_for(current_user, html: { class: "info" }) do |f| %>
+    <div>
+      <%= f.label(:first_name) %>
+      <%= f.text_field(:first_name) %>
+    </div>
+
+    <div>
+      <%= f.label(:last_name) %>
+      <%= f.text_field(:last_name) %>
+    </div>
+
+    <div>
+      <%= f.label(:email, "Email Address") %>
+      <%= f.email_field(:email) %>
+    </div>
+
+    <div>
+      <%= f.label(:password) %>
+      <%= f.password_field(:password) %>
+    </div>
+
+    <div>
+      <%= f.label(:password_confirmation) %>
+      <%= f.password_field(:password_confirmation) %>
+    </div>
+
+    <div>
+      <%= f.label(:gender) %>
+      <%= f.select(:gender, ["Male", "Female", "Other"], include_blank: true) %>
+    </div>
+
+    <div>
+      <%= f.label(:photo) %>
+      <%= f.file_field(:photo) %>
+    </div>
+
+    <%= button_tag("Save", type: "submit") %>
+  <% end %>
+
+  <h2>Stored Addresses</h2>
+</div>

@@ -1,0 +1,40 @@
+#user-settings {
+  h2 {
+    float: left;
+    width: 100%;
+    padding: 3px 0;
+    font: 14px/17px "Bebas Neue", sans-serif;
+    letter-spacing: 2px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+  }
+
+  form.info {
+    > div {
+      float: left;
+      width: 100%;
+      padding: 0 0 10px;
+
+      label, input {
+        float: left;
+        font: 14px/17px "Lato", sans-serif;
+      }
+
+      label {
+        width: 175px;
+        padding: 0 10px 0 0;
+        text-align: right;
+      }
+    }
+
+    button[type="submit"] {
+      margin: 0 0 0 185px;
+      padding: 5px 20px;
+      font: 14px/17px "Bebas Neue", sans-serif;
+      letter-spacing: 4px;
+      color: #FFF;
+      background: #000;
+      border: none;
+    }
+  }
+}

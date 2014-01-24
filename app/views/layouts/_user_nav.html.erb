@@ -34,8 +34,8 @@
     <%= link_to(image_tag("header/dropdown-arrow.png"), "#") %>
 
     <ul>
-      <%= content_tag(:li, link_to("Settings", "/consumer/settings")) %>
-      <%= content_tag(:li, link_to("Invite", "/consumer/invite")) %>
+      <%= content_tag(:li, link_to("Settings", settings_user_path)) %>
+      <%= content_tag(:li, link_to("Invite", "#")) %>
       <%= content_tag(:li, link_to("Help", "/help")) %>
       <%= content_tag(:li, link_to("About", "/about-trunkit")) %>
       <%= content_tag(:li, link_to("Terms", "/terms-of-service")) %>
