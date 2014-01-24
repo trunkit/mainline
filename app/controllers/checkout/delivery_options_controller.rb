@@ -1,2 +1,3 @@
-class Checkout::DeliveryOptionsController < ApplicationController
+class Checkout::DeliveryOptionsController < CatalogAbstractController
+  force_ssl
 end

@@ -1,2 +1,2 @@
-class Checkout::OrdersController < ApplicationController
+class Checkout::OrdersController <
 end

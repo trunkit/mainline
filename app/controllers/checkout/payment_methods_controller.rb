@@ -1,2 +1,2 @@
-class Checkout::PaymentMethodsController < ApplicationController
+class Checkout::PaymentMethodsController < CatalogAbstractController
 end
