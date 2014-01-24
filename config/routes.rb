@@ -25,7 +25,7 @@ Trunkit::Application.routes.draw do
 
   # Checkout and Shopping Cart
   resource :cart do
-    resources :cart_items
+    resources :cart_items, only: [:create, :update, :destroy]
   end
 
   namespace :checkout do
