@@ -21,6 +21,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def option_values
+    return [] if item_options.blank?
     item_options.map{|group, id| item.options.find(id) }
   end
 
