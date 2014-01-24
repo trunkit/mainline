@@ -1,0 +1,54 @@
+<div class="checkout" id="cart">
+  <h1>Checkout</h1>
+
+  <nav>
+    <ul>
+      <li class="active">Shopping Cart</li>
+      <li>Shipping Address</li>
+      <li>Delivery Options</li>
+      <li>Payment Method</li>
+      <li>Confirm Order</li>
+    </ul>
+  </nav>
+
+  <div class="items">
+    <header>
+      <div class="name">Item(s)</div>
+      <div class="price">Price</div>
+      <div class="quantity">Quantity</div>
+      <div class="total">Total</div>
+    </header>
+
+    <% current_cart.items.each do |cart_item| %>
+    <div class="row">
+      <div class="name">
+        <%= image_tag(cart_item.item.primary_photo.url.stream) %>
+
+        <div class="right">
+          <%= content_tag(:span, cart_item.item.name, class: "name") %>
+
+          <% cart_item.option_values.each do |ov| %>
+          <%= content_tag(:span, "#{ov.name}: #{ov.value}") %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= content_tag(:div, number_to_currency(cart_item.unit_price), class: "price") %>
+
+      <div class="quantity">
+        <%= form_for([current_cart, cart_item]) do |f| %>
+        <%= f.select(:quantity, item_quantities) %>
+        <% end %>
+      </div>
+
+      <%= content_tag(:div, number_to_currency(cart_item.total_price), class: "total") %>
+    </div>
+    <% end %>
+
+    <footer>
+      <%= content_tag(:div, "Subtotal: #{number_to_currency(current_cart.total_price)}", class: "total") %>
+    </footer>
+  </div>
+
+  <%= link_to("Checkout", checkout_shipping_addresses_path, class: "fancybox fancybox.ajax") %>
+</div>

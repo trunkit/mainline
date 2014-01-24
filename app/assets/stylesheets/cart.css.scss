@@ -1,3 +1,93 @@
-// Place all the styles related to the cart controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#cart {
+  font: 14px/17px "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+
+  .items {
+    float: left;
+
+    header, div {
+      > div {
+        float: left;
+        padding: 0 0 0 20px;
+
+        &:first-child { padding-left: 0; }
+      }
+
+      > .name {
+        width: 380px;
+
+        img {
+          float: left;
+          max-width: 140px;
+          max-height: 169px;
+        }
+
+        .right {
+          float: left;
+          width: 230px;
+          padding: 0 0 0 10px;
+
+          span {
+            float: left;
+            width: 100%;
+            font: 14px/17px "Helvetica LT Std", sans-serif;
+            letter-spacing: 1px;
+            color: #000000;
+
+            &.name {
+              font: 18px/22px "Helvetica LT Std", sans-serif;
+              padding: 0 0 20px;
+            }
+          }
+        }
+      }
+
+      > .price    { width: 80px; }
+
+      > .quantity {
+        width: 80px;
+        text-align: center;
+      }
+
+      > .total    {
+        width: 80px;
+        text-align: right;
+      }
+    }
+
+    header, footer {
+      float: left;
+      clear: both;
+      width: 100%;
+      margin: 10px 0;
+      padding: 5px 0;
+      font-weight: bold;
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
+    }
+
+    div.row {
+      float: left;
+      width: 100%;
+      margin: 0 0 10px;
+      padding: 0 0 10px;
+      border-bottom: 2px solid #000;
+    }
+
+    footer { text-align: right; }
+  }
+
+  > a {
+    display: block;
+    clear: both;
+    width: 90px;
+    margin: 0 auto;
+    padding: 5px 20px;
+    font: 16px/20px "Bebas Neue", sans-serif;
+    letter-spacing: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFF;
+    background: #000;
+  }
+}
