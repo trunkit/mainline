@@ -17,6 +17,9 @@ class Boutique < ActiveRecord::Base
 
   delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
 
+  def self.discover(params)
+  end
+
   # TODO: Add fallback photos
   def primary_photo(size = nil)
     if primary_location

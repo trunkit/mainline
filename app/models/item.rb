@@ -25,6 +25,9 @@ class Item < ActiveRecord::Base
     scope.order(created_at: :desc)
   end
 
+  def self.discover(params)
+  end
+
   def primary_photo
     photos.first || photos.build
   end
