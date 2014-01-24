@@ -35,4 +35,8 @@ class Item < ActiveRecord::Base
   def supplier
     parent ? parent.boutique : boutique
   end
+
+  def version
+    versions.count + 1
+  end
 end
