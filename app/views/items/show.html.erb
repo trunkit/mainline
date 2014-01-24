@@ -24,9 +24,11 @@
     <hr>
 
     <div class="cart">
-      <%= form_for([:cart, @cart_item]) do |f| %>
+      <%= form_for([:cart, @cart_item], remote: true) do |f| %>
+        <%= f.hidden_field(:item_id, value: @item.id)  %>
+
         <% @item.options.group_by(&:name).each do |group, options| %>
-        <%= select_tag("cart_item[options][#{group}]", item_options_for_select(group, options)) %>
+        <%= select_tag("cart_item[item_options][#{group}]", item_options_for_select(group, options)) %>
         <% end %>
 
         <%= f.select(:quantity, item_quantities) %>
