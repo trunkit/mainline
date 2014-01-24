@@ -12,7 +12,7 @@ class CatalogAbstractController < ApplicationController
     return @current_cart if @current_cart
 
     if session[:cart_id]
-      @current_cart = user.carts.find(session[:cart_id])
+      @current_cart = current_user.carts.find(session[:cart_id])
     else
       @current_cart     = current_user.carts.create
       session[:cart_id] = @current_cart.id
