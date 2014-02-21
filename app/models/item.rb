@@ -3,12 +3,18 @@ class Item < ActiveRecord::Base
   has_paper_trail
 
   searchable do
-    text    :name, :description, :fit, :construction, :model_measurements
-    integer :boutique_id, :brand_id
-    double  :price
-    string  :categories, multiple: true do
+    text :name, :description, :fit, :construction, :model_measurements
+    text :categories do
       categories.map(&:name)
     end
+
+    text :brand do
+      brand.name
+    end
+
+    integer :boutique_id, :brand_id
+    integer :category_ids, multiple: true
+    double  :price
   end
 
   belongs_to :parent, class_name: "Item"
