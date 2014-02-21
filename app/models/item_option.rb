@@ -3,4 +3,8 @@ class ItemOption < ActiveRecord::Base
   has_paper_trail
 
   validates_uniqueness_of :value, scope: [:item_id, :name]
+
+  def price
+    self[:price] || 0
+  end
 end
