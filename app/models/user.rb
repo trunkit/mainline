@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :addresses, as: :parent
   has_many :carts
-  has_many :orders, through: :carts
+  has_many :orders
 
   has_many :favorites
   has_many :favorite_items, class_name: "Item", through: :favorites, source: :item
