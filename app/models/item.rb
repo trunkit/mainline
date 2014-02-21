@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
     text    :name, :description, :fit, :construction, :model_measurements
     integer :boutique_id, :brand_id
     double  :price
-    string  :categories do
+    string  :categories, multiple: true do
       categories.map(&:name)
     end
   end
