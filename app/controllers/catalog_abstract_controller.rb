@@ -4,7 +4,7 @@ class CatalogAbstractController < ApplicationController
     redirect_to(:admin) if current_user.has_any_role?(:system)
   end
 
-  helper_method :current_cart
+  helper_method :current_cart, :categories
 
   private
 
@@ -19,5 +19,9 @@ class CatalogAbstractController < ApplicationController
     end
 
     @current_cart
+  end
+
+  def categories
+    @categories ||= Category.all
   end
 end
