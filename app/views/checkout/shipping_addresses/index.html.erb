@@ -1,0 +1,30 @@
+<div class="checkout" id="shipping">
+  <h1>Checkout</h1>
+
+  <nav>
+    <ul>
+      <li class="active">Shopping Cart</li>
+      <li class="active">Shipping Address</li>
+      <li>Delivery Options</li>
+      <li>Payment Method</li>
+      <li>Confirm Order</li>
+    </ul>
+  </nav>
+
+  <h2>Please Select Your Saved Shipping Address</h2>
+
+  <% current_user.addresses.each do |address| %>
+  <address>
+    <%= link_to("Ship to Saved Address", select_checkout_shipping_address_path(address), remote: true) %>
+    <%= content_tag(:span, address.to_s.gsub("\n", "<br>").html_safe) %>
+
+    <%= link_to("Edit", edit_checkout_shipping_address_path(address), remote: true) %>
+    <%= link_to("Delete", checkout_shipping_address_path(address), method: :delete, remote: true, data: { confirm: "Are you sure you want to remove this address?" }) %>
+  </address>
+  <% end %>
+
+  <address>
+    <%= link_to("Add a New Address", new_checkout_shipping_address_path, remote: true, class: "inverted") %>
+  </address>
+</div>
+

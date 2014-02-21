@@ -1,3 +1,8 @@
+@import "checkout/shipping_addresses";
+@import "checkout/delivery_options";
+@import "checkout/payment_methods";
+@import "checkout/orders";
+
 .checkout {
   width: 680px;
 
@@ -28,5 +33,18 @@
 
       &.active { border-bottom: 2px solid #000; }
     }
+  }
+
+  > h2 {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin: 10px 0 20px;
+    padding: 5px 0;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    font: 14px/17px "Bebas Neue", sans-serif;
+    letter-spacing: 2px;
+    color: #000000;
   }
 }

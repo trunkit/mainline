@@ -21,7 +21,10 @@ Trunkit::Application.routes.draw do
   end
 
   namespace :checkout do
-    resources :shipping_addresses
+    resources :shipping_addresses do
+      patch "select", on: :member
+    end
+
     resource  :delivery_options
     resources :payment_methods
     resource  :order

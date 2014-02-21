@@ -1,3 +1,81 @@
-// Place all the styles related to the checkout/shipping_addresses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#shipping {
+  address {
+    float: left;
+    width: 205px;
+    font-style: normal;
+    padding-left: 20px;
+
+    &:first-child { padding-left: 0; }
+
+    a:first-child {
+      width: 160px;
+      padding: 5px 20px;
+      border: 2px solid #000000;
+      font: 16px/20px "Bebas Neue", sans-serif;
+      letter-spacing: 2px;
+      text-align: center;
+      text-decoration: none;
+      color: #000;
+
+      &.inverted {
+        background: #000;
+        color: #fff;
+      }
+    }
+
+    span {
+      float: left;
+      width: 100%;
+      margin: 10px 0;
+      font: 16px/20px "Helvetica LT Std", sans-serif;
+      letter-spacing: 1px;
+      color: #000000;
+    }
+
+    a {
+      float: left;
+      margin: 0 10px 0 0;
+      font: 16px/20px "Helvetica LT Std", sans-serif;
+      letter-spacing: 1px;
+      color: rgba(83,83,83,0.50);
+    }
+  }
+
+  form {
+    div {
+      float: left;
+      width: 100%;
+      padding: 0 0 20px;
+
+      label {
+        float: left;
+        width: 100px;
+        padding: 0 10px 0 20px;
+        font: 16px/32px "Helvetica LT Std", sans-serif;
+        text-align: right;
+
+        &:first-child { padding-left: 0; }
+      }
+
+      input[type=text] {
+        float: left;
+        width: 200px;
+        height: 30px;
+        padding: 0 5px;
+        border: 2px solid #000000;
+      }
+    }
+
+    input[type=submit] {
+      width: 160px;
+      margin: 0 0 0 280px;
+      padding: 5px 20px;
+      border: 0;
+      font: 16px/20px "Bebas Neue", sans-serif;
+      letter-spacing: 4px;
+      text-align: center;
+      background: #000;
+      color: #FFFFFF;
+    }
+  }
+}
