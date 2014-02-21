@@ -18,5 +18,9 @@
 # Ignore the local cache from carrierwave
 /public/uploads
 
+# Ignore the local solr setup
+/log/sunspot*
+/solr
+
 # Ignore the bundler ruby cache
 /vendor/ruby
