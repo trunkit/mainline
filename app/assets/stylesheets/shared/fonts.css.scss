@@ -67,3 +67,18 @@
        asset-url('bebasneue-webfont.ttf') format('truetype'),
        asset-url('bebasneue-webfont.svg#bebas_neueregular') format('svg');
 }
+
+@font-face {
+  font: {
+    family: "Bebas";
+    weight: normal;
+    style:  normal;
+  }
+
+  src: asset-url('bebas.eot');
+  src: asset-url('bebas.eot?#iefix') format('embedded-opentype'),
+       asset-url('bebas.woff') format('woff'),
+       asset-url('bebas.ttf') format('truetype'),
+       asset-url('bebas.svg#bebasregular') format('svg');
+}
+
