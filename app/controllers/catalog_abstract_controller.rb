@@ -4,7 +4,7 @@ class CatalogAbstractController < ApplicationController
     redirect_to(:admin) if current_user.has_any_role?(:system)
   end
 
-  helper_method :current_cart, :categories
+  helper_method :current_cart, :current_order, :categories
 
   private
 
@@ -19,6 +19,19 @@ class CatalogAbstractController < ApplicationController
     end
 
     @current_cart
+  end
+
+  def current_order
+    return @current_order if @current_order
+
+    if session[:order_id]
+      @current_order = current_user.orders.find(session[:order_id])
+    else
+      @current_order     = current_user.orders.create(cart_id: current_cart.id)
+      session[:order_id] = @current_order.id
+    end
+
+    @current_order
   end
 
   def categories
