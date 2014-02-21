@@ -8,6 +8,10 @@ class Item < ActiveRecord::Base
       categories.map(&:name)
     end
 
+    text :boutique do
+      boutique.name
+    end
+
     text :brand do
       brand.name
     end
