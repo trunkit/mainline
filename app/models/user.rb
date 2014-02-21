@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   belongs_to :parent, polymorphic: true
 
-  has_many :addresses
+  has_many :addresses, as: :parent
   has_many :carts
   has_many :orders, through: :carts
 
