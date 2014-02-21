@@ -1,0 +1,15 @@
+.notification.error {
+  width: 660px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  border: 2px solid #000;
+  font: 16px/22px HelveticaLTStd-LightCond;
+  letter-spacing: 2px;
+  text-align: center;
+
+  em {
+    color: #DF1A22;
+    font-style: normal;
+    text-transform: uppercase;
+  }
+}
