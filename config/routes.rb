@@ -13,7 +13,7 @@ Trunkit::Application.routes.draw do
   resources :boutiques, :brands, only: [:show]
 
   # Product discovery
-  resource :discover
+  resource :discover, controller: 'discover'
 
   # Checkout and Shopping Cart
   resource :cart do
