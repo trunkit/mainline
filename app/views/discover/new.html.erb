@@ -1,0 +1,6 @@
+<%= form_tag(discover_path, remote: true, id: "discover-search") do %>
+  <%= search_field_tag(:q) %>
+  <%= image_submit_tag("icons/search.png") %>
+<% end %>
+
+<div id="discover-results"></div>
