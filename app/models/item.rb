@@ -2,6 +2,15 @@ class Item < ActiveRecord::Base
   acts_as_paranoid
   has_paper_trail
 
+  searchable do
+    text    :name, :description, :fit, :construction, :model_measurements
+    integer :boutique_id, :brand_id
+    double  :price
+    string  :categories do
+      categories.map(&:name)
+    end
+  end
+
   belongs_to :parent, class_name: "Item"
   belongs_to :boutique, counter_cache: true
   belongs_to :brand
