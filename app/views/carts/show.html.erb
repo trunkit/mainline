@@ -11,7 +11,7 @@
     </ul>
   </nav>
 
-  <div class="items">
+  <%= content_tag(:div, class: "items") do %>
     <header>
       <div class="name">Item(s)</div>
       <div class="price">Price</div>
@@ -50,9 +50,9 @@
     <footer>
       <%= content_tag(:div, "Subtotal: #{number_to_currency(current_cart.total_price)}", class: "total") %>
     </footer>
-  </div>
+  <% end if current_cart.items.present? %>
 
-  <%= link_to("Checkout", checkout_shipping_addresses_path, class: "fancybox fancybox.ajax") %>
+  <%= link_to("Checkout", checkout_shipping_addresses_path, class: "fancybox fancybox.ajax") if current_cart.items.present? %>
 </div>
 
 <script>$(function() { SiteBindings.cart(); });</script>
