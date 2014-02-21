@@ -11,7 +11,7 @@
     </ul>
   </nav>
 
-  <%= content_tag(:div, class: "items") do %>
+  <div class="items">
     <header>
       <div class="name">Item(s)</div>
       <div class="price">Price</div>
@@ -47,10 +47,15 @@
     </div>
     <% end %>
 
+    <%= content_tag(:div, class: "notification error") do %>
+      <em>Oh No!</em>
+      It looks like your cart is empty. If you're having trouble finding something you like, try discovering new boutiques to inspire you by visiting "SEARCH". Feel free to contact the Trunkit team for any assistance, just email <%= mail_to("Team@Trunkit.com") %>.
+    <% end if current_cart.items.blank? %>
+
     <footer>
       <%= content_tag(:div, "Subtotal: #{number_to_currency(current_cart.total_price)}", class: "total") %>
     </footer>
-  <% end if current_cart.items.present? %>
+  </div>
 
   <%= link_to("Checkout", checkout_shipping_addresses_path, class: "fancybox fancybox.ajax") if current_cart.items.present? %>
 </div>

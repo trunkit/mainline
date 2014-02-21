@@ -1,3 +1,8 @@
+<%= content_tag(:div, class: "notification error") do %>
+  <em>Oh No!</em>
+  It looks like you haven't favorited anything. Check out your "STREAM" or visit "SEARCH" to discover new items. Select the heart to add an item to favorites.
+<% end if @items_by_boutique.blank? %>
+
 <div id="stream">
   <% @items_by_boutique.each do |boutique, items| %>
     <%= render("stream/boutique", boutique: boutique) %>
