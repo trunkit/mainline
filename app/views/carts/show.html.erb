@@ -30,6 +30,8 @@
           <% cart_item.option_values.each do |ov| %>
           <%= content_tag(:span, "#{ov.name}: #{ov.value}") %>
           <% end %>
+
+          <%= link_to('Remove', [:cart, cart_item], method: :delete, remote: true, class: "remove") %>
         </div>
       </div>
 
@@ -52,3 +54,5 @@
 
   <%= link_to("Checkout", checkout_shipping_addresses_path, class: "fancybox fancybox.ajax") %>
 </div>
+
+<script>$(function() { SiteBindings.cart(); });</script>

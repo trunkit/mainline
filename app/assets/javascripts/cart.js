@@ -1,0 +1,2 @@
+SiteBindings.cart = function() {
+};

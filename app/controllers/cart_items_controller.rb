@@ -4,6 +4,11 @@ class CartItemsController < CatalogAbstractController
     render(template: "carts/show")
   end
 
+  def destroy
+    current_cart.items.find(params[:id]).destroy
+    render(template: "carts/show")
+  end
+
   private
 
   def cart_item_params
