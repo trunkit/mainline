@@ -39,6 +39,9 @@ gem 'mini_magick'
 gem 'koala', '1.8.0.rc1'
 gem 'twitter'
 
+# Searching
+gem 'sunspot_rails'
+
 # Payments
 gem 'avalara', github: 'vizjerai/avalara'
 gem 'balanced'
@@ -55,6 +58,10 @@ gem 'asset_sync'
 # Monitoring services
 gem 'airbrake'
 gem 'newrelic_rpm'
+
+group :development do
+  gem 'sunspot_solr'
+end
 
 group :production do
   gem 'unicorn'
