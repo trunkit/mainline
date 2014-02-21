@@ -35,6 +35,17 @@ class Item < ActiveRecord::Base
   end
 
   def self.discover(params)
+    per_page = params[:per_page].to_i
+    per_page = 20 if per_page < 1 || per_page > 100
+
+    page = params[:page].to_i
+    page = 1 if page < 1
+
+    search do
+      fulltext(params[:q])
+
+      paginate(page: page, per_page: per_page)
+    end
   end
 
   def primary_photo

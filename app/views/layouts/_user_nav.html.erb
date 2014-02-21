@@ -13,7 +13,7 @@
 
     <%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
 
-    <%= content_tag(:li, link_to("Discover", '#', class: "discover"), class: active_css_class(/^\/discover/)) %>
+    <%= content_tag(:li, link_to("Discover", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
   </nav>
 
 <div class="right">
