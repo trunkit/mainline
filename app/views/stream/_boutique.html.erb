@@ -13,7 +13,6 @@
       <%= link_to("Follow", boutique, class: "follow") %>
 
       <p class="counts">
-        <%= content_tag(:span, "1,000 Followers") %><br>
         <%= content_tag(:span, "#{boutique.items.size} Supported Item#{'s' if boutique.items.size > 1}") if boutique.items.size > 0 %>
       </p>
     </div>
