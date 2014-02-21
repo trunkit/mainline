@@ -16,6 +16,14 @@ class Item < ActiveRecord::Base
       brand.name
     end
 
+    text :cities do
+      boutique.locations.map(&:city)
+    end
+
+    text :states do
+      boutique.locations.map(&:state)
+    end
+
     integer :boutique_id, :brand_id
     integer :category_ids, multiple: true
     double  :price
