@@ -3,13 +3,13 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 # Core framework
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 # Persistence
 gem 'pg'
 gem 'pg_array_parser'
 gem 'paranoia'
-gem 'paper_trail', '3.0.0.rc2'
+gem 'paper_trail'
 
 # Miscellaneous
 gem 'configatron'
