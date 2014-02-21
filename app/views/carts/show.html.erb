@@ -38,8 +38,8 @@
       <%= content_tag(:div, number_to_currency(cart_item.unit_price), class: "price") %>
 
       <div class="quantity">
-        <%= form_for([current_cart, cart_item]) do |f| %>
-        <%= f.select(:quantity, item_quantities) %>
+        <%= form_tag([:cart, cart_item], remote: true, method: :patch) do %>
+        <%= select_tag(:quantity, options_for_select(item_quantities, cart_item.quantity)) %>
         <% end %>
       </div>
 
