@@ -36,15 +36,15 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # Social Networks
-gem 'koala', '1.8.0.rc1'
-gem 'twitter'
+gem 'koala',   '1.9.0'
+gem 'twitter', '5.7.1'
 
 # Searching
-gem 'sunspot_rails'
+gem 'sunspot_rails', '2.1.0'
 
 # Payments
 gem 'avalara', github: 'vizjerai/avalara'
-gem 'balanced'
+gem 'stripe'
 
 # Assets support
 gem 'bourbon'
