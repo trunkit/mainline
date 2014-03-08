@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 
 # Core framework
 gem 'rails', '4.0.3'
@@ -39,8 +39,10 @@ gem 'mini_magick'
 gem 'koala',   '1.9.0'
 gem 'twitter', '5.7.1'
 
-# Searching
-gem 'sunspot_rails', '2.1.0'
+# Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'kaminari'
 
 # Payments
 gem 'avalara', github: 'vizjerai/avalara'
@@ -58,10 +60,6 @@ gem 'asset_sync'
 # Monitoring services
 gem 'airbrake'
 gem 'newrelic_rpm'
-
-group :development do
-  gem 'sunspot_solr'
-end
 
 group :production do
   gem 'unicorn'
