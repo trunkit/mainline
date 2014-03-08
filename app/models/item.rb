@@ -29,7 +29,7 @@ class Item < ActiveRecord::Base
 
   def self.discover(params)
     per = params[:per_page].to_i
-    per = 20 if per_page < 1 || per_page > 100
+    per = 20 if per < 1 || per > 100
 
     page = params[:page].to_i
     page = 1 if page < 1
