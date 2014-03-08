@@ -18,3 +18,8 @@ configatron.twitter do |t|
   t.consumer_key    = "QsBW1ibb2IW6JmWrQY9iw"
   t.consumer_secret = "V90sTc3Fw0sqGF25pc2qBV2SZEkNxbdEopzX2N8nk"
 end
+
+configatron.stripe do |s|
+  s.secret_key      = "sk_test_NxUPQyRW4aF39IWHvKHyO2Ev"
+  s.publishable_key = "pk_test_31Yysb03a8l44XjjHbM5vKgm"
+end
