@@ -39,9 +39,9 @@ gem 'koala',   '1.9.0'
 gem 'twitter', '5.7.1'
 
 # Search
+gem 'kaminari'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'kaminari'
 
 # Payments
 gem 'avalara', github: 'vizjerai/avalara'
