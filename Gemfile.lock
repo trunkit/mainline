@@ -264,7 +264,6 @@ GEM
       macaddr (~> 1.0)
     warden (1.2.3)
       rack (>= 1.0)
-    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
@@ -309,4 +308,3 @@ DEPENDENCIES
   unicorn
   unicorn-worker-killer
   uuid
-  will_paginate
