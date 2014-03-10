@@ -8,6 +8,7 @@ Trunkit::Application.routes.draw do
 
   resources :items do
     put "favorite" => "items#favorite"
+    put "support"  => "items#support", as: :support, on: :member
   end
 
   resources :boutiques, :brands, only: [:show]
@@ -36,6 +37,9 @@ Trunkit::Application.routes.draw do
   end
 
   resources :addresses
+
+  # Boutique Management Interfaces
+  resources :orders, :notifications
 
   # Session Management
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
