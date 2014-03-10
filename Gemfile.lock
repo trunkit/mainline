@@ -73,6 +73,9 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    easypost (2.0.11)
+      multi_json (>= 1.0.4, < 2)
+      rest-client (~> 1.4)
     elasticsearch (1.0.1)
       elasticsearch-api (= 1.0.1)
       elasticsearch-transport (= 1.0.1)
@@ -280,6 +283,7 @@ DEPENDENCIES
   configatron
   dalli
   devise
+  easypost
   elasticsearch-model
   elasticsearch-rails
   fog

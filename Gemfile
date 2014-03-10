@@ -43,7 +43,8 @@ gem 'kaminari'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
-# Payments
+# Shipping & Payments
+gem 'easypost'
 gem 'avalara', github: 'vizjerai/avalara'
 gem 'stripe'
 
