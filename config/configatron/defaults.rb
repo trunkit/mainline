@@ -1,3 +1,8 @@
+configatron.easypost do |e|
+  e.secret_key      = "fMEShqF5KxtCpPuaB40wJA"
+  e.publishable_key = ""
+end
+
 configatron.facebook do |f|
   f.id     = "652420558116466"
   f.secret = "6adb28b82b59e95760582f2bc5da3d3b"
