@@ -1,0 +1,39 @@
+<nav class="boutique">
+  <ul>
+    <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
+
+    <%= content_tag(:li, class: active_css_class(/^\/(stream|items)/)) do %>
+      <%= link_to("Stream", stream_path, class: "stream") %>
+
+      <ul>
+        <%= content_tag(:li, link_to("All", stream_path)) %>
+        <% categories.each do |category| %>
+        <%= content_tag(:li, link_to(category.name, stream_path(category: category.name))) %>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= content_tag(:li, link_to("Supported", items_path(supported: true))) %>
+    <%= content_tag(:li, link_to("Listed", items_path)) %>
+    <%= content_tag(:li, link_to("Orders", orders_path)) %>
+  </ul>
+</nav>
+
+<div class="right">
+  <%= link_to(image_tag("header/notifications.png"), notifications_path, class: "cart fancybox fancybox.ajax") %>
+
+  <div class="user">
+    <%= image_tag(current_user.photo.thumb.url) %>
+    <%= content_tag(:span, current_user.first_name) %>
+    <%= link_to(image_tag("header/dropdown-arrow.png"), "#") %>
+
+    <ul>
+      <%= content_tag(:li, link_to("Settings", settings_user_path)) %>
+      <%= content_tag(:li, link_to("Invite", "#")) %>
+      <%= content_tag(:li, link_to("Help", "/help")) %>
+      <%= content_tag(:li, link_to("About", "/about-trunkit")) %>
+      <%= content_tag(:li, link_to("Terms", "/terms-of-service")) %>
+      <%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
+    </ul>
+  </div>
+</div>
