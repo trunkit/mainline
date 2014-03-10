@@ -34,7 +34,18 @@ class Item < ActiveRecord::Base
     page = params[:page].to_i
     page = 1 if page < 1
 
-    search(params[:q]).page(page).per(per).records
+    query = {
+      query: {
+        multi_match: {
+          query:  params[:q],
+          fields: ['name', 'description', 'fit', 'construction', 'model_measurements', 'categories', 'boutique_name', 'brand_name', 'cities', 'states'],
+          max_expansions: 5,
+          type: "phrase_prefix"
+        }
+      }
+    }
+
+    search(query).page(page).per(per).records
   end
 
   def primary_photo
