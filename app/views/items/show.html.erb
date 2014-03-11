@@ -34,7 +34,7 @@
         <%= f.select(:quantity, item_quantities) %>
 
         <%= button_tag("Add to Cart", type: "submit") %>
-      <% end %>
+      <% end if current_user.parent_type.blank? %>
     </div>
 
     <hr>
