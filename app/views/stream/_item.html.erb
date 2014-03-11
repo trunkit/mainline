@@ -5,7 +5,7 @@
     </div>
 
     <div class="details">
-      <%= link_to(image_tag("feed/favorite.png"), item_favorite_path(item.id), method: :put, class: "favorite") %>
+      <%= link_to(image_tag("feed/favorite.png"), item_favorite_path(item.id), method: :put, class: "favorite") if current_user && current_user.parent_type.blank? %>
 
       <p class="name">
         <%= link_to(item.name, item, class: "fancybox fancybox.ajax") %><br>
@@ -14,7 +14,11 @@
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
 
+      <% if current_user && current_user.parent_id.blank? %>
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
+      <% elsif current_user %>
+      <%= link_to("Support", [:support, item], class: "buy fancybox fancybox.ajax") %>
+      <% end %>
 
       <div class="social">
         <%= link_to(image_tag("feed/facebook.png"), item) %>
@@ -24,8 +28,12 @@
     </div>
 
     <div class="info">
+      <% if current_user.try(:parent_id).blank? %>
       <%= link_to("Curated by #{item.boutique.name}", item.boutique, class: "curator") %>
       <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier") %>
+      <% else %>
+      <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier one-line") %>
+      <% end %>
     </div>
   </div>
 </article>
