@@ -4,8 +4,20 @@ class Boutique < ActiveRecord::Base
 
   has_many :locations, as: :company, dependent: :destroy
   has_many :users,     as: :parent,  dependent: :destroy
-  has_many :items,      dependent: :destroy
   has_many :top_items, class_name: "Item", limit: 2
+  has_many :items,     dependent: :destroy do
+    def curated
+      where(parent_id: nil)
+    end
+
+    def supported
+      where.not(parent_id: nil)
+    end
+
+    def top
+      limit(2)
+    end
+  end
 
   has_one  :primary_location, -> { where(primary: true) }, class_name: "Location", as: :company
 
