@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def active_css_class(regexp)
-    regexp.match(request.path) ? "active" : nil
+    regexp.match(request.fullpath) ? "active" : nil
   end
 
   def us_states
