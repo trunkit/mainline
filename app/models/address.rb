@@ -1,7 +1,7 @@
 class Address < ActiveRecord::Base
   belongs_to :parent, polymorphic: true
 
-  validates_presence_of :parent_id, :parent_type, :street, :city, :state, :postal_code
+  validates :parent, :street, :city, :state, :postal_code, presence: true
 
   def to_s
     street2 = "#{street2}\n" if street2.present?

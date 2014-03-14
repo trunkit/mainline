@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :company, polymorphic: true
-  has_one    :address, as: :parent
+  has_one    :address, as: :parent, inverse_of: :parent
 
   accepts_nested_attributes_for :address
 
