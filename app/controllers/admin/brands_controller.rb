@@ -17,6 +17,11 @@ class Admin::BrandsController < Admin::AbstractController
     end
   end
 
+  def destroy
+    Brand.find(params[:id]).destroy
+    redirect_to(action: :index)
+  end
+
   private
 
   def brand_params
