@@ -5,7 +5,7 @@
     </div>
 
     <div class="details">
-      <%= link_to(image_tag("feed/favorite.png"), item_favorite_path(item.id), method: :put, class: "favorite") if current_user && current_user.parent_type.blank? %>
+      <%= link_to(image_tag("feed/favorite.png"), item_favorite_path(item.id), method: :put, class: "favorite") if current_user %>
 
       <p class="name">
         <%= link_to(item.name, item, class: "fancybox fancybox.ajax") %><br>
@@ -17,7 +17,7 @@
       <% if current_user && current_user.parent_id.blank? %>
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>
-      <%= link_to("Support", [:support, item], class: "buy fancybox fancybox.ajax") %>
+      <%= link_to("Support", [:support, item], class: "buy fancybox fancybox.ajax") unless item.boutique == current_user.parent %>
       <% end %>
 
       <div class="social">
