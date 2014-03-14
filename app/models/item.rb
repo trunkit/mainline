@@ -24,6 +24,7 @@ class Item < ActiveRecord::Base
   def self.for_stream(params)
     scope = all
     scope = scope.for_category(params[:category]) if params[:category].present?
+    scope = scope.includes(:parent, :boutique)
     scope.order(created_at: :desc)
   end
 
