@@ -17,7 +17,11 @@
       <% if current_user && current_user.parent_id.blank? %>
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>
-      <%= link_to("Support", [:support, item], class: "buy fancybox fancybox.ajax") unless item.boutique == current_user.parent %>
+        <% if item.children.any?{|i| i.boutique == current_user.parent } %>
+        <%= link_to("Unsupport", [item, :support], method: :delete, class: "buy") %>
+        <% else %>
+        <%= link_to("Support", [item, :support], method: :post, class: "buy") unless item.boutique == current_user.parent %>
+        <% end %>
       <% end %>
 
       <div class="social">
@@ -28,7 +32,7 @@
     </div>
 
     <div class="info">
-      <% if current_user.try(:parent_id).blank? %>
+      <% if item.supplier != item.boutique %>
       <%= link_to("Curated by #{item.boutique.name}", item.boutique, class: "curator") %>
       <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier") %>
       <% else %>
