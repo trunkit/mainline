@@ -24,7 +24,7 @@ class Item < ActiveRecord::Base
   def self.for_stream(params)
     scope = all
     scope = scope.for_category(params[:category]) if params[:category].present?
-    scope = scope.includes(:parent, :boutique)
+    scope = scope.includes(:parent, :boutique, :children)
     scope.order(created_at: :desc)
   end
 
@@ -47,6 +47,26 @@ class Item < ActiveRecord::Base
     }
 
     search(query).page(page).per(per).records
+  end
+
+  alias_method :options_assoc, :options
+  alias_method :photos_assoc, :photos
+
+  def options
+    parent ? parent.options_assoc.readonly : options_assoc
+  end
+
+  def photos
+    parent ? parent.photos_assoc.readonly : photos_assoc
+  end
+
+  def support(boutique)
+    return false if self.boutique == boutique
+
+    child          = dup
+    child.parent   = (parent ? parent : self)
+    child.boutique = boutique
+    child.save
   end
 
   def primary_photo
