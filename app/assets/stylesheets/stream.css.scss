@@ -65,7 +65,12 @@
             color: #000;
             padding-top: 4px;
 
-            &.one-line { font: 20px/48px "Bebas Neue", sans-serif; }
+            &.one-line {
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              font: 20px/48px "Bebas Neue", sans-serif;
+            }
           }
         }
       }
@@ -107,7 +112,7 @@
 
         span.price {
           position: absolute;
-          top: 105px;
+          top: 125px;
           left: 0;
           width: 296px;
           margin: 5px 0 0;
