@@ -47,32 +47,34 @@ class Item < ActiveRecord::Base
     search(query).page(page).per(per).records
   end
 
-  alias_method :options_assoc, :options
-  alias_method :photos_assoc, :photos
-
-  def options
-    parent ? parent.options_assoc.readonly : options_assoc
-  end
-
-  def photos
-    parent ? parent.photos_assoc.readonly : photos_assoc
-  end
-
   def support(boutique)
-    return false if self.boutique == boutique
+    return false if supporter_ids.include?(boutique.id)
 
-    child          = dup
-    child.parent   = (parent ? parent : self)
-    child.boutique = boutique
-    child.save
+    Activity.
+      for_owner(boutique).
+      for_subject(self).
+      create({ action: "support" })
+  end
+
+  def unsupport(boutique)
+    activity = Activity.for_subject(self).for_owner(boutique).where(action: "support").first
+    activity.try(:destroy)
+  end
+
+  def supporter_ids(reload = false)
+    return @supporters if @supporters && !reload
+
+    activities = Activity.for_subject(self).where(action: "support", owner_type: "Boutique").select(:owner_id)
+    @supporter_ids = activities.map(&:owner_id)
+  end
+
+  def supporters(reload = false)
+    @supporters   = nil if reload
+    @supporters ||= Boutique.find(supporter_ids(reload))
   end
 
   def primary_photo
     photos.first || photos.build
-  end
-
-  def supplier
-    parent ? parent.boutique : boutique
   end
 
   def version
