@@ -4,13 +4,11 @@ class Item < ActiveRecord::Base
   acts_as_paranoid
   has_paper_trail
 
-  belongs_to :parent, class_name: "Item"
   belongs_to :boutique, counter_cache: true
   belongs_to :brand
 
-  has_many :options,  class_name: "ItemOption"
-  has_many :photos,   class_name: "ItemPhoto"
-  has_many :children, class_name: "Item", foreign_key: :parent_id, dependent: :destroy
+  has_many :options, class_name: "ItemOption"
+  has_many :photos,  class_name: "ItemPhoto"
 
   has_and_belongs_to_many :categories
 
