@@ -20,7 +20,15 @@ class Boutique < ActiveRecord::Base
 
   delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
 
-  def self.discover(params)
+  def follow(user)
+    scope = Activity.for_subject(self).for_owner(user).where(action: "follow")
+    scope.create if scope.count < 1
+  end
+
+  def unfollow(user)
+    activities = Activity.for_subject(self).for_owner(user).where(action: "follow")
+    activities.each(&:destroy)
+    true
   end
 
   # TODO: Add fallback photos

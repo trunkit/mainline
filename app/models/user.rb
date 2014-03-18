@@ -79,6 +79,14 @@ class User < ActiveRecord::Base
     Item.where(id: activities.map(&:subject_id))
   end
 
+  def followed_boutiques
+    boutique_ids = Activity.for_owner(self).
+      where(action: "follow", subject_type: "Boutique").
+      select(:subject_id).map(&:subject_id)
+
+    Boutique.where(id: boutique_ids)
+  end
+
   private
 
   def generate_password
