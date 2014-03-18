@@ -20,7 +20,7 @@ class Boutique < ActiveRecord::Base
 
   has_one  :primary_location, -> { where(primary: true) }, class_name: "Location", as: :company
 
-  before_create :generate_short_code
+  before_validation :generate_short_code
 
   validates_presence_of   :name, :short_code
   validates_uniqueness_of :short_code
