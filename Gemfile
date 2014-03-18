@@ -48,6 +48,9 @@ gem 'easypost'
 gem 'avalara', github: 'vizjerai/avalara'
 gem 'stripe'
 
+# Background Processing
+gem 'sidekiq'
+
 # Assets support
 gem 'bourbon'
 gem 'sass-rails',   '~> 4.0.0'
