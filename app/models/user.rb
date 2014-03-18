@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :carts
   has_many :orders
 
+  has_many :activities, inverse_of: :owner
+
   has_many :favorites
   has_many :favorite_items, class_name: "Item", through: :favorites, source: :item
 
@@ -65,6 +67,16 @@ class User < ActiveRecord::Base
 
   def twitter?
     provider == "twitter"
+  end
+
+  def favorite_items(page = 1, per = 25)
+    activities = Activity.
+      for_owner(self).
+      where(action: "favorite", subject_type: "Item").
+      page(page).per(per).
+      select(:subject_id)
+
+    Item.where(id: activities.map(&:subject_id))
   end
 
   private

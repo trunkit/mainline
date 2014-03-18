@@ -61,6 +61,19 @@ class Item < ActiveRecord::Base
     activity.try(:destroy)
   end
 
+  # False if not favorited,
+  # True if is now a favorite
+  def toggle_favorite(user)
+    scope = Activity.for_subject(self).for_owner(user).where(action: "favorite")
+
+    if activity = scope.first
+      activity.destroy
+      false
+    else
+      scope.create
+    end
+  end
+
   def supporter_ids(reload = false)
     return @supporters if @supporters && !reload
 
