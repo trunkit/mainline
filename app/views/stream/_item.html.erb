@@ -32,11 +32,11 @@
     </div>
 
     <div class="info">
-      <% if item.supplier != item.boutique %>
+      <% if false %>
       <%= link_to("Curated by #{item.boutique.name}", item.boutique, class: "curator") %>
       <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier") %>
       <% else %>
-      <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier one-line") %>
+      <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier one-line") %>
       <% end %>
     </div>
   </div>
