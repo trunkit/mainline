@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Core framework
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 # Persistence
 gem 'pg'
