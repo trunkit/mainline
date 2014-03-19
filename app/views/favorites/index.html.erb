@@ -7,7 +7,7 @@
   <% @items_by_boutique.each do |boutique, items| %>
     <%= render("stream/boutique", boutique: boutique) %>
     <% items.each do |item| %>
-    <%= render("stream/item", item: item) %>
+    <%= render("stream/item", activity: nil, item: item) %>
     <% end %>
     <div class="cb"></div>
   <% end %>
