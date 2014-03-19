@@ -31,6 +31,18 @@ class Boutique < ActiveRecord::Base
     true
   end
 
+  def supported_items(reload = false)
+    return @supported_items if @supported_items && !reload
+
+    item_ids = Activity.
+      for_owner(self).
+      where(action: "support", subject_type: "Item").
+      select(:subject_id).
+      map(&:subject_id)
+
+    Item.where(id: item_ids)
+  end
+
   # TODO: Add fallback photos
   def primary_photo(size = nil)
     if primary_location
