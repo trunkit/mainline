@@ -32,8 +32,7 @@ class Boutique < ActiveRecord::Base
   end
 
   def followers(reload = false)
-    return @followers if @followers && !reload
-    @followers = User.where(id: follower_ids(reload))
+    User.where(id: follower_ids(reload))
   end
 
   def follower_ids(reload = false)
