@@ -1,11 +1,11 @@
-<div class="notification error">
+<%= content_tag(:div, class: "notification error") do %>
   <em>Oh No!</em>
   It looks like you have nothing left in your "STREAM". Click on "SEARCH" to further customize, discover, and add new boutiques to your stream.
-</div>
+<% end if @activity_items.blank? %>
 
 <div id="stream">
-  <% @items.each do |item| %>
-    <%= render("stream/item", item: item) %>
+  <% @activity_items.each do |activity, item| %>
+    <%= render("stream/item", activity: activity, item: item) %>
   <% end %>
 </div>
 

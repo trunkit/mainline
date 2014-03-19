@@ -19,11 +19,27 @@ class Item < ActiveRecord::Base
     includes(:categories).references(:categories).where(conditions)
   }
 
-  def self.for_stream(params)
-    scope = all
-    scope = scope.for_category(params[:category]) if params[:category].present?
-    scope = scope.includes(:boutique)
-    scope.order(created_at: :desc)
+  def self.for_stream(user, params)
+    boutique_ids   = params[:boutique_id]
+    boutique_ids ||= user.boutiques_following.select(:id).map(&:id)
+
+    actions = user.parent_id.present? ? ['support', 'added'] : 'support'
+
+    activity_scope = Activity.where({
+      owner_type:   "Boutique",
+      owner_id:     boutique_ids,
+      action:       actions,
+      subject_type: "Item"
+    }).order(created_at: :desc)
+
+    item_ids = activity_scope.select(:subject_id).map(&:subject_id)
+
+    items = Item.where(id: item_ids)
+    items = items.for_category(params[:category]) if params[:category].present?
+    items = items.includes(:boutique).page(params[:page] || 1).per(params[:per] || 30)
+
+    activities = activity_scope.where(subject_id: items.map(&:id))
+    activities.map{|activity| [activity, items.detect{|i| i.id == activity.subject_id }] }
   end
 
   def self.discover(params)

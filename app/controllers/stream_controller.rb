@@ -1,6 +1,6 @@
 class StreamController < CatalogAbstractController
   def index
-    @items = Item.for_stream(params)
+    @activity_items = Item.for_stream(current_user, params)
   end
 
   def following
