@@ -45,15 +45,16 @@ class Boutique < ActiveRecord::Base
   end
 
   def supported_items(reload = false)
-    return @supported_items if @supported_items && !reload
+    Item.where(id: supported_item_ids(reload))
+  end
 
-    item_ids = Activity.
+  def supported_item_ids(reload = false)
+    @supported_item_ids   = nil if reload
+    @supported_item_ids ||= Activity.
       for_owner(self).
       where(action: "support", subject_type: "Item").
       select(:subject_id).
       map(&:subject_id)
-
-    @supported_items = Item.where(id: item_ids)
   end
 
   # TODO: Add fallback photos
