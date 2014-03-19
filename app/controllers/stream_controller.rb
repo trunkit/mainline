@@ -4,6 +4,6 @@ class StreamController < CatalogAbstractController
   end
 
   def following
-    @boutiques = Boutique.includes({ locations: :address })
+    @boutiques = current_user.boutiques_following.includes({ locations: :address })
   end
 end
