@@ -33,4 +33,12 @@ class ItemsController < CatalogAbstractController
       format.json { render(json: { favorite: status }) }
     end
   end
+
+  def support
+    Item.find(params[:id]).add_supporter(current_user.parent)
+  end
+
+  def unsupport
+    Item.find(params[:id]).remove_supporter(current_user.parent)
+  end
 end
