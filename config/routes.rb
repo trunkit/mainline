@@ -8,7 +8,7 @@ Trunkit::Application.routes.draw do
 
   resources :items do
     put "favorite" => "items#favorite"
-    resource :support, controller: "item_support"
+    resource :support, only: [:create, :destroy], controller: "item_support"
   end
 
   resources :boutiques, :brands, only: [:show] do
