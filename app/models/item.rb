@@ -12,6 +12,9 @@ class Item < ActiveRecord::Base
 
   has_and_belongs_to_many :categories
 
+  after_create  :add_activity_entry
+  after_destroy :remove_activity_entry
+
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 
   scope :for_category, ->(name_or_id) {
@@ -120,5 +123,22 @@ class Item < ActiveRecord::Base
     hsh[:states]        = boutique.locations.map(&:state)
 
     hsh
+  end
+
+private
+
+  def add_activity_entry
+    Activity.
+      for_subject(self).
+      for_owner(boutique).
+      create({ action: 'added' })
+  end
+
+  def remove_activity_entry
+    Activity.
+      for_subject(self).
+      for_owner(boutique).
+      where({ action: 'added' }).
+      each(&:destroy)
   end
 end
