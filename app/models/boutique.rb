@@ -31,6 +31,19 @@ class Boutique < ActiveRecord::Base
     true
   end
 
+  def followers(reload = false)
+    return @followers if @followers && !reload
+    @followers = User.where(id: follower_ids(reload))
+  end
+
+  def follower_ids(reload = false)
+    @follower_ids   = nil if reload
+    @follower_ids ||= Activity.
+      for_subject(self).
+      where(action: "follow", owner_type: "User").
+      select(:owner_id).map(&:owner_id)
+  end
+
   def supported_items(reload = false)
     return @supported_items if @supported_items && !reload
 
@@ -40,7 +53,7 @@ class Boutique < ActiveRecord::Base
       select(:subject_id).
       map(&:subject_id)
 
-    Item.where(id: item_ids)
+    @supported_items = Item.where(id: item_ids)
   end
 
   # TODO: Add fallback photos

@@ -77,12 +77,17 @@ class User < ActiveRecord::Base
     Item.where(id: activities.map(&:subject_id))
   end
 
-  def boutiques_following
-    boutique_ids = Activity.for_owner(self).
+  def boutiques_following(reload = false)
+    @boutiques_following   = nil if reload
+    @boutiques_following ||= Boutique.where(id: boutiques_following_ids(reload))
+  end
+
+  def boutiques_following_ids(reload = true)
+    @boutiques_following_ids   = nil if reload
+
+    @boutiques_following_ids ||= Activity.for_owner(self).
       where(action: "follow", subject_type: "Boutique").
       select(:subject_id).map(&:subject_id)
-
-    Boutique.where(id: boutique_ids)
   end
 
   private
