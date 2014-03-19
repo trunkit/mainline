@@ -5,7 +5,7 @@
 
 <div id="stream">
   <% @items.each do |item| %>
-    <%= render("stream/item", item: item) %>
+    <%= render("stream/item", activity: nil, item: item) %>
   <% end %>
 </div>
 

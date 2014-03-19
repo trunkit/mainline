@@ -1,8 +1,7 @@
 class ItemsController < CatalogAbstractController
   def index
-    rel    = current_user.parent.items
-    @items = params[:supported] ? rel.supported : rel.curated
-    @items = @items.for_category(params[:category]) if params[:category]
+    boutique = current_user.parent
+    @items = params[:supported] ? boutique.supported_items : boutique.items
   end
 
   def show
