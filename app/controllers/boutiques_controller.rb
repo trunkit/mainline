@@ -10,4 +10,12 @@ class BoutiquesController < CatalogAbstractController
   def show
     @boutique = Boutique.includes(:items, :primary_location).find(params[:id])
   end
+
+  def follow
+    Boutique.find(params[:id]).add_follower(current_user)
+  end
+
+  def unfollow
+    Boutique.find(params[:id]).remove_follower(current_user)
+  end
 end

@@ -11,7 +11,10 @@ Trunkit::Application.routes.draw do
     resource :support, controller: "item_support"
   end
 
-  resources :boutiques, :brands, only: [:show]
+  resources :boutiques, :brands, only: [:show] do
+    put 'follow',   on: :member
+    put 'unfollow', on: :member
+  end
 
   # Product discovery
   resource :discover, controller: 'discover'

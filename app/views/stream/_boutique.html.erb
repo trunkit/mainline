@@ -10,10 +10,14 @@
         <%= link_to("#{boutique.city}, #{boutique.state}", boutique) %>
       </p>
 
-      <%= link_to("Follow", boutique, class: "follow") %>
+      <% if current_user.boutiques_following_ids.include?(boutique.id) %>
+      <%= link_to("Unfollow", [:unfollow, boutique], method: :put, remote: true, class: "follow") %>
+      <% else %>
+      <%= link_to("Follow", [:follow, boutique], method: :put, remote: true, class: "follow") %>
+      <% end %>
 
       <p class="counts">
-        <%= content_tag(:span, "#{boutique.items.size} Supported Item#{'s' if boutique.items.size > 1}") if boutique.items.size > 0 %>
+        <%= content_tag(:span, "#{boutique.supported_items.size} Supported Item#{'s' if boutique.supported_items.size > 1}") if boutique.supported_items.size > 0 %>
       </p>
     </div>
   </div>
