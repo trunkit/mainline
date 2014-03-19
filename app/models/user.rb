@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
     Item.where(id: activities.map(&:subject_id))
   end
 
-  def followed_boutiques
+  def boutiques_following
     boutique_ids = Activity.for_owner(self).
       where(action: "follow", subject_type: "Boutique").
       select(:subject_id).map(&:subject_id)

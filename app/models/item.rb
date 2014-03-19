@@ -47,7 +47,7 @@ class Item < ActiveRecord::Base
     search(query).page(page).per(per).records
   end
 
-  def support(boutique)
+  def add_supporter(boutique)
     return false if supporter_ids.include?(boutique.id)
 
     Activity.
@@ -56,7 +56,7 @@ class Item < ActiveRecord::Base
       create({ action: "support" })
   end
 
-  def unsupport(boutique)
+  def remove_supporter(boutique)
     activity = Activity.for_subject(self).for_owner(boutique).where(action: "support").first
     activity.try(:destroy)
   end
