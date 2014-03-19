@@ -32,9 +32,9 @@
     </div>
 
     <div class="info">
-      <% if false %>
-      <%= link_to("Curated by #{item.boutique.name}", item.boutique, class: "curator") %>
-      <%= link_to("Supplied by #{item.supplier.name}", item.supplier, class: "supplier") %>
+      <% if activity %>
+      <%= link_to("Supported by #{activity.owner.name}", activity.owner, class: "curator") %>
+      <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier") %>
       <% else %>
       <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier one-line") %>
       <% end %>
