@@ -8,7 +8,14 @@ class BoutiquesController < CatalogAbstractController
   end
 
   def show
-    @boutique = Boutique.includes(:items, :primary_location).find(params[:id])
+    @boutique   = Boutique.includes(:items, :primary_location).find(params[:id])
+    @activities = Activity.
+      for_owner(@boutique).
+      where(action: current_user.parent.present? ? ["support", "added"] : "support").
+      where(subject_type: "Item")
+
+    items = Item.find(@activities.map(&:subject_id)).index_by(&:id)
+    @activities = @activities.map{|activity| [activity, items[activity.subject_id]] }
   end
 
   def follow

@@ -31,8 +31,8 @@
 </article>
 
 <div id="stream">
-  <% @boutique.supported_items.each do |item| %>
-    <%= render("stream/item", activity: nil, item: item) %>
+  <% @activity_items.each do |activity, item| %>
+    <%= render("stream/item", activity: activity, item: item) %>
   <% end %>
 </div>
 
