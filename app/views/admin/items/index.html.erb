@@ -12,7 +12,6 @@
         <th>Brand</th>
         <th>Curating Boutique</th>
         <th>Source</th>
-        <th>&nbsp;</th>
       </tr>
     </thead>
 
@@ -25,7 +24,6 @@
         <%= content_tag(:td, truncate(item.description)) %>
         <%= content_tag(:td, item.brand.name) %>
         <%= content_tag(:td, item.boutique.name) %>
-        <%= content_tag(:td, item.parent ? item.parent.boutique.name : "N/A") %>
 
         <td>
           <div class="dropdown">
