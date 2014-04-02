@@ -1,6 +1,6 @@
 class Admin::ItemsController < Admin::AbstractController
   def index
-    @items = Item.includes(:boutique, parent: :boutique)
+    @items = Item.includes(:boutique)
   end
 
   def new
