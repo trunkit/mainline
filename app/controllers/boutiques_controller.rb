@@ -21,10 +21,12 @@ class BoutiquesController < CatalogAbstractController
   end
 
   def follow
-    Boutique.find(params[:id]).add_follower(current_user)
+    @boutique = Boutique.find(params[:id])
+    @boutique.add_follower(current_user)
   end
 
   def unfollow
-    Boutique.find(params[:id]).remove_follower(current_user)
+    @boutique = Boutique.find(params[:id])
+    @boutique.remove_follower(current_user)
   end
 end

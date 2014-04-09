@@ -1,0 +1,1 @@
+$(".button.unfollow.boutique-<%= @boutique.id %>").replaceWith("<%= j(link_to("Follow", [:follow, @boutique], method: :put, remote: true, class: "follow button boutique-#{@boutique.id}")) %>");
