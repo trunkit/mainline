@@ -20,6 +20,12 @@ class Boutique < ActiveRecord::Base
 
   delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
 
+  alias_method :primary_location_without_fallback, :primary_location
+
+  def primary_location
+    primary_location_without_fallback || locations.first
+  end
+
   def add_follower(user)
     scope = Activity.for_subject(self).for_owner(user).where(action: "follow")
     scope.create if scope.count < 1
