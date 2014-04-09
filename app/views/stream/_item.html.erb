@@ -5,7 +5,7 @@
     </div>
 
     <div class="details">
-      <%= link_to(image_tag("feed/favorite.png"), item_favorite_path(item.id), method: :put, class: "favorite") if current_user %>
+      <%= link_to(image_tag("feed/favorite#{'-selected' if current_user.favorite_item_ids.include?(item.id)}.png"), item_favorite_path(item.id), method: :put, remote: true, class: "favorite item-#{item.id}") if current_user %>
 
       <p class="name">
         <%= link_to(item.name, item, class: "fancybox fancybox.ajax") %><br>
@@ -18,9 +18,9 @@
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>
         <% if current_user.parent.supported_item_ids.include?(item.id) %>
-        <%= link_to("Unsupport", [:unsupport, item], method: :put, remote: true, class: "buy") %>
+        <%= link_to("Unsupport", [:unsupport, item], method: :put, remote: true, class: "buy button item-#{item.id} unsupport") %>
         <% else %>
-        <%= link_to("Support", [:support, item], method: :put, remote: true, class: "buy") %>
+        <%= link_to("Support", [:support, item], method: :put, remote: true, class: "buy button item-#{item.id} support") %>
         <% end %>
       <% end %>
 

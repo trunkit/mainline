@@ -1,0 +1,8 @@
+(function() {
+  var favorited = <%= @status %>;
+
+  if(favorited)
+    $(".favorite.item-<%= @item.id %> img").attr("src", "<%= j(asset_path("feed/favorite-selected.png")) %>");
+  else
+    $(".favorite.item-<%= @item.id %> img").attr("src", "<%= j(asset_path("feed/favorite.png")) %>");
+})();

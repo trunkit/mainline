@@ -35,6 +35,8 @@
 
         <%= button_tag("Add to Cart", type: "submit") %>
       <% end if current_user.parent_type.blank? %>
+
+      <%= button_tag("Support") if current_user.parent_type.present? %>
     </div>
 
     <hr>
