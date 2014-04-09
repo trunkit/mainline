@@ -90,6 +90,7 @@ class Item < ActiveRecord::Base
       false
     else
       scope.create
+      true
     end
   end
 
