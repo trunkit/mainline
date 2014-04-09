@@ -67,14 +67,18 @@ class User < ActiveRecord::Base
     provider == "twitter"
   end
 
-  def favorite_items(page = 1, per = 25)
-    activities = Activity.
+  def favorite_items(reload = false)
+    @favorite_items   = nil if reload
+    @favorite_items ||= Item.where(id: favorite_item_ids(reload))
+  end
+
+  def favorite_item_ids(reload = false)
+    @favorite_item_ids   = nil if reload
+
+    @favorite_item_ids ||= Activity.
       for_owner(self).
       where(action: "favorite", subject_type: "Item").
-      page(page).per(per).
-      select(:subject_id)
-
-    Item.where(id: activities.map(&:subject_id))
+      select(:subject_id).map(&:subject_id)
   end
 
   def boutiques_following(reload = false)
