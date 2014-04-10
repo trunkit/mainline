@@ -24,16 +24,17 @@ class Item < ActiveRecord::Base
 
   def self.for_stream(user, params)
     boutique_ids   = params[:boutique_id]
-    boutique_ids ||= user.boutiques_following.select(:id).map(&:id)
+    boutique_ids ||= user.boutiques_following.select(:id).map(&:id) if user
 
-    actions = user.parent_id.present? ? ['support', 'added'] : 'support'
+    actions = user && user.parent_id.present? ? ['support', 'added'] : 'support'
 
     activity_scope = Activity.where({
       owner_type:   "Boutique",
-      owner_id:     boutique_ids,
       action:       actions,
       subject_type: "Item"
     }).order(created_at: :desc)
+
+    activity_scope = activity_scope.where(owner_id: boutique_ids) if boutique_ids.present?
 
     item_ids = activity_scope.select(:subject_id).map(&:subject_id)
 
