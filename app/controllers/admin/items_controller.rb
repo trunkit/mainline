@@ -30,11 +30,12 @@ class Admin::ItemsController < Admin::AbstractController
   def update
     @item = Item.find(params[:id])
 
-    if @item.errors.blank?
+    if @item.update_attributes(item_params)
       redirect_to([:edit, :admin, @item])
     else
       @brands = Brand.order(:name)
       @boutiques = Boutique.order(:name)
+      render(action: :edit)
     end
   end
 
@@ -46,6 +47,6 @@ class Admin::ItemsController < Admin::AbstractController
   private
 
   def item_params
-    params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_measurements, :brand_id, :boutique_id])
+    params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :boutique_id])
   end
 end

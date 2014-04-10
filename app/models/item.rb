@@ -110,6 +110,10 @@ class Item < ActiveRecord::Base
     photos.first || photos.build
   end
 
+  def has_measurements?
+    [:model_height, :model_chest, :model_hips, :model_waist, :model_size].map{|f| send(f) }.any?{|v| v.present? }
+  end
+
   def version
     versions.count + 1
   end

@@ -22,8 +22,8 @@
   <div class="row">
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
-        <%= f.label(:description) %>
-        <%= f.text_area(:description, class: "form-control") %>
+        <%= f.label(:construction) %>
+        <%= f.text_area(:construction, class: "form-control") %>
         <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
       </div>
     </div>
@@ -38,19 +38,60 @@
   </div>
 
   <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:description) %>
+        <%= f.text_area(:description, class: "form-control") %>
+        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
-        <%= f.label(:construction) %>
-        <%= f.text_area(:construction, class: "form-control") %>
-        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+        <%= f.label(:model_height) %>
+
+        <div class="input-group">
+          <%= f.text_field(:model_height, class: "form-control") %>
+          <span class="input-group-addon">&#8243;</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label(:model_chest, "Model bust") %>
+
+        <div class="input-group">
+          <%= f.text_field(:model_chest, class: "form-control") %>
+          <span class="input-group-addon">&#8243;</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label(:model_size, "Model is wearing size&hellip;".html_safe) %>
+        <%= f.text_field(:model_size, class: "form-control") %>
       </div>
     </div>
 
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
-        <%= f.label(:model_measurements) %>
-        <%= f.text_area(:model_measurements, class: "form-control") %>
-        <p class="help-block">This field will be parsed by <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a>.</p>
+        <%= f.label(:model_hips) %>
+
+        <div class="input-group">
+          <%= f.text_field(:model_hips, class: "form-control") %>
+          <span class="input-group-addon">&#8243;</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label(:model_waist) %>
+
+        <div class="input-group">
+          <%= f.text_field(:model_waist, class: "form-control") %>
+          <span class="input-group-addon">&#8243;</span>
+        </div>
       </div>
     </div>
   </div>

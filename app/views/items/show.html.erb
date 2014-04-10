@@ -58,7 +58,13 @@
 
     <%= content_tag(:div, class: "description") do %>
       <span>Model Measurements:</span>
-      <%= markdown(@item.model_measurements) %>
-    <% end if @item.model_measurements.present? %>
+      <ul>
+        <%= content_tag(:li, "#{@item.model_height}&#8243; height".html_safe) if @item.model_height.present? %>
+        <%= content_tag(:li, "#{@item.model_chest}&#8243; bust/chest".html_safe) if @item.model_chest.present? %>
+        <%= content_tag(:li, "#{@item.model_waist}&#8243; waist".html_safe) if @item.model_waist.present? %>
+        <%= content_tag(:li, "#{@item.model_hips}&#8243; hips".html_safe) if @item.model_hips.present? %>
+        <%= content_tag(:li, "Model is wearing a #{@item.model_size}") if @item.model_size.present? %>
+      </ul>
+    <% end if @item.has_measurements? %>
   </section>
 </article>
