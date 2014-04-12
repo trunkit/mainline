@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412225136) do
+ActiveRecord::Schema.define(version: 20140412230604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20140412225136) do
     t.decimal  "model_hips",   precision: 5, scale: 2
     t.text     "model_size"
     t.json     "sizes"
-    t.boolean  "approved"
+    t.boolean  "approved",                             default: false, null: false
   end
 
   create_table "locations", force: true do |t|
