@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412220720) do
+ActiveRecord::Schema.define(version: 20140412221129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20140412220720) do
     t.decimal  "model_waist",  precision: 5, scale: 2
     t.decimal  "model_hips",   precision: 5, scale: 2
     t.text     "model_size"
+    t.json     "sizes"
   end
 
   create_table "locations", force: true do |t|

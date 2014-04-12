@@ -7,8 +7,7 @@ class Item < ActiveRecord::Base
   belongs_to :boutique, counter_cache: true
   belongs_to :brand
 
-  has_many :options, class_name: "ItemOption"
-  has_many :photos,  class_name: "ItemPhoto"
+  has_many :photos, class_name: "ItemPhoto"
 
   has_and_belongs_to_many :categories
 
