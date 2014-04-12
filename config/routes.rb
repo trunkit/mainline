@@ -4,10 +4,10 @@ Trunkit::Application.routes.draw do
   # Catalog
   get "stream"           => "stream#index",     as: :stream
   get "stream/following" => "stream#following", as: :stream_following
-  get "favorites"        => "favorites#index",  as: :favorites
+
+  resources :favorites, only: [:index, :create]
 
   resources :items do
-    put "favorite" => "items#favorite"
     put 'support',   on: :member
     put 'unsupport', on: :member
   end

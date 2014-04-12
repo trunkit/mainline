@@ -24,11 +24,6 @@ class ItemsController < CatalogAbstractController
   def destroy
   end
 
-  def favorite
-    @item   = Item.find(params[:item_id])
-    @status = @item.toggle_favorite(current_user)
-  end
-
   def support
     @item = Item.find(params[:id])
     @item.add_supporter(current_user.parent)

@@ -67,18 +67,19 @@ class User < ActiveRecord::Base
     provider == "twitter"
   end
 
-  def favorite_items(reload = false)
-    @favorite_items   = nil if reload
-    @favorite_items ||= Item.where(id: favorite_item_ids(reload))
+  def favorite_item_activity_ids(reload = false)
+    favorite_item_activities(reload).map(&:id)
   end
 
-  def favorite_item_ids(reload = false)
-    @favorite_item_ids   = nil if reload
+  def favorite_item_activities(reload = false)
+    return @favorite_item_activities if @favorite_item_activities && !reload
 
-    @favorite_item_ids ||= Activity.
+    favorite_activity_ids ||= Activity.
       for_owner(self).
-      where(action: "favorite", subject_type: "Item").
+      where(action: "favorite", subject_type: "Activity").
       select(:subject_id).map(&:subject_id)
+
+    @favorite_item_activities ||= Activity.where(subject_type: "Item", id: favorite_activity_ids)
   end
 
   def boutiques_following(reload = false)
@@ -92,6 +93,18 @@ class User < ActiveRecord::Base
     @boutiques_following_ids ||= Activity.for_owner(self).
       where(action: "follow", subject_type: "Boutique").
       select(:subject_id).map(&:subject_id)
+  end
+
+  def toggle_favorite(activity)
+    scope = Activity.for_subject(activity).for_owner(self).where(action: "favorite")
+
+    if activity = scope.first
+      activity.destroy
+      false
+    else
+      scope.create
+      true
+    end
   end
 
   private
