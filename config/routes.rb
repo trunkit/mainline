@@ -57,6 +57,9 @@ Trunkit::Application.routes.draw do
     resources :brands, :categories, :orders
 
     resources :items do
+      put :approve, :unapprove, on: :member
+      get :pending_approval,    on: :collection
+
       resources :sizes,  controller: "item_sizes"
       resources :photos, controller: "item_photos"
     end

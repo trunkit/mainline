@@ -3,7 +3,15 @@
     <%= content_tag(:li, link_to("Brands", [:admin, :brands])) %>
     <%= content_tag(:li, link_to("Boutiques", [:admin, :boutiques])) %>
     <%= content_tag(:li, link_to("Categories", [:admin, :categories])) %>
-    <%= content_tag(:li, link_to("Items", [:admin, :items])) %>
+
+    <li>
+      <%= link_to("Items", [:admin, :items]) %>
+
+      <ul>
+        <%= content_tag(:li, link_to('Pending Approval', [:pending_approval, :admin, :items])) %>
+      </ul>
+    </li>
+
     <%= content_tag(:li, link_to("Orders", [:admin, :orders])) %>
     <%= content_tag(:li, link_to("Users", [:admin, :users])) %>
   </nav>

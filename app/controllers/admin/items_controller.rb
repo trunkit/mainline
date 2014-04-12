@@ -9,6 +9,11 @@ class Admin::ItemsController < Admin::AbstractController
     @items = Item.includes(:boutique)
   end
 
+  def pending_approval
+    @items = Item.includes(:boutique).where(approved: false)
+    render(action: :index)
+  end
+
   def new
     @item = Item.new
   end
@@ -37,6 +42,16 @@ class Admin::ItemsController < Admin::AbstractController
     else
       render(action: :edit)
     end
+  end
+
+  def approve
+    Item.find(params[:id]).grant_approval!
+    redirect_to([:admin, :items])
+  end
+
+  def unapprove
+    Item.find(params[:id]).revoke_approval!
+    redirect_to([:pending_approval, :admin, :items])
   end
 
   def destroy
