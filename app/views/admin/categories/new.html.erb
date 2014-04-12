@@ -1,0 +1,11 @@
+<%= render("admin/common/error", model: @category) if @category.errors.present? %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5>Add New Category</h5>
+  </div>
+
+  <div class="panel-body">
+    <%= render("form") %>
+  </div>
+</div>

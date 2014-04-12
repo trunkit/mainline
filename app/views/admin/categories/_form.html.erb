@@ -1,0 +1,19 @@
+<%= form_for([:admin, @category], role: "form") do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:name) %>
+        <%= f.text_field(:name, class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:parent_id) %>
+        <%= f.select(:parent_id, @categories, {}, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <%= button_tag((@category.persisted? ? "Update Category" : "Create Category"), class: "btn btn-default") %>
+<% end %>
