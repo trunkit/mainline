@@ -44,20 +44,14 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <%= content_tag(:h5, "Options for #{@item.name}") %>
+    <%= content_tag(:h5, "Sizes for #{@item.name}") %>
   </div>
 
   <div class="panel-body">
-    <% @item.options.group_by(&:name).each do |group, options| %>
-      <%= content_tag(:h5, group) %>
-
-      <% options.sort_by(&:price).each do |option| %>
-      <%= render("admin/options/form", item: @item, option: option) %>
-      <% end %>
-
-      <hr>
+    <% (@item.sizes || {}).each do |size, quantity| %>
+      <%= render("admin/sizes/form", item: @item, size: size) %>
     <% end %>
 
-    <%= render("admin/options/form", item: @item, option: @item.options.build) %>
+    <%= render("admin/sizes/form", item: @item, size: nil) %>
   </div>
 </div>

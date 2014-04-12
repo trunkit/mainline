@@ -1,0 +1,25 @@
+<%= form_tag([:admin, item, :sizes], role: "form") do %>
+  <div class="row">
+    <div class="col-md-3 col-xs-12">
+      <div class="form-group">
+        <%= label_tag(:size) %>
+        <%= text_field_tag(:size, size, class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-xs-12">
+      <div class="form-group">
+        <%= label_tag(:quantity) %>
+        <%= text_field_tag(:quantity, @item.sizes[size], class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <label style="width: 100%;">&nbsp;</label>
+        <%= button_tag((size ? "Update Size" : "Create Size"), class: "btn btn-default") %>
+        <%= link_to("Delete Size", admin_item_size_path(@item, id: size), class: "btn btn-danger", data: { method: :delete, confirm: "Are you sure that you want to delete this size?" }) if size %>
+      </div>
+    </div>
+  </div>
+<% end %>

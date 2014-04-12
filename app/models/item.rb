@@ -114,6 +114,20 @@ class Item < ActiveRecord::Base
     [:model_height, :model_chest, :model_hips, :model_waist, :model_size].map{|f| send(f) }.any?{|v| v.present? }
   end
 
+  def add_or_update_size(size, quantity)
+    sizes     ||= {}
+    sizes[size] = quantity
+    update_attribute(:sizes, sizes)
+    true
+  end
+
+  def remove_size(size)
+    sizes = self.sizes.dup
+    sizes.delete(size)
+    update_attribute(:sizes, sizes)
+    true
+  end
+
   def version
     versions.count + 1
   end

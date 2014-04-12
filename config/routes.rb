@@ -57,8 +57,8 @@ Trunkit::Application.routes.draw do
     resources :brands, :categories, :orders
 
     resources :items do
-      resources :item_options
-      resources :photos,  controller: "item_photos"
+      resources :sizes,  controller: "item_sizes"
+      resources :photos, controller: "item_photos"
     end
 
     resources :users, except: [:new, :show] do
