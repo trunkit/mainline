@@ -54,7 +54,7 @@ Trunkit::Application.routes.draw do
       resources :locations
     end
 
-    resources :brands, :orders
+    resources :brands, :categories, :orders
 
     resources :items do
       resources :item_options

@@ -125,6 +125,15 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:category_ids, "Categories") %>
+        <%= f.select(:category_ids, (@categories.map{|d| [d.name, d.id] }), {}, multiple: true, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
   <hr>
 
   <%= button_tag((@item.persisted? ? "Update Item" : "Create Item"), class: "btn btn-default") %>

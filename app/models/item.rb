@@ -10,7 +10,7 @@ class Item < ActiveRecord::Base
   has_many :options, class_name: "ItemOption"
   has_many :photos,  class_name: "ItemPhoto"
 
-  has_and_belongs_to_many :categories, counter_cache: true
+  has_and_belongs_to_many :categories
 
   after_create  :add_activity_entry
   after_destroy :remove_activity_entry

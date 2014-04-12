@@ -48,7 +48,11 @@ body {
       text-transform: uppercase;
 
       &.boutique { margin-left: 35px; }
-      &.system   { margin-left: 65px; }
+
+      &.system   {
+        margin-left: 10px;
+        > ul > li { padding: 0 17px; }
+      }
 
       ul {
         list-style: none;
