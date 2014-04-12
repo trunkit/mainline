@@ -11,7 +11,6 @@ class Item < ActiveRecord::Base
 
   has_and_belongs_to_many :categories
 
-  after_create  :add_activity_entry
   after_destroy :remove_activity_entry
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
@@ -64,6 +63,20 @@ class Item < ActiveRecord::Base
     }
 
     search(query).page(page).per(per).records
+  end
+
+  def grant_approval!
+    self.class.transaction do
+      update_attribute(:approved, true)
+      add_activity_entry
+    end
+  end
+
+  def revoke_approval!
+    self.class.transaction do
+      update_attribute(:approved, false)
+      remove_activity_entry
+    end
   end
 
   def add_supporter(boutique)
