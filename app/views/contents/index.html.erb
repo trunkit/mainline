@@ -6,13 +6,13 @@
       <%= f.text_field(:first_name, placeholder: "First Name") %>
       <%= f.text_field(:last_name, placeholder: "Last Name") %>
       <%= f.email_field(:email, placeholder: "Email") %>
-    </div>
 
-    <div class="right">
       <%= link_to("#", class: "email") do %>
         <span>Sign Up with Email</span>
       <% end %>
+    </div>
 
+    <div class="right">
       <%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
         <%= image_tag("home/twitter.png") %>
         <span>Sign Up with Twitter</span>
@@ -32,7 +32,7 @@
   <% @activity_items.each do |activity, item| %>
     <%= render("stream/item", activity: activity, item: item) %>
   <% end %>
-</div>
+</section>
 
 <script>
 $(function() {
