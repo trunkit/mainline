@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412230604) do
+ActiveRecord::Schema.define(version: 20140412235320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,13 +91,6 @@ ActiveRecord::Schema.define(version: 20140412230604) do
 
   add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
 
-  create_table "categories_items", id: false, force: true do |t|
-    t.integer "category_id"
-    t.integer "item_id"
-  end
-
-  add_index "categories_items", ["category_id", "item_id"], name: "index_categories_items_on_category_id_and_item_id", using: :btree
-
   create_table "item_photos", force: true do |t|
     t.integer  "item_id"
     t.string   "url"
@@ -116,13 +109,15 @@ ActiveRecord::Schema.define(version: 20140412230604) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "brand_id"
-    t.decimal  "model_height", precision: 5, scale: 2
-    t.decimal  "model_chest",  precision: 5, scale: 2
-    t.decimal  "model_waist",  precision: 5, scale: 2
-    t.decimal  "model_hips",   precision: 5, scale: 2
+    t.decimal  "model_height",          precision: 5, scale: 2
+    t.decimal  "model_chest",           precision: 5, scale: 2
+    t.decimal  "model_waist",           precision: 5, scale: 2
+    t.decimal  "model_hips",            precision: 5, scale: 2
     t.text     "model_size"
     t.json     "sizes"
-    t.boolean  "approved",                             default: false, null: false
+    t.boolean  "approved",                                      default: false, null: false
+    t.integer  "primary_category_id"
+    t.integer  "secondary_category_id"
   end
 
   create_table "locations", force: true do |t|
