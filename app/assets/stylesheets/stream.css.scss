@@ -94,20 +94,26 @@
         p.name {
           position: absolute;
           top: 30px;
-          left: 0px;
-          width: 300px;
+          left: 5px;
+          width: 290px;
           font-weight: 100;
           letter-spacing: 0px;
           text-align: center;
+
           a {
-            font: 200 15px/20px "Helvetica LT Std", sans-serif;
-            font-weight: 200;
+            font: 200 15px/22px "Helvetica LT Std", sans-serif;
             letter-spacing: 2px;
             text-decoration: none;
             color: #fff;
+
             &:first-child {
+              display: block;
+              overflow: hidden;
+              height: 22px;
+              text-overflow: ellipsis;
               font: 100 15px/20px "Bebas", sans-serif;
               letter-spacing: 4px;
+              white-space: nowrap;
             }
           }
         }
@@ -194,9 +200,11 @@
     > div.details {
       display: block;
       height: 358px;
+
       p.name {
         position: static;
         padding-top: 80px;
+
         a:first-child {
           font: 16px/21px "Bebas";
           letter-spacing: 6px;
