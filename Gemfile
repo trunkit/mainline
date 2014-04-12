@@ -9,6 +9,7 @@ gem 'rails', '4.0.4'
 gem 'pg'
 gem 'pg_array_parser'
 gem 'paranoia'
+gem 'acts_as_tree'
 gem 'paper_trail'
 
 # Miscellaneous
