@@ -35,6 +35,6 @@ class CatalogAbstractController < ApplicationController
   end
 
   def categories
-    @categories ||= Category.all
+    @categories ||= Category.where(parent_id: nil).order(:name)
   end
 end
