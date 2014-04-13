@@ -19,10 +19,11 @@ class Admin::ItemsController < Admin::AbstractController
   end
 
   def create
-    @item            = Item.create(item_params)
+    @item            = Item.new(item_params)
+    @item.approved   = true
     @item.categories = Category.find(category_ids)
 
-    if @item.errors.blank?
+    if @item.save
       redirect_to([:edit, :admin, @item])
     else
       render(action: :new)
