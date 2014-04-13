@@ -128,8 +128,15 @@
   <div class="row">
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
-        <%= f.label(:category_ids, "Categories") %>
-        <%= f.select(:category_ids, (@categories.map{|d| [d.name, d.id] }), {}, multiple: true, class: "form-control") %>
+        <%= f.label(:primary_category_id, "Primary Category") %>
+        <%= f.select(:primary_category_id, (@primary_categories.map{|d| [d.name, d.id] }), {}, class: "form-control") %>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:secondary_category_id, "Secondary Category") %>
+        <%= f.select(:secondary_category_id, [], {}, class: "form-control") %>
       </div>
     </div>
   </div>

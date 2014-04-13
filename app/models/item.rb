@@ -9,15 +9,15 @@ class Item < ActiveRecord::Base
 
   has_many :photos, class_name: "ItemPhoto"
 
-  has_and_belongs_to_many :categories
+  belongs_to :primary_category,   class_name: "Category"
+  belongs_to :secondary_category, class_name: "Category"
 
   after_destroy :remove_activity_entry
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
 
-  scope :for_category, ->(name_or_id) {
-    conditions = name_or_id.is_a?(Fixnum) ? { "categories.id" => name_or_id } : { "categories.name" => name_or_id }
-    includes(:categories).references(:categories).where(conditions)
+  scope :for_category, ->(id) {
+    where("primary_category_id = ? OR secondary_category_id = ?", id.to_i, id.to_i)
   }
 
   def self.for_stream(user, params)
