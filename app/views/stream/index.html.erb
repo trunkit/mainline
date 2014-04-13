@@ -1,3 +1,14 @@
+<%= content_tag(:div, id: "stream-subcategories") do %>
+  <nav>
+    <ul>
+      <%= content_tag(:li, link_to("All #{@category.name}", [:stream, @category])) %>
+      <% @subcategories.each do |category| %>
+      <%= content_tag(:li, link_to(category.name, [:stream, category])) %>
+      <% end %>
+    </ul>
+  </nav>
+<% end if @category %>
+
 <%= content_tag(:div, class: "notification error") do %>
   <em>Oh No!</em>
   It looks like you have nothing left in your "STREAM". Click on "SEARCH" to further customize, discover, and add new boutiques to your stream.

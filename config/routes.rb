@@ -2,8 +2,9 @@ Trunkit::Application.routes.draw do
   root to: "contents#index"
 
   # Catalog
-  get "stream"           => "stream#index",     as: :stream
-  get "stream/following" => "stream#following", as: :stream_following
+  get "stream"                    => "stream#index",     as: :stream
+  get "stream/following"          => "stream#following", as: :stream_following
+  get "stream/category/:category" => "stream#index",     as: :stream_category
 
   resources :favorites, only: [:index, :create]
 

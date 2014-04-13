@@ -1,3 +1,29 @@
+#stream-subcategories {
+  padding: 5px;
+  margin: 0 0 10px;
+  height: 30px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      float: left;
+      margin: 0;
+      padding: 0 10px;
+      line-height: 30px;
+
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 #stream {
   position: relative;
   z-index: 2;
