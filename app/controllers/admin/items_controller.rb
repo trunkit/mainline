@@ -1,8 +1,9 @@
 class Admin::ItemsController < Admin::AbstractController
   before_filter do
-    @brands = Brand.order(:name)
-    @boutiques = Boutique.order(:name)
-    @categories = Category.order(:name)
+    @brands               = Brand.order(:name)
+    @boutiques            = Boutique.order(:name)
+    @primary_categories   = Category.where(parent_id: nil).order(:name)
+    @secondary_categories = Category.where.not(parent_id: nil).order(:name).group_by(&:parent_id)
   end
 
   def index
@@ -19,9 +20,8 @@ class Admin::ItemsController < Admin::AbstractController
   end
 
   def create
-    @item            = Item.new(item_params)
-    @item.approved   = true
-    @item.categories = Category.find(category_ids)
+    @item          = Item.new(item_params)
+    @item.approved = true
 
     if @item.save
       redirect_to([:edit, :admin, @item])
@@ -35,8 +35,7 @@ class Admin::ItemsController < Admin::AbstractController
   end
 
   def update
-    @item            = Item.find(params[:id])
-    @item.categories = Category.find(category_ids)
+    @item = Item.find(params[:id])
 
     if @item.update_attributes(item_params)
       redirect_to([:edit, :admin, @item])
@@ -63,10 +62,6 @@ class Admin::ItemsController < Admin::AbstractController
   private
 
   def item_params
-    params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :boutique_id])
-  end
-
-  def category_ids
-    Array.wrap(params[:item].try(:[], :category_ids)).reject(&:blank?)
+    params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :boutique_id, :primary_category_id, :secondary_category_id])
   end
 end
