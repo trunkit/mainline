@@ -65,6 +65,10 @@ class Item < ActiveRecord::Base
     search(query).page(page).per(per).records
   end
 
+  def sizes
+    self[:sizes] || {}
+  end
+
   def grant_approval!
     self.class.transaction do
       update_attribute(:approved, true)
