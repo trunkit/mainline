@@ -1,3 +1,20 @@
+<%= form_for(:photo, url: [@item, :photos], multipart: true, html: { id: "photo-upload" }) do |f| %>
+  <div class="separator">
+    <span>Photos</span>
+  </div>
+
+  <div class="row photo">
+    <% @item.photos.each do |photo| %>
+    <%= image_tag(photo.url.thumb) %>
+    <% end %>
+
+    <%= content_tag(:span, class: "button") do %>
+      <span>Add Photo(s)</span>
+      <%= f.file_field(:file, multiple: true) %>
+    <% end %>
+  </div>
+<% end if @item.persisted? %>
+
 <%= form_for(@item) do |f| %>
   <div class="separator">
     <span>Basic Info</span>
@@ -11,7 +28,7 @@
 
     <div class="col-2">
       <%= f.label(:price) %>
-      <%= f.text_field(:price, required: true, class: "required") %>
+      <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, class: "required") %>
     </div>
   </div>
 
@@ -36,6 +53,13 @@
     <div class="col-2">
       <%= f.label(:secondary_category_id) %>
       <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:sizes) %>
+      <%= f.text_field(:sizes, value: @item.sizes.keys.join(", ")) %>
     </div>
   </div>
 
@@ -89,7 +113,6 @@
   </div>
 
   <hr>
-
   <%= submit_tag(@item.persisted? ? "Update Item" : "Add Item") %>
 <% end %>
 
@@ -111,5 +134,15 @@ $(function() {
     }
 
   }).trigger("change");
+
+  $("#photo-upload").fileupload({
+    dataType: 'script',
+    start: function(e) { $.fancybox.showLoading(); }
+  });
+
+  $(".photo .button span").click(function() {
+    $("#photo-upload input[type=file]").click();
+    return false;
+  })
 });
 </script>

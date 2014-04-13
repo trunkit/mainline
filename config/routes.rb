@@ -11,6 +11,8 @@ Trunkit::Application.routes.draw do
   resources :items do
     put 'support',   on: :member
     put 'unsupport', on: :member
+
+    resources :photos, controller: "item_photos"
   end
 
   resources :boutiques, :brands, only: [:show] do

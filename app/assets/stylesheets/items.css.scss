@@ -91,14 +91,41 @@ article.item {
     float: left;
     width: 100%;
     margin: 0 0 10px;
+    font: 14px/20px "Helvetica LT Std", sans-serif;
+    letter-spacing: 1px;
+
+    p {
+      margin: 0;
+      padding: 0 0 7px;
+    }
 
     label, input, select, textarea { float: left; }
     label { text-align: right; }
 
+    &.photo {
+      img {
+        float: left;
+        margin: 0 10px 0 0;
+      }
+
+      .button {
+        span {
+          display: block;
+          float: left;
+          width: 60px;
+          height: 60px;
+          border: 2px solid #000;
+          text-align: left;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        input { display: none; }
+      }
+    }
+
     > div {
       float: left;
-      font: 14px/20px "Helvetica LT Std", sans-serif;
-      letter-spacing: 1px;
 
       &.col-2 {
         width: 50%;
@@ -108,7 +135,7 @@ article.item {
           padding: 0 2.5% 0 0;
         }
 
-        input, textarea, select { width: 60%; }
+        input[type="text"], textarea, select { width: 60%; }
       }
 
       &.col-4 {
@@ -119,7 +146,7 @@ article.item {
           padding: 0 2.5% 0 0;
         }
 
-        input, textarea, select { width: 40%; }
+        input[type="text"], textarea, select { width: 40%; }
       }
     }
   }
@@ -138,9 +165,8 @@ article.item {
     display: block;
     float: none;
     clear: both;
-    width: 160px;
-    margin: 0 auto;
-    padding: 0;
+    margin: 0 auto 10px;
+    padding: 0 20px;
     font: 16px/36px "Bebas Neue", sans-serif;
     letter-spacing: 6px;
     border: 0;
