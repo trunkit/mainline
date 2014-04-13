@@ -22,7 +22,7 @@
       <ul>
         <%= content_tag(:li, link_to("All", items_path(supported: true))) %>
         <% categories.each do |category| %>
-        <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category.name))) %>
+        <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category))) %>
         <% end %>
       </ul>
     <% end %>
