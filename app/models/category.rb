@@ -8,4 +8,13 @@ class Category < ActiveRecord::Base
   def to_param
     "#{id}-#{name.parameterize}"
   end
+
+  def serializable_hash(opts = nil)
+    opts ||= {}
+
+    opts[:except]  = Array.wrap(opts[:except])
+    opts[:except] << :items_count
+
+    super(opts)
+  end
 end
