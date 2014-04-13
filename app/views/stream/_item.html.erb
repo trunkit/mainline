@@ -14,6 +14,8 @@
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
 
+      <%= link_to("Edit", [:edit, item], class: "buy button edit item-#{item.id}") if current_user && current_user.parent_type == "Boutique" && current_user.parent_id == item.boutique_id %>
+
       <% if current_user && current_user.parent_id.blank? %>
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>

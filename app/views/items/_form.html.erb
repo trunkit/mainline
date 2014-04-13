@@ -1,0 +1,115 @@
+<%= form_for(@item) do |f| %>
+  <div class="separator">
+    <span>Basic Info</span>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:name) %>
+      <%= f.text_field(:name, required: true, class: "required") %>
+    </div>
+
+    <div class="col-2">
+      <%= f.label(:price) %>
+      <%= f.text_field(:price, required: true, class: "required") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:description) %>
+      <%= f.text_area(:description, required: true, class: "required") %>
+    </div>
+
+    <div class="col-2">
+      <%= f.label(:brand_id) %>
+      <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] }) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:primary_category_id) %>
+      <%= f.select(:primary_category_id, @primary_categories.map{|c| [c.name, c.id] }, {}, required: true, class: "required") %>
+    </div>
+
+    <div class="col-2">
+      <%= f.label(:secondary_category_id) %>
+      <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
+    </div>
+  </div>
+
+  <div class="separator">
+    <span>Details</span>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:fit) %>
+      <%= f.text_area(:fit) %>
+    </div>
+
+    <div class="col-2">
+      <%= f.label(:construction) %>
+      <%= f.text_area(:construction) %>
+    </div>
+  </div>
+
+  <div class="separator">
+    <span>Model Measurements</span>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <%= f.label(:model_height, 'height') %>
+      <%= f.text_field(:model_height) %>
+    </div>
+
+    <div class="col-4">
+      <%= f.label(:model_chest, 'bust') %>
+      <%= f.text_field(:model_chest) %>
+    </div>
+
+    <div class="col-4">
+      <%= f.label(:model_waist, 'waist') %>
+      <%= f.text_field(:model_waist) %>
+    </div>
+
+    <div class="col-4">
+      <%= f.label(:model_hips, 'hips') %>
+      <%= f.text_field(:model_hips) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:model_size, 'Model is wearing a ') %>
+      <%= f.text_field(:model_size, placeholder: "small, medium, large, etc.") %>
+    </div>
+  </div>
+
+  <hr>
+
+  <%= submit_tag(@item.persisted? ? "Update Item" : "Add Item") %>
+<% end %>
+
+<script>
+$(function() {
+  var secondaryCategories = <%= @secondary_categories.to_json.html_safe %>;
+
+  $("#item_primary_category_id").change(function() {
+    options = secondaryCategories[$(this).val()];
+    target  = $("#item_secondary_category_id");
+    target.empty();
+
+    if(options === undefined)
+      return false;
+
+    for(i = 0; i < options.length; i++) {
+      e = options[i];
+      target.append($("<option></option>").attr("value", e.id).text(e.name));
+    }
+
+  }).trigger("change");
+});
+</script>
