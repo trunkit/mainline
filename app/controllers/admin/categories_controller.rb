@@ -5,7 +5,7 @@ class Admin::CategoriesController < ApplicationController
 
   def new
     @category   = Category.new
-    @categories = Category.all.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
+    @categories = Category.roots.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
   end
 
   def create
@@ -14,14 +14,14 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to([:edit, :admin, @category])
     else
-      @categories = Category.all.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
+      @categories = Category.roots.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
       render(action: :new)
     end
   end
 
   def edit
     @category   = Category.find(params[:id])
-    @categories = Category.all.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
+    @categories = Category.root.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
   end
 
   def update
