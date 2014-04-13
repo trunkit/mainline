@@ -6,7 +6,7 @@
       <ul>
         <%= content_tag(:li, link_to("All", stream_path)) %>
         <% categories.each do |category| %>
-        <%= content_tag(:li, link_to(category.name, stream_path(category: category.name))) %>
+        <%= content_tag(:li, link_to(category.name, stream_path(category: category.to_param))) %>
         <% end %>
         <%= content_tag(:li, link_to("Following", stream_following_path, class: "button")) %>
       </ul>
