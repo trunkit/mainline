@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, UserPhotoUploader
 
+  delegate :items, to: :parent
+
   class << self
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
       user = User.where(provider: auth.provider, uid: auth.uid).first
