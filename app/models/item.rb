@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
   belongs_to :boutique, counter_cache: true
   belongs_to :brand
 
-  has_many :photos, class_name: "ItemPhoto", -> { order("position ASC") }
+  has_many :photos, -> { order("position ASC") }, class_name: "ItemPhoto"
 
   belongs_to :primary_category,   class_name: "Category"
   belongs_to :secondary_category, class_name: "Category"
