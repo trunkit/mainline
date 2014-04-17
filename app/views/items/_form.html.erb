@@ -115,31 +115,6 @@
 <script>
 $(function() {
   var secondaryCategories = <%= @secondary_categories.to_json.html_safe %>;
-
-  $("#item_primary_category_id").change(function() {
-    options = secondaryCategories[$(this).val()];
-    target  = $("#item_secondary_category_id");
-    target.empty();
-
-    if(options === undefined)
-      return false;
-
-    for(i = 0; i < options.length; i++) {
-      e = options[i];
-      target.append($("<option></option>").attr("value", e.id).text(e.name));
-    }
-
-  }).trigger("change");
-
-  $("#photo-upload").fileupload({
-    dataType: 'script',
-    start: function(e) { $.fancybox.showLoading(); },
-    stop: function(e) { $.fancybox.hideLoading(); }
-  });
-
-  $(".photo .button span").click(function() {
-    $("#photo-upload input[type=file]").click();
-    return false;
-  })
+  SiteBindings.item.form(<%= @item.id %>, secondaryCategories);
 });
 </script>

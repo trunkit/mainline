@@ -1,1 +1,2 @@
-$("#item-photos").replaceWith("<%= j(render(partial: "items/item_photo", collection: @item.photos, as: :photo)) %>");
+$("#item-photos").html("<%= j(render(partial: "items/item_photo", collection: @item.photos, as: :photo)) %>");
+SiteBindings.item.sortablePhotos(<%= @item.id %>);

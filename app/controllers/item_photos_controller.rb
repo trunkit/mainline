@@ -9,6 +9,14 @@ class ItemPhotosController < ApplicationController
     end
   end
 
+  def reorder
+    params[:photo_ids].each_with_index do |photo_id, i|
+      @item.photos.find(photo_id).set_list_position(i + 1)
+    end
+
+    render("create")
+  end
+
   def destroy
     @item.photos.find(params[:id]).destroy
     render("create")

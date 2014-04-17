@@ -12,7 +12,9 @@ Trunkit::Application.routes.draw do
     put 'support',   on: :member
     put 'unsupport', on: :member
 
-    resources :photos, controller: "item_photos"
+    resources :photos, controller: "item_photos" do
+      put "reorder", on: :collection
+    end
   end
 
   resources :boutiques, :brands, only: [:show] do
