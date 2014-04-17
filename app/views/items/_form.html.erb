@@ -4,13 +4,13 @@
   </div>
 
   <div class="row photo">
-    <% @item.photos.each do |photo| %>
-    <%= image_tag(photo.url.thumb) %>
-    <% end %>
+    <div id="item-photos">
+      <%= render(partial: "items/item_photo", collection: @item.photos, as: :photo) %>
+    </div>
 
     <%= content_tag(:span, class: "button") do %>
       <span>Add Photo(s)</span>
-      <%= f.file_field(:file, multiple: true) %>
+      <%= f.file_field(:url, multiple: true) %>
     <% end %>
   </div>
 <% end if @item.persisted? %>
@@ -57,10 +57,6 @@
   </div>
 
   <div class="row">
-    <div class="col-2">
-      <%= f.label(:sizes) %>
-      <%= f.text_field(:sizes, value: @item.sizes.keys.join(", ")) %>
-    </div>
   </div>
 
   <div class="separator">
@@ -137,7 +133,8 @@ $(function() {
 
   $("#photo-upload").fileupload({
     dataType: 'script',
-    start: function(e) { $.fancybox.showLoading(); }
+    start: function(e) { $.fancybox.showLoading(); },
+    stop: function(e) { $.fancybox.hideLoading(); }
   });
 
   $(".photo .button span").click(function() {

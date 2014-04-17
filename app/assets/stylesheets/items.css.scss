@@ -103,9 +103,24 @@ article.item {
     label { text-align: right; }
 
     &.photo {
-      img {
+      div.item-photo {
+        position: relative;
         float: left;
         margin: 0 10px 0 0;
+
+        a.delete {
+          display: none;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          color: #fff;
+          background: #000;
+          text-align: center;
+          text-decoration: none;
+        }
+
+        &:hover a.delete { display: block; }
       }
 
       .button {

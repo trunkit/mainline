@@ -1,0 +1,4 @@
+<div class="item-photo">
+  <%= link_to(image_tag(photo.url.thumb), photo.url.url, class: "fancybox") %>
+  <%= link_to("remove", item_photo_path(@item, photo), class: "delete", data: { confirm: "Are you sure that you want to delete this photo?", method: :delete, remote: true }) %>
+</div>
