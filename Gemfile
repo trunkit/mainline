@@ -10,6 +10,7 @@ gem 'pg'
 gem 'pg_array_parser'
 gem 'paranoia'
 gem 'acts_as_tree'
+gem 'acts_as_list'
 gem 'paper_trail'
 
 # Miscellaneous
