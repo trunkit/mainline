@@ -115,6 +115,6 @@
 <script>
 $(function() {
   var secondaryCategories = <%= @secondary_categories.to_json.html_safe %>;
-  SiteBindings.item.form(<%= @item.id %>, secondaryCategories);
+  SiteBindings.item.form(<%= @item.id || 'null' %>, secondaryCategories);
 });
 </script>

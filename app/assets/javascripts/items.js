@@ -28,7 +28,8 @@ SiteBindings.item = {
 
     $(document).on("ajax:beforeSend", function() { $.fancybox.showLoading(); });
 
-    SiteBindings.item.sortablePhotos(itemId);
+    if(itemId)
+      SiteBindings.item.sortablePhotos(itemId);
   },
   sortablePhotos: function(itemId) {
     $("#item-photos").sortable({
