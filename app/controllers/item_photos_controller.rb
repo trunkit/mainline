@@ -19,6 +19,5 @@ class ItemPhotosController < ApplicationController
 
   def destroy
     @item.photos.find(params[:id]).destroy
-    render("create")
   end
 end

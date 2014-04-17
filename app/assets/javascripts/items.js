@@ -26,8 +26,7 @@ SiteBindings.item = {
       return false;
     });
 
-    $("a.delete").on("ajax:beforeSend", function() { $.fancybox.showLoading(); });
-    $("a.delete").on("ajax:complete",   function() { $.fancybox.hideLoading(); });
+    $(document).on("ajax:beforeSend", function() { $.fancybox.showLoading(); });
 
     SiteBindings.item.sortablePhotos(itemId);
   },
