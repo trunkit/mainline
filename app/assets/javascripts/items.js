@@ -94,7 +94,24 @@ SiteBindings.item = {
 
     newRow.find("input").change(newRowChangeBinding);
 
-    form.on(bindType, function() {
+    form.bind(bindType, function() {
+      element.find(".row").each(function() {
+        var label = $(this).find("input[name=name]").val();
+        var value = parseInt($(this).find("input[name=quantity]").val());
+
+        var attrs = {
+          "name": "item[sizes]["+label+"]",
+          "type": "hidden"
+        };
+
+        if(isNaN(value) || value < 0)
+          value = 0;
+
+        if(label.length > 0)
+          form.append($("<input>").attr(attrs).val(value));
+
+        $(this).find("input").attr("disabled", true);
+      });
     });
   }
 };

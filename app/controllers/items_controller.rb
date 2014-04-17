@@ -63,6 +63,8 @@ class ItemsController < CatalogAbstractController
 private
 
   def item_params
-    params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id])
+    params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id]).tap do |whitelisted|
+      whitelisted[:sizes] = params[:item][:sizes]
+    end
   end
 end
