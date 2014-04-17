@@ -1,0 +1,17 @@
+<div class="item-quantity">
+  <% @item.sizes.each do |name, quantity| %>
+  <div class="row">
+    <%= text_field_tag(:name, name) %>
+    <%= text_field_tag(:quantity, quantity) %>
+    <a href="#" class="increase">+</a>
+    <a href="#" class="decrease">-</a>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <%= text_field_tag(:name) %>
+    <%= text_field_tag(:quantity) %>
+    <a href="#" class="increase">+</a>
+    <a href="#" class="decrease">-</a>
+  </div>
+</div>

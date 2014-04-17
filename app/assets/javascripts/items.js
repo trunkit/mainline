@@ -30,6 +30,8 @@ SiteBindings.item = {
 
     if(itemId)
       SiteBindings.item.sortablePhotos(itemId);
+
+    SiteBindings.item.quantities();
   },
   sortablePhotos: function(itemId) {
     $("#item-photos").sortable({
@@ -50,6 +52,49 @@ SiteBindings.item = {
           url: "/items/" + itemId + "/photos/reorder"
         });
       }
+    });
+  },
+  quantities: function() {
+    element  = $('.item-quantity');
+    form     = element.parents('form');
+    newRow   = element.find("div.row").last();
+    bindType = (form.data("remote") == "true") ? "ajax:beforeSend" : "submit";
+
+    $(document).on("click", ".item-quantity .increase", function() {
+      qtyElem = $(this).siblings("input[name=quantity]");
+      qty     = parseInt(qtyElem.val()) + 1;
+
+      if(isNaN(qty))
+        qty = 1;
+
+      qtyElem.val(qty);
+
+      return false;
+    });
+
+    $(document).on("click", ".item-quantity .decrease", function() {
+      qtyElem = $(this).siblings("input[name=quantity]");
+      qty     = parseInt(qtyElem.val()) - 1;
+
+      if(qty < 0 || isNaN(qty))
+        qty = 0;
+
+      qtyElem.val(qty);
+
+      return false;
+    });
+
+    newRowChangeBinding = function() {
+      $(this).parent().find("input").unbind("change");
+      newRow = $(this).parent().clone();
+      newRow.find("input").val("").change(newRowChangeBinding);
+
+      element.append(newRow);
+    };
+
+    newRow.find("input").change(newRowChangeBinding);
+
+    form.on(bindType, function() {
     });
   }
 };
