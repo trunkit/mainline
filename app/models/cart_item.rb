@@ -6,8 +6,6 @@ class CartItem < ActiveRecord::Base
   validates :quantity, :item_id, :item_version, :cart_id, presence: true
   validates :item_id, :item_version, :cart_id, numericality: true
 
-  before_save :validate_item_options
-
   def item
     return @item if @item
 
@@ -20,22 +18,11 @@ class CartItem < ActiveRecord::Base
     @item
   end
 
-  def option_values
-    return [] if item_options.blank?
-    item_options.map{|group, id| item.options.find(id) }
-  end
-
   def unit_price
-    price = option_values.inject(item.price) {|price, option| price += option.price }
+    item.price
   end
 
   def total_price
     quantity * unit_price
-  end
-
-  private
-
-  # TODO: Add item option validations
-  def validate_item_options
   end
 end
