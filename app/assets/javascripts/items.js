@@ -55,7 +55,7 @@ SiteBindings.item = {
     });
   },
   quantities: function() {
-    element  = $('.item-quantity');
+    element  = $('div.item-quantity');
     form     = element.parents('form');
     newRow   = element.find("div.row").last();
     bindType = (form.data("remote") == "true") ? "ajax:beforeSend" : "submit";
