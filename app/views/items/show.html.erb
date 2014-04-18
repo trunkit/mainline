@@ -31,9 +31,15 @@
         <%= f.select(:quantity, item_quantities, {}, class: "quantity") %>
 
         <%= button_tag("Add to Cart", type: "submit") %>
-      <% end %>
+      <% end if current_user.parent_type.blank? %>
 
-      <%= button_tag("Support") %>
+      <% if current_user.parent_type == "Boutique" %>
+        <% if current_user.parent.supported_item_ids.include?(@item.id) %>
+        <%= link_to("Unsupport", [:unsupport, @item], method: :put, remote: true, class: "buy button item-#{@item.id} unsupport") %>
+        <% else %>
+        <%= link_to("Support", [:support, @item], method: :put, remote: true, class: "buy button item-#{@item.id} support") %>
+        <% end %>
+      <% end %>
     </div>
 
     <hr>
