@@ -71,6 +71,40 @@ article.item {
   }
 }
 
+div.item-quantity {
+  width: 290px;
+
+  .row {
+    float: left;
+    width: 100%;
+    padding: 0 0 5px;
+
+    input {
+      float: left;
+      width: 48px;
+      height: 28px;
+      margin: 0 0 0 5px;
+      padding: 0 5px;
+      border: 2px solid #000;
+
+      &:first-child { width: 130px; }
+    }
+
+    a {
+      display: block;
+      float: left;
+      width: 32px;
+      height: 32px;
+      margin: 0 0 0 5px;
+      text-align: center;
+      background: #000;
+      color: #fff;
+      font: 20px/32px "Bebas Neue", sans-serif;
+      text-decoration: none;
+    }
+  }
+}
+
 #item form {
   div.separator {
     float: left;
