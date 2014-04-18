@@ -226,6 +226,10 @@
       &:hover > div.details { display: block; }
     }
 
+    &:nth-child(3n+3) {
+      form.item-quantity { left: -302px; }
+    }
+
     form.item-quantity {
       display: none;
       position: absolute;
