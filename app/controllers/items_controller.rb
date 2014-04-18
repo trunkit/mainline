@@ -13,7 +13,8 @@ class ItemsController < CatalogAbstractController
   end
 
   def show
-    @item      = Item.includes(:options, :photos).find(params[:id])
+    @item      = Item.includes(:photos).find(params[:id])
+    @activity  = Activity.find(params[:activity_id]) if params[:activity_id]
     @cart_item = CartItem.new
   end
 

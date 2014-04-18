@@ -1,15 +1,15 @@
 <article class="item">
   <div>
     <div class="img">
-      <%= link_to(image_tag(item.primary_photo.url.stream), item, class: "img fancybox fancybox.ajax") %>
+      <%= link_to(image_tag(item.primary_photo.url.stream), item_path(item, activity_id: activity), class: "img fancybox fancybox.ajax") %>
     </div>
 
     <div class="details">
       <%= link_to(image_tag("feed/favorite#{'-selected' if current_user.favorite_item_activity_ids.include?(activity.id)}.png"), favorites_path(activity_id: activity.id), method: :post, remote: true, class: "favorite item-activity-#{activity.id}") if current_user && activity %>
 
       <p class="name">
-        <%= link_to(item.name, item, class: "fancybox fancybox.ajax name") %>
-        <%= link_to("Designed By #{item.brand.name}", item, class: "fancybox fancybox.ajax") %>
+        <%= link_to(item.name, item_path(item, activity_id: activity), class: "fancybox fancybox.ajax name") %>
+        <%= link_to("Designed By #{item.brand.name}", item_path(item, activity_id: activity), class: "fancybox fancybox.ajax") %>
       </p>
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
@@ -17,7 +17,7 @@
       <%= link_to("Edit", [:edit, item], class: "buy button edit item-#{item.id}") if current_user_owns_item?(item) %>
 
       <% if current_user && current_user.parent_id.blank? %>
-      <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
+      <%= link_to("Buy", item_path(item, activity_id: activity), class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>
         <% if current_user.parent.supported_item_ids.include?(item.id) %>
         <%= link_to("Unsupport", [:unsupport, item], method: :put, remote: true, class: "buy button item-#{item.id} unsupport") %>
@@ -27,9 +27,9 @@
       <% end %>
 
       <div class="social">
-        <%= link_to(image_tag("feed/facebook.png"), item) %>
-        <%= link_to(image_tag("feed/twitter.png"), item) %>
-        <%= link_to(image_tag("feed/pinterest.png"), item) %>
+        <%= link_to(image_tag("feed/facebook.png"), item_path(item, activity_id: activity)) %>
+        <%= link_to(image_tag("feed/twitter.png"), item_path(item, activity_id: activity)) %>
+        <%= link_to(image_tag("feed/pinterest.png"), item_path(item, activity_id: activity)) %>
       </div>
     </div>
 

@@ -131,6 +131,10 @@ class Item < ActiveRecord::Base
     [:model_height, :model_chest, :model_hips, :model_waist, :model_size].map{|f| send(f) }.any?{|v| v.present? }
   end
 
+  def active_sizes
+    sizes.select{|size,qty| qty.to_i > 0 }.map(&:first)
+  end
+
   def version
     versions.count + 1
   end

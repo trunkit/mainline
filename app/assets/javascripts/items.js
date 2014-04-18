@@ -115,5 +115,16 @@ SiteBindings.item = {
         $(this).find("input").attr("disabled", true);
       });
     });
+  },
+  details: function(itemSizes) {
+    $("article.item form select.size").change(function() {
+      maxQuantity    = parseInt(itemSizes[$(this).val()]);
+      quantitySelect = $(this).siblings("select")
+      quantitySelect.empty();
+      quantitySelect.append($("<option></option>").text("Quantity"))
+
+      for(var i = 1; i <= maxQuantity; i++)
+        quantitySelect.append($("<option></option>").text(i));
+    }).trigger("change");
   }
 };

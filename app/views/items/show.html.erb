@@ -18,7 +18,7 @@
       <%= link_to(image_tag("items/facebook.png"), "#") %>
       <%= link_to(image_tag("items/twitter.png"), "#") %>
       <%= link_to(image_tag("items/pinterest.png"), "#") %>
-      <%= link_to(image_tag("items/favorite.png"), item_favorite_path(@item.id), method: :put, class: "favorite") %>
+      <%= link_to(image_tag("items/favorite.png"), favorites_path(activity_id: @activity), class: "favorite", data: { method: :post }) if @activity %>
     </div>
 
     <hr>
@@ -27,16 +27,13 @@
       <%= form_for([:cart, @cart_item], remote: true) do |f| %>
         <%= f.hidden_field(:item_id, value: @item.id)  %>
 
-        <% @item.options.group_by(&:name).each do |group, options| %>
-        <%= select_tag("cart_item[item_options][#{group}]", item_options_for_select(group, options)) %>
-        <% end %>
-
-        <%= f.select(:quantity, item_quantities) %>
+        <%= f.select(:size, @item.active_sizes, {}, class: "size") %>
+        <%= f.select(:quantity, item_quantities, {}, class: "quantity") %>
 
         <%= button_tag("Add to Cart", type: "submit") %>
-      <% end if current_user.parent_type.blank? %>
+      <% end %>
 
-      <%= button_tag("Support") if current_user.parent_type.present? %>
+      <%= button_tag("Support") %>
     </div>
 
     <hr>
@@ -68,3 +65,8 @@
     <% end if @item.has_measurements? %>
   </section>
 </article>
+
+<script>
+var itemSizes = <%= @item.sizes.to_json.html_safe %>;
+$(function() { SiteBindings.item.details(itemSizes); });
+</script>
