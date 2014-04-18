@@ -1,5 +1,5 @@
 <div class="item-quantity">
-  <% @item.sizes.each do |name, quantity| %>
+  <% item.sizes.each do |name, quantity| %>
   <div class="row">
     <%= text_field_tag(:name, name) %>
     <%= text_field_tag(:quantity, quantity) %>

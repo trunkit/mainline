@@ -37,7 +37,7 @@
     float: left;
     width: 296px;
     height: 358px;
-    padding: 0px 0px 0px 0px;
+    padding: 0;
     min-height: 100px;
     margin: 1px;
     background: #fff;
@@ -225,6 +225,37 @@
 
       &:hover > div.details { display: block; }
     }
+
+    form.item-quantity {
+      display: none;
+      position: absolute;
+      z-index: 3;
+      top: -2px;
+      left: 298px;
+      width: 296px;
+      height: 348px;
+      padding: 5px 2px;
+      border: 2px solid #000;
+      border-left: 0;
+      background: #fff;
+
+      input[type="submit"] {
+        float: left;
+        width: 286px;
+        height: 32px;
+        margin: 0 0 0 4px;
+        padding: 0;
+        border: 0;
+        font: 20px/32px "Bebas Neue", sans-serif;
+        letter-spacing: 2px;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        background: #000;
+      }
+    }
+
+    &:hover form.item-quantity { display: block; }
   }
 
   > .boutique > div {

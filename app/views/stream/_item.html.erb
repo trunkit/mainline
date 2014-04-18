@@ -14,7 +14,7 @@
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
 
-      <%= link_to("Edit", [:edit, item], class: "buy button edit item-#{item.id}") if current_user && current_user.parent_type == "Boutique" && current_user.parent_id == item.boutique_id %>
+      <%= link_to("Edit", [:edit, item], class: "buy button edit item-#{item.id}") if current_user_owns_item?(item) %>
 
       <% if current_user && current_user.parent_id.blank? %>
       <%= link_to("Buy", item, class: "buy fancybox fancybox.ajax") %>
@@ -42,4 +42,11 @@
       <% end %>
     </div>
   </div>
+
+  <% if current_user_owns_item?(item) %>
+    <%= form_for(item, remote: true, html: { class: "item-quantity" }) do |f| %>
+    <%= render("items/quantity", item: item)  %>
+    <%= submit_tag("Update Quantities") %>
+    <% end %>
+  <% end %>
 </article>
