@@ -53,6 +53,25 @@ article.item {
       }
     }
 
+    a.button {
+      display: block;
+      width: 160px;
+      height: 34px;
+      font: 16px/27px "Bebas Neue", sans-serif;
+      letter-spacing: 6px;
+
+      text: {
+        align: center;
+        transform: uppercase;
+        decoration: none;
+        indent: 2px;
+      }
+
+      background: #000;
+      color: #fff;
+      padding-top: 7px;
+    }
+
     p { margin: 0; }
 
     div.description {
