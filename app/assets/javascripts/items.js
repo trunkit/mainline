@@ -95,7 +95,9 @@ SiteBindings.item = {
     newRow.find("input").change(newRowChangeBinding);
 
     form.bind(bindType, function() {
-      element.find(".row").each(function() {
+      _form = $(this);
+
+      _form.find(".row").each(function() {
         var label = $(this).find("input[name=name]").val();
         var value = parseInt($(this).find("input[name=quantity]").val());
 
@@ -108,7 +110,7 @@ SiteBindings.item = {
           value = 0;
 
         if(label.length > 0)
-          form.append($("<input>").attr(attrs).val(value));
+          _form.append($("<input>").attr(attrs).val(value));
 
         $(this).find("input").attr("disabled", true);
       });
