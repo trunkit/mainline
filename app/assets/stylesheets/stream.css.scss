@@ -243,11 +243,12 @@
       border-left: 0;
       background: #fff;
 
-      input[type="submit"] {
+      input[type="submit"],
+      > a {
         float: left;
         width: 286px;
         height: 32px;
-        margin: 0 0 0 4px;
+        margin: 0 0 5px 4px;
         padding: 0;
         border: 0;
         font: 20px/32px "Bebas Neue", sans-serif;
@@ -258,8 +259,6 @@
         background: #000;
       }
     }
-
-    &:hover form.item-quantity { display: block; }
   }
 
   > .boutique > div {
