@@ -76,6 +76,8 @@ Trunkit::Application.routes.draw do
 
   get "admin" => "admin/dashboards#index"
 
+  post "boutique_sign_up" => "boutique_sign_up#create"
+
   # Catch-all, generic routing
   get "*path" => "contents#show"
 end
