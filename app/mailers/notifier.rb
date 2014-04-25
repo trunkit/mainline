@@ -11,7 +11,7 @@ class Notifier < ActionMailer::Base
     @params = params
 
     mail({
-      to: ["wweidendorf@gmail.com", "team@trunkit.com"],
+      to: ["team@trunkit.com"],
       subject: "[TrunkIt] Boutique Signup"
     })
   end
