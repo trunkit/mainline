@@ -11,9 +11,9 @@ class Order < ActiveRecord::Base
     return none unless user.parent_type == "Boutique"
 
     scope = case params[:type]
-    when "support"
+    when "supported"
       CartItem.where(supporting_boutique_id: user.parent_id)
-    when "supply"
+    when "supplied"
       CartItem.where(supplying_boutique_id: user.parent_id)
     else
       CartItem.where("supporting_boutique_id = :id OR supplying_boutique_id = :id", id: user.parent_id)
