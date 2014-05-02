@@ -39,7 +39,14 @@
       </ul>
     <% end %>
 
-    <%= content_tag(:li, link_to("Orders", orders_path), class: active_css_class(/^\/(orders)/)) %>
+    <%= content_tag(:li, class: active_css_class(/^\/(orders)/)) do %>
+      <%= link_to("Orders", orders_path) %>
+
+      <ul>
+        <%= content_tag(:li, link_to("Supplied", orders_path(type: "supplied"))) %>
+        <%= content_tag(:li, link_to("Supported", orders_path(type: "support"))) %>
+      </ul>
+    <% end %>
   </ul>
 </nav>
 
