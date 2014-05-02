@@ -8,7 +8,7 @@ class BoutiquesController < CatalogAbstractController
   end
 
   def show
-    @boutique   = Boutique.includes(:items, :primary_location).find(params[:id])
+    @boutique = Boutique.includes(:items, :location).find(params[:id])
 
     activities = Activity.
       for_owner(@boutique).

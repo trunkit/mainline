@@ -2,15 +2,13 @@ class Boutique < ActiveRecord::Base
   acts_as_paranoid
   has_paper_trail
 
-  has_many :locations, as: :company, dependent: :destroy
-  has_many :users,     as: :parent,  dependent: :destroy
-  has_many :items,     dependent: :destroy do
+  has_one  :location, as: :company, dependent: :destroy
+  has_many :users,    as: :parent,  dependent: :destroy
+  has_many :items,    dependent: :destroy do
     def top
       limit(2)
     end
   end
-
-  has_one  :primary_location, -> { where(primary: true) }, class_name: "Location", as: :company
 
   before_validation :generate_short_code
 
@@ -18,13 +16,7 @@ class Boutique < ActiveRecord::Base
   validates_uniqueness_of :short_code
   validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
-  delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :primary_location, allow_nil: true
-
-  alias_method :primary_location_without_fallback, :primary_location
-
-  def primary_location
-    primary_location_without_fallback || locations.first
-  end
+  delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :location, allow_nil: true
 
   def add_follower(user)
     scope = Activity.for_subject(self).for_owner(user).where(action: "follow")
@@ -64,8 +56,8 @@ class Boutique < ActiveRecord::Base
 
   # TODO: Add fallback photos
   def primary_photo(size = nil)
-    if primary_location
-      p = primary_location.stream_photo
+    if location
+      p = location.stream_photo
       p ? p.stream.url : nil
     else
     end

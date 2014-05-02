@@ -2,7 +2,7 @@ class Admin::LocationsController < Admin::AbstractController
   helper_method :boutique
 
   def new
-    @location = boutique.locations.build
+    @location = boutique.build_location
   end
 
   def create

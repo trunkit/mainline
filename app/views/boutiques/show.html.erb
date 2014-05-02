@@ -21,9 +21,8 @@
     </div>
 
     <div class="locations">
-      <%= link_to("More Locations", "#", class: "button") if @boutique.locations.size > 1 %>
-      <%= content_tag(:address, @boutique.primary_location.to_s) %>
-      <%= content_tag(:span, @boutique.primary_location.phone_number, class: "phone") %>
+      <%= content_tag(:address, @boutique.location.to_s) %>
+      <%= content_tag(:span, @boutique.location.phone_number, class: "phone") %>
     </div>
   </section>
 
