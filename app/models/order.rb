@@ -4,7 +4,6 @@ class Order < ActiveRecord::Base
 
   has_one :cart
 
-  belongs_to :user
   belongs_to :shipping_address, class_name: "Address"
 
   def self.for_listing(user, params)
