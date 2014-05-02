@@ -3,8 +3,11 @@ class CartItem < ActiveRecord::Base
 
   belongs_to :cart
 
-  validates :quantity, :item_id, :item_version, :cart_id, presence: true
-  validates :item_id, :item_version, :cart_id, numericality: true
+  validates :quantity, :item_id, :item_version, :cart_id, :supporting_boutique_id, :supplying_boutique_id, presence: true
+  validates :item_id, :item_version, :cart_id, :supporting_boutique_id, :supplying_boutique_id, numericality: true
+
+  belongs_to :supporting_boutique, class_name: "Boutique"
+  belongs_to :supplying_boutique, class_name: "Boutique"
 
   def item
     return @item if @item
