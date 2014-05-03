@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503201838) do
+ActiveRecord::Schema.define(version: 20140503203903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140503201838) do
     t.integer  "supporting_boutique_id"
     t.integer  "supplying_boutique_id"
     t.decimal  "shipping",               precision: 5, scale: 2
+    t.decimal  "tax",                    precision: 9, scale: 2
   end
 
   add_index "cart_items", ["supplying_boutique_id"], name: "index_cart_items_on_supplying_boutique_id", using: :btree
