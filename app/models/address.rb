@@ -8,4 +8,15 @@ class Address < ActiveRecord::Base
 
     [street, street2, "\n", "#{city},", state, postal_code].compact.join(" ")
   end
+
+  def easy_post
+    @easy_post ||= EasyPost::Address.create({
+      street1: street,
+      street2: street2,
+      city:    city,
+      state:   state,
+      zip:     postal_code,
+      name:    parent.name
+    })
+  end
 end

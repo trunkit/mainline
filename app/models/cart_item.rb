@@ -9,6 +9,8 @@ class CartItem < ActiveRecord::Base
   belongs_to :supporting_boutique, class_name: "Boutique"
   belongs_to :supplying_boutique, class_name: "Boutique"
 
+  delegate :parcel, to: :item
+
   def item
     return @item if @item
 
@@ -27,5 +29,16 @@ class CartItem < ActiveRecord::Base
 
   def total_price
     quantity * unit_price
+  end
+
+  def shipment
+    if shipment_id.blank?
+      EasyPost::Shipment.create({
+        to_address:   cart.shipping_address.easy_post,
+        from_address: item.boutique.location.easy_post,
+        parcel:       item.parcel
+      })
+    else
+    end
   end
 end

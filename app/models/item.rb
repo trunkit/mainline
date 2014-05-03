@@ -135,6 +135,14 @@ class Item < ActiveRecord::Base
     sizes.select{|size,qty| qty.to_i > 0 }.map(&:first)
   end
 
+  def parcel
+    @parcel ||= EasyPost.new({
+      width:  packaging_width,
+      length: packaging_length,
+      height: packaging_height
+    })
+  end
+
   def version
     versions.count + 1
   end
