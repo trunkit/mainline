@@ -37,7 +37,7 @@
 
       <div class="quantity">
         <%= form_tag([:cart, cart_item], remote: true, method: :patch) do %>
-        <%= select_tag(:quantity, options_for_select(item_quantities, cart_item.quantity)) %>
+        <%= select_tag(:quantity, options_for_select((1..cart_item.item.sizes[cart_item.size].to_i).to_a, cart_item.quantity)) %>
         <% end %>
       </div>
 
