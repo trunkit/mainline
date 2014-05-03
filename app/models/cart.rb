@@ -19,7 +19,7 @@ class Cart < ActiveRecord::Base
     scope = scope.joins(:cart).select("cart_items.cart_id")
     ids   = scope.map{|cart_item| cart_item.cart_id }.uniq
 
-    where(id: ids).includes(:cart_items).page(params[:page]).per(params[:per_page])
+    where(id: ids).where.not(transaction_id: nil).includes(:cart_items).page(params[:page]).per(params[:per_page])
   end
 
   def total_price
