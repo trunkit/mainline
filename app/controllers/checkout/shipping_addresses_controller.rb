@@ -42,8 +42,8 @@ class Checkout::ShippingAddressesController < CatalogAbstractController
 
   def select
     address = current_user.address.find(params[:id])
-    current_order.shipping_address = address
-    current_order.save
+    current_cart.shipping_address = address
+    current_cart.save
 
     redirect_to(checkout_delivery_options_index_path)
   end

@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :addresses, as: :parent
   has_many :carts
-  has_many :orders, through: :carts
 
   has_many :activities, inverse_of: :owner
 

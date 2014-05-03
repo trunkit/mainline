@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503203903) do
+ActiveRecord::Schema.define(version: 20140503223027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140503203903) do
     t.integer  "supplying_boutique_id"
     t.decimal  "shipping",               precision: 5, scale: 2
     t.decimal  "tax",                    precision: 9, scale: 2
+    t.text     "shipment_id"
   end
 
   add_index "cart_items", ["supplying_boutique_id"], name: "index_cart_items_on_supplying_boutique_id", using: :btree
@@ -88,6 +89,8 @@ ActiveRecord::Schema.define(version: 20140503203903) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.text     "transaction_id"
+    t.integer  "shipping_address_id"
   end
 
   create_table "categories", force: true do |t|
@@ -147,13 +150,6 @@ ActiveRecord::Schema.define(version: 20140503203903) do
   end
 
   add_index "locations", ["company_id", "company_type"], name: "index_locations_on_company_id_and_company_type", using: :btree
-
-  create_table "orders", force: true do |t|
-    t.datetime "deleted_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "shipping_address_id"
-  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
