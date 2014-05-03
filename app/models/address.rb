@@ -3,14 +3,19 @@ class Address < ActiveRecord::Base
 
   validates :parent, :street, :city, :state, :postal_code, presence: true
 
+  before_save do
+    self.easypost_id = easypost.id
+  end
+
   def to_s
     street2 = "#{street2}\n" if street2.present?
 
     [street, street2, "\n", "#{city},", state, postal_code].compact.join(" ")
   end
 
-  def easy_post
-    @easy_post ||= EasyPost::Address.create({
+private
+  def easypost
+    @easypost ||= EasyPost::Address.create({
       street1: street,
       street2: street2,
       city:    city,

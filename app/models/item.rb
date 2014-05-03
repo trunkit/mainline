@@ -20,6 +20,10 @@ class Item < ActiveRecord::Base
     where("primary_category_id = ? OR secondary_category_id = ?", id.to_i, id.to_i)
   }
 
+  before_save do
+    self.parcel_id = parcel.id
+  end
+
   def self.for_stream(user, params)
     boutique_ids   = params[:boutique_id]
     boutique_ids ||= user.boutiques_following.select(:id).map(&:id) if user
@@ -136,10 +140,11 @@ class Item < ActiveRecord::Base
   end
 
   def parcel
-    @parcel ||= EasyPost.new({
+    @parcel ||= EasyPost::Parcel.create({
       width:  packaging_width,
       length: packaging_length,
-      height: packaging_height
+      height: packaging_height,
+      weight: weight
     })
   end
 
@@ -150,11 +155,10 @@ class Item < ActiveRecord::Base
   def as_indexed_json(options = {})
     hsh = as_json(except: [:id])
 
-    hsh[:categories]    = categories.map(&:name)
     hsh[:boutique_name] = boutique.name
     hsh[:brand_name]    = brand.name
-    hsh[:cities]        = boutique.locations.map(&:city)
-    hsh[:states]        = boutique.locations.map(&:state)
+    hsh[:cities]        = boutique.location.city
+    hsh[:states]        = boutique.location.state
 
     hsh
   end

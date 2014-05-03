@@ -9,8 +9,6 @@ class CartItem < ActiveRecord::Base
   belongs_to :supporting_boutique, class_name: "Boutique"
   belongs_to :supplying_boutique, class_name: "Boutique"
 
-  delegate :parcel, to: :item
-
   def item
     return @item if @item
 
@@ -32,13 +30,16 @@ class CartItem < ActiveRecord::Base
   end
 
   def shipment
+    return @shipment if @shipment
+
     if shipment_id.blank?
       EasyPost::Shipment.create({
-        to_address:   cart.shipping_address.easy_post,
-        from_address: item.boutique.location.easy_post,
-        parcel:       item.parcel
+        to_address:   { id: cart.shipping_address.easypost_id },
+        from_address: { id: item.boutique.location.easypost_id },
+        parcel:       { id: item.parcel_id }
       })
     else
+      EasyPost::Shipment.find(shipment_id)
     end
   end
 end

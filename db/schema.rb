@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503223027) do
+ActiveRecord::Schema.define(version: 20140503225957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140503223027) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "parent_type"
+    t.text     "easypost_id"
   end
 
   create_table "boutiques", force: true do |t|
@@ -133,6 +134,7 @@ ActiveRecord::Schema.define(version: 20140503223027) do
     t.decimal  "packaging_width",       precision: 9, scale: 2, default: 12.0
     t.decimal  "packaging_height",      precision: 9, scale: 2, default: 12.0
     t.decimal  "packaging_length",      precision: 9, scale: 2, default: 12.0
+    t.text     "parcel_id"
   end
 
   create_table "locations", force: true do |t|
