@@ -26,6 +26,7 @@
     <div class="cart">
       <%= form_for([:cart, @cart_item], remote: true) do |f| %>
         <%= f.hidden_field(:item_id, value: @item.id)  %>
+        <%= f.hidden_field(:supporting_boutique_id, value: @activity.owner_id) if @activity %>
 
         <%= f.select(:size, @item.active_sizes, {}, class: "size") %>
         <%= f.select(:quantity, item_quantities, {}, class: "quantity") %>
