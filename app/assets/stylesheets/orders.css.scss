@@ -1,3 +1,84 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.orders {
+  header {
+    span {
+      display: block;
+      float: right;
+      width: 47.5%;
+      padding: 7px;
+      border: 2px solid #000;
+      font: 16px "Bebas Neue", sans-serif;
+      letter-spacing: 6px;
+      text-align: center;
+
+      &:first-child { float: left; }
+    }
+  }
+
+  div.order {
+    float: left;
+    width: 100%;
+    margin: 10px 0 0;
+
+    > span.name {
+      display: block;
+      float: left;
+      width: 100%;
+      margin: 0 0 10px;
+      padding: 2px 0;
+      font: 14px/18px "Bebas Neue", sans-serif;
+      letter-spacing: 2px;
+      text-indent: 2px;
+
+      border: {
+        top: 2px solid #000;
+        bottom: 2px solid #000;
+      }
+    }
+
+    address {
+      float: left;
+      width: 100%;
+      margin: 10px 0 20px;
+      font: 16px/20px "Helvetica LT Std", sans-serif;
+      letter-spacing: 1px;
+    }
+
+    section.item {
+      float: left;
+
+      > img {
+        float: left;
+        padding: 0 10px 0 0;
+      }
+
+      > div {
+        float: left;
+        width: 228px;
+
+        span {
+          font: 18px "Helvetica LT Std", sans-serif;
+          letter-spacing: 1px;
+        }
+
+        ul {
+          padding: 0;
+          font: 14px "Helvetica LT Std", sans-serif;
+          letter-spacing: 1px;
+          list-style: none;
+        }
+      }
+
+      > a {
+        float: left;
+        clear: both;
+        width: 135px;
+        font: 14px/31px "Bebas Neue", sans-serif;
+        letter-spacing: 4px;
+        color: #fff;
+        background: #000;
+        text-decoration: none;
+        text-align: center;
+      }
+    }
+  }
+}
