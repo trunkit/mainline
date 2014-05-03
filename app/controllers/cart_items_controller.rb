@@ -1,6 +1,14 @@
 class CartItemsController < CatalogAbstractController
   def create
-    current_cart.items.create(cart_item_params)
+    item = Item.find(cart_item_params[:item_id])
+
+    ci = current_cart.items.build(cart_item_params)
+
+    ci.item_version          = item.version
+    ci.supplying_boutique_id = item.boutique_id
+
+    ci.save!
+
     render(template: "carts/show")
   end
 
@@ -17,10 +25,6 @@ class CartItemsController < CatalogAbstractController
   private
 
   def cart_item_params
-    ciparams = params.require(:cart_item).permit(:item_id, :quantity)
-    ciparams[:item_version] = Item.find(ciparams[:item_id]).version
-    ciparams[:item_options] = params[:cart_item][:item_options]
-
-    ciparams
+    params.require(:cart_item).permit(:item_id, :supporting_boutique_id, :quantity, :size)
   end
 end
