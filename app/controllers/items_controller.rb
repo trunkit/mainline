@@ -16,6 +16,8 @@ class ItemsController < CatalogAbstractController
     @item      = Item.includes(:photos).find(params[:id])
     @activity  = Activity.find(params[:activity_id]) if params[:activity_id]
     @cart_item = CartItem.new
+
+    render(nothing: true, status: 404) unless @activity || current_user.parent_type.present?
   end
 
   def new
