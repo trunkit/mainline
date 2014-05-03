@@ -34,13 +34,6 @@
 
   <div class="row">
     <div class="col-2">
-      <%= f.label(:weight) %>
-      <%= f.text_field(:weight, required: true, class: "required") %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
       <%= f.label(:description) %>
       <%= f.text_area(:description, required: true, class: "required") %>
     </div>
@@ -60,6 +53,34 @@
     <div class="col-2">
       <%= f.label(:secondary_category_id) %>
       <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
+    </div>
+  </div>
+
+  <div class="separator">
+    <span>Weight &amp; Packaged Size</span>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:weight) %>
+      <%= f.text_field(:weight, required: true, class: "required") %>
+    </div>
+
+    <div class="col-2">
+      <%= f.label(:packaging_width) %>
+      <%= f.text_field(:packaging_width, required: true, class: "required") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= f.label(:packaging_height) %>
+      <%= f.text_field(:packaging_height, required: true, class: "required") %>
+    </div>
+
+    <div class="col-2">
+      <%= f.label(:packaging_length) %>
+      <%= f.text_field(:packaging_length, required: true, class: "required") %>
     </div>
   </div>
 

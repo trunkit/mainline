@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502012123) do
+ActiveRecord::Schema.define(version: 20140503201838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,9 @@ ActiveRecord::Schema.define(version: 20140502012123) do
     t.integer  "primary_category_id"
     t.integer  "secondary_category_id"
     t.decimal  "weight",                precision: 5, scale: 2, default: 1.0
+    t.decimal  "packaging_width",       precision: 9, scale: 2, default: 12.0
+    t.decimal  "packaging_height",      precision: 9, scale: 2, default: 12.0
+    t.decimal  "packaging_length",      precision: 9, scale: 2, default: 12.0
   end
 
   create_table "locations", force: true do |t|
