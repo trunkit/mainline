@@ -27,9 +27,7 @@
         <div class="right">
           <%= content_tag(:span, cart_item.item.name, class: "name") %>
 
-          <% cart_item.option_values.each do |ov| %>
-          <%= content_tag(:span, "#{ov.name}: #{ov.value}") %>
-          <% end %>
+          <%= content_tag(:span, "Size: #{cart_item.size}") %>
 
           <%= link_to('Remove', [:cart, cart_item], method: :delete, remote: true, class: "remove") %>
         </div>
