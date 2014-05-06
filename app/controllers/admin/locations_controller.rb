@@ -30,7 +30,7 @@ class Admin::LocationsController < Admin::AbstractController
   end
 
   def destroy
-    boutique.locations.find(params[:id]).destroy
+    boutique.location.destroy
     redirect_to([:edit, :admin, boutique])
   end
 
