@@ -1,6 +1,12 @@
 class Item < ActiveRecord::Base
   include Elasticsearch::Model
 
+  after_commit(on: [:create, :update]) { __elasticsearch__.index_document }
+  after_commit(on: [:destroy])         { __elasticsearch__.remove_document }
+
+  index_name    "trunkit"
+  document_type "item"
+
   acts_as_paranoid
   has_paper_trail
 
