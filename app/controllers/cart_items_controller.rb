@@ -2,7 +2,8 @@ class CartItemsController < CatalogAbstractController
   def create
     item = Item.find(cart_item_params[:item_id])
 
-    ci = current_cart.items.build(cart_item_params)
+    ci   = current_cart.items.where(item_id: cart_item_params[:item_id], size: cart_item_params[:size]).first
+    ci ||= current_cart.items.build(cart_item_params)
 
     ci.item_version          = item.version
     ci.supplying_boutique_id = item.boutique_id
