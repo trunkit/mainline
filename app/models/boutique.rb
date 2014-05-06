@@ -1,4 +1,12 @@
 class Boutique < ActiveRecord::Base
+  include Elasticsearch::Model
+
+  after_commit(on: [:create, :update]) { __elasticsearch__.index_document }
+  after_commit(on: [:destroy])         { __elasticsearch__.remove_document }
+
+  index_name    "trunkit"
+  document_type "boutique"
+
   acts_as_paranoid
   has_paper_trail
 
@@ -17,6 +25,21 @@ class Boutique < ActiveRecord::Base
   validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
   delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :location, allow_nil: true
+
+  def self.search(q)
+    body = {
+      query: {
+        query_string: {
+          query: q,
+          default_operator: "AND",
+          phrase_slop: 2,
+          fuzziness: 2
+        }
+      }
+    }
+
+    __elasticsearch__.search(body)
+  end
 
   def add_follower(user)
     scope = Activity.for_subject(self).for_owner(user).where(action: "follow")
