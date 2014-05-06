@@ -18,6 +18,7 @@ Trunkit::Application.routes.draw do
   end
 
   resources :boutiques, :brands, only: [:show] do
+    get 'search',   on: :collection
     put 'follow',   on: :member
     put 'unfollow', on: :member
   end

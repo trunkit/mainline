@@ -1,5 +1,5 @@
 class BoutiquesController < CatalogAbstractController
-  skip_before_filter :authenticate_user!, :check_roles, only: [:show]
+  skip_before_filter :authenticate_user!, :check_roles, only: [:search, :show]
 
   def redirect
     if b = Boutique.where(short_code: params[:short_code].strip).first
@@ -7,6 +7,10 @@ class BoutiquesController < CatalogAbstractController
     end
 
     redirect_to(root_path)
+  end
+
+  def search
+    @boutiques = Boutique.search(params[:q])
   end
 
   def show
