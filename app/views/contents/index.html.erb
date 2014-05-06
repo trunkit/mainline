@@ -33,15 +33,3 @@
     <%= render("stream/boutique", boutique: boutique) %>
   <% end %>
 </section>
-
-<script>
-$(function() {
-  $("a.email").click(function() {
-    $("form").submit();
-  });
-
-  <% if flash[:errors] %>
-  alert("Could not create account because <%= j(flash[:errors].full_messages.join(", ")) %>");
-  <% end %>
-});
-</script>
