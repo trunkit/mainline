@@ -38,7 +38,13 @@ class Boutique < ActiveRecord::Base
       }
     }
 
-    __elasticsearch__.search(body)
+    __elasticsearch__.search(body).records
+  end
+
+  def brands
+    return @brands if @brands
+    brand_ids = items.select(:brand_id).distinct.map(&:brand_id)
+    @brands = Brand.find(brand_ids)
   end
 
   def add_follower(user)
@@ -84,6 +90,13 @@ class Boutique < ActiveRecord::Base
       p ? p.stream.url : nil
     else
     end
+  end
+
+  def as_indexed_json(options={})
+    json = as_json(options.merge({ root: false, except: [:data_sources] }))
+    json[:brands]   = brands.map(&:name)
+    json[:location] = location.try(:address).try(:serializable_hash)
+    json
   end
 
 private
