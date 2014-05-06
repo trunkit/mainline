@@ -1,8 +1,5 @@
 class CatalogAbstractController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter do
-    redirect_to(:admin) if current_user.has_any_role?(:system)
-  end
+  before_filter :authenticate_user!, :check_roles
 
   helper_method :current_cart, :categories
 
@@ -23,5 +20,9 @@ class CatalogAbstractController < ApplicationController
 
   def categories
     @categories ||= Category.where(parent_id: nil).order(:name)
+  end
+
+  def check_roles
+    redirect_to(:admin) if current_user.has_any_role?(:system)
   end
 end
