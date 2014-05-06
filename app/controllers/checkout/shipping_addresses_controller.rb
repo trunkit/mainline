@@ -41,7 +41,7 @@ class Checkout::ShippingAddressesController < CatalogAbstractController
   end
 
   def select
-    address = current_user.address.find(params[:id])
+    address = current_user.addresses.find(params[:id])
     current_cart.shipping_address = address
     current_cart.save
 
