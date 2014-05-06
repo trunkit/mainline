@@ -10,10 +10,12 @@
         <%= link_to("#{boutique.city}, #{boutique.state}", boutique) %>
       </p>
 
+      <% if current_user %>
       <% if current_user.boutiques_following_ids.include?(boutique.id) %>
       <%= link_to("Unfollow", [:unfollow, boutique], method: :put, remote: true, class: "unfollow button boutique-#{boutique.id}") %>
       <% else %>
       <%= link_to("Follow", [:follow, boutique], method: :put, remote: true, class: "follow button boutique-#{boutique.id}") %>
+      <% end %>
       <% end %>
 
       <p class="counts">

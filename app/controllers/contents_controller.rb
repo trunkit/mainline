@@ -5,11 +5,7 @@ class ContentsController < ApplicationController
         redirect_to(:admin) :
         redirect_to(stream_path)
     else
-      @activity_items = referring_boutique ?
-        Item.for_stream(nil, { boutique_id: [referring_boutique.id] }) :
-        Item.for_stream(nil, {})
-
-      render(action: :index)
+      @boutiques = Boutique.order(created_at: :desc).limit(25)
     end
   end
 

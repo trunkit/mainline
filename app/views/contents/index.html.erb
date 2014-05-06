@@ -26,11 +26,11 @@
   <% end %>
 </section>
 
-<%= content_tag(:h3, "Trending") if @activity_items.present? %>
+<%= content_tag(:h3, "Boutiques") if @boutiques.present? %>
 
 <section id="stream">
-  <% @activity_items.each do |activity, item| %>
-    <%= render("stream/item", activity: activity, item: item) %>
+  <% @boutiques.each do |boutique| %>
+    <%= render("stream/boutique", boutique: boutique) %>
   <% end %>
 </section>
 
