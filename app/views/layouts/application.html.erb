@@ -21,8 +21,9 @@
   <body>
     <header>
       <div class="content">
+        <%= link_to("Log In", new_user_session_path, class: "login fancybox", :"data-fancybox-type" => "ajax") %>
         <%= link_to(image_tag("header/logo.png"), "/", class: "tagline") %>
-        <%= main_nav %>
+        <%= link_to("Sign Up", new_user_registration_path, class: "login") %>
       </div>
     </header>
 

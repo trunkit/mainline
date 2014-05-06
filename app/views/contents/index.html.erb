@@ -1,28 +1,10 @@
-<section id="account-signup">
-  <%= form_for(:user, url: user_registration_path) do |f| %>
-    <%= content_tag(:h2, "Curated by #{referring_boutique ? referring_boutique.name : 'your favorite boutiques'}.") %>
+<section id="boutique-search">
+  <%= form_tag(search_boutiques_path, method: :get, class: "search", data: { remote: true }) do %>
+    <h2>Search For Boutiques By&hellip;</h2>
+    <span>Boutique Name, City, State, or Brand</span>
 
-    <div class="left">
-      <%= f.text_field(:first_name, placeholder: "First Name") %>
-      <%= f.text_field(:last_name, placeholder: "Last Name") %>
-      <%= f.email_field(:email, placeholder: "Email") %>
-
-      <%= link_to("#", class: "email") do %>
-        <span>Sign Up with Email</span>
-      <% end %>
-    </div>
-
-    <div class="right">
-      <%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
-        <%= image_tag("home/twitter.png") %>
-        <span>Sign Up with Twitter</span>
-      <% end %>
-
-      <%= link_to(omniauth_authorize_path("user", "facebook"), class: "facebook") do %>
-        <%= image_tag("home/facebook.png") %>
-        <span>Sign Up with Facebook</span>
-      <% end %>
-    </div>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
   <% end %>
 </section>
 
