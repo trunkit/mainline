@@ -1,5 +1,5 @@
 <nav>
-  <ul>
+  <%= content_tag(:ul) do %>
     <%= content_tag(:li, class: active_css_class(/^\/(stream|items)/)) do %>
       <%= link_to("Stream", stream_path, class: "stream") %>
 
@@ -15,11 +15,11 @@
     <%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
 
     <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
-  </ul>
+  <% end unless params[:controller] =~ /checkout/ %>
 </nav>
 
 <div class="right">
-  <%= link_to(image_tag("header/bag.png"), cart_path, class: "cart fancybox fancybox.ajax") %>
+  <%= link_to(image_tag("header/bag.png"), cart_path, class: "cart fancybox fancybox.ajax") unless params[:controller] =~ /checkout/ %>
 
   <div class="user">
     <%= image_tag(current_user.photo.thumb.url) %>

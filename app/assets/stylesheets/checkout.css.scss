@@ -6,6 +6,11 @@
 .checkout {
   width: 680px;
 
+  #content & {
+    float: left;
+    margin: 20px 113px;
+  }
+
   > h1 {
     padding: 0;
     margin: 0;

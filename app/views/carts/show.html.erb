@@ -55,7 +55,7 @@
     </footer>
   </div>
 
-  <%= link_to("Checkout", checkout_shipping_addresses_path, class: "fancybox fancybox.ajax") if current_cart.items.present? %>
+  <%= link_to("Checkout", checkout_shipping_addresses_path) if current_cart.items.present? %>
 </div>
 
 <script>$(function() { SiteBindings.cart(); });</script>
