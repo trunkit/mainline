@@ -9,6 +9,9 @@ class CartItem < ActiveRecord::Base
   belongs_to :supporting_boutique, class_name: "Boutique"
   belongs_to :supplying_boutique, class_name: "Boutique"
 
+  @@shipping_options = [['UPS Ground', 'Ground'], ['UPS 3 Day Select', '3DaySelect'], ['UPS Second Day Air', '2ndDayAir'], ['UPS Next Day Air Saver', 'NextDayAirSaver']].freeze
+  cattr_reader :shipping_options
+
   def item
     return @item if @item
 
