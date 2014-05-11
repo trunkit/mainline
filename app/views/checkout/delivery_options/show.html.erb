@@ -1,0 +1,26 @@
+<div class="checkout" id="delivery-options">
+  <h1>Checkout</h1>
+
+  <nav>
+    <ul>
+      <li class="active">Shopping Cart</li>
+      <li class="active">Shipping Address</li>
+      <li class="active">Delivery Options</li>
+      <li>Payment Method</li>
+      <li>Confirm Order</li>
+    </ul>
+  </nav>
+
+  <h2>Item Delivery Options</h2>
+
+  <% current_cart.items.each do |cart_item| %>
+    <%= cart_item.item.name %>
+
+    <% cart_item.shipping_options.each do |name, service| %>
+    <label>
+      <%= radio_button_tag("shipping[#{cart_item.id}]", cart_item.rate_for_service(service).id) %>
+      <%= content_tag(:span, "#{name} - #{number_to_currency(cart_item.rate_for_service(service).rate)}") %>
+    <% end %>
+  <% end %>
+</div>
+

@@ -45,7 +45,7 @@ class Checkout::ShippingAddressesController < CatalogAbstractController
     current_cart.shipping_address = address
     current_cart.save
 
-    redirect_to(checkout_delivery_options_index_path)
+    redirect_to(checkout_delivery_options_path)
   end
 
 private

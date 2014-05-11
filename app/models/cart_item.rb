@@ -32,10 +32,14 @@ class CartItem < ActiveRecord::Base
     quantity * unit_price
   end
 
+  def rate_for_service(service)
+    shipment.rates.detect{|r| r.service == service }
+  end
+
   def shipment
     return @shipment if @shipment
 
-    if shipment_id.blank?
+    @shipment = if shipment_id.blank?
       EasyPost::Shipment.create({
         to_address:   { id: cart.shipping_address.easypost_id },
         from_address: { id: item.boutique.location.easypost_id },

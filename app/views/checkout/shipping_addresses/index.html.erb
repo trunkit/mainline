@@ -15,7 +15,7 @@
 
   <% current_user.addresses.each do |address| %>
   <address>
-    <%= link_to("Ship to Saved Address", select_checkout_shipping_address_path(address), remote: true, method: :put) %>
+    <%= link_to("Ship to Saved Address", select_checkout_shipping_address_path(address), data: { method: :put }) %>
     <%= content_tag(:span, address.to_s.gsub("\n", "<br>").html_safe) %>
 
     <%= link_to("Edit", edit_checkout_shipping_address_path(address), remote: true) %>
