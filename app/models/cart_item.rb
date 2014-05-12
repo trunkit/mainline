@@ -30,8 +30,12 @@ class CartItem < ActiveRecord::Base
     item.price
   end
 
-  def total_price
+  def subtotal_price
     quantity * unit_price
+  end
+
+  def total_price
+    subtotal_price + shipping + tax
   end
 
   def rate_for_service(service)
