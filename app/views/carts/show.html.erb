@@ -41,7 +41,7 @@
         <% end %>
       </div>
 
-      <%= content_tag(:div, number_to_currency(cart_item.total_price), class: "total") %>
+      <%= content_tag(:div, number_to_currency(cart_item.subtotal_price), class: "total") %>
     </div>
     <% end %>
 
