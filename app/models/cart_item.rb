@@ -12,6 +12,8 @@ class CartItem < ActiveRecord::Base
   @@shipping_options = [['UPS Ground', 'Ground'], ['UPS 3 Day Select', '3DaySelect'], ['UPS Second Day Air', '2ndDayAir'], ['UPS Next Day Air Saver', 'NextDayAirSaver']].freeze
   cattr_reader :shipping_options
 
+  before_save :store_shipping_cost
+
   def item
     return @item if @item
 
@@ -52,5 +54,11 @@ class CartItem < ActiveRecord::Base
     else
       EasyPost::Shipment.retrieve(shipment_id)
     end
+  end
+
+private
+  def store_shipping_cost
+    return unless self[:shipping_rate_id].present?
+    self.shipping = BigDecimal.new(shipping_rate.rate.to_s.gsub(/[^0-9\.]/, ''))
   end
 end
