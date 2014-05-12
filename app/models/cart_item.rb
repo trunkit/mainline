@@ -20,7 +20,7 @@ class CartItem < ActiveRecord::Base
     @item = Item.find(item_id)
 
     if @item.version > item_version
-      @item = @item.versions[item_version].reify
+      @item = @item.versions[item_version - 1].reify
     end
 
     @item
