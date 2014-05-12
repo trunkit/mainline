@@ -40,13 +40,17 @@ class CartItem < ActiveRecord::Base
     return @shipment if @shipment
 
     @shipment = if shipment_id.blank?
-      EasyPost::Shipment.create({
+      shipment = EasyPost::Shipment.create({
         to_address:   { id: cart.shipping_address.easypost_id },
         from_address: { id: item.boutique.location.easypost_id },
         parcel:       { id: item.parcel_id }
       })
+
+      update_column(:shipment_id, shipment.id)
+
+      shipment
     else
-      EasyPost::Shipment.find(shipment_id)
+      EasyPost::Shipment.retrieve(shipment_id)
     end
   end
 end
