@@ -36,9 +36,7 @@ Trunkit::Application.routes.draw do
       put "select", on: :member
     end
 
-    resource  :delivery_options
-    resources :payment_methods
-    resource  :order
+    resource :delivery_options, :payment_method, :order
   end
 
   # User information
