@@ -11,16 +11,38 @@
     </ul>
   </nav>
 
-  <h2>Item Delivery Options</h2>
+  <%= form_tag(checkout_delivery_options_path, method: :put) do %>
+    <div class="items">
+      <header>
+        <div class="name">Item(s)</div>
+        <div class="service">Delivery Option</div>
+      </header>
 
-  <% current_cart.items.each do |cart_item| %>
-    <%= cart_item.item.name %>
+      <div class="row">
+        <% current_cart.items.each do |cart_item| %>
+          <div class="name">
+            <%= image_tag(cart_item.item.primary_photo.url.stream) %>
 
-    <% cart_item.shipping_options.each do |name, service| %>
-    <label>
-      <%= radio_button_tag("shipping[#{cart_item.id}]", cart_item.rate_for_service(service).id) %>
-      <%= content_tag(:span, "#{name} - #{number_to_currency(cart_item.rate_for_service(service).rate)}") %>
-    <% end %>
+            <div class="right">
+              <%= content_tag(:span, cart_item.item.name, class: "name") %>
+              <%= content_tag(:span, "Size: #{cart_item.size}") %>
+              <%= content_tag(:span, "Price: #{number_to_currency(cart_item.unit_price)}") %>
+              <%= content_tag(:span, "Quantity: #{cart_item.quantity}") %>
+            </div>
+          </div>
+
+          <div class="service">
+            <% cart_item.rates.each do |name, rate| %>
+            <label>
+              <%= radio_button_tag("shipping_rates[#{cart_item.id}]", rate.id, (cart_item.rate == rate)) %>
+              <%= content_tag(:span, "#{name} - #{number_to_currency(rate.rate)}") %>
+            </label>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= submit_tag("Continue") %>
   <% end %>
 </div>
-
