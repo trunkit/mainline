@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512141019) do
+ActiveRecord::Schema.define(version: 20140512145546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 20140512141019) do
   end
 
   create_table "cart_items", force: true do |t|
-    t.integer  "cart_id",                                        null: false
-    t.integer  "item_id",                                        null: false
-    t.integer  "item_version",                                   null: false
+    t.integer  "cart_id",                                                      null: false
+    t.integer  "item_id",                                                      null: false
+    t.integer  "item_version",                                                 null: false
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140512141019) do
     t.string   "size"
     t.integer  "supporting_boutique_id"
     t.integer  "supplying_boutique_id"
-    t.decimal  "shipping",               precision: 5, scale: 2
-    t.decimal  "tax",                    precision: 9, scale: 2
+    t.decimal  "shipping",               precision: 5, scale: 2, default: 0.0
+    t.decimal  "tax",                    precision: 9, scale: 2, default: 0.0
     t.text     "shipment_id"
     t.text     "shipping_rate_id"
   end
