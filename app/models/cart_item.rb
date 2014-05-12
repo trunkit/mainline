@@ -38,6 +38,26 @@ class CartItem < ActiveRecord::Base
     subtotal_price + shipping + tax
   end
 
+  def shipping_rate
+    if self[:shipping_rate_id]
+      shipment.rates.detect{|r| r.id == self[:shipping_rate_id] }
+    else
+      best_rate
+    end
+  end
+
+  alias_method :rate, :shipping_rate
+
+  def rates
+    @rates ||= shipping_options.map do |name, service|
+      [name, rate_for_service(service)]
+    end
+  end
+
+  def best_rate
+    @best_rate ||= rates.map(&:last).sort_by{|r| r.rate.to_f }.first
+  end
+
   def rate_for_service(service)
     shipment.rates.detect{|r| r.service == service }
   end
