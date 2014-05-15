@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512152544) do
+ActiveRecord::Schema.define(version: 20140515072520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,15 @@ ActiveRecord::Schema.define(version: 20140512152544) do
   end
 
   add_index "locations", ["company_id", "company_type"], name: "index_locations_on_company_id_and_company_type", using: :btree
+
+  create_table "user_invite_tokens", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.text     "code"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
