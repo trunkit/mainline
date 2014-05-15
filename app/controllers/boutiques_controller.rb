@@ -1,14 +1,6 @@
 class BoutiquesController < CatalogAbstractController
   skip_before_filter :authenticate_user!, :check_roles, only: [:search, :show]
 
-  def redirect
-    if b = Boutique.where(short_code: params[:short_code].strip).first
-      session[:referring_boutique_id] = b.id
-    end
-
-    redirect_to(root_path)
-  end
-
   def search
     @boutiques = Boutique.search(params[:q])
   end

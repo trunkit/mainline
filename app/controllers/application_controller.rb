@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       redirect_to("/brand")
     else
       if b = Boutique.where(short_code: name).first
-        redirect_to(url_for(subdomain: remainder, referral_code: "br-#{b.id}"))
+        redirect_to(boutique_path(b, subdomain: remainder))
       end
     end
   end
