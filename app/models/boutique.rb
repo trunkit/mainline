@@ -12,11 +12,7 @@ class Boutique < ActiveRecord::Base
 
   has_one  :location, as: :company, dependent: :destroy
   has_many :users,    as: :parent,  dependent: :destroy
-  has_many :items,    dependent: :destroy do
-    def top
-      limit(2)
-    end
-  end
+  has_many :items,    dependent: :destroy
 
   before_validation :generate_short_code
 
