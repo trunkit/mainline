@@ -68,7 +68,7 @@ class CartItem < ActiveRecord::Base
     @shipment = if shipment_id.blank?
       shipment = EasyPost::Shipment.create({
         to_address:   { id: cart.shipping_address.easypost_id },
-        from_address: { id: item.boutique.location.easypost_id },
+        from_address: { id: item.boutique.easypost_id },
         parcel:       { id: item.parcel_id }
       })
 

@@ -25,7 +25,7 @@ class Boutique < ActiveRecord::Base
   mount_uploader :cover_photo,  CoverPhotoUploader
   mount_uploader :stream_photo, StreamPhotoUploader
 
-  delegate :street, :street2, :city, :state, :postal_code, to: :address, allow_nil: true
+  delegate :street, :street2, :city, :state, :postal_code, :easypost_id, to: :address, allow_nil: true
 
   def self.search(q)
     body = {
