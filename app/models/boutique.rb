@@ -86,17 +86,13 @@ class Boutique < ActiveRecord::Base
 
   # TODO: Add fallback photos
   def primary_photo(size = nil)
-    if location
-      p = location.stream_photo
-      p ? p.stream.url : nil
-    else
-    end
+    stream_photo.try(:url)
   end
 
   def as_indexed_json(options={})
     json = as_json(options.merge({ root: false, except: [:data_sources] }))
-    json[:brands]   = brands.map(&:name)
-    json[:location] = location.try(:address).try(:serializable_hash)
+    json[:brands]  = brands.map(&:name)
+    json[:address] = address.try(:serializable_hash)
     json
   end
 
