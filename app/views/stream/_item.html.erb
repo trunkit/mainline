@@ -24,6 +24,8 @@
         <% else %>
         <%= link_to("Support", [:support, item], method: :put, remote: true, class: "buy button item-#{item.id} support") %>
         <% end %>
+      <% else %>
+      <%= link_to("Buy", new_user_session_path, :"data-fancybox-type" => "ajax", class: "buy fancybox fancybox.ajax") %>
       <% end %>
 
       <div class="social">
