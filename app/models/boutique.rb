@@ -10,17 +10,22 @@ class Boutique < ActiveRecord::Base
   acts_as_paranoid
   has_paper_trail
 
-  has_one  :location, as: :company, dependent: :destroy
-  has_many :users,    as: :parent,  dependent: :destroy
-  has_many :items,    dependent: :destroy
+  has_one  :address, as: :parent, dependent: :destroy
+  has_many :users,   as: :parent, dependent: :destroy
+  has_many :items,   dependent: :destroy
 
   before_validation :generate_short_code
+
+  accepts_nested_attributes_for :address
 
   validates_presence_of   :name, :short_code
   validates_uniqueness_of :short_code
   validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
-  delegate :street, :street2, :city, :state, :postal_code, :stream_photo, :cover_photo, to: :location, allow_nil: true
+  mount_uploader :cover_photo,  CoverPhotoUploader
+  mount_uploader :stream_photo, StreamPhotoUploader
+
+  delegate :street, :street2, :city, :state, :postal_code, to: :address, allow_nil: true
 
   def self.search(q)
     body = {
