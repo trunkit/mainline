@@ -21,8 +21,8 @@
     </div>
 
     <div class="locations">
-      <%= content_tag(:address, @boutique.location.to_s) %>
-      <%= content_tag(:span, @boutique.location.phone_number, class: "phone") %>
+      <%= content_tag(:address, @boutique.address.to_s) %>
+      <%= content_tag(:span, @boutique.phone, class: "phone") %>
     </div>
   </section>
 
