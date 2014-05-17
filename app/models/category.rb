@@ -1,7 +1,8 @@
 class Category < ActiveRecord::Base
   acts_as_tree
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
+  valdiates_uniqueness_of :name, scope: :parent_id
 
   def to_param
     "#{id}-#{name.parameterize}"
