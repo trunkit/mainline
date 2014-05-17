@@ -86,7 +86,9 @@ class Boutique < ActiveRecord::Base
 
   # TODO: Add fallback photos
   def primary_photo(size = nil)
-    stream_photo.try(:url)
+    photo = stream_photo
+    photo = photo.try(size) if size
+    photo.try(:url)
   end
 
   def as_indexed_json(options={})
