@@ -163,8 +163,8 @@ class Item < ActiveRecord::Base
 
     hsh[:boutique_name] = boutique.name
     hsh[:brand_name]    = brand.name
-    hsh[:cities]        = boutique.location.city
-    hsh[:states]        = boutique.location.state
+    hsh[:cities]        = boutique.address.city
+    hsh[:states]        = boutique.address.state
 
     hsh
   end
