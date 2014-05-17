@@ -147,6 +147,8 @@
 <% end %>
 
 <script>
+var secondaryCategories = <%= @secondary_categories.to_json.html_safe %>;
+
 $(function() {
   $("#item_brand_id").change(function() {
     var s = $(this);
@@ -183,5 +185,22 @@ $(function() {
 
     return false;
   });
+
+  $("#item_primary_category_id").change(function() {
+    var id = parseInt($(this).val());
+
+    if(id == "")
+      return true;
+
+    var categories = secondaryCategories[id];
+
+    secondarySelect = $("#item_secondary_category_id");
+
+    secondarySelect.children().remove();
+    secondarySelect.append($("<option></option>").val("").text("No Secondary Category"));
+
+    for(i = 0; i < categories.length; i++)
+      secondarySelect.append($("<option></option>").val(categories[i].id).text(categories[i].name));
+  }).trigger("change");
 });
 </script>

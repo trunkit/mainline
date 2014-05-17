@@ -2,7 +2,7 @@ class Admin::ItemsController < Admin::AbstractController
   before_filter do
     @brands               = Brand.order(:name)
     @boutiques            = Boutique.order(:name)
-    @primary_categories   = Category.where(parent_id: nil).order(:name)
+    @primary_categories   = Category.roots.order(:name)
     @secondary_categories = Category.where.not(parent_id: nil).order(:name).group_by(&:parent_id)
   end
 
