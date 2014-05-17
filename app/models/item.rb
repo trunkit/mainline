@@ -163,6 +163,7 @@ class Item < ActiveRecord::Base
 
     hsh[:boutique_name] = boutique.name
     hsh[:brand_name]    = brand.name
+    hsh[:categories]    = [primary_category.try(:name), secondary_category.try(:name)].compact.uniq
     hsh[:cities]        = boutique.address.city
     hsh[:states]        = boutique.address.state
 
