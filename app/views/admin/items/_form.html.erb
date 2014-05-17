@@ -136,7 +136,7 @@
     <div class="col-md-6 col-xs-12">
       <div class="form-group">
         <%= f.label(:secondary_category_id, "Secondary Category") %>
-        <%= f.select(:secondary_category_id, [], {}, class: "form-control") %>
+        <%= f.select(:secondary_category_id, Array.wrap(@secondary_categories[f.object.primary_category_id]).map{|c| [c.name, c.id]}, { include_blank: true }, class: "form-control") %>
       </div>
     </div>
   </div>
@@ -197,10 +197,10 @@ $(function() {
     secondarySelect = $("#item_secondary_category_id");
 
     secondarySelect.children().remove();
-    secondarySelect.append($("<option></option>").val("").text("No Secondary Category"));
+    secondarySelect.append($("<option></option>").val("").text(""));
 
     for(i = 0; i < categories.length; i++)
       secondarySelect.append($("<option></option>").val(categories[i].id).text(categories[i].name));
-  }).trigger("change");
+  });
 });
 </script>
