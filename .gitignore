@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the bundler provided binstubs
+/bin
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -17,10 +20,6 @@
 
 # Ignore the local cache from carrierwave
 /public/uploads
-
-# Ignore the local solr setup
-/log/sunspot*
-/solr
 
 # Ignore the bundler ruby cache
 /vendor/ruby
