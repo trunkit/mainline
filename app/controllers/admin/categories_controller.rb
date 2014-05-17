@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationController
 
   def edit
     @category   = Category.find(params[:id])
-    @categories = Category.root.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
+    @categories = Category.roots.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
   end
 
   def update
@@ -30,7 +30,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.update_attributes(category_params)
       redirect_to([:edit, :admin, @category])
     else
-      @categories = Category.all.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
+      @categories = Category.roots.map{|c| [c.name, c.id] }.unshift(['(Top Level)', nil])
       render(action: :edit)
     end
   end
