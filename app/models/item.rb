@@ -166,6 +166,7 @@ class Item < ActiveRecord::Base
     hsh[:categories]    = [primary_category.try(:name), secondary_category.try(:name)].compact.uniq
     hsh[:cities]        = boutique.address.city
     hsh[:states]        = boutique.address.state
+    hsh[:supporters]    = supporters.map(&:name) if supporters.present?
 
     hsh
   end
