@@ -13,7 +13,7 @@ class BoutiquesController < CatalogAbstractController
       where(action: (current_user && current_user.parent.present?) ? ["support", "added"] : "support").
       where(subject_type: "Item")
 
-    items = Item.find(activities.map(&:subject_id)).index_by(&:id)
+    items = Item.where(id: activities.map(&:subject_id)).index_by(&:id)
 
     @activity_items = activities.map{|activity| [activity, items[activity.subject_id]] }
   end
