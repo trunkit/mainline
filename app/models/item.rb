@@ -52,6 +52,7 @@ class Item < ActiveRecord::Base
     def discover(user, params)
       per = params[:per_page].to_i
       per = 20 if per < 1 || per > 100
+      per = 1000
 
       page = params[:page].to_i
       page = 1 if page < 1
