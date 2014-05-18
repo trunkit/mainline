@@ -182,8 +182,6 @@ private
   def remove_activity_entry
     Activity.
       for_subject(self).
-      for_owner(boutique).
-      where({ action: 'added' }).
       each(&:destroy)
   end
 end
