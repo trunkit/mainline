@@ -158,6 +158,12 @@ class Item < ActiveRecord::Base
     versions.count + 1
   end
 
+  def notify(action, subject)
+    if action == 'support' || action == 'unsupport'
+      __elasticsearch__.index_document
+    end
+  end
+
   def as_indexed_json(options = {})
     hsh = as_json(except: [:id])
 
