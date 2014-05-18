@@ -1,4 +1,6 @@
 class Activity < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :owner,   polymorphic: true
   belongs_to :subject, polymorphic: true
 
