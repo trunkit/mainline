@@ -21,7 +21,7 @@
       <% end %>
 
       <p class="counts">
-        <%= content_tag(:span, "#{boutique.supported_items.size} Supported Item#{'s' if boutique.supported_items.size > 1}") if boutique.supported_items.size > 0 %>
+        <%= content_tag(:span, "#{boutique.supported_items.size} Curated Item#{'s' if boutique.supported_items.size > 1}") if boutique.supported_items.size > 0 %>
       </p>
     </div>
   </div>

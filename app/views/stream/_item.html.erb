@@ -20,9 +20,9 @@
       <%= link_to("Buy", item_path(item, activity_id: activity), class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>
         <% if current_user.parent.supported_item_ids.include?(item.id) %>
-        <%= link_to("Unsupport", [:unsupport, item], method: :put, remote: true, class: "buy button item-#{item.id} unsupport") %>
+        <%= link_to("Uncurate", [:unsupport, item], method: :put, remote: true, class: "buy button item-#{item.id} unsupport") %>
         <% else %>
-        <%= link_to("Support", [:support, item], method: :put, remote: true, class: "buy button item-#{item.id} support") %>
+        <%= link_to("Curate", [:support, item], method: :put, remote: true, class: "buy button item-#{item.id} support") %>
         <% end %>
       <% else %>
       <%= link_to("Buy", new_user_session_path, :"data-fancybox-type" => "ajax", class: "buy fancybox fancybox.ajax") %>
@@ -37,7 +37,7 @@
 
     <div class="info">
       <% if activity && activity.action == 'support' %>
-      <%= link_to("Supported by #{activity.owner.name}", activity.owner, class: "curator") %>
+      <%= link_to("Curated by #{activity.owner.name}", activity.owner, class: "curator") %>
       <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier") %>
       <% else %>
       <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier one-line") %>
