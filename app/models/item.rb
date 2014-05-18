@@ -30,60 +30,70 @@ class Item < ActiveRecord::Base
     self.parcel_id = parcel.id
   end
 
-  def self.for_stream(user, params)
-    boutique_ids   = params[:boutique_id]
-    boutique_ids ||= user.boutiques_following.select(:id).map(&:id) if user
+  class << self
+    def for_stream(user, params)
+      boutique_ids   = params[:boutique_id]
+      boutique_ids ||= user.boutiques_following.select(:id).map(&:id) if user
 
-    actions = user && user.parent_id.present? ? ['support', 'added'] : 'support'
+      activity_scope = item_activity_scope(user).where(owner_id: boutique_ids) if boutique_ids.present?
 
-    activity_scope = Activity.where({
-      owner_type:   "Boutique",
-      action:       actions,
-      subject_type: "Item"
-    }).order(created_at: :desc)
+      item_ids = activity_scope.select(:subject_id).map(&:subject_id)
 
-    activity_scope = activity_scope.where(owner_id: boutique_ids) if boutique_ids.present?
+      items = Item.where(id: item_ids)
+      items = items.for_category(params[:category]) if params[:category].present?
+      items = items.includes(:boutique).page(params[:page] || 1).per(params[:per] || 30)
 
-    item_ids = activity_scope.select(:subject_id).map(&:subject_id)
+      activities = activity_scope.where(subject_id: items.map(&:id))
+      activities.map{|activity| [activity, items.detect{|i| i.id == activity.subject_id }] }
+    end
 
-    items = Item.where(id: item_ids)
-    items = items.for_category(params[:category]) if params[:category].present?
-    items = items.includes(:boutique).page(params[:page] || 1).per(params[:per] || 30)
+    def discover(user, params)
+      per = params[:per_page].to_i
+      per = 20 if per < 1 || per > 100
 
-    activities = activity_scope.where(subject_id: items.map(&:id))
-    activities.map{|activity| [activity, items.detect{|i| i.id == activity.subject_id }] }
-  end
+      page = params[:page].to_i
+      page = 1 if page < 1
 
-  def self.discover(user, params)
-    per = params[:per_page].to_i
-    per = 20 if per < 1 || per > 100
+      fields  = ['name', 'description', 'fit', 'construction', 'categories', 'brand_name', 'cities', 'states', 'supporters']
+      fields << 'boutique_name' if user.parent_id.present?
 
-    page = params[:page].to_i
-    page = 1 if page < 1
-
-    query = {
-      query: {
-        multi_match: {
-          query:  params[:q],
-          fields: ['name', 'description', 'fit', 'construction', 'model_measurements', 'categories', 'boutique_name', 'brand_name', 'cities', 'states'],
-          max_expansions: 5,
-          type: "phrase_prefix"
-        }
-      }
-    }
-
-    if user.parent_id.blank?
       query = {
         query: {
-          filtered: query,
-          filter: {
-            exists: { field: "supporters" }
+          multi_match: {
+            query:  params[:q],
+            fields: fields,
+            max_expansions: 5,
+            type: "phrase_prefix"
           }
         }
       }
+
+      if user.parent_id.blank?
+        query.merge!(filter: {
+          not: {
+            missing: { field: "supporters" }
+          }
+        })
+
+        query = { query: { filtered: query }}
+      end
+
+      items = search(query).page(page).per(per).records.includes(:boutique)
+
+      activities = item_activity_scope(user).where(subject_id: items.map(&:id))
+      activities.map{|activity| [activity, items.detect{|i| i.id == activity.subject_id }] }
     end
 
-    search(query).page(page).per(per).records
+  private
+    def item_activity_scope(user)
+      actions = user && user.parent_id.present? ? ['support', 'added'] : 'support'
+
+      activity_scope = Activity.where({
+        owner_type:   "Boutique",
+        action:       actions,
+        subject_type: "Item"
+      }).order(created_at: :desc)
+    end
   end
 
   def sizes
@@ -176,14 +186,14 @@ class Item < ActiveRecord::Base
   end
 
   def as_indexed_json(options = {})
-    hsh = as_json(except: [:id])
+    hsh = as_json
 
     hsh[:boutique_name] = boutique.name
     hsh[:brand_name]    = brand.name
     hsh[:categories]    = [primary_category.try(:name), secondary_category.try(:name)].compact.uniq
     hsh[:cities]        = boutique.address.city
     hsh[:states]        = boutique.address.state
-    hsh[:supporters]    = supporters.map(&:name) if supporters.present?
+    hsh[:supporters]    = supporters.present? ? supporters.map(&:name) : nil
 
     hsh
   end
