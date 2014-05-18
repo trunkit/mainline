@@ -20,10 +20,10 @@ class Admin::ItemsController < Admin::AbstractController
   end
 
   def create
-    @item          = Item.new(item_params)
-    @item.approved = true
+    @item = Item.new(item_params)
 
     if @item.save
+      @item.grant_approval!
       redirect_to([:edit, :admin, @item])
     else
       render(action: :new)
