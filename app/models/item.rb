@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
   belongs_to :primary_category,   class_name: "Category"
   belongs_to :secondary_category, class_name: "Category"
 
+  after_update  :check_for_owner_change
   after_destroy :remove_activity_entry
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
@@ -199,6 +200,18 @@ class Item < ActiveRecord::Base
   end
 
 private
+  def check_for_owner_change
+    return true unless approved?
+
+    if previous_changes.keys.include?("boutique_id")
+      Activity.
+        for_subject(self).
+        where(owner_id: previous_changes["boutique_id"], owner_type: "Boutique", action: "added").
+        each(&:destroy)
+
+      add_activity_entry
+    end
+  end
 
   def add_activity_entry
     Activity.
