@@ -32,6 +32,8 @@ body {
   }
 
   #content {
+    #boutique-search > form { margin-top: 80px !important; }
+
     #boutique-search,
     #account-signup {
       float: left;
@@ -50,7 +52,7 @@ body {
 
       > form {
         width: 705px;
-        margin: 80px 100px 0 99px;
+        margin: 40px 100px 0 99px;
 
         &.search {
           h2 { margin-bottom: 0; }
