@@ -4,10 +4,10 @@ if defined?(Unicorn)
   require 'unicorn/worker_killer'
 
   # Max requests per worker
-  use Unicorn::WorkerKiller::MaxRequests, 3072, 4096
+  use Unicorn::WorkerKiller::MaxRequests, 2048, 3072
 
   # Max memory size (RSS) per worker
-  use Unicorn::WorkerKiller::Oom, (192*(1024**2)), (256*(1024**2))
+  use Unicorn::WorkerKiller::Oom, (160*(1024**2)), (192*(1024**2))
 end
 
 require ::File.expand_path('../config/environment',  __FILE__)
