@@ -36,7 +36,8 @@ class Item < ActiveRecord::Base
       boutique_ids   = params[:boutique_id]
       boutique_ids ||= user.boutiques_following.select(:id).map(&:id) if user
 
-      activity_scope = item_activity_scope(user).where(owner_id: boutique_ids) if boutique_ids.present?
+      activity_scope = item_activity_scope(user)
+      activity_scope = activity_scope.where(owner_id: boutique_ids) if boutique_ids.present?
 
       item_ids = activity_scope.select(:subject_id).map(&:subject_id)
 
@@ -86,7 +87,7 @@ class Item < ActiveRecord::Base
     end
 
   private
-    def item_activity_scope(user)
+    def item_activity_scope(user = nil)
       actions = user && user.parent_id.present? ? ['support', 'added'] : 'support'
 
       activity_scope = Activity.where({
