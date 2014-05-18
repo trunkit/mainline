@@ -1,1 +1,1 @@
-$(".button.unsupport.item-<%= @item.id %>").replaceWith("<%= j(link_to("Support", [:support, @item], method: :put, remote: true, class: "buy button item-#{@item.id} support")) %>");
+$(".button.unsupport.item-<%= @item.id %>").replaceWith("<%= j(link_to("Curate", [:support, @item], method: :put, remote: true, class: "buy button item-#{@item.id} support")) %>");
