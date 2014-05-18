@@ -54,7 +54,7 @@ class Item < ActiveRecord::Base
     activities.map{|activity| [activity, items.detect{|i| i.id == activity.subject_id }] }
   end
 
-  def self.discover(params)
+  def self.discover(user, params)
     per = params[:per_page].to_i
     per = 20 if per < 1 || per > 100
 
@@ -71,6 +71,17 @@ class Item < ActiveRecord::Base
         }
       }
     }
+
+    if user.parent_id.blank?
+      query = {
+        query: {
+          filtered: query,
+          filter: {
+            exists: { field: "supporters" }
+          }
+        }
+      }
+    end
 
     search(query).page(page).per(per).records
   end
