@@ -1,4 +1,4 @@
-<div class="checkout" id="confirm">
+<div class="checkout" id="checkout-confirm">
   <h1>Checkout</h1>
 
   <nav>
@@ -16,7 +16,7 @@
   <div class="order-details">
     <address>
       <h6>Shipping Address</h6>
-      <%= current_cart.shipping_address.to_s %>
+      <%= current_cart.shipping_address.to_s.gsub("\n", "<br>").html_safe %><br>
       <%= link_to("Change", checkout_shipping_addresses_path) %>
     </address>
 
@@ -25,7 +25,7 @@
       <%= content_tag(:span, @token.card.name, class: "name") %>
 
       <span class="card-type">
-        <%= content_tag(:em, @token.card.type) %>
+        <%= content_tag(:em, @token.card.type, class: @token.card.type.downcase.gsub(/[^a-z]/, '-')) %>
 
         <span>
           ending in <%= @token.card.last4 %>
@@ -45,23 +45,25 @@
     </header>
 
     <% current_cart.items.each do |cart_item| %>
-    <div class="row">
-      <div class="name">
-        <%= image_tag(cart_item.item.primary_photo.url.thumb) %>
+    <div class="wrapper">
+      <div class="row">
+        <div class="name">
+          <%= image_tag(cart_item.item.primary_photo.url.thumb) %>
 
-        <div>
-          <%= content_tag(:span, cart_item.item.name) %>
+          <div>
+            <%= content_tag(:span, cart_item.item.name) %>
 
-          <ul>
-            <%= content_tag(:li, "Size: #{cart_item.size}") if cart_item.size.present? %>
-            <%= content_tag(:li, "Quantity: #{cart_item.quantity}") %>
-          </ul>
+            <ul>
+              <%= content_tag(:li, "Size: #{cart_item.size}") if cart_item.size.present? %>
+              <%= content_tag(:li, "Quantity: #{cart_item.quantity}") %>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <%= content_tag(:div, number_to_currency(cart_item.unit_price), class: "unit") %>
-      <%= content_tag(:div, number_to_currency(cart_item.shipping), class: "delivery") %>
-      <%= content_tag(:div, number_to_currency(cart_item.subtotal_with_shipping), class: "total") %>
+        <%= content_tag(:div, number_to_currency(cart_item.unit_price), class: "unit") %>
+        <%= content_tag(:div, number_to_currency(cart_item.shipping), class: "delivery") %>
+        <%= content_tag(:div, number_to_currency(cart_item.subtotal_with_shipping), class: "total") %>
+      </div>
     </div>
     <% end %>
 
@@ -70,4 +72,16 @@
       <%= content_tag(:div, "Total: #{number_to_currency(current_cart.total_price)}", class: "total") %>
     </footer>
   </div>
+
+  <%= link_to("Place Order", "#confirm-barrier", class: "fancybox btn order place-order") %>
+</div>
+
+<div id="confirm-barrier">
+  <h1>Confirm Purchase</h1>
+
+  <p>All shipping and returns are handled directly by the boutique "supplier". The boutique that curated the item is NOT involved in the shipping or return process.</p>
+
+  <p><%= link_to("Contact Us", "#") %> if you have any questions or concerns.</p>
+
+  <%= link_to("Confirm", checkout_order_path, data: { method: :put, remote: true }, class: "btn order") %>
 </div>

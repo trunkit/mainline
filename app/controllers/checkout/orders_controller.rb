@@ -1,7 +1,7 @@
 class Checkout::OrdersController < CatalogAbstractController
   force_ssl if: -> { Rails.env.production? }
 
-  def show
+  before_filter do
     begin
       @token = Stripe::Token.retrieve(session[:card_token])
     rescue Stripe::InvalidRequestError
@@ -9,6 +9,11 @@ class Checkout::OrdersController < CatalogAbstractController
     end
   end
 
+  def show
+  end
+
   def update
+    current_cart.capture_order!(session[:card_token])
+    session[:cart_id] = nil
   end
 end

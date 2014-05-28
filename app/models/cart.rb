@@ -22,6 +22,19 @@ class Cart < ActiveRecord::Base
     where(id: ids).where.not(transaction_id: nil).includes(:cart_items).page(params[:page]).per(params[:per_page])
   end
 
+  def capture_order!(card)
+    charge = Stripe::Charge.create({
+      amount:   (total_price * 100).to_i,
+      currency: "usd",
+      card:     card
+    })
+
+    update_attributes(
+      transaction_id: charge.id,
+      captured_at:    Time.now
+    )
+  end
+
   def tax
     items.to_a.sum(&:tax)
   end
