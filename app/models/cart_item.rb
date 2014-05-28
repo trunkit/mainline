@@ -26,6 +26,10 @@ class CartItem < ActiveRecord::Base
     @item
   end
 
+  def supplied?(boutique_id)
+    boutique_id.to_i == supplying_boutique_id
+  end
+
   def unit_price
     item.price
   end
