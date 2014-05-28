@@ -12,6 +12,7 @@
     <%= javascript_include_tag("//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js") %>
     <%= javascript_include_tag("//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js") %>
     <%= javascript_include_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js") %>
+    <%= javascript_include_tag("https://js.stripe.com/v2/") %>
     <%= javascript_include_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js") if current_user.try(:has_role?, :system) %>
     <%= javascript_include_tag("application") %>
 
