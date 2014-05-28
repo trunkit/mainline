@@ -5,5 +5,7 @@ class Checkout::PaymentMethodsController < CatalogAbstractController
   end
 
   def update
+    session[:card_token] = params[:card_token]
+    redirect_to(checkout_order_path)
   end
 end

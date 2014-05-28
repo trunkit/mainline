@@ -1,3 +1,58 @@
-// Place all the styles related to the checkout/payment_methods controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#payment-method {
+  form {
+    div {
+      float: left;
+      width: 100%;
+      padding: 0 0 20px;
+
+      label {
+        float: left;
+        width: 100px;
+        padding: 0 10px 0 0;
+        font: 16px/32px "Helvetica LT Std", sans-serif;
+        text-align: right;
+
+        &.date {
+          width: 100%;
+          padding: 0;
+
+          span {
+            display: block;
+            float: left;
+            width: 100px;
+            padding: 0 10px 0 0;
+          }
+
+          input, select { float: left; }
+
+          select {
+            margin: 5px 0 0 10px;
+          }
+        }
+      }
+
+      input[type=text] {
+        float: left;
+        width: 200px;
+        height: 30px;
+        padding: 0 5px;
+        border: 2px solid #000000;
+      }
+    }
+
+    input[type=submit] {
+      display: block;
+      clear: both;
+      width: 140px;
+      margin: 0 auto;
+      padding: 5px 20px;
+      font: 16px/20px "Bebas Neue", sans-serif;
+      border: 0;
+      letter-spacing: 4px;
+      text-align: center;
+      text-decoration: none;
+      color: #FFF;
+      background: #000;
+    }
+  }
+}

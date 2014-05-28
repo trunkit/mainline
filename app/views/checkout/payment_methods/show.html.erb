@@ -10,4 +10,45 @@
       <li>Confirm Order</li>
     </ul>
   </nav>
+
+  <h2>Please Enter Your Credit / Debit Cart and Billing Address Details</h2>
+
+  <div class="credit-card">
+    <%= form_tag(checkout_payment_method_path, method: :put) do %>
+      <div class="row">
+        <%= label_tag(:name, "Name on Card") %>
+        <%= text_field_tag(:name, "", required: true, data: { stripe: "name" }) %>
+      </div>
+
+      <div class="row">
+        <%= label_tag(:card_number, "Card Number") %>
+        <%= text_field_tag(:card_number, "", required: true, data: { stripe: "number" }) %>
+      </div>
+
+      <div class="row">
+        <%= label_tag(:csc, "Security Code") %>
+        <%= text_field_tag(:csc, "", required: true, data: { stripe: "cvc" }) %>
+      </div>
+
+      <div class="row">
+        <label class="date">
+          <span>Expiry Date</span>
+          <%= select_tag(:expiry_month, options_for_select([['January', 1], ['February', 2], ['March', 3], ['April', 4], ['May', 5], ['June', 6], ['July', 7], ['August', 8], ['September', 9], ['October', 10], ['November', 11], ['December', 12]], Time.now.month), data: { stripe: "exp_month" }) %>
+          <%= select_tag(:expiry_year, options_for_select((Time.now.year...(Time.now.year + 7)).to_a.map(&:to_s)), data: { stripe: "exp_year" }) %>
+        </label>
+      </div>
+
+      <div class="row">
+        <%= label_tag(:billing_zip, "Billing ZIP") %>
+        <%= text_field_tag(:billing_zip, "", required: true, data: { stripe: "address_zip" }) %>
+      </div>
+
+      <%= submit_tag("Continue") %>
+    <% end %>
+  </div>
 </div>
+
+<script>
+Stripe.setPublishableKey("<%= configatron.stripe.publishable_key %>");
+$(function() { SiteBindings.billing(); });
+</script>
