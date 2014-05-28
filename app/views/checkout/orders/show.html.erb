@@ -1,0 +1,73 @@
+<div class="checkout" id="confirm">
+  <h1>Checkout</h1>
+
+  <nav>
+    <ul>
+      <li class="active">Shopping Cart</li>
+      <li class="active">Shipping Address</li>
+      <li class="active">Delivery Options</li>
+      <li class="active">Payment Method</li>
+      <li class="active">Confirm Order</li>
+    </ul>
+  </nav>
+
+  <h2>Please Review The Shipping and Payment Details</h2>
+
+  <div class="order-details">
+    <address>
+      <h6>Shipping Address</h6>
+      <%= current_cart.shipping_address.to_s %>
+      <%= link_to("Change", checkout_shipping_addresses_path) %>
+    </address>
+
+    <div class="payment-info">
+      <h6>Credit/Debit Card Info</h6>
+      <%= content_tag(:span, @token.card.name, class: "name") %>
+
+      <span class="card-type">
+        <%= content_tag(:em, @token.card.type) %>
+
+        <span>
+          ending in <%= @token.card.last4 %>
+        </span>
+      </span>
+
+      <%= link_to("Change", checkout_payment_method_path) %>
+    </div>
+  </div>
+
+  <div class="items">
+    <header>
+      <div class="name">Item(s)</div>
+      <div class="unit">Item Price</div>
+      <div class="delivery">Delivery</div>
+      <div class="total">Total</div>
+    </header>
+
+    <% current_cart.items.each do |cart_item| %>
+    <div class="row">
+      <div class="name">
+        <%= image_tag(cart_item.item.primary_photo.url.thumb) %>
+
+        <div>
+          <%= content_tag(:span, cart_item.item.name) %>
+
+          <ul>
+            <%= content_tag(:li, "Size: #{cart_item.size}") if cart_item.size.present? %>
+            <%= content_tag(:li, "Quantity: #{cart_item.quantity}") %>
+          </ul>
+        </div>
+      </div>
+
+      <%= content_tag(:div, number_to_currency(cart_item.unit_price), class: "unit") %>
+      <%= content_tag(:div, number_to_currency(cart_item.shipping), class: "delivery") %>
+      <%= content_tag(:div, number_to_currency(cart_item.subtotal_with_shipping), class: "total") %>
+    </div>
+    <% end %>
+
+    <footer>
+      <%= content_tag(:div, "Taxes: #{number_to_currency(current_cart.tax)}", class: "tax") %>
+      <%= content_tag(:div, "Total: #{number_to_currency(current_cart.total_price)}", class: "total") %>
+    </footer>
+  </div>
+</div>
