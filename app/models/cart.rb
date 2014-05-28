@@ -22,6 +22,10 @@ class Cart < ActiveRecord::Base
     where(id: ids).where.not(transaction_id: nil).includes(:cart_items).page(params[:page]).per(params[:per_page])
   end
 
+  def tax
+    items.to_a.sum(&:tax)
+  end
+
   def total_price
     items.to_a.sum(&:total_price)
   end

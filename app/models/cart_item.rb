@@ -34,6 +34,10 @@ class CartItem < ActiveRecord::Base
     quantity * unit_price
   end
 
+  def subtotal_with_shipping
+    subtotal_price + shipping
+  end
+
   def total_price
     subtotal_price + shipping + tax
   end
