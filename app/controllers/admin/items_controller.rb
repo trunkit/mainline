@@ -59,8 +59,7 @@ class Admin::ItemsController < Admin::AbstractController
     redirect_to(action: :index)
   end
 
-  private
-
+private
   def item_params
     params.require(:item).permit([:name, :price, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :boutique_id, :primary_category_id, :secondary_category_id])
   end
