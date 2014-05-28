@@ -4,28 +4,28 @@
     <%= content_tag(:span, "Next Payment To Be Paid On: 5/31/14") %>
   </header>
 
-  <% 1.upto(5) do %>
+  <% @orders.each do |cart| %>
   <div class="order">
     <%= content_tag(:span, "Customer: Jane Doe", class: "name") %>
     <%= content_tag(:address, "123 Test Street<br>Boulder, CO 12345".html_safe) %>
 
     <article class="items">
-      <% Item.page(1).per(2).each do |item| %>
+      <% cart.items.each do |cart_item| %>
       <%= content_tag(:section, class: "item") do %>
-        <%= image_tag(item.primary_photo.url.thumb) %>
+        <%= image_tag(cart_item.item.primary_photo.url.thumb) %>
 
         <div>
-          <%= content_tag(:span, item.name) %>
+          <%= content_tag(:span, cart_item.item.name) %>
 
           <ul>
-            <%= content_tag(:li, "Size: Medium") %>
-            <%= content_tag(:li, "Qty: 1") %>
-            <%= content_tag(:li, "Price: $123.34") %>
-            <%= content_tag(:li, "Shipping: $12.32") %>
+            <%= content_tag(:li, "Size: #{cart_item.size}") if cart_item.size.present? %>
+            <%= content_tag(:li, "Qty: #{cart_item.quantity}") %>
+            <%= content_tag(:li, "Price: #{number_to_currency(cart_item.unit_price)}") %>
+            <%= content_tag(:li, "Shipping: #{number_to_currency(cart_item.shipping)}") %>
           </ul>
         </div>
 
-        <% if false %>
+        <% if cart_item.supplied?(current_user.parent_id) %>
         <%= link_to("Mark Shipped", "#", class: "btn") %>
         <% else %>
         <%= link_to("Supported!", "#", class: "btn btn-supplied") %>
