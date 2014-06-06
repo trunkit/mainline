@@ -19,6 +19,14 @@ class Address < ActiveRecord::Base
     [street, street2, "\n", "#{city},", state, postal_code].compact.join(" ")
   end
 
+  def as_indexed_json
+    out               = serializable_hash(except: [:parent_id, :deleted_at, :created_at, :updated_at, :parent_type, :easypost_id])
+    out['state_abbr'] = state
+    out['state']      = self.class.us_states.detect{|(name, abbr)| abbr == state }.first
+
+    out
+  end
+
 private
   def easypost
     @easypost ||= EasyPost::Address.create({

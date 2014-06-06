@@ -100,7 +100,7 @@ class Boutique < ActiveRecord::Base
   def as_indexed_json(options={})
     json = as_json(options.merge({ root: false, except: [:data_sources] }))
     json[:brands]  = supported_brands.map(&:name)
-    json[:address] = address.try(:serializable_hash)
+    json[:address] = address.try(:as_indexed_json)
     json
   end
 
