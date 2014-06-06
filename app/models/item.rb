@@ -82,7 +82,7 @@ class Item < ActiveRecord::Base
         query = { query: { filtered: query }}
       end
 
-      items = search(query).page(page).per(per).records.includes(:boutique)
+      items = search(query).page(page).per(per).records.includes(:boutique, :brand)
 
       activities = item_activity_scope(user).where(subject_id: items.map(&:id)).index_by(&:subject_id)
       items.map{|i| [activities[i.id], i] }
