@@ -22,7 +22,8 @@
         color: #000;
         text-decoration: none;
 
-        &:hover { text-decoration: underline; }
+        &.active { font: bold 16px/36px "Helvetica Condensed", Helvetica, sans-serif; }
+        &:hover  { text-decoration: underline; }
       }
     }
   }

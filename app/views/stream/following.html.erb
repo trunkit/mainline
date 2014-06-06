@@ -1,3 +1,11 @@
+<div id="stream-subcategories">
+  <nav>
+    <ul>
+      <%= content_tag(:li, link_to("Following", stream_following_path, class: "active")) %>
+    </ul>
+  </nav>
+</div>
+
 <div id="stream">
   <% @boutiques.each do |boutique| %>
   <%= render("stream/boutique", boutique: boutique) %>

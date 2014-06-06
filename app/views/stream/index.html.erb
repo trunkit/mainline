@@ -1,9 +1,9 @@
 <%= content_tag(:div, id: "stream-subcategories") do %>
   <nav>
     <ul>
-      <%= content_tag(:li, link_to("All #{@category.name}", [:stream, @category])) %>
+      <%= content_tag(:li, link_to("All #{@category.name}", [:stream, @category], class: (params[:category].to_i == @category.id) ? "active" : nil)) %>
       <% @subcategories.each do |category| %>
-      <%= content_tag(:li, link_to(category.name, [:stream, category])) %>
+      <%= content_tag(:li, link_to(category.name, [:stream, category], class: (params[:category].to_i == category.id) ? "active" : nil)) %>
       <% end %>
     </ul>
   </nav>

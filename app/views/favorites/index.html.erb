@@ -1,3 +1,11 @@
+<div id="stream-subcategories">
+  <nav>
+    <ul>
+      <%= content_tag(:li, link_to("Favorites", favorites_path, class: "active")) %>
+    </ul>
+  </nav>
+</div>
+
 <%= content_tag(:div, class: "notification error") do %>
   <em>Oh No!</em>
   It looks like you haven't favorited anything. Check out your "STREAM" or visit "SEARCH" to discover new items. Select the heart to add an item to favorites.
