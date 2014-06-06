@@ -22,8 +22,11 @@
         color: #000;
         text-decoration: none;
 
-        &.active { font: bold 16px/36px "Helvetica Condensed", Helvetica, sans-serif; }
-        &:hover  { text-decoration: underline; }
+        &.active,
+        &:hover {
+          line-height: 34px;
+          border-bottom: 1px solid #000;
+        }
       }
     }
   }
