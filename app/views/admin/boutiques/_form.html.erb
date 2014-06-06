@@ -106,7 +106,7 @@
     <div class="col-md-4 col-xs-12">
       <div class="form-group">
         <%= fl.label(:state) %>
-        <%= fl.select(:state, us_states, { include_blank: true }, class: "form-control") %>
+        <%= fl.select(:state, Address.us_states, { include_blank: true }, class: "form-control") %>
       </div>
     </div>
 
