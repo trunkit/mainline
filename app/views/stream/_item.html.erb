@@ -8,8 +8,8 @@
       <%= link_to(image_tag("feed/favorite#{'-selected' if current_user.favorite_item_activity_ids.include?(activity.id)}.png"), favorites_path(activity_id: activity.id), method: :post, remote: true, class: "favorite item-activity-#{activity.id}") if current_user && activity %>
 
       <p class="name">
-        <%= link_to(item.name, item_path(item, activity_id: activity), class: "fancybox fancybox.ajax name") %>
-        <%= link_to("Designed By #{item.brand.name}", item_path(item, activity_id: activity), class: "fancybox fancybox.ajax") %>
+        <%= link_to(item.name, (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax name") %>
+        <%= link_to("Designed By #{item.brand.name}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax") %>
       </p>
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
@@ -27,12 +27,6 @@
       <% else %>
       <%= link_to("Buy", new_user_session_path, :"data-fancybox-type" => "ajax", class: "buy fancybox fancybox.ajax") %>
       <% end %>
-
-      <div class="social">
-        <%= link_to(image_tag("feed/facebook.png"), item_path(item, activity_id: activity)) %>
-        <%= link_to(image_tag("feed/twitter.png"), item_path(item, activity_id: activity)) %>
-        <%= link_to(image_tag("feed/pinterest.png"), item_path(item, activity_id: activity)) %>
-      </div>
     </div>
 
     <div class="info">
