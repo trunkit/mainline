@@ -6,7 +6,7 @@
 
   <section class="info">
     <%= content_tag(:span, @boutique.name, class: "name") %>
-    <%= link_to(@boutique.website, @boutique.website, target: "_blank", class: "website") %>
+    <%= link_to(@boutique.website, "http://#{@boutique.website}", target: "_blank", class: "website") %>
 
     <%= content_tag(:p, @boutique.description) %>
 
