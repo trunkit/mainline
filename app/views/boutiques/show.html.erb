@@ -10,7 +10,13 @@
 
     <%= content_tag(:p, @boutique.description) %>
 
-    <%= link_to("Follow", "#", class: "button follow") %>
+    <% if current_user %>
+      <% if current_user.boutiques_following_ids.include?(@boutique.id) %>
+      <%= link_to("Unfollow", [:unfollow, @boutique], method: :put, remote: true, class: "unfollow button boutique-#{@boutique.id}") %>
+      <% else %>
+      <%= link_to("Follow", [:follow, @boutique], method: :put, remote: true, class: "follow button boutique-#{@boutique.id}") %>
+      <% end %>
+    <% end %>
   </section>
 
   <section class="contact">
