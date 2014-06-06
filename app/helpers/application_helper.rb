@@ -14,8 +14,12 @@ module ApplicationHelper
     end
   end
 
-  def active_css_class(regexp)
-    regexp.match(request.fullpath) ? "active" : nil
+  def active_css_class(matcher)
+    if matcher.is_a?(Regexp)
+      matcher.match(request.fullpath) ? "active" : nil
+    else
+      request.fullpath.index(matcher) ? "active" : nil
+    end
   end
 
   def us_states

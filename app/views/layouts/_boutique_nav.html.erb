@@ -2,38 +2,38 @@
   <ul>
     <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
 
-    <%= content_tag(:li, class: active_css_class(/^\/(stream)/)) do %>
+    <%= content_tag(:li, class: active_css_class(/^\/(stream|favorites)/)) do %>
       <%= link_to("Stream", stream_path, class: "stream") %>
 
       <ul>
-        <%= content_tag(:li, link_to("All", stream_path)) %>
+        <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
         <% categories.each do |category| %>
-        <%= content_tag(:li, link_to(category.name, [:stream, category])) %>
+        <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class(category.to_param))) %>
         <% end %>
 
-        <%= content_tag(:li, link_to("Favorites", favorites_path, class: "button")) %>
-        <%= content_tag(:li, link_to("Following", stream_following_path, class: "button")) %>
+        <%= content_tag(:li, link_to("Favorites", favorites_path, class: "button #{active_css_class(/^\/favorites\/?$/)}")) %>
+        <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
       </ul>
     <% end %>
 
-    <%= content_tag(:li, class: active_css_class(/\?(supported)/)) do %>
+    <%= content_tag(:li, class: active_css_class("supported=true")) do %>
       <%= link_to("Curated", items_path(supported: true)) %>
 
       <ul>
         <%= content_tag(:li, link_to("All", items_path(supported: true))) %>
         <% categories.each do |category| %>
-        <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category))) %>
+        <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category), class: active_css_class(category.to_param))) %>
         <% end %>
       </ul>
     <% end %>
 
-    <%= content_tag(:li, class: active_css_class(/\?(curated)/)) do %>
+    <%= content_tag(:li, class: active_css_class("curated=true")) do %>
       <%= link_to("Supplied", items_path(curated: true)) %>
 
       <ul>
         <%= content_tag(:li, link_to("All", items_path(curated: true))) %>
         <% categories.each do |category| %>
-        <%= content_tag(:li, link_to(category.name, items_path(curated: true, category: category.name))) %>
+        <%= content_tag(:li, link_to(category.name, items_path(curated: true, category: category), class: active_css_class(category.to_param))) %>
         <% end %>
         <%= content_tag(:li, link_to("Add", new_item_path, class: "button")) %>
       </ul>
