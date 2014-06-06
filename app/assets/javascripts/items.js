@@ -117,6 +117,11 @@ SiteBindings.item = {
     });
   },
   details: function(itemSizes) {
+    $("article.item div.thumbs a").click(function() {
+      $(this).parents("section.photos").children("img").attr("src", $(this).attr("href"));
+      return false;
+    });
+
     $("article.item form select.size").change(function() {
       maxQuantity    = parseInt(itemSizes[$(this).val()]);
       quantitySelect = $(this).siblings("select")
