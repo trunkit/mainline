@@ -38,6 +38,7 @@ class Item < ActiveRecord::Base
 
       activity_scope = item_activity_scope(user)
       activity_scope = activity_scope.where(owner_id: boutique_ids) if boutique_ids.present?
+      activity_scope = activity_scope.where.not("(owner_id = ? AND action = 'support')", user.parent_id) if user && user.parent_id.present?
 
       item_ids = activity_scope.select(:subject_id).map(&:subject_id)
 
