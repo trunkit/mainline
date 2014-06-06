@@ -14,6 +14,20 @@
 
 @font-face {
   font: {
+    family: 'Helvetica Condensed';
+    weight: bold;
+    style:  normal;
+  }
+
+  src: url('helvetica-condensed-bold.eot'); /* IE9 Compat Modes */
+  src: url('helvetica-condensed-bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('helvetica-condensed-bold.woff') format('woff'), /* Modern Browsers */
+       url('helvetica-condensed-bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('helvetica-condensed-bold.svg#27b78d4eb59fba12a05db0afbf481428') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font: {
     family: "Helvetica Neue";
     weight: 100;
     style:  normal;
@@ -81,4 +95,3 @@
        asset-url('bebas.ttf') format('truetype'),
        asset-url('bebas.svg#bebasregular') format('svg');
 }
-
