@@ -1,17 +1,23 @@
 <div id="login">
-  <%= form_for(:user, url: user_registration_path) do |f| %>
-    <div class="group half-width">
+  <%= form_for(@user, url: user_registration_path) do |f| %>
+    <%= content_tag(:div, class: "group half-width") do %>
       <%= link_to("Sign In", new_user_session_path, class: "fancybox", :"data-fancybox-type" => "ajax") %>
       <%= link_to("Sign Up", "#", class: "active") %>
-    </div>
+    <% end unless session["devise.omniauth_data"] %>
 
     <div class="group">
       <%= f.text_field(:first_name, placeholder: "First Name") %>
       <%= f.text_field(:last_name, placeholder: "Last Name") %>
-      <%= email_field_tag(:email, "", placeholder: "Email", autofocus: true) %>
+      <%= f.email_field(:email, placeholder: "Email", autofocus: true) %>
+
+      <% if session["devise.omniauth_data"] %>
+      <%= submit_tag("Complete Registration") %>
+      <% else %>
       <%= submit_tag("Sign Up") %>
+      <% end %>
     </div>
 
+    <% unless session["devise.omniauth_data"] %>
     <div class="group">
       <span>or</span>
     </div>
@@ -27,5 +33,6 @@
         <span>Sign Up with Facebook</span>
       <% end %>
     </div>
+    <% end %>
   <% end %>
 </div>
