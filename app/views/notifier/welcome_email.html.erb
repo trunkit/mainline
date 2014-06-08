@@ -1,1 +1,10 @@
-<%= @user.password %>
+Welcome To Trunkit!
+
+<% if @user.provider.blank? %>
+Email: <%= @user.email %>
+Password: <%= @user.password %>
+
+Please change your password at <%= link_to(settings_user_url) %>
+<% else %>
+You signed up via <%= @user.provider.titleize %>, rock on!
+<% end %>

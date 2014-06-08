@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   before_validation :generate_password
   before_create     :expand_raw_name
+  after_create      :welcome_email
 
   mount_uploader :photo, UserPhotoUploader
 
@@ -128,5 +129,9 @@ class User < ActiveRecord::Base
       self.first_name = name.first
       self.last_name  = name.last
     end
+  end
+
+  def welcome_email
+    Notifier.welcome_email(user)
   end
 end
