@@ -1,14 +1,21 @@
 <div id="login">
-  <h1>Sign In</h1>
-
   <%= form_tag(user_session_path) do %>
-    <div class="left">
+    <div class="group half-width">
+      <%= link_to("Sign In", "#", class: "active") %>
+      <%= link_to("Sign Up", new_user_registration_path, class: "fancybox", :"data-fancybox-type" => "ajax") %>
+    </div>
+
+    <div class="group">
       <%= email_field_tag(:email, "", placeholder: "Email", autofocus: true) %>
       <%= password_field_tag(:password, "", placeholder: "Password") %>
       <%= submit_tag("Sign In") %>
     </div>
 
-    <div class="right">
+    <div class="group">
+      <span>or</span>
+    </div>
+
+    <div class="group">
       <%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
         <%= image_tag("home/twitter.png") %>
         <span>Sign In with Twitter</span>

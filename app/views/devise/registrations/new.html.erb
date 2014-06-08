@@ -1,18 +1,22 @@
-<section id="account-signup">
-  <%= form_for(:user, url: user_registration_path, html: { class: "sign-up" }) do |f| %>
-    <%= content_tag(:h2, "Curated by #{referring_boutique ? referring_boutique.name : 'your favorite boutiques'}.") %>
-
-    <div class="left">
-      <%= f.text_field(:first_name, placeholder: "First Name") %>
-      <%= f.text_field(:last_name, placeholder: "Last Name") %>
-      <%= f.email_field(:email, placeholder: "Email") %>
-
-      <%= link_to("#", class: "email") do %>
-        <span>Sign Up with Email</span>
-      <% end %>
+<div id="login">
+  <%= form_for(:user, url: user_registration_path) do |f| %>
+    <div class="group half-width">
+      <%= link_to("Sign In", new_user_session_path, class: "fancybox", :"data-fancybox-type" => "ajax") %>
+      <%= link_to("Sign Up", "#", class: "active") %>
     </div>
 
-    <div class="right">
+    <div class="group">
+      <%= f.text_field(:first_name, placeholder: "First Name") %>
+      <%= f.text_field(:last_name, placeholder: "Last Name") %>
+      <%= email_field_tag(:email, "", placeholder: "Email", autofocus: true) %>
+      <%= submit_tag("Sign Up") %>
+    </div>
+
+    <div class="group">
+      <span>or</span>
+    </div>
+
+    <div class="group">
       <%= link_to(omniauth_authorize_path("user", "twitter"), class: "twitter") do %>
         <%= image_tag("home/twitter.png") %>
         <span>Sign Up with Twitter</span>
@@ -24,16 +28,4 @@
       <% end %>
     </div>
   <% end %>
-</section>
-
-<script>
-$(function() {
-  $("a.email").click(function() {
-    $("form").submit();
-  });
-
-  <% if flash[:errors] %>
-  alert("Could not create account because <%= j(flash[:errors].full_messages.join(", ")) %>");
-  <% end %>
-});
-</script>
+</div>
