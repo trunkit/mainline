@@ -7,6 +7,54 @@ class Item < ActiveRecord::Base
   index_name    "trunkit"
   document_type "item"
 
+  mapping do
+    # Primary Attributes
+    indexes :name,          type: "string", analyzer: "english"
+    indexes :price,         type: "float"
+    indexes :description,   type: "string", analyzer: "english"
+    indexes :fit,           type: "string", analyzer: "english"
+    indexes :construction,  type: "string", analyzer: "english"
+    indexes :model_height,  type: "float", index: "no"
+    indexes :model_chest,   type: "float", index: "no"
+    indexes :model_waist,   type: "float", index: "no"
+    indexes :model_hips,    type: "float", index: "no"
+    indexes :model_size,    type: "string", index: "no"
+    indexes :approved,      type: "boolean"
+    indexes :boutique_name, type: "string", analyzer: "english"
+    indexes :brand_name,    type: "string", analyzer: "english"
+    indexes :categories,    type: "string", analyzer: "english"
+    indexes :supporters,    index: "not_analyzed"
+
+    # Location
+    indexes :address do
+      indexes :id, type: "integer", index: "no"
+      indexes :street, type: "string", index: "no"
+      indexes :street2, type: "string", index: "no"
+      indexes :city, type: "string", analyzer: "english"
+      indexes :state, type: "string", analyzer: "english"
+      indexes :state_abbr, type: "string", index: "not_analyzed"
+      indexes :postal_code, index: "no"
+    end
+
+    # Shipping
+    indexes :weight,           type: "float", index: "no"
+    indexes :packaging_width,  type: "float", index: "no"
+    indexes :packaging_height, type: "float", index: "no"
+    indexes :packaging_length, type: "float", index: "no"
+
+    # Foreign Keys
+    indexes :boutique_id,           type: "integer", index: "no"
+    indexes :brand_id,              type: "integer", index: "no"
+    indexes :parcel_id,             type: "string",  index: "no"
+    indexes :primary_category_id,   type: "integer", index: "no"
+    indexes :secondary_category_id, type: "integer", index: "no"
+
+    # Timestamps
+    indexes :deleted_at, type: "date", format: "date_time", index: "no"
+    indexes :created_at, type: "date", format: "date_time", index: "no"
+    indexes :updated_at, type: "date", format: "date_time", index: "no"
+  end
+
   acts_as_paranoid
   has_paper_trail
 
@@ -191,13 +239,13 @@ class Item < ActiveRecord::Base
 
   def as_indexed_json(options = {})
     hsh = as_json
+    hsh.delete("sizes")
 
-    hsh[:boutique_name] = boutique.name
-    hsh[:brand_name]    = brand.name
-    hsh[:categories]    = [primary_category.try(:name), secondary_category.try(:name)].compact.uniq
-    hsh[:cities]        = boutique.address.city
-    hsh[:states]        = boutique.address.state
-    hsh[:supporters]    = supporters.present? ? supporters.map(&:name) : nil
+    hsh["boutique_name"] = boutique.name
+    hsh["brand_name"]    = brand.name
+    hsh["categories"]    = [primary_category.try(:name), secondary_category.try(:name)].compact.uniq
+    hsh["address"]       = boutique.address.as_indexed_json
+    hsh["supporters"]    = supporters.present? ? supporters.map(&:name) : nil
 
     hsh
   end
