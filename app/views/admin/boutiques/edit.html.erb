@@ -10,3 +10,61 @@
   </div>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= content_tag(:h5, "#{@boutique.name} Users") %>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Provider</th>
+          <th>External ID</th>
+          <th>Created At </th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @boutique.users.each do |user| %>
+        <tr>
+          <%= content_tag(:td, user.id) %>
+          <%= content_tag(:td, user.first_name) %>
+          <%= content_tag(:td, user.last_name) %>
+          <%= content_tag(:td, user.email) %>
+          <%= content_tag(:td, user.provider || 'N/A') %>
+          <%= content_tag(:td, user.uid || 'N/A') %>
+          <%= content_tag(:td, user.created_at.strftime("%m/%d/%Y %I:%M %p")) %>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                Manage <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu" role="menu">
+                <%= content_tag(:li, link_to("Edit", [:edit, :admin, user], tabindex: "-1", role: "menuitem")) %>
+                <% unless current_user == user %>
+                <%= content_tag(:li, link_to("Assume Identity", [:admin, user, :masquerade], method: :put, tabindex: "-1", role: "menuitem")) %>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation" class="dropdown-header">Danger Zone</li>
+                <%= content_tag(:li, link_to("Delete", [:admin, user], confirm: "Are you sure you want to delete this user?", method: :delete, tabindex: "-1", role: "menuitem")) %>
+                <% end %>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <%= link_to("Add User to Boutique", new_admin_user_path(user: { parent_id: @boutique.id }), class: "btn btn-default") %>
+  </div>
+</div>
+
