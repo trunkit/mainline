@@ -26,5 +26,9 @@
         <span>Sign In with Facebook</span>
       <% end %>
     </div>
+
+    <div class="group">
+      <%= link_to("Forgot Password?", new_user_password_path, class: "forgot fancybox", :"data-fancybox-type" => "ajax") %>
+    </div>
   <% end %>
 </div>

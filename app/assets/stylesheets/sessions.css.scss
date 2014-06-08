@@ -40,6 +40,17 @@
       background: #000;
       color: #fff;
 
+      &.forgot {
+        display: inline;
+        float: right;
+        width: auto;
+        height: auto;
+        font: 14px/18px "Helvetica LT Std", sans-serif;
+        letter-spacing: 0;
+        background: #fff;
+        color: #000;
+      }
+
       img {
         padding: 0 5px 0 0;
         vertical-align: middle;
