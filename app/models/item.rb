@@ -27,12 +27,12 @@ class Item < ActiveRecord::Base
 
     # Location
     indexes :address do
-      indexes :id, type: "integer", index: "no"
-      indexes :street, type: "string", index: "no"
-      indexes :street2, type: "string", index: "no"
-      indexes :city, type: "string", analyzer: "english"
-      indexes :state, type: "string", analyzer: "english"
-      indexes :state_abbr, type: "string", index: "not_analyzed"
+      indexes :id,          type: "integer", index: "no"
+      indexes :street,      type: "string", index: "no"
+      indexes :street2,     type: "string", index: "no"
+      indexes :city,        type: "string", analyzer: "english"
+      indexes :state,       type: "string", analyzer: "english"
+      indexes :state_abbr,  type: "string", index: "not_analyzed"
       indexes :postal_code, index: "no"
     end
 
