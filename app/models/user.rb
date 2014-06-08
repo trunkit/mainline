@@ -136,6 +136,6 @@ class User < ActiveRecord::Base
   end
 
   def welcome_email
-    Notifier.welcome_email(self) unless fake_email?
+    Notifier.welcome_email(self).deliver unless fake_email?
   end
 end
