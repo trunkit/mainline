@@ -66,7 +66,7 @@ Trunkit::Application.routes.draw do
       resources :photos, controller: "item_photos"
     end
 
-    resources :users, except: [:new, :show] do
+    resources :users, except: [:show] do
       put "masquerade" => "users#masquerade"
     end
   end

@@ -5,8 +5,26 @@ class Admin::UsersController < Admin::AbstractController
     @users = User.order("created_at DESC")
   end
 
+  def new
+    @user      = User.new(params[:user].present? ? user_params : {})
+    @boutiques = Boutique.order("name DESC").map{|b| [b.name, b.id] }
+  end
+
+  def create
+    @user             = User.new(user_params)
+    @user.parent_type = "Boutique" if @user.parent_id.present?
+
+    if @user.save
+      redirect_to([:edit, :admin, @user])
+    else
+      @boutiques = Boutique.order("name DESC").map{|b| [b.name, b.id] }
+      render(action: :new)
+    end
+  end
+
   def edit
-    @user = user
+    @user      = user
+    @boutiques = Boutique.order("name DESC").map{|b| [b.name, b.id] }
   end
 
   def update
@@ -27,7 +45,7 @@ class Admin::UsersController < Admin::AbstractController
   private
 
   def user_params
-    attrs  = [:first_name, :last_name, :email, :gender, :time_zone, :photo]
+    attrs  = [:first_name, :last_name, :email, :gender, :time_zone, :photo, :parent_id]
     attrs += [:password, :password_confirmation] if params[:user].try(:password).try(:present?)
 
     params.require(:user).permit(attrs)
