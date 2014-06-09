@@ -23,6 +23,12 @@
       background: #fff;
     }
 
+    h2.forgot {
+      font: 20px "Bebas Neue", sans-serif;
+      letter-spacing: 4px;
+      margin: 4px 0;
+    }
+
     a, input[type="submit"] {
       display: block;
       float: left;
@@ -70,12 +76,6 @@
           background: #fff;
         }
       }
-    }
-
-    .forgot {
-      font: 20px "Bebas Neue", sans-serif;
-      letter-spacing: 4px;
-      margin: 4px 0;
     }
 
     .or {
