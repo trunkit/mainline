@@ -40,8 +40,7 @@
 
       &.forgot {
         display: inline;
-        float: right;
-        width: auto;
+        width: 100%;
         height: auto;
         font: 14px/18px "Helvetica LT Std", sans-serif;
         letter-spacing: 0;
@@ -93,6 +92,12 @@
 
     .facebook {
       margin: 0 0 8px;
+      background: #3b5998;
+    }
+
+    .twitter {
+      margin: 0 0 8px;
+      background: #55acee;
     }
 
     > a {
