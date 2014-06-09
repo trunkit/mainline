@@ -1,14 +1,14 @@
 <div id="login">
   <%= form_tag(user_session_path) do %>
     <div class="group half-width">
-      <%= link_to("Sign In", "#", class: "active") %>
+      <%= link_to("Login", "#", class: "active") %>
       <%= link_to("Sign Up", new_user_registration_path, class: "fancybox", :"data-fancybox-type" => "ajax") %>
     </div>
 
     <div class="group">
       <%= email_field_tag(:email, "", placeholder: "Email", autofocus: true) %>
       <%= password_field_tag(:password, "", placeholder: "Password") %>
-      <%= submit_tag("Sign In") %>
+      <%= submit_tag("Login") %>
     </div>
 
     <div class="group">

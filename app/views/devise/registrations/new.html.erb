@@ -1,7 +1,7 @@
 <div id="login">
   <%= form_for(@user, url: user_registration_path) do |f| %>
     <%= content_tag(:div, class: "group half-width") do %>
-      <%= link_to("Sign In", new_user_session_path, class: "fancybox", :"data-fancybox-type" => "ajax") %>
+      <%= link_to("Login", new_user_session_path, class: "fancybox", :"data-fancybox-type" => "ajax") %>
       <%= link_to("Sign Up", "#", class: "active") %>
     <% end unless session["devise.omniauth_data"] %>
 
