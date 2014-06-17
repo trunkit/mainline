@@ -6,9 +6,9 @@
     <% end unless session["devise.omniauth_data"] %>
 
     <div class="group">
-      <%= f.text_field(:first_name, placeholder: "First Name") %>
-      <%= f.text_field(:last_name, placeholder: "Last Name") %>
-      <%= f.email_field(:email, placeholder: "Email", autofocus: true) %>
+      <%= f.text_field(:first_name, placeholder: "First Name", required: true) %>
+      <%= f.text_field(:last_name, placeholder: "Last Name", required: true) %>
+      <%= f.email_field(:email, placeholder: "Email", autofocus: true, required: true) %>
 
       <% if session["devise.omniauth_data"] %>
       <%= submit_tag("Complete Registration") %>
