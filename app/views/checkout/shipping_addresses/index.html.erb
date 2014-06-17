@@ -3,7 +3,7 @@
 
   <nav>
     <ul>
-      <li class="active">Shopping Cart</li>
+      <%= content_tag(:li, link_to("Shopping Cart", cart_path), class: "active") %>
       <li class="active">Shipping Address</li>
       <li>Delivery Options</li>
       <li>Payment Method</li>

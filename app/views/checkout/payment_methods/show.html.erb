@@ -3,9 +3,9 @@
 
   <nav>
     <ul>
-      <li class="active">Shopping Cart</li>
-      <li class="active">Shipping Address</li>
-      <li class="active">Delivery Options</li>
+      <%= content_tag(:li, link_to("Shopping Cart", cart_path), class: "active") %>
+      <%= content_tag(:li, link_to("Shipping Address", checkout_shipping_addresses_path), class: "active") %>
+      <%= content_tag(:li, link_to("Delivery Options", checkout_delivery_options_path), class: "active") %>
       <li class="active">Payment Method</li>
       <li>Confirm Order</li>
     </ul>
