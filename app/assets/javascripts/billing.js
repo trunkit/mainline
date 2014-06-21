@@ -29,7 +29,7 @@ SiteBindings.billing = function() {
     $(".row.type div").each(function() {
       if($(this).hasClass("visa") && (/^4/.test(number)))
         $(this).removeClass("gray");
-      if($(this).hasClass("mastercard") && (/^5[0-3]/.test(number)))
+      else if($(this).hasClass("mastercard") && (/^5[0-3]/.test(number)))
         $(this).removeClass("gray");
       else if($(this).hasClass("amex") && (/^3[47]/.test(number)))
         $(this).removeClass("gray");
