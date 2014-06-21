@@ -29,10 +29,14 @@ class Cart < ActiveRecord::Base
       card:     card
     })
 
-    update_attributes(
+    saved = update_attributes(
       transaction_id: charge.id,
       captured_at:    Time.now
     )
+
+    add_activity_entries if saved
+
+    saved
   end
 
   def tax
@@ -41,5 +45,12 @@ class Cart < ActiveRecord::Base
 
   def total_price
     items.to_a.sum(&:total_price)
+  end
+
+private
+  def add_activity_entries
+    cart_items.each do |ci|
+      Activity.for_subject(ci.item).for_owner(user).create({ action: 'purchased' })
+    end
   end
 end
