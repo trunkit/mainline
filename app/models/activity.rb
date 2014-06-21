@@ -11,4 +11,16 @@ class Activity < ActiveRecord::Base
     owner.notify(action, subject) if owner.respond_to?(:notify)
     subject.notify(action, owner) if subject.respond_to?(:notify)
   end
+
+  def self.for_notification_stream(user)
+    return none if user.parent_id.blank?
+
+    where(
+      "(subject_type = ? AND subject_id = ?) OR (subject_type = ? AND subject_id IN (?))",
+      user.parent_type,
+      user.parent_id,
+      "Item",
+      (user.parent.supported_item_ids + user.parent.items.map(&:id))
+    ).order(created_at: :desc)
+  end
 end
