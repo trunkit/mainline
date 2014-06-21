@@ -11,8 +11,7 @@ class Admin::UsersController < Admin::AbstractController
   end
 
   def create
-    @user             = User.new(user_params)
-    @user.parent_type = "Boutique" if @user.parent_id.present?
+    @user = User.new(user_params)
 
     if @user.save
       redirect_to([:edit, :admin, @user])
@@ -48,7 +47,9 @@ class Admin::UsersController < Admin::AbstractController
     attrs  = [:first_name, :last_name, :email, :gender, :time_zone, :photo, :parent_id]
     attrs += [:password, :password_confirmation] if params[:user].try(:password).try(:present?)
 
-    params.require(:user).permit(attrs)
+    params.require(:user).permit(attrs).tap do |whitelisted|
+      whitelisted[:parent_type] = "Boutique" if params[:user][:parent_id].present?
+    end
   end
 
   def user
