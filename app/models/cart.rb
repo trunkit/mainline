@@ -1,6 +1,7 @@
 class Cart < ActiveRecord::Base
   acts_as_paranoid
 
+  belongs_to :user
   belongs_to :shipping_address, class_name: "Address"
   has_many :items, class_name: "CartItem"
 
