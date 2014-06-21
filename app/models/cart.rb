@@ -49,8 +49,8 @@ class Cart < ActiveRecord::Base
 
 private
   def add_activity_entries
-    cart_items.each do |ci|
-      Activity.for_subject(ci.item).for_owner(user).create({ action: 'purchased' })
+    items.each do |cart_item|
+      Activity.for_subject(cart_item.item).for_owner(user).create({ action: 'purchased' })
     end
   end
 end
