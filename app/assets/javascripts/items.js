@@ -57,7 +57,7 @@ SiteBindings.item = {
   quantities: function() {
     element  = $('div.item-quantity');
     form     = element.parents('form');
-    newRow   = element.find("div.row").last();
+    newRow   = element.find("div.row:last-child");
     bindType = (form.data("remote") == "true") ? "ajax:beforeSend" : "submit";
 
     $(document).on("click", ".item-quantity .increase", function() {
@@ -85,6 +85,7 @@ SiteBindings.item = {
     });
 
     newRowChangeBinding = function() {
+      console.log(this);
       $(this).parent().find("input").unbind("change");
       newRow = $(this).parent().clone();
       newRow.find("input").val("").change(newRowChangeBinding);
