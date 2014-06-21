@@ -1,6 +1,6 @@
 #payment-method {
   form {
-    div {
+    > div {
       float: left;
       width: 100%;
       padding: 0 0 20px;
@@ -37,6 +37,42 @@
         height: 30px;
         padding: 0 5px;
         border: 2px solid #000000;
+        background: image-url("checkout/lock.png") no-repeat 190px 5px;
+
+        &.cvc {
+          width: 100px;
+          background-position: 90px 5px;
+        }
+      }
+
+      &.number { padding-bottom: 10px; }
+
+      &.type {
+        width: auto;
+        padding: 0 0 20px 110px;
+
+        div {
+          display: block;
+          float: left;
+          width: 34px;
+          height: 22px;
+          margin: 0 3px 0 0;
+          background-size: cover;
+
+          &.visa       { background-image: image-url("checkout/visa.png"); }
+          &.mastercard { background-image: image-url("checkout/mastercard.png"); }
+          &.amex       { background-image: image-url("checkout/amex.png"); }
+          &.discover   { background-image: image-url("checkout/discover.png"); }
+          &.diners     { background-image: image-url("checkout/diners.png"); }
+          &.jcb        { background-image: image-url("checkout/jcb.png"); }
+
+          &.gray.visa       { background-image: image-url("checkout/visa-gray.png"); }
+          &.gray.mastercard { background-image: image-url("checkout/mastercard-gray.png"); }
+          &.gray.amex       { background-image: image-url("checkout/amex-gray.png"); }
+          &.gray.discover   { background-image: image-url("checkout/discover-gray.png"); }
+          &.gray.diners     { background-image: image-url("checkout/diners-gray.png"); }
+          &.gray.jcb        { background-image: image-url("checkout/jcb-gray.png"); }
+        }
       }
     }
 

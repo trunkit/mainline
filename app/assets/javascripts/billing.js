@@ -22,4 +22,27 @@ SiteBindings.billing = function() {
 
     return false;
   });
+
+  form.find("input.number").keyup(function() {
+    var number = $(this).val();
+
+    $(".row.type div").each(function() {
+      if($(this).hasClass("visa") && (/^4/.test(number)))
+        $(this).removeClass("gray");
+      if($(this).hasClass("mastercard") && (/^5[0-3]/.test(number)))
+        $(this).removeClass("gray");
+      else if($(this).hasClass("amex") && (/^3[47]/.test(number)))
+        $(this).removeClass("gray");
+      else if($(this).hasClass("discover") && (/^6[0245]/.test(number)))
+        $(this).removeClass("gray");
+      else if($(this).hasClass("jcb") && (/^35[2-8][0-9]/.test(number)))
+        $(this).removeClass("gray");
+      else if($(this).hasClass("diners") && (/^5[4-5]/.test(number)))
+        $(this).removeClass("gray");
+      else if(number.length > 1)
+        $(this).addClass("gray");
+      else
+        $(this).removeClass("gray");
+    });
+  });
 };

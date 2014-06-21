@@ -11,23 +11,37 @@
     </ul>
   </nav>
 
-  <h2>Please Enter Your Credit / Debit Cart and Billing Address Details</h2>
+  <h2>This is a secure credit card payment. Please enter your credit/debit card and billing ZIP code.</h2>
+
+  <p class="security">
+    <%= image_tag("checkout/lock-black.png") %>
+    <span>All information is safe and secure using 256 bit security.</span>
+  </p>
 
   <div class="credit-card">
     <%= form_tag(checkout_payment_method_path, method: :put) do %>
       <div class="row">
         <%= label_tag(:name, "Name on Card") %>
-        <%= text_field_tag(:name, "", required: true, data: { stripe: "name" }) %>
+        <%= text_field_tag(:name, "", required: true, data: { stripe: "name" }, class: "name") %>
       </div>
 
-      <div class="row">
+      <div class="row number">
         <%= label_tag(:card_number, "Card Number") %>
-        <%= text_field_tag(:card_number, "", required: true, data: { stripe: "number" }) %>
+        <%= text_field_tag(:card_number, "", required: true, data: { stripe: "number" }, class: "number") %>
+      </div>
+
+      <div class="row type">
+        <div class="visa"></div>
+        <div class="mastercard"></div>
+        <div class="amex"></div>
+        <div class="discover"></div>
+        <div class="jcb"></div>
+        <div class="diners"></div>
       </div>
 
       <div class="row">
         <%= label_tag(:csc, "Security Code") %>
-        <%= text_field_tag(:csc, "", required: true, data: { stripe: "cvc" }) %>
+        <%= text_field_tag(:csc, "", required: true, data: { stripe: "cvc" }, class: "cvc") %>
       </div>
 
       <div class="row">
