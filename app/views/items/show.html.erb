@@ -36,9 +36,9 @@
 
       <% if current_user.parent_type == "Boutique" %>
         <% if current_user.parent.supported_item_ids.include?(@item.id) %>
-        <%= link_to("Unsupport", [:unsupport, @item], method: :put, remote: true, class: "buy button item-#{@item.id} unsupport") %>
+        <%= link_to("Uncurate", [:unsupport, @item], method: :put, remote: true, class: "buy button item-#{@item.id} unsupport") %>
         <% else %>
-        <%= link_to("Support", [:support, @item], method: :put, remote: true, class: "buy button item-#{@item.id} support") %>
+        <%= link_to("Curate", [:support, @item], method: :put, remote: true, class: "buy button item-#{@item.id} support") %>
         <% end %>
       <% end %>
     </div>

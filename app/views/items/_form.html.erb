@@ -17,7 +17,7 @@
 
 <%= form_for(@item) do |f| %>
   <div class="separator">
-    <span>Basic Info</span>
+    <span>Required: Basic Info</span>
   </div>
 
   <div class="row">
@@ -57,7 +57,7 @@
   </div>
 
   <div class="separator">
-    <span>Weight &amp; Packaged Size</span>
+    <span>Optional: Weight &amp; Packaged Size</span>
   </div>
 
   <div class="row">
@@ -85,7 +85,7 @@
   </div>
 
   <div class="separator">
-    <span>Sizes &amp; Quantities</span>
+    <span>Required: Sizes &amp; Quantities</span>
   </div>
 
   <div class="row">
@@ -97,7 +97,7 @@
   <%= render("items/quantity", item: @item) %>
 
   <div class="separator">
-    <span>Details</span>
+    <span>Optional: Details</span>
   </div>
 
   <div class="row">
