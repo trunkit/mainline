@@ -1,3 +1,32 @@
-// Place all the styles related to the notifications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.catalog-notification {
+  width: 776px;
+  height: 46px;
+  margin: 0 0 10px;
+  border: 2px solid #000;
+
+  div.photo {
+    float: left;
+    height: 46px;
+    margin: 0 10px 0 0;
+    border-right: 2px solid #000;
+
+    img {
+      width: 40px;
+      height: 40px;
+      padding: 3px;
+    }
+  }
+
+  span {
+    font: 16px/46px "Bebas Neue", sans-serif;
+    letter-spacing: 4px;
+
+    &.timestamp {
+      float: right;
+      width: 150px;
+      height: 46px;
+      padding: 0 10px;
+      border-left: 2px solid #000;
+    }
+  }
+}
