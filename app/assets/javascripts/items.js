@@ -85,15 +85,13 @@ SiteBindings.item = {
     });
 
     newRowChangeBinding = function() {
-      console.log(this);
-      $(this).parent().find("input").unbind("change");
       newRow = $(this).parent().clone();
-      newRow.find("input").val("").change(newRowChangeBinding);
+      newRow.find("input").val("");
 
-      element.append(newRow);
+      $(this).parents("div.item-quantity").append(newRow);
     };
 
-    newRow.find("input").change(newRowChangeBinding);
+    $(document).on('change', 'div.item-quantity div.row:last-child input', newRowChangeBinding);
 
     form.bind(bindType, function() {
       _form = $(this);
