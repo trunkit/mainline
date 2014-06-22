@@ -18,8 +18,8 @@
         <div class="service">Delivery Option</div>
       </header>
 
-      <div class="row">
-        <% current_cart.items.each do |cart_item| %>
+      <% current_cart.items.each do |cart_item| %>
+        <div class="row">
           <div class="name">
             <%= image_tag(cart_item.item.primary_photo.url.stream) %>
 
@@ -39,8 +39,8 @@
             </label>
             <% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
     <%= submit_tag("Continue") %>
