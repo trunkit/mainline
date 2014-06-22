@@ -7,7 +7,8 @@ class CartItem < ActiveRecord::Base
   validates :item_id, :item_version, :cart_id, :supporting_boutique_id, :supplying_boutique_id, numericality: true
 
   belongs_to :supporting_boutique, class_name: "Boutique"
-  belongs_to :supplying_boutique, class_name: "Boutique"
+  belongs_to :supplying_boutique,  class_name: "Boutique"
+  belongs_to :refund_ledger_entry, class_name: "LedgerEntry"
 
   @@shipping_options = [['UPS Ground', 'Ground'], ['UPS 3 Day Select', '3DaySelect'], ['UPS Second Day Air', '2ndDayAir'], ['UPS Next Day Air Saver', 'NextDayAirSaver']].freeze
   cattr_reader :shipping_options
@@ -99,7 +100,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def return_label
-    return if cart.transaction_id.blank? || refunded_at.blank?
+    return if cart.transaction_id.blank? || cancellation_refund_id.blank?
 
     if self[:return_label].blank?
       shipment = EasyPost::Shipment.create({
@@ -125,15 +126,33 @@ class CartItem < ActiveRecord::Base
   end
 
   def cancel!(message)
-    refund!
+    charge = Stripe::Charge.retrieve(cart.transaction_id)
+    refund = charge.refund(amount: (total_price * 100).to_i)
+    update_columns(cancellation_refund_id: refund.id)
+
     Notifier.cart_item_cancellation(id, message).deliver
+
     true
   end
 
-  def refund!
-    charge = Stripe::Charge.retrieve(cart.transaction_id)
-    refund = charge.refund(amount: (total_price * 100).to_i)
-    update_columns(refund_id: refund.id)
+  def refund!(user)
+    return if cart.transaction_id.blank? || refund_ledger_entry_id.present?
+
+    transaction do
+      self.lock!
+
+      user = User.unscoped.lock.find(cart.user_id)
+      le   = user.ledger_entries.create!({
+        whodunnit:   self,
+        value:       subtotal_price,
+        description: "Credit refund on #{item.name}. Accepted by #{user.name}"
+      })
+
+      user.update_account_balance!
+
+      self.update_attributes!({ refund_id: le.id })
+    end
+
     true
   end
 
