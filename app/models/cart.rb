@@ -24,24 +24,57 @@ class Cart < ActiveRecord::Base
   end
 
   def capture_order!(card)
-    charge = Stripe::Charge.create({
-      amount:   (total_price * 100).to_i,
-      currency: "usd",
-      card:     card
-    })
+    transaction do
+      begin
+        user.lock!
 
-    saved = update_attributes(
-      transaction_id: charge.id,
-      captured_at:    Time.now
-    )
+        attrs = { captured_at: Time.now }
 
-    add_activity_entries if saved
+        if total_price_after_credit > 0
+          charge = Stripe::Charge.create({
+            amount:   (total_price_after_credit * 100).to_i,
+            currency: "usd",
+            card:     card
+          })
 
-    saved
+          attrs[:transaction_id] = charge.id
+        end
+
+        if user.account_balance < 0
+          value = total_price_after_credit > 0 ? user.account_balance : total_price
+
+          le = user.ledger_entries.create!({
+            description: "Purchase using Trunkit Credit.",
+            value: value,
+            whodunnit: self
+          })
+
+          attrs[:ledger_entry_id] = le.id
+        end
+
+        update_attributes!(attrs)
+        add_activity_entries
+
+      rescue => e
+        Stripe::Charge.retrieve(attrs[:transaction_id]).refund if attrs[:transaction_id]
+        raise e
+      end
+    end
+
+    true
   end
 
   def tax
     items.to_a.sum(&:tax)
+  end
+
+  def subtotal_price
+    items.to_a.sum(&:subtotal_price)
+  end
+
+  def subtotal_price_after_credit
+    price = subtotal_price + user.account_balance
+    price > 0 ? price : 0
   end
 
   def total_price
