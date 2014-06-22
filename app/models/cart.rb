@@ -20,7 +20,7 @@ class Cart < ActiveRecord::Base
     scope = scope.joins(:cart).select("cart_items.cart_id")
     ids   = scope.map{|cart_item| cart_item.cart_id }.uniq
 
-    where(id: ids).where.not(transaction_id: nil).includes(:items).page(params[:page]).per(params[:per_page])
+    where(id: ids).where.not(transaction_id: nil).includes(:items).order(captured_at: :desc).page(params[:page]).per(params[:per_page])
   end
 
   def capture_order!(card)
