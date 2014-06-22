@@ -136,7 +136,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def refund!(user)
-    return if cart.transaction_id.blank? || refund_ledger_entry_id.present?
+    return if cart.transaction_id.blank? || refund_ledger_entry_id.present? || !refund_requested?
 
     transaction do
       self.lock!
