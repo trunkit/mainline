@@ -47,7 +47,7 @@ Trunkit::Application.routes.draw do
   resources :addresses
 
   # Boutique Management Interfaces
-  resources :orders, :notifications
+  resources :notifications, :orders, only: [:index]
 
   # Session Management
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
