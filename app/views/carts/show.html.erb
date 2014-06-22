@@ -51,11 +51,11 @@
     <% end if current_cart.items.blank? %>
 
     <footer>
-      <%= content_tag(:div, "Subtotal: #{number_to_currency(current_cart.total_price)}", class: "total") %>
+      <%= content_tag(:div, "Subtotal: #{number_to_currency(current_cart.subtotal_price)}", class: "total") %>
 
       <% if current_user.account_balance < 0 %>
         <%= content_tag(:div, "Trunkit Credit: #{number_to_currency(current_user.account_balance.abs)}", class: "total") %>
-        <%= content_tag(:div, "Subtotal after Credit: #{number_to_currency(current_cart.total_price_after_credit)}", class: "total") %>
+        <%= content_tag(:div, "Subtotal after Credit: #{number_to_currency(current_cart.subtotal_price_after_credit)}", class: "total") %>
       <% end %>
     </footer>
   </div>

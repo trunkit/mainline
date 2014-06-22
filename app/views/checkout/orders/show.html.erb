@@ -20,7 +20,12 @@
       <%= link_to("Change", checkout_shipping_addresses_path) %>
     </address>
 
-    <div class="payment-info">
+    <%= content_tag(:div, class: "payment-info") do %>
+      <h6>Trunkit Credit</h6>
+      <%= content_tag(:span, "Credit Balance: #{number_to_currency(-current_user.account_balance)}", class: "name") %>
+    <% end if current_user.account_balance < 0 %>
+
+    <%= content_tag(:div, class: "payment-info") do %>
       <h6>Credit/Debit Card Info</h6>
       <%= content_tag(:span, @token.card.name, class: "name") %>
 
@@ -33,7 +38,7 @@
       </span>
 
       <%= link_to("Change", checkout_payment_method_path) %>
-    </div>
+    <% end if current_cart.total_price_after_credit > 0 %>
   </div>
 
   <div class="items">
@@ -70,6 +75,11 @@
     <footer>
       <%= content_tag(:div, "Taxes: #{number_to_currency(current_cart.tax)}", class: "tax") %>
       <%= content_tag(:div, "Total: #{number_to_currency(current_cart.total_price)}", class: "total") %>
+
+      <% if current_user.account_balance < 0 %>
+        <%= content_tag(:div, "Trunkit Credit: #{number_to_currency(-current_user.account_balance)}", class: "total") %>
+        <%= content_tag(:div, "Total After Credit: #{number_to_currency(current_cart.total_price_after_credit)}", class: "total") %>
+      <% end %>
     </footer>
   </div>
 
