@@ -98,6 +98,27 @@ class CartItem < ActiveRecord::Base
     self[:shipping_label]
   end
 
+  def return_label
+    return if cart.transaction_id.blank? || refunded_at.blank?
+
+    if self[:return_label].blank?
+      shipment = EasyPost::Shipment.create({
+        to_address:   { id: cart.shipping_address.easypost_id },
+        from_address: { id: item.boutique.easypost_id },
+        parcel:       { id: item.parcel_id },
+        is_return:    true
+      })
+
+      valid_shipping_methods = shipping_options.map{|name, service| service }
+      rates = shipment.rates.select{|r| valid_shipping_methods.include?(r.service) }
+      rate  = rates.sort_by{|r| r.rate.to_f }.first
+
+      update_columns(return_label: shipment.buy(rate).to_hash)
+    end
+
+    self[:return_label]
+  end
+
   def complete!
     update_columns(completed_at: Time.now)
     true
