@@ -26,4 +26,14 @@ class Notifier < ActionMailer::Base
       subject: "Order Update for #{@cart_item.item.name} from #{@cart_item.supporting_boutique.name}"
     })
   end
+
+  def refund_requested(cart_item_id)
+    @cart_item = CartItem.includes(:cart).find(cart_item_id)
+    @user      = User.unscoped.find(@cart_item.cart.user_id)
+
+    mail({
+      to:      @cart_item.supplying_boutique.users.map(&:email),
+      subject: "#{@user.name} has requested a refund on #{@cart_item.item.name}"
+    })
+  end
 end
