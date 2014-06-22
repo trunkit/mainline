@@ -1,5 +1,5 @@
 class OrdersController < CatalogAbstractController
   def index
-    @orders = Cart.for_listing(current_user, params)
+    @orders = Cart.boutique_orders_listing(current_user, params)
   end
 end

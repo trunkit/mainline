@@ -5,7 +5,7 @@ class Cart < ActiveRecord::Base
   belongs_to :shipping_address, class_name: "Address"
   has_many :items, class_name: "CartItem"
 
-  def self.for_listing(user, params)
+  def self.boutique_orders_listing(user, params)
     return none unless user.parent_type == "Boutique"
 
     scope = case params[:type]
