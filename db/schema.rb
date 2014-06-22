@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622224011) do
+ActiveRecord::Schema.define(version: 20140622224645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140622224011) do
     t.text     "cover_photo"
     t.text     "email"
     t.text     "phone"
+    t.text     "recipient_id"
   end
 
   add_index "boutiques", ["short_code"], name: "index_boutiques_on_short_code", unique: true, using: :btree
