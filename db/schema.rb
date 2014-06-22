@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622210024) do
+ActiveRecord::Schema.define(version: 20140622210524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,9 +73,9 @@ ActiveRecord::Schema.define(version: 20140622210024) do
   end
 
   create_table "cart_items", force: true do |t|
-    t.integer  "cart_id",                                                      null: false
-    t.integer  "item_id",                                                      null: false
-    t.integer  "item_version",                                                 null: false
+    t.integer  "cart_id",                                                        null: false
+    t.integer  "item_id",                                                        null: false
+    t.integer  "item_version",                                                   null: false
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20140622210024) do
     t.text     "cancellation_refund_id"
     t.json     "return_label"
     t.integer  "refund_ledger_entry_id"
+    t.boolean  "refund_requested",                               default: false
   end
 
   add_index "cart_items", ["supplying_boutique_id"], name: "index_cart_items_on_supplying_boutique_id", using: :btree
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20140622210024) do
     t.integer  "shipping_address_id"
     t.datetime "captured_at"
     t.datetime "refunded_at"
+    t.integer  "ledger_entry_id"
   end
 
   create_table "categories", force: true do |t|
@@ -185,17 +187,17 @@ ActiveRecord::Schema.define(version: 20140622210024) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                                          default: "", null: false
-    t.string   "encrypted_password",                             default: "", null: false
+    t.string   "email",                                          default: "",  null: false
+    t.string   "encrypted_password",                             default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                  default: 0,  null: false
+    t.integer  "sign_in_count",                                  default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "failed_attempts",                                default: 0,  null: false
+    t.integer  "failed_attempts",                                default: 0,   null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "provider"
@@ -212,7 +214,7 @@ ActiveRecord::Schema.define(version: 20140622210024) do
     t.integer  "roles_mask"
     t.datetime "deleted_at"
     t.string   "time_zone"
-    t.decimal  "account_balance",        precision: 9, scale: 2
+    t.decimal  "account_balance",        precision: 9, scale: 2, default: 0.0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
