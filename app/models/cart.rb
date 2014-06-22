@@ -41,7 +41,7 @@ class Cart < ActiveRecord::Base
         end
 
         if user.account_balance < 0
-          value = total_price_after_credit > 0 ? user.account_balance : total_price
+          value = total_price_after_credit > 0 ? user.account_balance.abs : total_price
 
           le = user.ledger_entries.create!({
             description: "Purchase using Trunkit Credit.",
@@ -50,6 +50,8 @@ class Cart < ActiveRecord::Base
           })
 
           attrs[:ledger_entry_id] = le.id
+
+          user.update_account_balance!
         end
 
         update_attributes!(attrs)
