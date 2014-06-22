@@ -88,6 +88,16 @@ class CartItem < ActiveRecord::Base
     end
   end
 
+  def shipping_label
+    return unless cart.transaction_id.present?
+
+    if self[:shipping_label].blank?
+      update_column(:shipping_label, shipment.buy(rate).to_hash)
+    end
+
+    self[:shipping_label]
+  end
+
 private
   def store_shipping_cost
     return unless self[:shipping_rate_id].present?
