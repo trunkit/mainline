@@ -1,3 +1,11 @@
+<div id="stream-subcategories">
+  <nav>
+    <ul>
+      <%= content_tag(:li, link_to("Notifications", notifications_path, class: "active")) %>
+    </ul>
+  </nav>
+</div>
+
 <% @activities.each do |notification| %>
 <%= render_notification(notification) %>
 <% end %>
