@@ -98,6 +98,24 @@ class CartItem < ActiveRecord::Base
     self[:shipping_label]
   end
 
+  def complete!
+    update_columns(completed_at: Time.now)
+    true
+  end
+
+  def cancel!(message)
+    refund!
+    Notifier.cart_item_cancellation(id, message).deliver
+    true
+  end
+
+  def refund!
+    charge = Stripe::Charge.retrieve(cart.transaction_id)
+    refund = charge.refund(amount: (total_price * 100).to_i)
+    update_columns(refund_id: refund.id)
+    true
+  end
+
 private
   def store_shipping_cost
     return unless self[:shipping_rate_id].present?
