@@ -144,7 +144,7 @@ class CartItem < ActiveRecord::Base
       user = User.unscoped.lock.find(cart.user_id)
       le   = user.ledger_entries.create!({
         whodunnit:   self,
-        value:       subtotal_price,
+        value:       -subtotal_price,
         description: "Credit refund on #{item.name}. Accepted by #{user.name}"
       })
 
