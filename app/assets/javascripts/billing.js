@@ -29,7 +29,7 @@ SiteBindings.billing = function() {
     $(".row.type div").each(function() {
       if($(this).hasClass("visa") && (/^4/.test(number)))
         $(this).removeClass("gray");
-      else if($(this).hasClass("mastercard") && (/^5[0-3]/.test(number)))
+      else if($(this).hasClass("mastercard") && (/^5[0-5]/.test(number)))
         $(this).removeClass("gray");
       else if($(this).hasClass("amex") && (/^3[47]/.test(number)))
         $(this).removeClass("gray");
@@ -37,7 +37,7 @@ SiteBindings.billing = function() {
         $(this).removeClass("gray");
       else if($(this).hasClass("jcb") && (/^35[2-8][0-9]/.test(number)))
         $(this).removeClass("gray");
-      else if($(this).hasClass("diners") && (/^5[4-5]/.test(number)))
+      else if($(this).hasClass("diners") && (/^(30[0-5]|309|36|3[89])/.test(number)))
         $(this).removeClass("gray");
       else if(number.length > 1)
         $(this).addClass("gray");
