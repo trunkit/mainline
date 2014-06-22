@@ -150,7 +150,7 @@ class CartItem < ActiveRecord::Base
 
       user.update_account_balance!
 
-      self.update_attributes!({ refund_id: le.id })
+      self.update_attributes!({ refund_ledger_entry_id: le.id })
     end
 
     true
