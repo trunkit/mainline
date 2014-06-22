@@ -25,11 +25,7 @@
           </ul>
         </div>
 
-        <% if cart_item.supplied?(current_user.parent_id) %>
-        <%= link_to("Mark Shipped", "#", class: "btn") %>
-        <% else %>
-        <%= link_to("Supported!", "#", class: "btn btn-supplied") %>
-        <% end %>
+        <%= item_order_status_button(cart_item) %>
       <% end %>
       <% end %>
     </article>
