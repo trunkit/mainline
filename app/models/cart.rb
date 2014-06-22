@@ -48,6 +48,10 @@ class Cart < ActiveRecord::Base
     items.to_a.sum(&:total_price)
   end
 
+  def total_price_after_credit
+    price = total_price + user.account_balance
+    price > 0 ? price : 0
+  end
 
   def purchased?
     transaction_id.present? || ledger_entry_id.present?
