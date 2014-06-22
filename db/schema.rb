@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622203549) do
+ActiveRecord::Schema.define(version: 20140622204954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140622203549) do
     t.integer  "billing_address_id"
     t.json     "shipping_label"
     t.datetime "completed_at"
-    t.text     "refund_id"
+    t.text     "cancellation_refund_id"
     t.json     "return_label"
   end
 
