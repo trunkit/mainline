@@ -137,6 +137,15 @@ class CartItem < ActiveRecord::Base
     true
   end
 
+  def request_refund
+    return if !purchased? || refund_requested?
+
+    update_attributes(refund_requested: true)
+    Notifier.refund_requested(id).deliver
+
+    true
+  end
+
   def refund!(user)
     return if !purchased? || !refund_requested?
 
