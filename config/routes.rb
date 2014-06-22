@@ -49,6 +49,11 @@ Trunkit::Application.routes.draw do
   # Boutique Management Interfaces
   resources :notifications, :orders, only: [:index]
 
+  scope("order_items/:id", as: :order_item) do
+    resource :cancellation, only: [:new, :create], controller: "order_item_cancellations"
+    put "complete" => "order_items#complete", as: :complete
+  end
+
   # Session Management
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 

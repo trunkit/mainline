@@ -1,0 +1,11 @@
+<div class="order-item-cancellation">
+  <%= form_tag(order_item_cancellation_path) do %>
+    <h3>Unable to Complete Order</h3>
+    <%= label_tag(:message, "Message to Customer") %>
+    <%= text_area_tag(:message) %>
+
+    <p>Don't hesitate to reach out to our team if you have a question. <%= mail_to("Contact Us", "team@trunkit.com") %></p>
+
+    <%= submit_tag("Confirm") %>
+  <% end %>
+</div>
