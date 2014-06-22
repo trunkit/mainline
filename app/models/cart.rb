@@ -20,7 +20,7 @@ class Cart < ActiveRecord::Base
     scope = scope.joins(:cart).select("cart_items.cart_id")
     ids   = scope.map{|cart_item| cart_item.cart_id }.uniq
 
-    where(id: ids).where.not(transaction_id: nil).includes(:items).order(captured_at: :desc).page(params[:page]).per(params[:per_page])
+    where(id: ids).where("transaction_id IS NOT NULL OR ledger_entry_id IS NOT NULL").includes(:items).order(captured_at: :desc).page(params[:page]).per(params[:per_page])
   end
 
   def capture_order!(card)
@@ -46,6 +46,11 @@ class Cart < ActiveRecord::Base
 
   def total_price
     items.to_a.sum(&:total_price)
+  end
+
+
+  def purchased?
+    transaction_id.present? || ledger_entry_id.present?
   end
 
 private

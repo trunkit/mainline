@@ -15,6 +15,8 @@ class CartItem < ActiveRecord::Base
 
   before_save :store_shipping_cost
 
+  delegate :purchased?, to: :cart
+
   def item
     return @item if @item
 
@@ -90,7 +92,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def shipping_label
-    return unless cart.transaction_id.present?
+    return unless purchased?
 
     if self[:shipping_label].blank?
       update_column(:shipping_label, shipment.buy(rate).to_hash)
@@ -100,7 +102,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def return_label
-    return if cart.transaction_id.blank? || cancellation_refund_id.blank?
+    return if !purchased? || cancellation_refund_id.blank?
 
     if self[:return_label].blank?
       shipment = EasyPost::Shipment.create({
@@ -136,7 +138,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def refund!(user)
-    return if cart.transaction_id.blank? || refund_ledger_entry_id.present? || !refund_requested?
+    return if !purchased? || !refund_requested?
 
     transaction do
       self.lock!
