@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :activities, inverse_of: :owner
 
+  has_many :ledger_entries, -> { order(created_at: :desc) }
+
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
@@ -121,8 +123,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  private
+  def update_account_balance!
+    update_attributes!(account_balance: ledger_entries(true).sum(&:value))
+  end
 
+private
   def generate_password
     return if provider.present? || password.present?
     self.password =
