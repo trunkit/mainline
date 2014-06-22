@@ -6,8 +6,8 @@
 
   <% @orders.each do |cart| %>
   <div class="order">
-    <%= content_tag(:span, "Customer: Jane Doe", class: "name") %>
-    <%= content_tag(:address, "123 Test Street<br>Boulder, CO 12345".html_safe) %>
+    <%= content_tag(:span, "Customer: #{@users[cart.user_id].name}", class: "name") %>
+    <%= content_tag(:address, "#{cart.shipping_address.to_s.gsub("\n", '<br>')}".html_safe) %>
 
     <article class="items">
       <% cart.items.each do |cart_item| %>
