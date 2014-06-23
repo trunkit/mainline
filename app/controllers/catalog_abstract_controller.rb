@@ -1,5 +1,5 @@
 class CatalogAbstractController < ApplicationController
-  before_filter :authenticate_user!, :check_roles
+  before_filter :authenticate_user!, :check_roles, :validate_boutique
 
   helper_method :current_cart, :categories
 
@@ -24,5 +24,9 @@ class CatalogAbstractController < ApplicationController
 
   def check_roles
     redirect_to(:admin) if current_user.has_any_role?(:system)
+  end
+
+  def validate_boutique
+    redirect_to(payments_company_path) if current_user.parent && current_user.parent.recipient_id.blank?
   end
 end

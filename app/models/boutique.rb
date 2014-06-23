@@ -104,6 +104,14 @@ class Boutique < ActiveRecord::Base
     json
   end
 
+  def recipient
+    return @recipient if defined?(@recipient)
+
+    @recipient = recipient_id.present? ?
+      Stripe::Recipient.retrieve(recipient_id) :
+      Stripe::Recipient.new
+  end
+
 private
   def generate_short_code
     self.short_code = (0...6).map{ ('a'..'z').to_a[rand(26)] }.join if short_code.blank?

@@ -54,6 +54,11 @@ Trunkit::Application.routes.draw do
     put "complete" => "order_items#complete", as: :complete
   end
 
+  # Boutique Transfers management
+  namespace :payments do
+    resource  :company, controller: "company"
+  end
+
   # Session Management
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 

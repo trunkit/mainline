@@ -1,0 +1,23 @@
+<div>
+  <%= f.label(:name, "Legal Corporation Name:") %>
+  <%= f.text_field(:name, required: true) %>
+</div>
+
+<div>
+  <%= f.label(:tax_id, "TIN/EIN:") %>
+  <%= f.text_field(:tax_id, value: "", required: true) %>
+</div>
+
+<div>
+  <%= f.label(:"bank_account[routing_number]", "Bank Routing Number") %>
+  <%= f.text_field(:"bank_account[routing_number]", value: "", placeholder: @recipient.active_account.try(:bank_name), required: true) %>
+</div>
+
+<div>
+  <%= f.label(:"bank_account[account_number]", "Bank Account Number") %>
+  <%= f.text_field(:"bank_account[account_number]", value: "", placeholder: "*****#{@recipient.active_account.try(:last4)}", required: true) %>
+</div>
+
+<%= f.hidden_field(:"bank_account[country]", value: "US") %>
+
+<%= button_tag("Update Payment Data", type: "submit") %>

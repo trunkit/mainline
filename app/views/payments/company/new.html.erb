@@ -1,0 +1,7 @@
+<div id="user-settings">
+  <h2>Company Payment Settings</h2>
+
+  <%= form_for(:recipient, url: payments_company_path, html: { class: "info" }) do |f| %>
+    <%= render("form", f: f) %>
+  <% end %>
+</div>
