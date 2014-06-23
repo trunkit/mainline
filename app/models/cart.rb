@@ -5,6 +5,8 @@ class Cart < ActiveRecord::Base
   belongs_to :shipping_address, class_name: "Address"
   has_many :items, class_name: "CartItem"
 
+  belongs_to :ledger_entry
+
   def self.boutique_orders_listing(user, params)
     return none unless user.parent_type == "Boutique"
 
@@ -64,6 +66,30 @@ class Cart < ActiveRecord::Base
     end
 
     true
+  end
+
+  def charge
+    return if transaction_id.nil?
+    @charge ||= Stripe::Charge.retrieve(transaction_id)
+  end
+
+  def charge_amount
+    @charge_amt ||= (BigDecimal.new(charge.amount.to_s, 9) / BigDecimal.new("100", 9))
+  end
+
+  def credit_amount
+    @credit_amt ||= ledger_entry.value
+  end
+
+  def stripe_fee
+    charge_amount * BigDecimal.new("0.029", 9) + BigDecimal.new("0.30", 9)
+  end
+
+  def external_payment_percentage
+    return BigDecimal.new("0", 9) if transaction_id.nil?
+    return BigDecimal.new("100", 9) if ledger_entry_id.nil?
+
+    ((charge_amount / (charge_amount + credit_amount))).round(9)
   end
 
   def tax

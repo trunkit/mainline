@@ -3,6 +3,8 @@ class CartItem < ActiveRecord::Base
 
   belongs_to :cart
 
+  has_many :commissions
+
   validates :quantity, :item_id, :item_version, :cart_id, :supporting_boutique_id, :supplying_boutique_id, presence: true
   validates :item_id, :item_version, :cart_id, :supporting_boutique_id, :supplying_boutique_id, numericality: true
 
@@ -33,12 +35,20 @@ class CartItem < ActiveRecord::Base
     boutique_id.to_i == supplying_boutique_id
   end
 
+  def prorata_stripe_fee
+    (total_price / cart.total_price) * cart.stripe_fee
+  end
+
   def unit_price
     item.price
   end
 
   def subtotal_price
     quantity * unit_price
+  end
+
+  def subtotal_price_less_prorata_credit
+    subtotal_price * cart.external_payment_percentage.round(9)
   end
 
   def subtotal_with_shipping
@@ -123,14 +133,18 @@ class CartItem < ActiveRecord::Base
   end
 
   def complete!
-    update_columns(completed_at: Time.now)
+    transaction do
+      Commission.create_for_cart_item!(self)
+      update_columns(completed_at: Time.now)
+    end
+
     true
   end
 
   def cancel!(message)
     charge = Stripe::Charge.retrieve(cart.transaction_id)
     refund = charge.refund(amount: (total_price * 100).to_i)
-    update_columns(cancellation_refund_id: refund.id)
+    update_attributes(cancellation_refund_id: refund.id)
 
     Notifier.cart_item_cancellation(id, message).deliver
 
@@ -158,6 +172,8 @@ class CartItem < ActiveRecord::Base
         value:       -subtotal_price,
         description: "Credit refund on #{item.name}. Accepted by #{user.name}"
       })
+
+      Commission.refund_for_cart_item!(self)
 
       user.update_account_balance!
 
