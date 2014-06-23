@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623002141) do
+ActiveRecord::Schema.define(version: 20140623014851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20140623002141) do
     t.string   "whodunnit_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "ledger_entries", ["whodunnit_id", "whodunnit_type"], name: "index_ledger_entries_on_whodunnit_id_and_whodunnit_type", using: :btree
