@@ -235,7 +235,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    stripe (1.10.1)
+    stripe (1.14.0)
       json (~> 1.8.1)
       mime-types (~> 1.25)
       rest-client (~> 1.4)
