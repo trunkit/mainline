@@ -87,7 +87,7 @@ class Cart < ActiveRecord::Base
 
   def external_payment_percentage
     return BigDecimal.new("0", 9) if transaction_id.nil?
-    return BigDecimal.new("100", 9) if ledger_entry_id.nil?
+    return BigDecimal.new("1", 9) if ledger_entry_id.nil?
 
     ((charge_amount / (charge_amount + credit_amount))).round(9)
   end
