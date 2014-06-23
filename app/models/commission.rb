@@ -41,10 +41,37 @@ class Commission < ActiveRecord::Base
       true
     end
 
-    def capture!
+    def capture_for_boutiques!
+      uncaptured = where(transfer_id: nil).where.not(boutique_id: nil).includes(:cart_item).lock.reject{|c| c.cart_item.refundable? }
+      uncaptured.group_by(&:recipient_id).each {|recipient_id, commissions| capture!(recipient_id, commissions) }
+      true
+    end
+
+    def capture_for_trunkit!
+      uncaptured = where(transfer_id: nil, boutique_id: nil).includes(:cart_item)
+      capture!("self", uncaptured)
+      true
     end
 
   private
+    def capture!(recipient_id, commissions)
+      transaction do
+        begin
+          transfer = Stripe::Transfer.create({
+            amount:    (commissions.sum(&:value) * 100).to_i,
+            currency:  "USD",
+            recipient: recipient_id
+          })
+
+          commissions.each{|c| c.update_attributes(transfer_id: transfer.id) }
+
+        rescue => e
+          transfer.cancel
+          raise e
+        end
+      end
+    end
+
     def extract_attrs(cart_item, type)
       percentage = public_send("#{type.to_s}_percentage")
       boutique   = cart_item.send("#{type.to_s}_boutique")
