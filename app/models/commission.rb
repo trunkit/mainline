@@ -49,7 +49,7 @@ class Commission < ActiveRecord::Base
 
     def capture_for_trunkit!
       uncaptured = where(transfer_id: nil, boutique_id: nil).includes(:cart_item)
-      capture!("self", uncaptured)
+      capture!("self", uncaptured) if uncaptured.present?
       true
     end
 
