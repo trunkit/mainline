@@ -16,14 +16,7 @@ class Payments::CompanyController < CatalogAbstractController
   end
 
   def create
-    recipient = current_user.parent.recipient
-
-    recipient_params.each do |key, value|
-      recipient.public_send("#{key}=", value)
-    end
-
-    recipient.save
-
+    current_user.parent.recipient.create(recipient_params)
     redirect_to(action: :edit)
   end
 
