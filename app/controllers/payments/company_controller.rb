@@ -39,6 +39,8 @@ class Payments::CompanyController < CatalogAbstractController
 
 private
   def recipient_params
-    params.require(:recipient).permit(:name, :tax_id, bank_account: [:routing_number, :account_number, :country])
+    params.require(:recipient).permit(:name, :tax_id, bank_account: [:routing_number, :account_number, :country]).tap do |whitelisted|
+      whitelisted[:type] = "corporation"
+    end
   end
 end
