@@ -105,11 +105,8 @@ class Boutique < ActiveRecord::Base
   end
 
   def recipient
-    return @recipient if defined?(@recipient)
-
-    @recipient = recipient_id.present? ?
-      Stripe::Recipient.retrieve(recipient_id) :
-      Stripe::Recipient.new
+    return if recipient_id.blank?
+    @recipient ||= Stripe::Recipient.retrieve(recipient_id)
   end
 
 private

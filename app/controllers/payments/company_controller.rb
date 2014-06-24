@@ -16,7 +16,8 @@ class Payments::CompanyController < CatalogAbstractController
   end
 
   def create
-    current_user.parent.recipient.create(recipient_params)
+    recipient = Stripe::Recipient.create(recipient_params)
+    current_user.parent.update_attribute(:recipient_id, recipient.id)
     redirect_to(action: :edit)
   end
 
