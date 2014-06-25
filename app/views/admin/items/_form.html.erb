@@ -100,14 +100,14 @@
 
   <div class="row">
     <div class="col-md-6 col-xs-12">
-      <div class="form-group">
+      <div class="form-group brand-select">
         <%= f.label(:brand_id) %>
         <%= f.select(:brand_id, (@brands.map{|d| [d.name, d.id] } << ["(Add a New Brand)", -1]), {}, class: "form-control") %>
       </div>
     </div>
 
     <div class="col-md-6 col-xs-12 hidden">
-      <div class="form-group">
+      <div class="form-group brand-add">
         <%= label_tag(:brand_name, "Add a New Brand") %>
 
         <div class="input-group">
@@ -150,41 +150,7 @@
 var secondaryCategories = <%= @secondary_categories.to_json.html_safe %>;
 
 $(function() {
-  $("#item_brand_id").change(function() {
-    var s = $(this);
-
-    if(s.val() == "-1") {
-      s.parents("form").find("form, input:visible, button:visible, select, textarea").attr("disabled", true);
-      s.parent().parent().addClass("hidden").siblings(".hidden").removeClass("hidden");
-    }
-
-    return true;
-  }).trigger("change");
-
-  $("#add-brand").click(function() {
-    e    = $(this).parents(".form-group").parent();
-    val = $(this).parent().find("input").val();
-
-    data = {"brand": { "name": val }};
-
-    $.ajax({ url: "/admin/brands.json", type: "POST", data: data, complete: function() {
-      $.getJSON("/admin/brands.json", function(data) {
-        e.parents("form").find("form, input, button:visible, select, textarea").removeAttr("disabled");
-
-        s = e.addClass("hidden").siblings(".hidden").removeClass("hidden").find("select");
-        s.empty();
-
-        for(i = 0; i < data.length; i++) {
-          brand = data[i];
-          s.append($("<option></option>").text(brand.name).val(brand.id));
-        }
-
-        s.append($("<option></option>").text("(Add a New Brand)").val("-1"));
-      });
-    }});
-
-    return false;
-  });
+  SiteBindings.item.brands("/admin");
 
   $("#item_primary_category_id").change(function() {
     var id = parseInt($(this).val());

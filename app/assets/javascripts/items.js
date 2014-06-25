@@ -130,5 +130,50 @@ SiteBindings.item = {
       for(var i = 1; i <= maxQuantity; i++)
         quantitySelect.append($("<option></option>").text(i));
     }).trigger("change");
+  },
+  brands: function(prefix) {
+    if(typeof prefix === 'undefined')
+      var prefix = '';
+
+    $("#item_brand_id").change(function() {
+      var s = $(this);
+
+      if(s.val() == "-1") {
+        s.parents("form").find("form, input:visible, button:visible, select, textarea").attr("disabled", true);
+        s.parents("form").find(".brand-select").hide();
+        s.parents("form").find(".brand-add").show();
+      }
+
+      return true;
+    }).trigger("change");
+
+    $("#add-brand").click(function() {
+      e    = $(this).parents(".brand-add")
+      val = $(this).parent().find("input").val();
+
+      data = {"brand": { "name": val }};
+
+      $.ajax({ url: (prefix + "/brands.json"), type: "POST", data: data, complete: function() {
+        $.getJSON((prefix + "/brands.json"), function(data) {
+          e.parents("form").find("form, input, button:visible, select, textarea").removeAttr("disabled");
+          e.hide();
+
+          s = e.parents("form").find(".brand-select").show();
+          console.log(s);
+          s = s.find("select");
+
+          s.empty();
+
+          for(i = 0; i < data.length; i++) {
+            brand = data[i];
+            s.append($("<option></option>").text(brand.name).val(brand.id));
+          }
+
+          s.append($("<option></option>").text("(Add a New Brand)").val("-1"));
+        });
+      }});
+
+      return false;
+    });
   }
 };

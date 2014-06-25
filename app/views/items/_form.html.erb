@@ -38,9 +38,15 @@
       <%= f.text_area(:description, required: true, class: "required") %>
     </div>
 
-    <div class="col-2">
+    <div class="col-2 brand-select">
       <%= f.label(:brand_id) %>
-      <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] }) %>
+      <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] } << ["(Add a New Brand)", -1]) %>
+    </div>
+
+    <div class="col-2 brand-add">
+      <%= label_tag(:brand_name, "Add a New Brand") %>
+      <%= text_field_tag(:brand_name, "", placeholder: "Before continuing, add a new brand", class: "form-control") %>
+      <%= content_tag(:span, button_tag("Add Brand", class: "btn btn-xs btn-primary"), class: "input-group-addon", id: "add-brand") %>
     </div>
   </div>
 
@@ -153,5 +159,6 @@
 $(function() {
   var secondaryCategories = <%= @secondary_categories.to_json.html_safe %>;
   SiteBindings.item.form(<%= @item.id || 'null' %>, secondaryCategories);
+  SiteBindings.item.brands();
 });
 </script>

@@ -211,6 +211,14 @@ div.item-quantity {
         }
 
         input[type="text"], textarea, select { width: 60%; }
+
+        &.brand-add {
+          display: none;
+
+          input[type="text"] { width: 40%; }
+
+          span { margin: 0 0 0 5px; }
+        }
       }
 
       &.col-4 {
