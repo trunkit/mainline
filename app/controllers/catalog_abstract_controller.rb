@@ -27,6 +27,6 @@ class CatalogAbstractController < ApplicationController
   end
 
   def validate_boutique
-    redirect_to(payments_company_path) if current_user.parent && current_user.parent.recipient_id.blank?
+    redirect_to(payments_company_path) if current_user.try(:parent) && current_user.parent.recipient_id.blank?
   end
 end
