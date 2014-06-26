@@ -35,7 +35,7 @@
         <% categories.each do |category| %>
         <%= content_tag(:li, link_to(category.name, items_path(curated: true, category: category), class: active_css_class(category.to_param))) %>
         <% end %>
-        <%= content_tag(:li, link_to("Add", new_item_path, class: "button")) %>
+        <%= content_tag(:li, link_to("Suply an Item", new_item_path, class: "button")) %>
       </ul>
     <% end %>
 
