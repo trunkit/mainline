@@ -4,7 +4,8 @@ class OrdersController < CatalogAbstractController
   end
 
   def index
-    @orders = Cart.boutique_orders_listing(current_user, params)
-    @users  = User.unscoped.find(@orders.map(&:user_id)).index_by(&:id)
+    @orders      = Cart.boutique_orders_listing(current_user, params)
+    @users       = User.unscoped.find(@orders.map(&:user_id)).index_by(&:id)
+    @commissions = Commission.collectable_for(current_user)
   end
 end
