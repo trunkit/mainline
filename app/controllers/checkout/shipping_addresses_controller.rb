@@ -1,6 +1,8 @@
 class Checkout::ShippingAddressesController < CatalogAbstractController
   force_ssl if: -> { Rails.env.production? }
 
+  before_filter :verify_shopped_has_cart_items
+
   def index
     if current_user.addresses.blank?
       @address = current_user.addresses.build
