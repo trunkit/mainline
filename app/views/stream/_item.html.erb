@@ -19,7 +19,9 @@
       <% if current_user && current_user.parent_id.blank? %>
       <%= link_to("Buy", item_path(item, activity_id: activity), class: "buy fancybox fancybox.ajax") %>
       <% elsif current_user %>
-        <% if current_user.parent.supported_item_ids.include?(item.id) %>
+        <% if item.declined_boutique_ids.include?(current_user.parent_id) %>
+        <%= link_to("Declined", "#", class: "buy button item-#{item.id} support") %>
+        <% elsif current_user.parent.supported_item_ids.include?(item.id) %>
         <%= link_to("Uncurate", [:unsupport, item], method: :put, remote: true, class: "buy button item-#{item.id} unsupport") %>
         <% else %>
         <%= link_to("Curate", [:support, item], method: :put, remote: true, class: "buy button item-#{item.id} support") %>
