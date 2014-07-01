@@ -90,7 +90,7 @@ class Item < ActiveRecord::Base
 
       item_ids = activity_scope.select(:subject_id).map(&:subject_id)
 
-      items = Item.where(id: item_ids)
+      items = Item.where(id: item_ids, approved: true)
       items = items.for_category(params[:category]) if params[:category].present?
       items = items.includes(:boutique).page(params[:page] || 1).per(params[:per] || 30)
 
