@@ -27,8 +27,8 @@
       </ul>
     <% end %>
 
-    <%= content_tag(:li, class: active_css_class("curated=true")) do %>
-      <%= link_to("Supplied", items_path(curated: true)) %>
+    <%= content_tag(:li, class: active_css_class("supported=false")) do %>
+      <%= link_to("Supplied", items_path(supported: false)) %>
 
       <ul>
         <%= content_tag(:li, link_to("All", items_path(curated: true))) %>
