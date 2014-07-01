@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701012045) do
+ActiveRecord::Schema.define(version: 20140701020702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140701012045) do
     t.json     "return_label"
     t.integer  "refund_ledger_entry_id"
     t.boolean  "refund_requested",                               default: false
+    t.boolean  "refundable",                                     default: true
   end
 
   add_index "cart_items", ["supplying_boutique_id"], name: "index_cart_items_on_supplying_boutique_id", using: :btree
