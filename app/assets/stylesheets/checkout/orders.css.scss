@@ -156,5 +156,10 @@
     text-decoration: none;
     color: #FFF;
     background: #000;
+
+    &.home {
+      width: 200px;
+      margin-top: 10px;
+    }
   }
 }

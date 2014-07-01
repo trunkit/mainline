@@ -1,4 +1,14 @@
 (function($) {
-  $("a.place-order").removeClass("fancybox").addClass("gray").attr("href", "#").text("Purchase Complete!");
+  $("a.place-order").
+    removeClass("fancybox").
+    addClass("gray completed").
+    removeClass("place-order").
+    attr("href", "#").
+    text("Purchase Complete");
+
+  var newBtn = $("<a></a>").prop("href", "/").addClass("btn home").text("Continue Shopping");
+
+  $("a.btn.completed").after(newBtn);
+
   $.fancybox.close();
 })(jQuery);
