@@ -25,4 +25,15 @@ module ApplicationHelper
   def markdown(string)
     @@markdown.render(string).html_safe
   end
+
+  def notifications_widget
+    activities = Activity.for_notification_stream(current_user)
+    activities = activities.where('created_at > ?', current_user.last_viewed_notifications_at) unless current_user.last_viewed_notifications_at.nil?
+
+    if activities.count > 0
+      link_to(image_tag("header/notifications-new.png"), notifications_path, class: "cart")
+    else
+      link_to(image_tag("header/notifications.png"), notifications_path, class: "cart")
+    end
+  end
 end

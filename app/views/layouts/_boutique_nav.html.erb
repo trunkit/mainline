@@ -51,7 +51,7 @@
 </nav>
 
 <div class="right">
-  <%= link_to(image_tag("header/notifications.png"), notifications_path, class: "cart") %>
+  <%= notifications_widget %>
 
   <div class="user">
     <%= image_tag(current_user.photo.thumb.url) %>
