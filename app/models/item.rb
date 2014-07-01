@@ -223,7 +223,7 @@ class Item < ActiveRecord::Base
       width:  packaging_width,
       length: packaging_length,
       height: packaging_height,
-      weight: weight
+      weight: (weight * 16)
     })
   end
 
