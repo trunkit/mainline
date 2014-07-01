@@ -194,6 +194,18 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def decline_boutique(boutique)
+    boutique = Boutique.find(boutique) unless boutique.is_a?(Boutique)
+
+    declined_boutique_ids_will_change!
+    declined_boutique_ids << boutique.id
+    save
+
+    remove_supporter(boutique)
+
+    true
+  end
+
   def supporter_ids(reload = false)
     return @supporters if @supporters && !reload
 
@@ -216,6 +228,10 @@ class Item < ActiveRecord::Base
 
   def active_sizes
     sizes.select{|size,qty| qty.to_i > 0 }.map(&:first)
+  end
+
+  def declined_boutique_ids
+    self[:declined_boutique_ids] ||= []
   end
 
   def parcel
