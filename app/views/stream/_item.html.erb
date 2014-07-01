@@ -34,7 +34,11 @@
       <%= link_to("Curated by #{activity.owner.name}", activity.owner, class: "curator") %>
       <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier") %>
       <% else %>
-      <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier one-line") %>
+        <% if item.boutique_id == current_user.parent_id %>
+          <%= link_to("Curated By #{item.supporters.count} Boutique#{'s' unless item.supporters.count == 1}", item_declinations_path(item), class: "supplier one-line fancybox") %>
+        <% else %>
+          <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier one-line") %>
+        <% end %>
       <% end %>
     </div>
   </div>

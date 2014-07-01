@@ -167,7 +167,7 @@ class Item < ActiveRecord::Base
   end
 
   def add_supporter(boutique)
-    return false if supporter_ids.include?(boutique.id)
+    return false if declined_boutique_ids.include?(boutique.id) || supporter_ids.include?(boutique.id)
 
     Activity.
       for_owner(boutique).
