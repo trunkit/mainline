@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701000904) do
+ActiveRecord::Schema.define(version: 20140701012045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 20140701000904) do
     t.decimal  "packaging_height",      precision: 9, scale: 2, default: 12.0
     t.decimal  "packaging_length",      precision: 9, scale: 2, default: 12.0
     t.text     "parcel_id"
+    t.integer  "declined_boutique_ids",                                                      array: true
   end
 
   create_table "ledger_entries", force: true do |t|
