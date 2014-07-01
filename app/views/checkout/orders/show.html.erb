@@ -30,7 +30,7 @@
       <%= content_tag(:span, @token.card.name, class: "name") %>
 
       <span class="card-type">
-        <%= content_tag(:em, @token.card.brand, class: @token.card.type.downcase.gsub(/[^a-z]/, '-')) %>
+        <%= content_tag(:em, @token.card.brand, class: @token.card.brand.downcase.gsub(/[^a-z]/, '-')) %>
 
         <span>
           ending in <%= @token.card.last4 %>
