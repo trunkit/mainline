@@ -11,7 +11,7 @@ module OrdersHelper
     elsif cart_item.supplied?(current_user.parent_id)
       link_to("Complete", "#cart-item-complete-#{cart_item.id}", class: "btn fancybox")
     else
-      link_to("Supported!", "#", class: "btn btn-supplied")
+      link_to("Curated", "#", class: "btn btn-supplied")
     end
   end
 end
