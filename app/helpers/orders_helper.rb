@@ -10,15 +10,10 @@ module OrdersHelper
       link_to("Shipping Label", "#", target: "_blank", class: "btn")
     elsif cart_item.supplied?(current_user.parent_id)
       link_to("Complete", "#cart-item-complete-#{cart_item.id}", class: "btn fancybox")
-<<<<<<< HEAD
-    else
-      link_to("Curated", "#", class: "btn btn-supplied")
-=======
     elsif user.parent_id.present?
-      link_to("Supported!", "#", class: "btn btn-supplied")
+      link_to("Curated", "#", class: "btn btn-supplied")
     else
       link_to("Request Refund", "#", class: "btn btn-supplied")
->>>>>>> FETCH_HEAD
     end
   end
 end
