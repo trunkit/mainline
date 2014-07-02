@@ -1,8 +1,11 @@
 .catalog-notification {
+  display: block;
   width: 776px;
   height: 46px;
   margin: 0 auto 10px;
   border: 2px solid #000;
+  text-decoration: none;
+  color: #000;
 
   div.photo {
     float: left;

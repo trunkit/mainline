@@ -1,5 +1,5 @@
-<div class="catalog-notification">
+<%= content_tag(:div, class: "catalog-notification") do %>
   <%= content_tag(:div, image_tag(notification.owner.photo.url), class: "photo") %>
   <%= content_tag(:span, "#{notification.owner.name} is now following you", class: "message") %>
   <%= notification_time_in_words(notification) %>
-</div>
+<% end %>

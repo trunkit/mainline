@@ -1,5 +1,5 @@
-<div class="catalog-notification">
+<%= link_to(boutique_path(notification.owner_id), class: "catalog-notification") do %>
   <%= content_tag(:div, image_tag(notification.owner.stream_photo.thumb), class: "photo") %>
   <%= content_tag(:span, "#{notification.owner.name} curated #{notification.subject.name}", class: "message") %>
   <%= notification_time_in_words(notification) %>
-</div>
+<% end %>
