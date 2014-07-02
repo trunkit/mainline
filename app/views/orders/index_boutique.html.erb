@@ -1,7 +1,7 @@
 <div class="orders">
   <header>
-    <%= content_tag(:span, "Total Amount Owed to You: $572") %>
-    <%= content_tag(:span, "Next Payment To Be Paid On: 5/31/14") %>
+    <%= content_tag(:span, "Total Amount Owed to You: #{number_to_currency(@commissions.sum(&:value))}") %>
+    <%= content_tag(:span, "Next Payment Will Be On: #{(Time.now.end_of_week - 172800).strftime("%m/%d/%Y")}") %>
   </header>
 
   <% @orders.each do |cart| %>
@@ -33,7 +33,7 @@
           </ul>
         </div>
 
-        <%= item_order_status_button(cart_item) %>
+        <%= item_order_status_button(current_user, cart_item) %>
       <% end %>
       <% end %>
     </article>

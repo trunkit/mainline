@@ -167,7 +167,7 @@ class Item < ActiveRecord::Base
   end
 
   def add_supporter(boutique)
-    return false if supporter_ids.include?(boutique.id)
+    return false if declined_boutique_ids.include?(boutique.id) || supporter_ids.include?(boutique.id)
 
     Activity.
       for_owner(boutique).
@@ -194,6 +194,18 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def decline_boutique(boutique)
+    boutique = Boutique.find(boutique) unless boutique.is_a?(Boutique)
+
+    declined_boutique_ids_will_change!
+    declined_boutique_ids << boutique.id
+    save
+
+    remove_supporter(boutique)
+
+    true
+  end
+
   def supporter_ids(reload = false)
     return @supporters if @supporters && !reload
 
@@ -218,12 +230,16 @@ class Item < ActiveRecord::Base
     sizes.select{|size,qty| qty.to_i > 0 }.map(&:first)
   end
 
+  def declined_boutique_ids
+    self[:declined_boutique_ids] ||= []
+  end
+
   def parcel
     @parcel ||= EasyPost::Parcel.create({
       width:  packaging_width,
       length: packaging_length,
       height: packaging_height,
-      weight: weight
+      weight: (weight * 16)
     })
   end
 

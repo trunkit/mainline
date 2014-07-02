@@ -7,6 +7,10 @@ class Cart < ActiveRecord::Base
 
   belongs_to :ledger_entry
 
+  def self.ordered
+    where("transaction_id IS NOT NULL OR ledger_entry_id IS NOT NULL")
+  end
+
   def self.boutique_orders_listing(user, params)
     return none unless user.parent_type == "Boutique"
 
@@ -22,7 +26,7 @@ class Cart < ActiveRecord::Base
     scope = scope.joins(:cart).select("cart_items.cart_id")
     ids   = scope.map{|cart_item| cart_item.cart_id }.uniq
 
-    where(id: ids).where("transaction_id IS NOT NULL OR ledger_entry_id IS NOT NULL").includes(:items).order(captured_at: :desc).page(params[:page]).per(params[:per_page])
+    where(id: ids).ordered.includes(:items).order(captured_at: :desc).page(params[:page]).per(params[:per_page])
   end
 
   def capture_order!(card)

@@ -8,7 +8,7 @@ class ItemsController < CatalogAbstractController
 
   def index
     boutique = current_user.parent
-    @items = params[:supported] ? boutique.supported_items : boutique.items
+    @items = params[:supported].to_s =~ /^?(t|true)$/ ? boutique.supported_items : boutique.items
     @items = @items.for_category(params[:category]) if params.key?(:category)
   end
 

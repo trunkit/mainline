@@ -53,6 +53,14 @@ class Commission < ActiveRecord::Base
       true
     end
 
+    def collectable_for(user)
+      where(boutique_id: user.parent_id, transfer_id: nil).
+        includes(:cart_item).
+        references(:cart_item).
+        where("(cart_items.supplying_boutique_id = :id OR cart_items.supporting_boutique_id = :id)", id: user.parent_id).
+        where(:"cart_items.refundable" => false)
+    end
+
   private
     def capture!(recipient_id, commissions)
       transaction do

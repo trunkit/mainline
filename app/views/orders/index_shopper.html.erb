@@ -1,0 +1,29 @@
+<div class="orders">
+  <% @orders.each do |cart| %>
+  <div class="order">
+    <%= content_tag(:span, "Customer: #{cart.user.name}", class: "name") %>
+    <%= content_tag(:address, "#{cart.shipping_address.to_s.gsub("\n", '<br>')}".html_safe) %>
+
+    <article class="items">
+      <% cart.items.each do |cart_item| %>
+      <%= content_tag(:section, class: "item") do %>
+        <%= image_tag(cart_item.item.primary_photo.url.thumb) %>
+
+        <div>
+          <%= content_tag(:span, cart_item.item.name) %>
+
+          <ul>
+            <%= content_tag(:li, "Size: #{cart_item.size}") if cart_item.size.present? %>
+            <%= content_tag(:li, "Qty: #{cart_item.quantity}") %>
+            <%= content_tag(:li, "Price: #{number_to_currency(cart_item.unit_price)}") %>
+            <%= content_tag(:li, "Shipping: #{number_to_currency(cart_item.shipping)}") %>
+          </ul>
+        </div>
+
+        <%= item_order_status_button(current_user, cart_item) %>
+      <% end %>
+      <% end %>
+    </article>
+  </div>
+  <% end %>
+</div>
