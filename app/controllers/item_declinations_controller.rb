@@ -8,6 +8,7 @@ class ItemDeclinationsController < CatalogAbstractController
 
   def update
     @item.decline_boutique(params[:id])
+    @item.supporters(true)
     render(action: :index)
   end
 end
