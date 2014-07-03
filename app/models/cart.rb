@@ -59,7 +59,7 @@ class Cart < ActiveRecord::Base
       ci = self.items(true).detect{|ci| ci.item_id == item.id }
 
       changed << ci.id if item.version > ci.item_version
-      ci.update_attribute(:item_version, item.version) if save
+      ci.update_attribute(:item_version, item.version) if save && ci.changed?
     end
 
     changed
