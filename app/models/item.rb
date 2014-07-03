@@ -75,9 +75,6 @@ class Item < ActiveRecord::Base
     where("primary_category_id = ? OR secondary_category_id = ?", id.to_i, id.to_i)
   }
 
-  before_save do
-    self.parcel_id = parcel.id
-  end
 
   class << self
     def for_stream(user, params)
@@ -232,15 +229,6 @@ class Item < ActiveRecord::Base
 
   def declined_boutique_ids
     self[:declined_boutique_ids] ||= []
-  end
-
-  def parcel
-    @parcel ||= EasyPost::Parcel.create({
-      width:  packaging_width,
-      length: packaging_length,
-      height: packaging_height,
-      weight: (weight * 16)
-    })
   end
 
   def version

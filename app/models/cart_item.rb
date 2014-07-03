@@ -15,7 +15,7 @@ class CartItem < ActiveRecord::Base
   @@shipping_options = [['UPS Ground', 'Ground'], ['UPS 3 Day Select', '3DaySelect'], ['UPS Second Day Air', '2ndDayAir'], ['UPS Next Day Air Saver', 'NextDayAirSaver']].freeze
   cattr_reader :shipping_options
 
-  before_save :store_shipping_cost
+  before_save :build_parcel, :store_shipping_cost
 
   delegate :purchased?, to: :cart
 
@@ -83,6 +83,21 @@ class CartItem < ActiveRecord::Base
     shipment.rates.detect{|r| r.service == service }
   end
 
+  def parcel
+    return @parcel if @parcel
+
+    @parcel = if parcel_id.blank?
+      EasyPost::Parcel.create({
+        width:  item.packaging_width,
+        length: item.packaging_length,
+        height: item.packaging_height,
+        weight: (item.weight * 16) * quantity
+      })
+    else
+      EasyPost::Parcel.retrieve(parcel_id)
+    end
+  end
+
   def shipment
     return @shipment if @shipment
 
@@ -90,7 +105,7 @@ class CartItem < ActiveRecord::Base
       shipment = EasyPost::Shipment.create({
         to_address:   { id: cart.shipping_address.easypost_id },
         from_address: { id: item.boutique.easypost_id },
-        parcel:       { id: item.parcel_id }
+        parcel:       { id: parcel_id }
       })
 
       update_column(:shipment_id, shipment.id)
@@ -189,6 +204,14 @@ class CartItem < ActiveRecord::Base
   end
 
 private
+  def build_parcel
+    return if cart.purchased?
+
+    self[:shipment_id] = nil
+    self[:parcel_id]   = nil
+    self[:parcel_id]   = parcel.id
+  end
+
   def store_shipping_cost
     return unless self[:shipping_rate_id].present?
     self.shipping = BigDecimal.new(shipping_rate.rate.to_s.gsub(/[^0-9\.]/, ''))
