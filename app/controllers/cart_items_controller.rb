@@ -10,16 +10,20 @@ class CartItemsController < CatalogAbstractController
 
     ci.save!
 
+    current_cart.items(true)
+
     render(template: "carts/show")
   end
 
   def update
     current_cart.items.find(params[:id]).update_attribute(:quantity, params[:quantity])
+    current_cart.items(true)
     render(template: "carts/show")
   end
 
   def destroy
     current_cart.items.find(params[:id]).destroy
+    current_cart.items(true)
     render(template: "carts/show")
   end
 

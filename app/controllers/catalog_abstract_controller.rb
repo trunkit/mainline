@@ -5,8 +5,8 @@ class CatalogAbstractController < ApplicationController
 
   private
 
-  def current_cart
-    return @current_cart if @current_cart
+  def current_cart(reload = false)
+    return @current_cart if @current_cart || reload
 
     if session[:cart_id]
       @current_cart = current_user.carts.includes(:items).find(session[:cart_id])
