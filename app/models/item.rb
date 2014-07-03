@@ -75,6 +75,7 @@ class Item < ActiveRecord::Base
     where("primary_category_id = ? OR secondary_category_id = ?", id.to_i, id.to_i)
   }
 
+  after_destroy :remove_from_carts!
 
   class << self
     def for_stream(user, params)
@@ -279,5 +280,10 @@ private
     Activity.
       for_subject(self).
       each(&:destroy)
+  end
+
+  def remove_from_carts!
+    CartItem.where(item_id: id).includes(:cart).each{|ci| ci.destroy unless ci.purchased? }
+    true
   end
 end
