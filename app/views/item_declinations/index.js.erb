@@ -1,3 +1,4 @@
 (function($) {
+  $("#stream-item-<%= @item.id %>").replaceWith("<%= j(render('stream/item', item: @item, activity: nil)) %>");
   $("#declined-boutiques").replaceWith("<%= j(render('index')) %>");
 })(jQuery);
