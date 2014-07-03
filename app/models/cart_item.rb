@@ -108,7 +108,7 @@ class CartItem < ActiveRecord::Base
       update_column(:shipping_label, shipment.buy(rate).to_hash)
     end
 
-    self[:shipping_label]
+    EasyPost::PostageLabel.construct_from(self[:shipping_label])
   end
 
   def return_label
@@ -129,13 +129,14 @@ class CartItem < ActiveRecord::Base
       update_columns(return_label: shipment.buy(rate).to_hash)
     end
 
-    self[:return_label]
+    EasyPost::PostageLabel.construct_from(self[:return_label])
   end
 
   def complete!
     transaction do
       Commission.create_for_cart_item!(self)
       update_columns(completed_at: Time.now)
+      shipping_label
     end
 
     true

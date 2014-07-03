@@ -17,7 +17,6 @@
         <%= content_tag(:div, class: "cart-item-complete", id: "cart-item-complete-#{cart_item.id}") do %>
           <h3>Complete Order</h3>
           <p>Select "COMPLETE ORDER" to access the free<br>UPS shipping label or select "UNABLE TO COMPLETE" to notify the customer.</p>
-          <%= link_to("Shipping Label PDF", "#", target: "_blank") %>
           <%= link_to("Mark Completed", order_item_complete_path(cart_item.id), data: { method: :put }) %>
           <%= link_to("Unable to Complete", new_order_item_cancellation_path(cart_item.id), data: { remote: true }) %>
         <% end %>
