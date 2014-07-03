@@ -209,7 +209,7 @@ class CartItem < ActiveRecord::Base
 
 private
   def build_parcel
-    return if cart.purchased?
+    return if cart.purchased? || (changes.keys & ['quantity', 'item_version']).blank?
 
     self[:shipment_id] = nil
     self[:parcel_id]   = nil
