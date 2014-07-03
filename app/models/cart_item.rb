@@ -31,6 +31,10 @@ class CartItem < ActiveRecord::Base
     @item
   end
 
+  def latest_item
+    Item.find(item_id)
+  end
+
   def supplied?(boutique_id)
     boutique_id.to_i == supplying_boutique_id
   end

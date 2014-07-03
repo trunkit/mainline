@@ -29,6 +29,42 @@ class Cart < ActiveRecord::Base
     where(id: ids).ordered.includes(:items).order(captured_at: :desc).page(params[:page]).per(params[:per_page])
   end
 
+  def verify_quantities!
+    removed = []
+    changed = []
+
+    verify_latest_data!.each do |id|
+      ci    = items(true).find(id)
+      count = ci.latest_item.sizes[ci.size]
+
+      if count == 0 || count.nil?
+        ci.destroy
+        removed << ci.id
+      elsif ci.quantity > count
+        ci.quantity = count
+        ci.save
+
+        changed << ci.id
+      end
+    end
+
+    { removed: removed, changed: changed }
+  end
+
+  def verify_latest_data!(save = false)
+    changed = []
+
+    items = Item.where(id: self.items.map(&:item_id)).includes(:versions)
+    items.each do |item|
+      ci = self.items(true).detect{|ci| ci.item_id == item.id }
+
+      changed << ci.id if item.version > ci.item_version
+      ci.update_attribute(:item_version, item.version) if save
+    end
+
+    changed
+  end
+
   def capture_order!(card)
     transaction do
       begin
