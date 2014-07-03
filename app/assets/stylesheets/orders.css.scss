@@ -73,7 +73,7 @@
       > a {
         float: left;
         clear: both;
-        width: 135px;
+        width: 150px;
         font: 14px/31px "Bebas Neue", sans-serif;
         letter-spacing: 4px;
         color: #fff;
@@ -81,7 +81,18 @@
         text-decoration: none;
         text-align: center;
 
-        &.disabled { cursor: not-allowed; }
+        &.disabled {
+          background: #999;
+          cursor: not-allowed;
+        }
+
+        &.shipping-label {
+          width: 146px;
+          line-height: 27px;
+          border: 2px solid #000;
+          background: #fff;
+          color: #000;
+        }
       }
     }
   }
