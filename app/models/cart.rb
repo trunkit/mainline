@@ -70,6 +70,19 @@ class Cart < ActiveRecord::Base
       begin
         user.lock!
 
+        items       = Item.where(id: self.items.map(&:item_id)).lock
+        qty_changes = verify_quantities!
+
+        raise ActiveRecord::Rollback if qty_changes.values.flatten.present?
+
+        self.items.each do |ci|
+          i = items.detect{|i| i.id == ci.item_id }
+
+          i.sizes_will_change!
+          i.sizes[ci.size] -= ci.quantity
+          i.save
+        end
+
         attrs = { captured_at: Time.now }
 
         if total_price_after_credit > 0
