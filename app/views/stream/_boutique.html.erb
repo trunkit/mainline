@@ -21,7 +21,11 @@
       <% end %>
 
       <p class="counts">
+        <% if current_user && current_user.parent_id.present? %>
+        <%= content_tag(:span, "#{boutique.items.size} Supplied Item#{'s' if boutique.items.size > 1}") if boutique.items.size > 0 %>
+        <% else %>
         <%= content_tag(:span, "#{boutique.supported_items.size} Curated Item#{'s' if boutique.supported_items.size > 1}") if boutique.supported_items.size > 0 %>
+        <% end %>
       </p>
     </div>
   </div>
