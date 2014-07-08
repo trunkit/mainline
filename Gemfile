@@ -48,7 +48,6 @@ gem 'elasticsearch-rails'
 
 # Shipping & Payments
 gem 'easypost'
-gem 'avalara', github: 'vizjerai/avalara'
 gem 'stripe'
 
 # Background Processing
