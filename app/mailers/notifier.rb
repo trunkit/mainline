@@ -7,6 +7,13 @@ class Notifier < ActionMailer::Base
     mail(to: user.email, subject: "Welcome to Trunkit")
   end
 
+  def welcome_boutique(user, token)
+    @user  = user
+    @token = token
+
+    mail(to: user.email, subject:" Welcome to Trunkit")
+  end
+
   def boutique_signup(params)
     @params = params
 

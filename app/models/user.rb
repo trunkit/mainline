@@ -136,6 +136,11 @@ private
   end
 
   def welcome_email
-    Notifier.welcome_email(self).deliver
+    if parent_id.blank?
+      Notifier.welcome_email(self).deliver
+    else
+      token = set_reset_password_token
+      Notifier.welcome_boutique(self, token).deliver
+    end
   end
 end
