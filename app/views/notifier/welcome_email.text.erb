@@ -2,7 +2,7 @@ HI <%= @user.first_name %>,
 
 We’re so excited that you’ve signed up to become a member of Trunkit and we hope you had a great first experience using the site. Your favorite fashion boutiques can now work together to bring you the best customer experience while offering you additional inventory that you’ll love. <%= "In order to sign in again using the same account we need you to create a password by visiting the link below." if @user.provider.blank? %>
 
-<%= link_to(settings_user_url) if @user.provider.blank? %>
+<%= settings_user_url if @user.provider.blank? %>
 
 If you have any questions or need help please contact the Trunkit Team. Our email is Team@Trunkit.com.
 
