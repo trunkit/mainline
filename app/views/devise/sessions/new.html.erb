@@ -1,3 +1,5 @@
+<%= content_tag(:p, flash[:alert], class: "notification error") if flash[:alert].present? %>
+
 <div id="login">
   <%= form_tag(user_session_path) do %>
     <div class="group half-width">
