@@ -11,6 +11,8 @@
     </ul>
   </nav>
 
+  <%= content_tag(:p, "Due to a change in prices or availability, items in your cart have been updated.", class: "notitication error") if @changes.values.any?(&:present?) %>
+
   <h2>Please Review The Shipping and Payment Details</h2>
 
   <div class="order-details">

@@ -11,6 +11,8 @@
     </ul>
   </nav>
 
+  <%= content_tag(:p, "Due to a change in prices or availability, items in your cart have been updated.", class: "notification error") if @changes && @changes.values.any?(&:present?) %>
+
   <div class="items">
     <header>
       <div class="name">Item(s)</div>

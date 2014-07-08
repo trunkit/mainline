@@ -1,6 +1,10 @@
 class Checkout::OrdersController < CatalogAbstractController
   force_ssl if: -> { Rails.env.production? }
 
+  before_filter do
+    @changes = current_cart.verify_quantities!
+  end
+
   before_filter :verify_shopper_has_cart_items
   before_filter do
     if current_cart.total_price_after_credit > 0
