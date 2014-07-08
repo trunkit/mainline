@@ -1,7 +1,7 @@
 class Checkout::DeliveryOptionsController < CatalogAbstractController
   force_ssl if: -> { Rails.env.production? }
 
-  before_filter :verify_shopped_has_cart_items
+  before_filter :verify_shopper_has_cart_items
 
   def show
   end

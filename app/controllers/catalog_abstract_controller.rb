@@ -30,7 +30,7 @@ class CatalogAbstractController < ApplicationController
     redirect_to(payments_company_path) if current_user.try(:parent) && current_user.parent.recipient_id.blank?
   end
 
-  def verify_shopped_has_cart_items
+  def verify_shopper_has_cart_items
     redirect_to(stream_path) unless session[:cart_id] && current_cart.items.present?
   end
 end
