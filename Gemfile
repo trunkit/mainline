@@ -66,7 +66,7 @@ gem 'asset_sync'
 gem 'airbrake'
 gem 'newrelic_rpm'
 
-group :production do
+group :staging, :production do
   gem 'unicorn'
   gem 'unicorn-worker-killer'
   gem 'rails_12factor'
