@@ -1,2 +1,2 @@
-host = Rails.env.production? ? ENV["BONSAI_URL"] : "http://localhost:9200"
+host = Rails.env.development? ?  "http://localhost:9200" : ENV["BONSAI_URL"]
 Elasticsearch::Model.client = Elasticsearch::Client.new(host: host)
