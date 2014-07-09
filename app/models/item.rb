@@ -131,7 +131,7 @@ class Item < ActiveRecord::Base
       items = search(query).page(page).per(per).records.where(approved: true).includes(:boutique, :brand)
 
       activities = item_activity_scope(user).where(subject_id: items.map(&:id)).index_by(&:subject_id)
-      items.map{|i| [activities[i.id], i] }
+      items.reject{|i| activities[i.id].blank? }.map{|i| [activities[i.id], i] }
     end
 
   private
