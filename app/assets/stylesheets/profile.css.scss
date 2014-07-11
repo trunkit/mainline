@@ -86,7 +86,10 @@ article.boutique {
     .social {
       @include position(absolute, 0 0 0px 50%);
       margin-left: -32px;
-      width: 32px;
+
+      img {
+        width: 32px;
+      }
 
       a {
         margin-left: 10px;
