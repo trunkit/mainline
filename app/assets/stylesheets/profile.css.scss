@@ -23,6 +23,10 @@ article.boutique {
     color: #fff;
     padding-top: 7px;
 
+    &:hover {
+      background: rgba(0, 0, 0, 1);
+    }
+
     &.unfollow {
       width: 156px;
       height: 30px;
