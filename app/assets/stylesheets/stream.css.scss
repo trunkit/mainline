@@ -192,7 +192,7 @@
           text-transform: uppercase;
           text-decoration: none;
           text-indent: 2px;
-          background: rgba(0, 0, 0, 0.7);
+          background: rgba(0, 0, 0, 0.9);
           color: #fff;
           padding-top: 7px;
 
@@ -209,7 +209,13 @@
             width: 156px;
             height: 30px;
             line-height: 23px;
-            border: 2px solid #fff;
+            border: 2px solid #000;
+            background: rgba(270,270,270,.95);
+            color: #fff;
+
+              &:hover {
+                background: rgba(270,270,270,1);
+            }
           }
         }
 
