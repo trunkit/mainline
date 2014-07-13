@@ -44,7 +44,7 @@ class Admin::UsersController < Admin::AbstractController
   private
 
   def user_params
-    attrs  = [:first_name, :last_name, :email, :gender, :time_zone, :photo, :parent_id]
+    attrs  = [:first_name, :last_name, :email, :gender, :time_zone, :photo, :parent_id, :roles]
     attrs += [:password, :password_confirmation] if params[:user].try(:password).try(:present?)
 
     params.require(:user).permit(attrs).tap do |whitelisted|
