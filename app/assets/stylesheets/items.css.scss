@@ -67,9 +67,26 @@ article.item {
         indent: 2px;
       }
 
-      background: #000;
+      background: rgba(0, 0, 0, 0.9);
       color: #fff;
       padding-top: 7px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 1);
+      }
+
+      &.unsupport {
+        width: 156px;
+        height: 30px;
+        line-height: 23px;
+        border: 2px solid #000;
+        background: rgba(255,255,255,.95);
+        color: #000;
+
+          &:hover {
+            background: rgba(255,255,255,1);
+        }
+      }
     }
 
     p { margin: 0; }
