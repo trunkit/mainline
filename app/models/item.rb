@@ -107,10 +107,13 @@ class Item < ActiveRecord::Base
       fields  = ['name', 'description', 'fit', 'construction', 'categories', 'brand_name', 'cities', 'states', 'supporters']
       fields << 'boutique_name' if user.parent_id.present?
 
+      q = params[:q].to_s
+      q.gsub!(/\&|and|or/i, '')
+
       query = {
         query: {
           multi_match: {
-            query:  params[:q],
+            query:  q,
             fields: fields,
             max_expansions: 5,
             type: "phrase_prefix"

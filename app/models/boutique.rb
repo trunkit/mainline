@@ -28,6 +28,8 @@ class Boutique < ActiveRecord::Base
   delegate :street, :street2, :city, :state, :postal_code, :easypost_id, to: :address, allow_nil: true
 
   def self.search(q)
+    q = q.to_s.gsub(/\&|and|or/i, '')
+
     body = {
       query: {
         query_string: {
