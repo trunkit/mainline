@@ -46,7 +46,7 @@ class Admin::UsersController < Admin::AbstractController
 
   def user_params
     attrs  = [:first_name, :last_name, :email, :gender, :time_zone, :photo, :parent_id, :roles]
-    attrs += [:password, :password_confirmation] if params[:user].try(:password).try(:present?)
+    attrs += [:password, :password_confirmation] if params[:user].try(:[], :password).try(:present?)
 
     params.require(:user).permit(attrs).tap do |whitelisted|
       whitelisted[:parent_type] = (params[:user][:parent_id].present? ? "Boutique" : nil)
