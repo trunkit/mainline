@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
+  validates_uniqueness_of :email, scope: :deleted_at
+
   before_validation :generate_password
   after_create      :welcome_email
 
