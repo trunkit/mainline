@@ -8,8 +8,8 @@
     </div>
 
     <div class="group">
-      <%= email_field_tag(:email, "", placeholder: "Email", autofocus: true) %>
-      <%= password_field_tag(:password, "", placeholder: "Password") %>
+      <%= email_field_tag(:"user[email]", "", placeholder: "Email", autofocus: true) %>
+      <%= password_field_tag(:"user[password]", "", placeholder: "Password") %>
       <%= submit_tag("Login") %>
     </div>
 
