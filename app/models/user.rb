@@ -139,8 +139,14 @@ private
     if parent_id.blank?
       Notifier.welcome_email(self).deliver
     else
-      token = set_reset_password_token
-      Notifier.welcome_boutique(self, token).deliver
+      raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+
+      update_columns({
+        reset_password_token:   enc,
+        reset_password_sent_at: Time.now.utc
+      })
+
+      Notifier.welcome_boutique(self, raw).deliver
     end
   end
 end
