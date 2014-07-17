@@ -6,7 +6,7 @@
       <div class="col-md-4 col-xs-12">
         <div class="input-group">
           <%= content_tag(:span, "Name", class: "input-group-addon") %>
-          <%= f.text_field(:parent_type, value: "Van Boven", disabled: true, class: "form-control") %>
+          <%= f.text_field(:parent_name, value: (@user.parent.try(:name) || @boutique.name), disabled: true, class: "form-control") %>
         </div>
       </div>
 
@@ -20,7 +20,7 @@
       <div class="col-md-4 col-xs-12">
         <div class="input-group">
           <%= content_tag(:span, "ID", class: "input-group-addon") %>
-          <%= f.text_field(:parent_type, value: "137", disabled: true, class: "form-control") %>
+          <%= f.text_field(:parent_id, value: (@user.parent.try(:id) || @boutique.id), disabled: true, class: "form-control") %>
         </div>
       </div>
     </div>
