@@ -7,6 +7,26 @@ class Boutique < ActiveRecord::Base
   index_name    "trunkit"
   document_type "boutique"
 
+  mapping(dynamic: false) do
+    # Primary Attributes
+    indexes :name,        type: "string", analyzer: "english"
+    indexes :short_code,  type: "string", index: "not_analyzed"
+    indexes :item_count,  type: "integer"
+    indexes :brands,      type: "array", analyzer: "english"
+    indexes :description, type: "string", analyzer: "english"
+
+    # Location
+    indexes :address do
+      indexes :id,          type: "integer", index: "no"
+      indexes :street,      type: "string", index: "no"
+      indexes :street2,     type: "string", index: "no"
+      indexes :city,        type: "string", analyzer: "english"
+      indexes :state,       type: "string", analyzer: "english"
+      indexes :state_abbr,  type: "string", index: "not_analyzed"
+      indexes :postal_code, index: "no"
+    end
+  end
+
   acts_as_paranoid
   has_paper_trail
 
