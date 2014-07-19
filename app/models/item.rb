@@ -108,7 +108,7 @@ class Item < ActiveRecord::Base
       fields << 'boutique_name' if user.parent_id.present?
 
       q = params[:q].to_s
-      q.gsub!(/\&|and|or/i, '')
+      q.gsub!(/\&| and | or /i, ' ')
 
       query = {
         query: {
