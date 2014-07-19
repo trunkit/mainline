@@ -20,4 +20,11 @@
   <% end %>
 </div>
 
-<script>$(function() { SiteBindings.streamItems(); });</script>
+<div id="stream-watcher"></div>
+
+<script>
+$(function() {
+  SiteBindings.stream.items();
+  SiteBindings.stream.watcher("<%= url_for(page: 2) %>");
+});
+</script>

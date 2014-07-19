@@ -1,0 +1,7 @@
+(function() {
+  <% @activity_items.each do |activity, item| %>
+    $("#stream").append("<%= j(render("stream/item", activity: activity, item: item)) %>");
+  <% end %>
+
+  SiteBindings.stream.watcher("<%= url_for(page: (params[:page].to_i + 1)) %>");
+})(jQuery);
