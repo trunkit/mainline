@@ -1,6 +1,6 @@
 class Admin::ItemPhotosController < ApplicationController
   def create
-    item.photos.create(photo_params)
+    item.photos.create(photo_params) if params[:photo].blank?
     redirect_to([:edit, :admin, item])
   end
 
