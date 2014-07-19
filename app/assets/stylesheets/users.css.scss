@@ -25,6 +25,14 @@
         padding: 0 10px 0 0;
         text-align: right;
       }
+
+      div.spacer {
+        float: left;
+        padding-left: 185px;
+        font: 14px/17px "Lato", sans-serif;
+
+        input { margin: 1px 5px 0 0; }
+      }
     }
 
     button[type="submit"] {

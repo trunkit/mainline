@@ -7,5 +7,14 @@
 
   <%= form_for(:recipient, url: payments_company_path, html: { class: "info" }) do |f| %>
     <%= render("form", f: f) %>
+
+    <div>
+      <div class="spacer">
+        <%= f.check_box(:agree_to_terms, required: true) %>
+        You agree on behalf of <%= current_user.parent.name %>'s to adhere to the <%= link_to("Terms of Use", "/terms-of-use", target: "_blank") %> and the <%= link_to("Privacy Policy", "/privacy-policy", target: "_blank") %>.
+      </div>
+    </div>
+
+    <%= button_tag("Add Payment Data", type: "submit") %>
   <% end %>
 </div>
