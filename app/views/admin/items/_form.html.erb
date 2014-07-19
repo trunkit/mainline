@@ -99,14 +99,14 @@
   <hr>
 
   <div class="row">
-    <div class="col-md-6 col-xs-12">
-      <div class="form-group brand-select">
+    <div class="col-md-6 col-xs-12 brand-select">
+      <div class="form-group">
         <%= f.label(:brand_id) %>
         <%= f.select(:brand_id, (@brands.map{|d| [d.name, d.id] } << ["(Add a New Brand)", -1]), {}, class: "form-control") %>
       </div>
     </div>
 
-    <div class="col-md-6 col-xs-12 hidden">
+    <div class="col-md-6 col-xs-12 brand-add" style="display:none;">
       <div class="form-group brand-add">
         <%= label_tag(:brand_name, "Add a New Brand") %>
 
