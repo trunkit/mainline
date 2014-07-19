@@ -1,4 +1,18 @@
 module OrdersHelper
+  def listing_order_date(user, cart)
+    items = cart.items.where(supplying_boutique_id: user.parent_id)
+    return if items.blank?
+
+    if items.all?{|i| (i.completed_at.present? && !i.refundable?) || i.refund_ledger_entry_id.present? }
+      last_item = items.max(&:updated_at)
+      time      = last_item.refunded? ? last_item.refund_ledger_entry.created_at : last_item.completed_at
+
+      "Date Completed: #{time.strftime('%m/%d/%Y')}" if time
+    else
+      "Date Ordered: #{cart.captured_at.strftime('%m/%d/%Y')}"
+    end
+  end
+
   def item_order_status_button(user, cart_item)
     if cart_item.cancellation_refund_id.present?
       link_to("Cancelled", "#", class: "btn btn-supplied disabled")

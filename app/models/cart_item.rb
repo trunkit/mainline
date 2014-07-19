@@ -175,6 +175,10 @@ class CartItem < ActiveRecord::Base
     false
   end
 
+  def refunded?
+    refund_ledger_entry_id.present?
+  end
+
   def request_refund
     return if !purchased? || completed_at.blank? || refund_requested? || !refundable?
 
