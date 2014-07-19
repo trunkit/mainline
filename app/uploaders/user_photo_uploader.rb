@@ -15,6 +15,10 @@ class UserPhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [25, 25]
   end
 
+  def default_url
+    ActionController::Base.helpers.asset_path("common/default-profile.png")
+  end
+
   def extension_white_list
     %w(jpg jpeg gif png)
   end
