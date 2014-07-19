@@ -5,7 +5,7 @@ class ContentsController < ApplicationController
         redirect_to(:admin) :
         redirect_to(stream_path)
     else
-      @boutiques = Boutique.order(created_at: :desc).limit(25)
+      @boutiques = Boutique.order(name: :asc)
     end
   end
 
