@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :subdomain_redirect, :track_referral_code
   before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :redirect_location, unless: :devise_controller?
   before_filter :masquerade_user
   before_filter :set_time_zone, if: :current_user
 
@@ -43,11 +44,23 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name]
   end
 
+  def redirect_location
+    session[:redirect_location] = url_for
+  end
+
   def masquerade_user
     @current_user = User.find(session[:masquerade_user]) if session[:masquerade_user].present?
   end
 
   def set_time_zone
     Time.zone = current_user.time_zone if current_user.time_zone.present?
+  end
+
+  def after_sign_in_path_for(resource)
+    session[:redirect_location] || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    session[:redirect_location] || root_path
   end
 end
