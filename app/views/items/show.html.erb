@@ -14,13 +14,6 @@
     <%= content_tag(:h2, "Designed by #{@item.brand.name}") %>
     <%= content_tag(:span, number_to_currency(@item.price)) %>
 
-    <div class="social">
-      <%= link_to(image_tag("items/facebook.png"), "#") %>
-      <%= link_to(image_tag("items/twitter.png"), "#") %>
-      <%= link_to(image_tag("items/pinterest.png"), "#") %>
-      <%= link_to(image_tag("items/favorite.png"), favorites_path(activity_id: @activity), class: "favorite", data: { remote: true, method: :post }) if @activity %>
-    </div>
-
     <hr>
 
     <div class="cart">
