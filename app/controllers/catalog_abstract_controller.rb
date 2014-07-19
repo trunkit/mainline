@@ -1,7 +1,7 @@
 class CatalogAbstractController < ApplicationController
   before_filter :authenticate_user!, :check_roles, :validate_boutique
 
-  helper_method :current_cart, :categories
+  helper_method :current_cart
 
   private
 
@@ -16,10 +16,6 @@ class CatalogAbstractController < ApplicationController
     end
 
     @current_cart
-  end
-
-  def categories
-    @categories ||= Category.where(parent_id: nil).order(:name)
   end
 
   def check_roles

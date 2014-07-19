@@ -5,13 +5,19 @@ class ApplicationController < ActionController::Base
 
   layout ->(controller) { return false if request.xhr? }
 
-  helper_method :referring_boutique
+  helper_method :referring_boutique, :categories
 
   before_filter :subdomain_redirect, :track_referral_code
   before_filter :configure_devise_params, if: :devise_controller?
   before_filter :redirect_location, unless: :devise_controller?
   before_filter :masquerade_user
   before_filter :set_time_zone, if: :current_user
+
+  protected
+
+  def categories
+    @categories ||= Category.where(parent_id: nil).order(:name)
+  end
 
   private
 
