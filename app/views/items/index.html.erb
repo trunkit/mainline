@@ -1,6 +1,10 @@
 <%= content_tag(:div, class: "notification error") do %>
   <em>Oh No!</em>
+  <% if params[:supported].to_s =~ /^t/ %>
+  It looks like you haven't curated anything yet.  To get started, click on "SEARCH" to search for new items to curate and boutiques to follow.
+  <% else %>
   It looks like you have nothing left in your "STREAM". Click on "SEARCH" to further customize, discover, and add new boutiques to your stream.
+  <% end %>
 <% end if @items.blank? %>
 
 <div id="stream">
