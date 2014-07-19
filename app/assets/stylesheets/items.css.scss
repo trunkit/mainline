@@ -41,7 +41,13 @@ article.item {
         margin: 8px 5px 0 0;
       }
 
-      button {
+      span.out-of-stock {
+        display: block;
+        float: left;
+        line-height: 30px;
+      }
+
+      button, a.out-of-stock {
         float: right;
         margin: 2px 0 5px;
         padding: 6px 10px;
@@ -50,6 +56,7 @@ article.item {
         border: 0;
         color: #fff;
         background: #000;
+        text-decoration: none;
       }
     }
 

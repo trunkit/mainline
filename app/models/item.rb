@@ -227,6 +227,10 @@ class Item < ActiveRecord::Base
     [:model_height, :model_chest, :model_hips, :model_waist, :model_size].map{|f| send(f) }.any?{|v| v.present? }
   end
 
+  def out_of_stock?
+    active_sizes.blank? || active_sizes.map{|s| sizes[s].to_i }.all?{|q| q < 1 }
+  end
+
   def active_sizes
     sizes.select{|size,qty| qty.to_i > 0 }.map(&:first)
   end

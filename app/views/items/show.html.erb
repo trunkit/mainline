@@ -18,13 +18,18 @@
 
     <div class="cart">
       <%= form_for([:cart, @cart_item], remote: true) do |f| %>
-        <%= f.hidden_field(:item_id, value: @item.id)  %>
-        <%= f.hidden_field(:supporting_boutique_id, value: @activity.owner_id) if @activity %>
+        <% if @item.out_of_stock? %>
+          <%= content_tag(:span, "Out of Stock", class: "out-of-stock") %>
+          <%= link_to("Notify Me", "#", class: "out-of-stock") %>
+        <% else %>
+          <%= f.hidden_field(:item_id, value: @item.id)  %>
+          <%= f.hidden_field(:supporting_boutique_id, value: @activity.owner_id) if @activity %>
 
-        <%= f.select(:size, @item.active_sizes, {}, class: "size") %>
-        <%= f.select(:quantity, item_quantities, {}, class: "quantity") %>
+          <%= f.select(:size, @item.active_sizes, {}, class: "size") %>
+          <%= f.select(:quantity, item_quantities, {}, class: "quantity") %>
 
-        <%= button_tag("Add to Cart", type: "submit") %>
+          <%= button_tag("Add to Cart", type: "submit") %>
+        <% end %>
       <% end if current_user.parent_type.blank? %>
 
       <% if current_user.parent_type == "Boutique" %>
