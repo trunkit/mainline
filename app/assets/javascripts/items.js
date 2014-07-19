@@ -96,7 +96,7 @@ SiteBindings.item = {
     form.bind(bindType, function() {
       _form = $(this);
 
-      _form.find(".row").each(function() {
+      _form.find(".item-quantity .row").each(function() {
         var label = $(this).find("input[name=name]").val();
         var value = parseInt($(this).find("input[name=quantity]").val());
 
