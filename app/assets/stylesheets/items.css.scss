@@ -261,10 +261,12 @@ div.item-quantity {
     background: #000;
   }
 
-  input[type="submit"] {
+  input[type="submit"],
+  a.remove {
     display: block;
     float: none;
     clear: both;
+    width: 200px;
     margin: 0 auto 10px;
     padding: 0 20px;
     font: 16px/36px "Bebas Neue", sans-serif;
@@ -273,7 +275,10 @@ div.item-quantity {
     color: #fff;
     background: #000;
     text-align: center;
+    text-decoration: none;
   }
+
+  a.remove { padding: 0; }
 }
 
 #declined-boutiques {

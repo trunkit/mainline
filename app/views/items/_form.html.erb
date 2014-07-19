@@ -152,7 +152,9 @@
   </div>
 
   <hr>
+
   <%= submit_tag(@item.persisted? ? "Update Item" : "Add Item") %>
+  <%= link_to("Remove Item", item_path, method: :delete, data: { confirm: "Are you sure that you want to remove #{@item.name}?" }, class: "remove") if @item.persisted? %>
 <% end %>
 
 <script>
