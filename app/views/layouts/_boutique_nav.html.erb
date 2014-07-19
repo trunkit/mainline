@@ -62,9 +62,7 @@
     <ul>
       <%= content_tag(:li, link_to("Settings", settings_user_path)) %>
       <%= content_tag(:li, link_to("Payments", payments_company_path)) %>
-      <%= content_tag(:li, link_to("Invite", "#")) %>
-      <%= content_tag(:li, link_to("Help", "/help")) %>
-      <%= content_tag(:li, link_to("About", "/about-trunkit")) %>
+      <%= content_tag(:li, link_to("Help", "https://trunkit.zendesk.com/hc/en-us/categories/200066289-Boutique-Questions", target: "_blank")) %>
       <%= content_tag(:li, link_to("Terms", "/terms-of-use")) %>
       <%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
     </ul>
