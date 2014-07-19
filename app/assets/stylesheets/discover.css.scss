@@ -21,3 +21,20 @@ form#discover-search {
 .discover.no-results {
   img { margin: 10px 230px; }
 }
+
+#discover-results {
+  .help-text {
+    font: 16px/22px "Helvetica LT Std", sans-serif;
+    letter-spacing: 2px;
+  }
+
+  p.help-text { text-align: center; }
+
+  ul.help-text {
+    width: 200px;
+    margin: 0 auto;
+    list-style: none;
+
+    li:before { content: '- '; }
+  }
+}
