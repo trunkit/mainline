@@ -89,6 +89,8 @@ class User < ActiveRecord::Base
     parent_type == "Boutique" && parent_id.present?
   end
 
+  alias_method :boutique?, :boutique_user?
+
   def favorite_item_activity_ids(reload = false)
     favorite_item_activities(reload).map(&:id)
   end

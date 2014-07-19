@@ -12,9 +12,13 @@ class Cart < ActiveRecord::Base
   end
 
   def self.boutique_orders_listing(user, params)
-    return none unless user.parent_type == "Boutique"
+    return none unless user.boutique?
 
     scope = case params[:type]
+    when "returned"
+      CartItem.
+        where(supplying_boutique_id: user.parent_id).
+        where("refund_requested = ? OR refund_ledger_entry_id IS NOT NULL", true)
     when "supported"
       CartItem.where(supporting_boutique_id: user.parent_id)
     when "supplied"

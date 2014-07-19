@@ -45,6 +45,7 @@
       <ul>
         <%= content_tag(:li, link_to("Supplied", orders_path(type: "supplied"))) %>
         <%= content_tag(:li, link_to("Curated", orders_path(type: "supported"))) %>
+        <%= content_tag(:li, link_to("Returned", orders_path(type: "returned"))) %>
       </ul>
     <% end %>
   </ul>

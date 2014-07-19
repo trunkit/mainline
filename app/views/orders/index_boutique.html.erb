@@ -1,7 +1,12 @@
 <div class="orders">
   <header>
+  <% if params[:type] == "returned" %>
+    <%= content_tag(:span, "Total Returns: #{@orders.size}") %>
+    <%= content_tag(:span, "Pending Returns: #{@orders.select{|o| o.items.any?{|o| o.refund_ledger_entry_id.blank? }}.size}") %>
+  <% else %>
     <%= content_tag(:span, "Total Amount Owed to You: #{number_to_currency(@commissions.sum(&:value))}") %>
     <%= content_tag(:span, "Next Payment Will Be On: #{(Time.now.end_of_week - 172800).strftime("%m/%d/%Y")}") %>
+  <% end %>
   </header>
 
   <% @orders.each do |cart| %>
