@@ -11,6 +11,13 @@
       text-align: center;
 
       &:first-child { float: left; }
+
+      &.full-width {
+        width: 902px;
+        padding-left: 0;
+        padding-right: 0;
+
+      }
     }
   }
 

@@ -1,4 +1,8 @@
 <div class="orders">
+  <header>
+    <%= content_tag(:span, "Current Trunkit Credit: #{number_to_currency(current_user.account_balance)}", class: "full-width") %>
+  </header>
+
   <% @orders.each do |cart| %>
   <div class="order">
     <%= content_tag(:span, "Customer: #{cart.user.name}", class: "name") %>
