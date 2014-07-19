@@ -1,3 +1,7 @@
+<%= content_tag(:div, class: "notification error") do %>
+  <em>Error:</em> <%= content_tag(:span, @error) %>
+<% end if @error.present? %>
+
 <div id="user-settings">
   <h2>Company Payment Settings</h2>
 

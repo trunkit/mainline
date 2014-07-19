@@ -19,6 +19,12 @@ class Payments::CompanyController < CatalogAbstractController
     recipient = Stripe::Recipient.create(recipient_params)
     current_user.parent.update_attribute(:recipient_id, recipient.id)
     redirect_to(action: :edit)
+
+  rescue Stripe::InvalidRequestError => e
+    @error     = e.message
+    @recipient = Hashie::Mash.new
+
+    render(action: :new)
   end
 
   def edit
