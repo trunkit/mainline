@@ -8,7 +8,7 @@
   <%= content_tag(:div, class: "order", id: "order-#{cart.id}") do %>
     <span class="header">
       <%= content_tag(:span, "Customer: #{@users[cart.user_id].name}", class: "name") %>
-      <%= listing_order_date(current_user, cart) %>
+      <%= content_tag(:span, listing_order_date(current_user, cart), class: "right") %>
     </span>
 
     <%= content_tag(:address, "#{cart.shipping_address.to_s.gsub("\n", '<br>')}".html_safe) %>
