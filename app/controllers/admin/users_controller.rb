@@ -8,7 +8,7 @@ class Admin::UsersController < Admin::AbstractController
   def new
     @user      = User.new(params[:user].present? ? user_params : {})
     @boutiques = Boutique.order("name DESC").map{|b| [b.name, b.id] }
-    @boutique  = Boutique.find(user_params[:parent_id]) if user_params[:parent_id].present?
+    @boutique  = Boutique.find(params[:user][:parent_id]) if params[:user].present?
   end
 
   def create

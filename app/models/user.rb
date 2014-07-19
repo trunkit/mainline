@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
 
 private
   def generate_password
-    return if provider.present? || password.present?
+    return if persisted? || provider.present? || password.present?
     self.password =
       self.password_confirmation =
       Devise.friendly_token.first(8)
