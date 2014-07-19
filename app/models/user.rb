@@ -85,6 +85,10 @@ class User < ActiveRecord::Base
     provider == "twitter"
   end
 
+  def boutique_user?
+    parent_type == "Boutique" && parent_id.present?
+  end
+
   def favorite_item_activity_ids(reload = false)
     favorite_item_activities(reload).map(&:id)
   end

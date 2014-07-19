@@ -35,6 +35,10 @@
   <div class="cb"></div>
 </article>
 
+<%= content_tag(:div, class: "boutique notification error") do %>
+  <%= @boutique.name %> isn't currently curating <%= "or supplying" if current_user.try(:boutique_user?) %> any inventory. Make sure to click "Follow" so that the next time they curate <%= "or supply" if current_user.try(:boutique_user?) %> an item, you'll be the first to know!
+<% end if @activity_items.blank? %>
+
 <div id="stream">
   <% @activity_items.each do |activity, item| %>
     <%= render("stream/item", activity: activity, item: item) %>
