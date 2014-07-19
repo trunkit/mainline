@@ -4,6 +4,8 @@ class ItemPhotosController < ApplicationController
   end
 
   def create
+    render(nothing: true, status: 200) if params[:photo].try(:[], :url).blank?
+
     params[:photo][:url].each do |file|
       @item.photos.create(url: file)
     end
