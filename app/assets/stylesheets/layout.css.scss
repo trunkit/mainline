@@ -169,8 +169,14 @@ body {
         padding: 30px 8px 8px;
         line-height: 25px;
 
-        img { vertical-align: middle; }
+        img {
+          vertical-align: middle; 
+          width: 25px;
+        }
 
+        .thumbnail_icon {
+          width: 25px;
+        }
 
         > span {
           padding-top: 70px;
