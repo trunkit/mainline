@@ -197,7 +197,7 @@ body {
           padding: 17px 10px 10px;
           margin: 0;
           list-style: none;
-          background: rgba(255,255,255,0.95);
+          background: #fff;
 
           li {
             float: left;
@@ -214,7 +214,7 @@ body {
               text-decoration: none;
 
               &:hover {
-                color: rgba(158,158,158,.8);
+                color: #000;
               }
 
               &.button {
