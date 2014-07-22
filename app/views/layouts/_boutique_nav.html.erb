@@ -55,7 +55,7 @@
   <%= notifications_widget%>
 
   <div class="user">
-    <%= image_tag(current_user.photo.thumb.url), class: "thumbnail_icon" %>
+    <%= image_tag(current_user.photo.thumb.url) %>
     <%= content_tag(:span, truncate(current_user.first_name, length: 11)) %>
     <%= link_to(image_tag("header/dropdown-arrow.png"), "#", class: "dropdown_icon") %>
 
