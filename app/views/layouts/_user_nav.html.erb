@@ -19,7 +19,7 @@
 </nav>
 
 <div class="right">
-  <%= link_to(image_tag("header/bag.png"), cart_path, class: "cart fancybox fancybox.ajax") unless params[:controller] =~ /checkout/ %>
+  <%= link_to(image_tag("header/bag.png", class: "shoppingbag_icon"), cart_path, class: "cart fancybox fancybox.ajax") unless params[:controller] =~ /checkout/ %>
 
   <div class="user">
     <%= image_tag(current_user.photo.thumb.url) %>
