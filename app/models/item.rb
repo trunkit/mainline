@@ -23,7 +23,7 @@ class Item < ActiveRecord::Base
     indexes :boutique_name, type: "string", analyzer: "english"
     indexes :brand_name,    type: "string", analyzer: "english"
     indexes :categories,    type: "string", analyzer: "english"
-    indexes :supporters,    index: "not_analyzed"
+    indexes :supporters,    type: "string", analyzer: "english"
 
     # Location
     indexes :address do
@@ -114,9 +114,10 @@ class Item < ActiveRecord::Base
         query: {
           multi_match: {
             query:  q,
+            type: "cross_fields",
             fields: fields,
             max_expansions: 5,
-            type: "phrase_prefix"
+            minimum_should_match: "50%"
           }
         }
       }
