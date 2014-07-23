@@ -22,7 +22,7 @@ class CartItem < ActiveRecord::Base
   def item
     return @item if @item
 
-    @item = Item.deleted.find(item_id)
+    @item = Item.unscoped.find(item_id)
 
     if @item.version > item_version
       @item = @item.versions[item_version - 1].reify
