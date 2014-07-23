@@ -114,10 +114,8 @@ class Item < ActiveRecord::Base
         query: {
           multi_match: {
             query:  q,
-            type: "cross_fields",
             fields: fields,
-            max_expansions: 5,
-            minimum_should_match: "50%"
+            max_expansions: 5
           }
         }
       }
