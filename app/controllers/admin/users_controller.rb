@@ -12,9 +12,14 @@ class Admin::UsersController < Admin::AbstractController
   end
 
   def create
-    @user = User.new(user_params)
+    @user   = User.deleted.where(email: user_params[:email]).first
+    @user ||= User.new(user_params)
 
-    if @user.save
+    if @user.deleted?
+      @user.restore!
+      @user.update_attributes(user_params)
+      redirect_to([:edit, :admin, @user])
+    elsif @user.save
       redirect_to([:edit, :admin, @user])
     else
       @boutiques = Boutique.order("name DESC").map{|b| [b.name, b.id] }
