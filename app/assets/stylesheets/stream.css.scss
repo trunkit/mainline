@@ -19,13 +19,12 @@
       line-height: 30px;
 
       a {
-        color: #000;
+        color: #9E9E9E;
         text-decoration: none;
 
         &.active,
         &:hover {
-          line-height: 34px;
-          border-bottom: 1px solid #000;
+          color: #000;
         }
       }
     }
