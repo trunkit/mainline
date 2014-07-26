@@ -7,7 +7,8 @@ form#discover-search {
     padding: 0 25px 0 0;
     border: 0;
     border-bottom: 2px solid #000;
-    font: 17px "Helvetica LT Std", sans-serif;
+    font: 16px "Helvetica LT Std", sans-serif;
+    letter-spacing: 0px;
 
     &:focus { outline: none; }
   }
@@ -25,7 +26,7 @@ form#discover-search {
 #discover-results {
   .help-text {
     font: 16px/22px "Helvetica LT Std", sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: 0px;
   }
 
   p.help-text { text-align: center; }
