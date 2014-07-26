@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703013911) do
+ActiveRecord::Schema.define(version: 20140726225349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,17 @@ ActiveRecord::Schema.define(version: 20140703013911) do
   end
 
   add_index "ledger_entries", ["whodunnit_id", "whodunnit_type"], name: "index_ledger_entries_on_whodunnit_id_and_whodunnit_type", using: :btree
+
+  create_table "shipping_events", force: true do |t|
+    t.string   "event_id"
+    t.string   "object"
+    t.string   "mode"
+    t.string   "description"
+    t.json     "previous_attributes"
+    t.json     "result"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_invite_tokens", force: true do |t|
     t.integer  "parent_id"
