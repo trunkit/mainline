@@ -48,3 +48,11 @@
   <hr>
   <%= link_to("Add a New User", [:new, :admin, :user], class: "btn btn-default") %>
 </div>
+
+<script>
+$(function() {
+  $("table").dataTable({
+    order: [[2, "asc"], [1, "asc"]]
+  });
+});
+</script>
