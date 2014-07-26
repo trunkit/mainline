@@ -6,6 +6,7 @@
     <%= stylesheet_link_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css") %>
     <%= stylesheet_link_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css") if current_user.try(:has_role?, :system) %>
     <%= stylesheet_link_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css") if current_user.try(:has_role?, :system) %>
+    <%= stylesheet_link_tag("//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css") if current_user.try(:has_role?, :system) %>
 
     <%= stylesheet_link_tag("application", media: "all") %>
 
@@ -14,6 +15,8 @@
     <%= javascript_include_tag("//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js") %>
     <%= javascript_include_tag("https://js.stripe.com/v2/") %>
     <%= javascript_include_tag("//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js") if current_user.try(:has_role?, :system) %>
+    <%= javascript_include_tag("//cdn.datatables.net/1.10.1/js/jquery.dataTables.min.js") if current_user.try(:has_role?, :system) %>
+    <%= javascript_include_tag("//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js") if current_user.try(:has_role?, :system) %>
     <%= javascript_include_tag("application") %>
 
     <%= csrf_meta_tags %>
