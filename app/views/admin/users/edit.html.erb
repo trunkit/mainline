@@ -7,3 +7,31 @@
     <%= render("form") %>
   </div>
 </div>
+
+<%= content_tag(:div, class: "panel panel-default") do %>
+  <div class="panel-heading">
+    <%= content_tag(:h5, "Credit Entries for #{@user.name}") %>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th>Description</th>
+          <th>Whodunnit</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.ledger_entries.each do |le| %>
+        <tr>
+          <%= content_tag(:td, number_to_currency(le.value)) %>
+          <%= content_tag(:td, le.description) %>
+          <%= content_tag(:td, "#{le.whodunnit.class.name} (#{le.whodunnit.id})") %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end if @user.ledger_entries.size > 0 %>
