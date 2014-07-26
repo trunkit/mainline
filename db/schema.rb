@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726225349) do
+ActiveRecord::Schema.define(version: 20140726235019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,11 @@ ActiveRecord::Schema.define(version: 20140726225349) do
   end
 
   add_index "ledger_entries", ["whodunnit_id", "whodunnit_type"], name: "index_ledger_entries_on_whodunnit_id_and_whodunnit_type", using: :btree
+
+  create_table "restock_notifications", id: false, force: true do |t|
+    t.integer "item_id"
+    t.integer "user_id"
+  end
 
   create_table "shipping_events", force: true do |t|
     t.string   "event_id"

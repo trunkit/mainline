@@ -66,6 +66,8 @@ class Item < ActiveRecord::Base
   belongs_to :primary_category,   class_name: "Category"
   belongs_to :secondary_category, class_name: "Category"
 
+  has_and_belongs_to_many :restock_notification_users, class_name: "User", join_table: "restock_notifications"
+
   after_update  :check_for_owner_change
   after_destroy :remove_activity_entry
 
