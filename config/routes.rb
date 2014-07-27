@@ -67,6 +67,8 @@ Trunkit::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # Administrative Interfaces
+  resources :shipping_events, only: [:create]
+
   namespace :admin do
     resources :boutiques
 
