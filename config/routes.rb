@@ -87,7 +87,7 @@ Trunkit::Application.routes.draw do
     end
   end
 
-  get "admin" => "admin/dashboards#index"
+  get "admin" => redirect("/admin/orders")
 
   post "boutique_sign_up" => "boutique_sign_up#create"
 
