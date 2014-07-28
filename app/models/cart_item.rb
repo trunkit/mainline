@@ -63,9 +63,11 @@ class CartItem < ActiveRecord::Base
   end
 
   def tax
-    if cart.shipping_address.try(:state) == item.parent.state
+    if cart.shipping_address.try(:state) == item.boutique.state
       tax_rate = BigDecimal.new(self.class.state_taxes[cart.shipping_address.state])
-      subtotal_price * tax
+      subtotal_price * tax_rate
+    else
+      0
     end
   end
 
