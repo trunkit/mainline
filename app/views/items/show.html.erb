@@ -20,7 +20,12 @@
       <%= form_for([:cart, @cart_item], remote: true) do |f| %>
         <% if @item.out_of_stock? %>
           <%= content_tag(:span, "Out of Stock", class: "out-of-stock") %>
-          <%= link_to("Notify Me", "#", class: "out-of-stock") %>
+
+          <% if @item.restock_notification_users.include?(current_user) %>
+          <%= link_to("Pending Restock", "#", class: "out-of-stock") %>
+          <% else %>
+          <%= link_to("Notify Me", item_notifications_path(@item), data: { remote: true, method: :post }, class: "out-of-stock") %>
+          <% end %>
         <% else %>
           <%= f.hidden_field(:item_id, value: @item.id)  %>
           <%= f.hidden_field(:supporting_boutique_id, value: @activity.owner_id) if @activity %>

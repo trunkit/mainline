@@ -13,6 +13,7 @@ Trunkit::Application.routes.draw do
     put 'unsupport', on: :member
 
     resources :declinations, only: [:index, :update], controller: "item_declinations"
+    resources :notifications, only: [:create], controller: "item_notifications"
 
     resources :photos, controller: "item_photos" do
       put "reorder", on: :collection
