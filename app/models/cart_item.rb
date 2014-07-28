@@ -15,6 +15,9 @@ class CartItem < ActiveRecord::Base
   @@shipping_options = [['UPS Ground', 'Ground'], ['UPS 3 Day Select', '3DaySelect'], ['UPS Second Day Air', '2ndDayAir'], ['UPS Next Day Air Saver', 'NextDayAirSaver']].freeze
   cattr_reader :shipping_options
 
+  @@state_taxes = {'AL' => '4.0', 'AK' => '0', 'AZ' => '5.6', 'AR' => '6.5', 'CA' => '7.5', 'CO' => '2.9', 'CT' => '6.35', 'DE' => '0', 'FL' => '6.0', 'GA' => '4.0', 'HI' => '4.0', 'ID' => '6.0', 'IL' => '6.25', 'IN' => '7.0', 'IA' => '6.0', 'KS' => '6.15', 'KY' => '6.0', 'LA' => '4.0', 'ME' => '5.5', 'MD' => '6.0', 'MA' => '6.25', 'MI' => '6.0', 'MN' => '6.88', 'MO' => '7.0', 'MT' => '0.0', 'NE' => '5.5', 'NV' => '6.85', 'NH' => '0.0', 'NJ' => '7.0', 'NM' => '5.13', 'NY' => '4.0', 'NC' => '4.75', 'ND' => '5.0', 'OH' => '5.75', 'OK' => '4.5', 'OR' => '0.0', 'PA' => '6.0', 'RI' => '7.0', 'SC' => '6.0', 'SD' => '4.0', 'TN' => '7.0', 'TX' => '6.25', 'UT' => '5.95', 'VT' => '6.0', 'VA' => '5.3', 'WA' => '6.5', 'WV' => '6.0', 'WI' => '5.0', 'WY' => '4.0', 'DC' => '5.75' }.freeze
+  cattr_reader :state_taxes
+
   before_save :build_parcel, :store_shipping_cost
 
   delegate :purchased?, to: :cart
@@ -57,6 +60,13 @@ class CartItem < ActiveRecord::Base
 
   def subtotal_with_shipping
     subtotal_price + shipping
+  end
+
+  def tax
+    if cart.shipping_address.try(:state) == item.parent.state
+      tax_rate = BigDecimal.new(self.class.state_taxes[cart.shipping_address.state])
+      subtotal_price * tax
+    end
   end
 
   def total_price
