@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Shipping Address</h5>
+      </div>
+
+      <div class="panel-body">
+        <%= @user.name %>
+        <%= content_tag(:address, @cart.shipping_address.to_s.gsub(/\n/, '<br>').html_safe) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Payment Details</h5>
+      </div>
+
+      <div class="panel-body">
+        <% if @cart.charge %>
+        <%= content_tag(:strong, @cart.charge.card.name) %><br>
+        <%= @cart.charge.card.brand %> ending <%= @cart.charge.card.last4 %><br>
+        Expires <%= @cart.charge.card.exp_month %>/<%= @cart.charge.card.exp_year %><br>
+        Amount Charged: <%= number_to_currency((@cart.charge.amount / 100.0)) %>
+        <% end %>
+
+        <hr>
+
+        <% if @cart.ledger_entry.present? %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Items</h5>
+      </div>
+
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Item(s)</th>
+              <th>Item Price</th>
+              <th>Delivery</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @cart.items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag(cart_item.item.primary_photo.url.thumb, class: "pull-left", style: "padding-right: 10px;") %>
+
+                <div class="pull-left">
+                  <%= content_tag(:span, cart_item.item.name) %>
+
+                  <ul>
+                    <%= content_tag(:li, "Size: #{cart_item.size}") if cart_item.size.present? %>
+                    <%= content_tag(:li, "Quantity: #{cart_item.quantity}") %>
+                  </ul>
+                </div>
+              </td>
+
+              <%= content_tag(:td, number_to_currency(cart_item.unit_price)) %>
+              <%= content_tag(:td, number_to_currency(cart_item.shipping)) %>
+              <%= content_tag(:td, number_to_currency(cart_item.total_price)) %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
