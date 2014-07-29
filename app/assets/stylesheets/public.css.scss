@@ -2,13 +2,20 @@ body.public {
   > header {
     position: relative;
 
-    a.login { float: left; }
+    a.login { 
+      float: right; 
+    }
+    
+    a.boutiqueSite {float: right;}
 
     a.tagline {
       position: absolute;
       top: 0;
-      left: 50%;
-      margin-left: -84px;
+    }
+
+    .spaceLine {
+      float: right;
+      margin: 26px;
     }
   }
 }
