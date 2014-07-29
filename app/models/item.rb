@@ -66,6 +66,9 @@ class Item < ActiveRecord::Base
   belongs_to :primary_category,   class_name: "Category"
   belongs_to :secondary_category, class_name: "Category"
 
+  has_many :owner_activities,   as: :owner,   class_name: "Activity", dependent: :destroy
+  has_many :subject_activities, as: :subject, class_name: "Activity", dependent: :destroy
+
   has_and_belongs_to_many :restock_notification_users, class_name: "User", join_table: "restock_notifications"
 
   after_update  :check_for_owner_change

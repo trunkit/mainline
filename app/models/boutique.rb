@@ -34,6 +34,9 @@ class Boutique < ActiveRecord::Base
   has_many :users,   as: :parent, dependent: :destroy
   has_many :items,   dependent: :destroy
 
+  has_many :owner_activities,   as: :owner,   class_name: "Activity", dependent: :destroy
+  has_many :subject_activities, as: :subject, class_name: "Activity", dependent: :destroy
+
   before_validation :generate_short_code
 
   accepts_nested_attributes_for :address
