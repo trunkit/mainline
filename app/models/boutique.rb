@@ -42,7 +42,7 @@ class Boutique < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   validates_presence_of   :name, :short_code
-  validates_uniqueness_of :short_code
+  validates_uniqueness_of :short_code, scope: :deleted_at
   validates_format_of     :short_code, with: /\A[a-zA-Z0-9\-_]+\Z/
 
   mount_uploader :cover_photo,  CoverPhotoUploader
