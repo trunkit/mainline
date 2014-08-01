@@ -33,6 +33,13 @@
 
         input { margin: 1px 5px 0 0; }
       }
+
+      img {
+        width: 270px;
+        position: absolute;
+        top: 120px;
+        margin: 0 0 0 400px;
+      }
     }
 
     button[type="submit"] {
