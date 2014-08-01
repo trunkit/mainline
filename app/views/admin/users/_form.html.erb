@@ -116,4 +116,5 @@
   </div>
 
   <%= button_tag("Update User", type: "submit", class: "btn btn-default") %>
+  <%= link_to("Resend Welcome Email", admin_user_welcome_path(@user), method: :post, class: "btn btn-default") if @user.persisted? %>
 <% end %>

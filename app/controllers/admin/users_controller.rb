@@ -47,6 +47,11 @@ class Admin::UsersController < Admin::AbstractController
     redirect_to(root_url)
   end
 
+  def welcome
+    user.welcome_email
+    redirect_to([:edit, :admin, user])
+  end
+
   private
 
   def user_params

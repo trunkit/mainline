@@ -135,14 +135,6 @@ class User < ActiveRecord::Base
     update_attributes!(account_balance: ledger_entries(true).sum(&:value))
   end
 
-private
-  def generate_password
-    return if persisted? || provider.present? || password.present?
-    self.password =
-      self.password_confirmation =
-      Devise.friendly_token.first(8)
-  end
-
   def welcome_email
     if parent_id.blank?
       Notifier.welcome_email(self).deliver
@@ -156,5 +148,13 @@ private
 
       Notifier.welcome_boutique(self, raw).deliver
     end
+  end
+
+private
+  def generate_password
+    return if persisted? || provider.present? || password.present?
+    self.password =
+      self.password_confirmation =
+      Devise.friendly_token.first(8)
   end
 end

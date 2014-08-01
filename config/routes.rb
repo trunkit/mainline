@@ -84,7 +84,8 @@ Trunkit::Application.routes.draw do
     end
 
     resources :users, except: [:show] do
-      put "masquerade" => "users#masquerade"
+      post "welcome"    => "users#welcome"
+      put  "masquerade" => "users#masquerade"
     end
   end
 
