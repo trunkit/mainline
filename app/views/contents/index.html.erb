@@ -1,9 +1,9 @@
 <section id="boutique-search">
   <%= form_tag(search_boutiques_path, method: :get, class: "search", data: { remote: true }) do %>
-    <h2>Search For Boutiques By&hellip;</h2>
-    <span>Boutique Name, City, State, or Brand</span>
+    <h2>Connect with boutiques you love</h2>
+    <span>Shop the inventory they love</span>
 
-    <%= text_field_tag(:q) %>
+    <%= text_field_tag(:q, "", placeholder: "Search for boutiques by boutique name, city, state or brand") %>
     <%= submit_tag("Search") %>
   <% end %>
 </section>
