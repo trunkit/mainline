@@ -1,5 +1,5 @@
 <div id="user-settings">
-  <h2>Company Payment Settings</h2>
+  <h2>Company Payment Settings (Used only to issue payments)</h2>
 
   <%= form_for(:recipient, url: payments_company_path, method: :put, html: { class: "info" }) do |f| %>
     <%= render("form", f: f) %>

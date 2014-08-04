@@ -1,12 +1,20 @@
+<!--<div>
+	<%= image_tag("settings/bankCheck.jpg") %>
+</div>-->
+
 <div>
   <%= f.label(:name, "Legal Corporation Name:") %>
   <%= f.text_field(:name, required: true) %>
 </div>
 
 <div>
-  <%= f.label(:tax_id, "TIN/EIN:") %>
+  <%= f.label(:tax_id, "Tax ID Number (TIN) or Employer ID Number (EIN)") %>
   <%= f.text_field(:tax_id, value: "", required: true) %>
 </div>
+
+<!--<div>
+	<%= image_tag("settings/bankCheck.jpg") %>
+</div>-->
 
 <div>
   <%= f.label(:"bank_account[routing_number]", "Bank Routing Number") %>
@@ -15,7 +23,11 @@
 
 <div>
   <%= f.label(:"bank_account[account_number]", "Bank Account Number") %>
-  <%= f.text_field(:"bank_account[account_number]", value: "", placeholder: "*****#{@recipient.active_account.try(:last4)}", required: true) %>
+  <%= f.text_field(:"bank_account[account_number]", value: "", placeholder: @recipient.active_account.try(:last4), required: true) %>
+</div>
+
+<div>
+	<%= image_tag("settings/bankCheck.jpg") %>
 </div>
 
 <%= f.hidden_field(:"bank_account[country]", value: "US") %>
