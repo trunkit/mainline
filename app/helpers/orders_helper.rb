@@ -26,10 +26,12 @@ module OrdersHelper
       link_to("Pending", "#cart-item-complete-#{cart_item.id}", class: "btn fancybox")
     elsif user.parent_id.present?
       link_to("Curated", "#", class: "btn btn-supplied disabled")
+    elsif cart_item.delivered? && cart_item.refundable?
+      link_to("Request Refund", "#", class: "btn btn-supplied")
+    elsif cart_item.delivered? && !cart_item.refundable?
+      link_to("Completed", "#", class: "btn btn-supplied")
     elsif cart_item.shipped?
       link_to("Shipped", "#", class: "btn btn-supplied disabled")
-    elsif cart_item.delivered?
-      link_to("Request Refund", "#", class: "btn btn-supplied")
     else
       link_to("Pending", "#", class: "btn disabled")
     end
