@@ -27,5 +27,8 @@ module Trunkit
     # config.i18n.default_locale = :de
 
     Rails.application.config.middleware.use JQuery::FileUpload::Rails::Middleware
+
+    # Bump to expire all assets
+    config.assets.version = '1.1'
   end
 end
