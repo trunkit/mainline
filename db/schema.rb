@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726235019) do
+ActiveRecord::Schema.define(version: 20140804011806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,9 @@ ActiveRecord::Schema.define(version: 20140726235019) do
     t.boolean  "refund_requested",                               default: false
     t.boolean  "refundable",                                     default: true
     t.text     "parcel_id"
+    t.text     "tracking_code"
+    t.boolean  "shipped",                                        default: false
+    t.boolean  "delivered",                                      default: false
   end
 
   add_index "cart_items", ["supplying_boutique_id"], name: "index_cart_items_on_supplying_boutique_id", using: :btree
