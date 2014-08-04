@@ -1,0 +1,151 @@
+<style type="text/css">
+	input,textarea {
+		border:2px solid black;
+		width:405px;
+		display: block;
+		margin: 5px;
+		margin-left: auto;
+		margin-right: auto;
+		height: 120px;
+	}
+
+	input {
+		height:20px;
+		padding-top: 20px;
+		padding-left: 5px;
+	}
+
+	#supplyTitle {
+		margin-left: 10px;
+	}
+
+	hr {
+		border:1px solid black;
+	}
+</style>
+
+<script type="text/javascript">
+
+function progressHandler(e){
+		progressCounter++;
+		if(progressCounter <= 5){
+			triggerNext("#selected","#next");
+			$("#progress").html(progressCounter + " of 5");
+		} else {
+			submitForm(e);
+		}
+}
+
+function validateRequiredFields(event){ 
+	// do magic. 
+
+	return true; 
+}
+
+function triggerNext(selectedId, nextId){
+	var pastElement = $(selectedId); 
+	var currentElement = $(nextId); // When continue is clicked, we want to get the following ement and turn it on. then assign the following object to be "next"
+	var nextElement = $(nextId).next(); // fetches the one after next 
+
+	// remove the last element state
+	pastElement.removeAttr("id"); 
+
+	// Show the element, and set the following to be next
+	$(currentElement).removeAttr("id"); 
+	$(currentElement).show();
+	$(nextElement).attr("id", "next");	
+}
+
+function submitForm(e){
+	alert("Form submitted")
+	if(validateRequiredFields(e)) {
+		// submit form
+	} else {
+		errorHandler(e);
+	}
+}
+
+function errorHandler(e){ 
+	// do something. 
+}
+
+$(function(){
+	existingData = <%= @item.persisted? %>;
+	progressCounter = 1; 
+
+	// Hide all sections
+	$(".section").hide(); 
+
+	// show the selected section
+	$("#selected").show();
+
+	$("#continueBtn").on("click", function(event){
+		progressHandler(event); 
+	});
+
+});
+
+
+</script>
+
+<div class="section" id="selected">
+
+	<hr />
+		<div id="supplyTitle"> Supply a new item </div> 
+	<hr />
+
+		<input name="style" id="style" placeholder="Style Number" value="<%= @item.try(:name) %>" />
+
+		<input name="brand" id="brand" placeholder="Brand" value="<%= @item.try(:brand).try(:name) %>" />
+
+</div>
+
+<div class="section" id="next">
+
+		<input name="itemName" id="itemName" placeholder="Item Name" value="<%= @item.try(:name) %>" />
+
+		<input name="price" id="price" placeholder="$0.00" value="<%= @item.try(:materials) %>" />
+
+</div>
+
+<div class="section">
+	<hr />
+
+	<textarea id="description" name="description" placeholder="Description">
+		<%= @item.description %> 
+	</textarea>
+
+	<input name="fit" id="fit" placeholder="Fit (optional)" value="<%= @item.fit %>" />
+
+	<input name="materials" id="materials" placeholder="Materials (optional)" value="<%= @item.materials %>" />
+
+</div>
+
+<div class="section">
+	<hr /> 
+
+	<div id="selectAphotoBtn"> 
+		<button>Select a photo</button>
+	</div>
+
+	<div id="photos">
+		Fooo bar 
+	</div>
+
+</div>
+
+<div class="section">
+	<hr /> 
+
+	<p> Enter a size and quantity for each item. For "size", type in size exactly shown on product </p> 
+
+</div>
+
+<div id="continue">
+	<button id="continueBtn">Continue</button>
+	<div id="progress">&nbsp;</div>
+</div>
+
+<div id="submit" style="display:none;"> 
+	<button id="submit">Supply</button>
+</div>

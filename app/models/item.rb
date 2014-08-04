@@ -24,6 +24,7 @@ class Item < ActiveRecord::Base
     indexes :brand_name,    type: "string", analyzer: "english"
     indexes :categories,    type: "string", analyzer: "english"
     indexes :supporters,    type: "string", analyzer: "english"
+    indexes :style_number,  type: "string", analyzer: "english"
 
     # Location
     indexes :address do
