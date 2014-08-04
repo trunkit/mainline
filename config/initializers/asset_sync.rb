@@ -11,5 +11,8 @@ if defined?(AssetSync)
 
     # Automatically replace files with their equivalent gzip compressed version
     config.gzip_compression = true
+
+    # Set custom headers for CORS requests
+    config.headers = { ".*" => { "Access-Control-Allow-Origin" => "*", "Vary" => "Origin" }}
   end
 end
