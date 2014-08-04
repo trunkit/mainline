@@ -94,7 +94,7 @@ $(function(){
 		<div id="supplyTitle"> Supply a new item </div> 
 	<hr />
 
-		<input name="style" id="style" placeholder="Style Number" value="<%= @item.try(:name) %>" />
+		<input name="style" id="style" placeholder="Style Number" value="<%= @item.try(:style_number) %>" />
 
 		<input name="brand" id="brand" placeholder="Brand" value="<%= @item.try(:brand).try(:name) %>" />
 
@@ -112,12 +112,12 @@ $(function(){
 	<hr />
 
 	<textarea id="description" name="description" placeholder="Description">
-		<%= @item.description %> 
+		<%= @item.try(:description) %> 
 	</textarea>
 
-	<input name="fit" id="fit" placeholder="Fit (optional)" value="<%= @item.fit %>" />
+	<input name="fit" id="fit" placeholder="Fit (optional)" value="<%= @item.try(:fit) %>" />
 
-	<input name="materials" id="materials" placeholder="Materials (optional)" value="<%= @item.materials %>" />
+	<input name="materials" id="materials" placeholder="Materials (optional)" value="<%= @item.try(:materials) %>" />
 
 </div>
 
