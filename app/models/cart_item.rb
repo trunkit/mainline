@@ -183,6 +183,14 @@ class CartItem < ActiveRecord::Base
     true
   end
 
+  def shipped?
+    shipped_at.present?
+  end
+
+  def delivered?
+    delivered_at.present?
+  end
+
   def refundable?
     false
   end

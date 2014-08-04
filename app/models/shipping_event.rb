@@ -12,7 +12,7 @@ private
 
     if status == "in_transit"
       ci = CartItem.where(tracking_code: result.tracking_code).first
-      ci.update_attribute(:shipped, true) if ci
+      ci.update_attribute(:shipped_at, Time.now) if ci
     end
   end
 
@@ -21,7 +21,7 @@ private
 
     if status == "delivered"
       ci = CartItem.where(tracking_code: result.tracking_code).first
-      ci.update_attribute(:delivered, true) if ci
+      ci.update_attribute(:delivered_at, Time.now) if ci
     end
   end
 end
