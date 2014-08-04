@@ -43,4 +43,14 @@ class Notifier < ActionMailer::Base
       subject: "#{@user.name} has requested a refund on #{@cart_item.item.name}"
     })
   end
+
+  def item_restocked(item, user)
+    @item = item
+    @user = user
+
+    mail({
+      to:      @user.email,
+      subject: "#{@item.name} has been restocked on Trunkit"
+    })
+  end
 end

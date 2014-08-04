@@ -71,7 +71,7 @@ class Item < ActiveRecord::Base
 
   has_and_belongs_to_many :restock_notification_users, class_name: "User", join_table: "restock_notifications"
 
-  after_update  :check_for_owner_change
+  after_update  :check_for_owner_change, :check_for_item_quantity_change
   after_destroy :remove_activity_entry
 
   validates_presence_of :name, :price, :description, :brand_id, :boutique_id
@@ -277,6 +277,15 @@ private
         each(&:destroy)
 
       add_activity_entry
+    end
+  end
+
+  def check_for_item_quantity_change
+    return unless approved? && restock_notification_users.present?
+
+    if previous_changes.keys.include?("sizes") && sizes.values.any?{|qty| qty.to_i > 0 }
+      restock_notification_users.each {|u| Notifier.item_restocked(self, u) }
+      restock_notification_users.clear
     end
   end
 
