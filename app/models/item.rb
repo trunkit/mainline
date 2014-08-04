@@ -284,7 +284,7 @@ private
     return unless approved? && restock_notification_users.present?
 
     if previous_changes.keys.include?("sizes") && sizes.values.any?{|qty| qty.to_i > 0 }
-      restock_notification_users.each {|u| Notifier.item_restocked(self, u) }
+      restock_notification_users.each {|u| Notifier.item_restocked(self, u).deliver }
       restock_notification_users.clear
     end
   end

@@ -29,7 +29,9 @@ Trunkit::Application.routes.draw do
   end
 
   # Product discovery
-  resource :discover, controller: 'discover'
+  resource :discover, controller: 'discover' do
+    get 'q' => 'discover#create', as: :search
+  end
 
   # Checkout and Shopping Cart
   resource :cart do

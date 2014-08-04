@@ -1,4 +1,49 @@
 <html>
 <body>
+  <p>Hi <%= @user.name %></p>
+
+  <p><%= @item.name %> by <% @item.brand.name %> is now back in stock. <%= link_to("Click here", search_discover_path(q: @item.name)) %> to check it out.</p>
+
+  <table>
+    <tr>
+      <td>
+        <%= image_tag(@item.primary_photo.url.stream) %>
+      </td>
+
+      <td>
+        <table>
+          <%= content_tag(:tr, content_tag(:td, @item.name)) %>
+          <%= content_tag(:tr, content_tag(:td, @item.brand.name)) %>
+          <%= content_tag(:tr, content_tag(:td, number_to_currency(@item.price, precision: 0))) %>
+
+          <%= content_tag(:tr) do %>
+            <td>
+              <p>
+                <span>ABOUT THE CLOTHES:</span><br>
+                <%= markdown(@item.description) %>
+              </p>
+            </td>
+          <% end if @item.description.present? %>
+
+          <%= content_tag(:tr) do %>
+            <td>
+              <p>
+                <span>HOW DO THEY FIT?</span><br>
+                <%= markdown(@item.fit) %>
+              </p>
+            </td>
+          <% end if @item.fit.present? %>
+
+          <%= content_tag(:tr) do %>
+            <td>
+              <p>
+                <span>WHAT ARE THE CLOTHES MADE OF?</span><br>
+                <%= markdown(@item.construction) %>
+              </p>
+            </td>
+          <% end if @item.construction.present? %>
+        </table>
+      </td>
+  </table>
 </body>
 </html>

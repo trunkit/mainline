@@ -1,6 +1,8 @@
 class Notifier < ActionMailer::Base
   default from: "no-reply@trunkit.com"
 
+  helper :application
+
   def welcome_email(user)
     @user = user
 
