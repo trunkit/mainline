@@ -192,7 +192,7 @@ class CartItem < ActiveRecord::Base
   end
 
   def refundable?
-    false
+    delivered_at.is_a?(Time) && (7.days.ago <= delivered_at)
   end
 
   def refunded?
