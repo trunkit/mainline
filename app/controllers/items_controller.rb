@@ -22,6 +22,8 @@ class ItemsController < CatalogAbstractController
 
   def new
     @item = current_user.items.build
+    @brands = []
+    Brand.select(:name).collect{|b| @brands << b.name}
   end
 
   def create

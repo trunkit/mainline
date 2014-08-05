@@ -1,4 +1,18 @@
 <style type="text/css">
+	#selectAphotoBtn {
+		width: 300px;
+		height: 40px;
+		color:black;
+		background-color: white;
+		border:2px solid black;
+	}
+
+	.bigButton {
+		width: 300px;
+		height: 40px;
+		color:white;
+		background-color: black;
+	}
 	input,textarea {
 		border:2px solid black;
 		width:405px;
@@ -15,6 +29,24 @@
 		padding-left: 5px;
 	}
 
+	#sizeInputs {
+		display: block;
+		width: 410px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#sizeInputs input{
+		display: inline;
+	}
+
+	.size {
+		width: 340px;
+	}
+
+	.qty {
+		width: 40px;
+	}
+
 	#supplyTitle {
 		margin-left: 10px;
 	}
@@ -22,19 +54,42 @@
 	hr {
 		border:1px solid black;
 	}
+
+	#continueSection, #addPhotosSection, #supplyBtn {
+		text-align: center;
+	}
+
+	#scroll_box {
+/*		height:500px;
+		overflow: scroll;
+*/	}
+
 </style>
 
 <script type="text/javascript">
+
+function handleButton(count) {
+	if(count==5) {
+		$("#continueSection").hide();
+		$("#submit").show();
+	}
+}
 
 function progressHandler(e){
 		progressCounter++;
 		if(progressCounter <= 5){
 			triggerNext("#selected","#next");
 			$("#progress").html(progressCounter + " of 5");
+			if(progressCounter==5) {
+				$("#continueBtn").hide();
+				$("#supplyBtn").show();
+			}
 		} else {
 			submitForm(e);
 		}
 }
+
+
 
 function validateRequiredFields(event){ 
 	// do magic. 
@@ -65,13 +120,13 @@ function submitForm(e){
 	}
 }
 
-function errorHandler(e){ 
-	// do something. 
-}
-
 $(function(){
 	existingData = <%= @item.persisted? %>;
 	progressCounter = 1; 
+	orginal = $("#sizeInputs"); 
+	$("#supplyBtn").hide();
+	
+	brands = []; 
 
 	// Hide all sections
 	$(".section").hide(); 
@@ -83,69 +138,80 @@ $(function(){
 		progressHandler(event); 
 	});
 
+	$("#sizeInputs").on("click", function(event){
+		$(orginal).clone().appendTo("#sizes"); 
+	});
+
+	$("#brand").autocomplete({
+      source: brands
+   });
+
 });
 
 
 </script>
 
-<div class="section" id="selected">
+<div id="scroll_box">
+	<div class="section" id="selected">
 
-	<hr />
-		<div id="supplyTitle"> Supply a new item </div> 
-	<hr />
+		<hr />
+			<div id="supplyTitle"> Supply a new item </div> 
+		<hr />
 
-		<input name="style" id="style" placeholder="Style Number" value="<%= @item.try(:style_number) %>" />
+			<input class="required" name="style" id="style" placeholder="Style Number" value="<%= @item.try(:style_number) %>" />
 
-		<input name="brand" id="brand" placeholder="Brand" value="<%= @item.try(:brand).try(:name) %>" />
 
-</div>
+			<input class="required" name="brand" id="brand" placeholder="Brand" value="<%= @item.try(:brand).try(:name) %>" />
 
-<div class="section" id="next">
-
-		<input name="itemName" id="itemName" placeholder="Item Name" value="<%= @item.try(:name) %>" />
-
-		<input name="price" id="price" placeholder="$0.00" value="<%= @item.try(:materials) %>" />
-
-</div>
-
-<div class="section">
-	<hr />
-
-	<textarea id="description" name="description" placeholder="Description">
-		<%= @item.try(:description) %> 
-	</textarea>
-
-	<input name="fit" id="fit" placeholder="Fit (optional)" value="<%= @item.try(:fit) %>" />
-
-	<input name="materials" id="materials" placeholder="Materials (optional)" value="<%= @item.try(:materials) %>" />
-
-</div>
-
-<div class="section">
-	<hr /> 
-
-	<div id="selectAphotoBtn"> 
-		<button>Select a photo</button>
 	</div>
 
-	<div id="photos">
-		Fooo bar 
+	<div class="section" id="next">
+
+			<input class="required" name="itemName" id="itemName" placeholder="Item Name" value="<%= @item.try(:name) %>" />
+
+			<input class="required" name="price" id="price" placeholder="$0.00" value="<%= @item.try(:materials) %>" />
+
 	</div>
 
-</div>
+	<div class="section">
+		<hr />
 
-<div class="section">
-	<hr /> 
+		<textarea  class="required" id="description" name="description" placeholder="Description"><%= @item.try(:description) if @item.try(:description) %></textarea>
 
-	<p> Enter a size and quantity for each item. For "size", type in size exactly shown on product </p> 
+		<input name="fit" id="fit" placeholder="Fit (optional)" value="<%= @item.try(:fit) %>" />
 
-</div>
+		<input name="materials" id="materials" placeholder="Materials (optional)" value="<%= @item.try(:materials) %>" />
 
-<div id="continue">
-	<button id="continueBtn">Continue</button>
-	<div id="progress">&nbsp;</div>
-</div>
+	</div>
 
-<div id="submit" style="display:none;"> 
-	<button id="submit">Supply</button>
+	<div class="section">
+		<hr /> 
+
+		<div id="addPhotosSection">
+			<button id="selectAphotoBtn">Add a photo (s)</button>
+		</div>
+
+		<div id="photos">
+			Fooo bar 
+		</div>
+
+	</div>
+
+	<div class="section" id="sizes">
+		<hr /> 
+
+		<p> Enter a size and quantity for each item. For "size", type in size exactly shown on product </p> 
+
+		<div id="sizeInputs">
+			<input name="size" class="size required" placeholder="Size" />
+			<input name="qty" class="qty required" placeholder="QTY" />
+		</div>
+
+	</div>
+
+	<div id="continueSection">
+		<button id="continueBtn" class="bigButton">Continue</button>
+		<button id="supplyBtn" class="bigButton">Supply</button>
+		<div id="progress">&nbsp;</div>
+	</div>
 </div>
