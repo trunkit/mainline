@@ -59,6 +59,28 @@
 		text-align: center;
 	}
 
+	.ui-widget-content {
+		border:0; 
+	}
+
+	#progressBar {
+		width: 400px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+		border-bottom-right-radius: 0;
+	}
+
+	.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+		border-bottom-left-radius: 0;
+	}
+
+	.ui-widget-header {
+		border:0;
+	}
+
+
 	#scroll_box {
 /*		height:500px;
 		overflow: scroll;
@@ -79,7 +101,8 @@ function progressHandler(e){
 		progressCounter++;
 		if(progressCounter <= 5){
 			triggerNext("#selected","#next");
-			$("#progress").html(progressCounter + " of 5");
+			$("#progressCount").html(progressCounter + " of 5");
+			$("#progressBar").progressbar({ value: (progressCounter*20) });
 			if(progressCounter==5) {
 				$("#continueBtn").hide();
 				$("#supplyBtn").show();
@@ -89,12 +112,19 @@ function progressHandler(e){
 		}
 }
 
-
-
 function validateRequiredFields(event){ 
-	// do magic. 
-
-	return true; 
+  var allGood = true;
+  $(".required").each(function() {
+     var val = $(this).val();
+     if(val == "" || val == 0) {
+       $(this).css("border","2px solid red");
+       allGood = false;
+     } else {
+     	// dealing with the case where they updated part of the form 
+     	$(this).css("border","2px solid black");
+     }
+  });
+  return allGood;
 }
 
 function triggerNext(selectedId, nextId){
@@ -112,21 +142,33 @@ function triggerNext(selectedId, nextId){
 }
 
 function submitForm(e){
-	alert("Form submitted")
 	if(validateRequiredFields(e)) {
-		// submit form
-	} else {
-		errorHandler(e);
+		formData = {
+					style: $("style").val(),
+					brand: $("brand").val(), 
+			 itemName: $("itemName").val(), 
+					price: $("price").val(), 
+		description: $("description").val(), 
+						fit: $("fit").val(), 
+			materials: $("materials").val(), 
+				 photos: [],  
+					sizes: []	
+		};
+		$.ajax({
+			url: "some url", 
+			method: "post", 
+			data: formData, 
+			dataType: "json"
+		});
 	}
 }
 
 $(function(){
+	brands = <%= Brand.pluck(:name).to_json.html_safe %>;
 	existingData = <%= @item.persisted? %>;
 	progressCounter = 1; 
 	orginal = $("#sizeInputs"); 
 	$("#supplyBtn").hide();
-	
-	brands = []; 
 
 	// Hide all sections
 	$(".section").hide(); 
@@ -138,6 +180,10 @@ $(function(){
 		progressHandler(event); 
 	});
 
+	$("#supplyBtn").on("click", function(event){
+		progressHandler(event); 
+	});
+
 	$("#sizeInputs").on("click", function(event){
 		$(orginal).clone().appendTo("#sizes"); 
 	});
@@ -145,6 +191,8 @@ $(function(){
 	$("#brand").autocomplete({
       source: brands
    });
+
+	$("#progressBar").progressbar({ value: 0 });
 
 });
 
@@ -212,6 +260,7 @@ $(function(){
 	<div id="continueSection">
 		<button id="continueBtn" class="bigButton">Continue</button>
 		<button id="supplyBtn" class="bigButton">Supply</button>
-		<div id="progress">&nbsp;</div>
+		<div id="progressBar">&nbsp;</div>
+		<div id="progressCount">&nbsp;</div>
 	</div>
 </div>
