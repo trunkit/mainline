@@ -18,16 +18,17 @@ article.item {
       margin: 0;
       padding: 0;
       font: 20px "Bebas Neue", sans-serif;
-      letter-spacing: 6px;
+      letter-spacing: 4px;
     }
 
     h2 {
       margin: 0;
       padding: 2px 0;
-      font-size: 17px;
+      font-size: 16px;
+      font-weight: 100;
     }
 
-    > span { font-size: 18px; }
+    > span { font-size: 16px; }
 
     .social {
       padding: 5px 0;
