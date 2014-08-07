@@ -9,7 +9,7 @@
 
       <p class="name">
         <%= link_to(item.name, (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax name") %>
-        <%= link_to("Designed By #{item.brand.name}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax") %>
+        <%= link_to("Designed by #{item.brand.name}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax") %>
       </p>
 
       <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
