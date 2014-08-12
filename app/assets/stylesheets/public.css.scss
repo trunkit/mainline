@@ -1,6 +1,5 @@
 body.public {
   > header {
-    position: relative;
 
     a.login { 
       float: right; 
@@ -25,7 +24,9 @@ body {
   margin: 0 auto;
 
   > header {
-    position: relative;
+    position: fixed;
+    left: 0;
+
 
     a.tagline {
       float: left;
