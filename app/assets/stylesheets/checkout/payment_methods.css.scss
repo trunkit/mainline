@@ -97,3 +97,51 @@
     }
   }
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .security {
+    font: 16px/20px "Helvetica LT Std", sans-serif;
+  }
+
+  #payment-method form {
+    > div.number {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    >div.type {
+      padding: 0 0 20px;
+    }
+
+    > div {
+      padding: 0 0 10px;
+
+      label {
+        text-align: left;
+        width: 90px;
+      }
+
+      input[type=text] {
+        border-radius: 0;
+      }
+
+      label.date { 
+        span {
+          padding: 0;
+          width: 100%;
+        }
+
+        select {
+          margin: 5px 10px 0 0;
+        }
+      }
+    }
+ 
+    input[type=submit] {
+      height: 36px;
+      padding: 0;
+      font: 16px "Bebas Neue", sans-serif;
+      border-radius: 0;
+    }
+  }
+}

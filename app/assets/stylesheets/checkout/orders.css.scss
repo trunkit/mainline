@@ -163,3 +163,73 @@
     background: #000;
   }
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  #checkout-confirm {
+    .items {
+      padding: 0;
+
+      header, div.row { 
+        div {
+          padding: 0;
+        }
+
+        div.name {
+          width: 110px;
+        }
+
+        .name span {
+          font-size: 16px;
+        }
+
+        div.total {
+          display: none;
+        }
+
+        div.delivery,
+        div.unit {
+          width: 70px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .order-details {
+      address {
+        margin: 0 0 20px;
+
+        h6 {
+          font: 16px "Helvetica LT Std", sans-serif;
+        }
+      }
+    }
+
+    a.btn.order {
+      width: 160px;
+      height: 36px;
+      font: 16px/35px "Bebas Neue", sans-serif;
+      padding: 0;
+    }
+  }
+
+  #confirm-barrier {
+    width: 100%;
+
+    h1 {
+      padding: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+      width: 100%;
+      padding: 0;
+    }
+
+    a.btn.order {
+      width: 160px;
+      height: 36px;
+      font: 16px/35px "Bebas Neue", sans-serif;
+      padding: 0;
+    }
+  }
+}

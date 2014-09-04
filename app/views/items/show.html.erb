@@ -14,7 +14,7 @@
     <%= content_tag(:h2, "Designed by #{@item.brand.name}") %>
     <%= content_tag(:span, number_to_currency(@item.price)) %>
 
-    <hr>
+    <hr class="topLine">
 
     <div class="cart">
       <%= form_for([:cart, @cart_item], remote: true) do |f| %>
@@ -33,7 +33,7 @@
           <%= f.select(:size, @item.active_sizes, {}, class: "size") %>
           <%= f.select(:quantity, item_quantities, {}, class: "quantity") %>
 
-          <%= button_tag("Add to Cart", type: "submit") %>
+          <%= button_tag("Buy", type: "submit") %>
         <% end %>
       <% end if current_user.parent_type.blank? %>
 

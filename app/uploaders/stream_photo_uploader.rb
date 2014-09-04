@@ -13,7 +13,7 @@ class StreamPhotoUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [1000, 1000]
 
   version :stream do
-    process resize_to_fit: [300, 362]
+    process resize_to_fill: [300, 362]
   end
 
   version :details do

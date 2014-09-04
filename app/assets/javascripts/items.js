@@ -1,5 +1,5 @@
 SiteBindings.item = {
-  form: function(itemId, secondaryCategories) {
+  form: function(itemId, secondaryCategoryId, secondaryCategories) {
     $("#item_primary_category_id").change(function() {
       options = secondaryCategories[$(this).val()];
       target  = $("#item_secondary_category_id");
@@ -9,8 +9,13 @@ SiteBindings.item = {
         return false;
 
       for(i = 0; i < options.length; i++) {
-        e = options[i];
-        target.append($("<option></option>").attr("value", e.id).text(e.name));
+        e    = options[i];
+        elem = $("<option></option>").attr("value", e.id).text(e.name)
+
+        if(secondaryCategoryId && e.id == secondaryCategoryId)
+          elem.prop("selected", "selected")
+
+        target.append(elem);
       }
 
     }).trigger("change");

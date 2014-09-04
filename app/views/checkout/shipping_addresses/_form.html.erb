@@ -5,21 +5,18 @@
     <%= f.label(:street, "Street Address") %>
     <%= f.text_field(:street, tabindex: 1) %>
 
-    <%= f.label(:state, "State") %>
-    <%= f.text_field(:state, tabindex: 4) %>
-  </div>
-
-  <div>
     <%= f.label(:street2, "Address Line 2") %>
     <%= f.text_field(:street2, tabindex: 2) %>
 
-    <%= f.label(:postal_code, "ZIP / Postal Code") %>
-    <%= f.text_field(:postal_code, tabindex: 5) %>
-  </div>
-
-  <div>
     <%= f.label(:city, "City") %>
     <%= f.text_field(:city, tabindex: 3) %>
+
+    <%= f.label(:state, "State") %>
+    <%= f.text_field(:state, tabindex: 4) %>
+
+    <%= f.label(:postal_code, "ZIP / Postal Code") %>
+    <%= f.text_field(:postal_code, tabindex: 5) %>
+
   </div>
 
   <%= submit_tag(f.object.persisted? ? "Update" : "Add Address") %>

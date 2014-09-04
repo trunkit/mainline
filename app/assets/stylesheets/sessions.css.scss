@@ -113,3 +113,41 @@
     }
   }
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  div#login {
+    width: 240px;
+
+    span {
+      display: none;
+    }
+
+
+    form {
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 226px;
+        height: 42px;
+        margin: 5px 0 0;
+        padding: 0 0 0 10px;
+        border-radius: 0;
+      }
+
+      a, input[type="submit"] {
+        width: 240px;
+        border-radius: 0;
+      }
+
+      div.half-width {
+        a {
+          width: 118px;
+
+          &.active {
+            width: 114px;
+          }
+        }
+      }
+    }
+  }
+}

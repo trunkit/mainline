@@ -16,15 +16,16 @@
   input[type=submit] {
     display: block;
     clear: both;
-    width: 140px;
+    width: 160px;
+    height: 36px;
     margin: 0 auto;
-    padding: 5px 20px;
-    font: 16px/20px "Bebas Neue", sans-serif;
+    font: 16px "Bebas Neue", sans-serif;
     border: 0;
     letter-spacing: 4px;
     text-align: center;
     text-decoration: none;
     color: #FFF;
     background: #000;
+    border-radius: 0;
   }
 }

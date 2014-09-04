@@ -45,14 +45,57 @@
 
     button[type="submit"] {
       margin: 0 0 0 185px;
-      padding: 5px 20px;
-      font: 14px/17px "Bebas Neue", sans-serif;
+      width: 200px;
+      height: 36px;
+      font: 16px "Bebas Neue", sans-serif;
       letter-spacing: 4px;
       color: #FFF;
       background: #000;
       border: none;
       position: relative;
-      top: -100px;
+      top: -130px;
+
+      &.settingsButton {
+        top: 0px;
+        width: 160px;
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  #user-settings {
+    h2 {
+      width: 90%;
+      margin: 10px auto;
+      float: none;
+    }
+
+    form {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    form.info {
+      > div {
+        label {
+          text-align: left;
+        }
+
+        img {
+          display: none;
+        }
+
+        div.spacer {
+          padding: 0;
+          top: 0px;
+        }
+      }
+
+      button[type="submit"] {
+        margin: 8px 0;
+        top: 0px;
+      }
     }
   }
 }

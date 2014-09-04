@@ -342,3 +342,47 @@
   float: left;
   width: 100%;
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  #stream {
+    width: 100%;
+    text-align: center;
+
+    > .item {
+      float: none;
+      display: inline-block;
+
+      > div div.details {
+        a.favorite {
+          padding: 5px;
+        }
+
+        a.buy.button.edit.closeMobile {
+          top: 312px;
+          z-index: 100;
+          width: 286px;
+          left: 0;
+          margin: 0 0 0 4px;
+        }
+      }
+
+      form.item-quantity {
+        width: 296px;
+        padding: 5px 0;
+        left: 0;
+
+        div.item-quantity .row input {
+          border-radius: 0;
+        }
+
+        input[type="submit"] {
+          border-radius: 0;
+        }
+      }
+
+      &:nth-child(3n+3) {
+        form.item-quantity { left: 0; }
+      }
+    }
+  }
+}

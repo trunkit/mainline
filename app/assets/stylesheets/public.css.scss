@@ -40,8 +40,6 @@ body {
   }
 
   #content {
-    #boutique-search > form { margin-top: 80px !important; }
-
     #boutique-search,
     #account-signup {
       float: left;
@@ -60,7 +58,7 @@ body {
 
       > form {
         width: 705px;
-        margin: 40px 100px 0 99px;
+        margin: 80px 100px 0 99px;
 
         &.search {
           h2 { margin-bottom: 0; }
@@ -171,9 +169,69 @@ body {
 
     .underLine {
       float: left;
-      margin: -12px 383px;
+      margin: -22px 383px 8px;
     }
 
     #stream { padding: 0 0 10px; }
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  body.public, body {
+    width: 100%;
+    margin: 0 auto;
+
+    > header .spaceLine {
+      margin: 0 10px 0 6px;
+    }
+
+    #content {
+      #boutique-search {
+        width: 100%;
+        margin: 0 auto;
+
+        > form.search {
+          width: 100%;
+          margin: 35px auto 0;
+
+          h2 {
+            font: 32px/38px "Bebas Neue", helvetica, sans-serif;
+          }
+
+          input[type=text] {
+            display: block;
+            width: 280px;
+            margin: 0 auto;
+            border-radius: 0;
+          }
+
+          input[type=submit] {
+            display: block;
+            width: 230px;
+            margin: 20px auto 0;
+            float: none;
+            border-radius: 0;
+          }
+        }
+      }
+
+      > h3 {
+        float: left;
+        width: 100%;
+        margin: 10px auto;
+      }
+
+      .underLine {
+        float: left;
+        margin: -13px auto 8px;
+        width: 100%;
+
+        img {
+          margin: 0 auto;
+          padding: 0 4px 0 0;
+          display: block;
+        }
+      }
+    }
   }
 }

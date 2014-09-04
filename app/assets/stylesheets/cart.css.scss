@@ -68,7 +68,6 @@
       width: 100%;
       margin: 10px 0;
       padding: 5px 0;
-      font-weight: bold;
       border-top: 2px solid #000;
       border-bottom: 2px solid #000;
     }
@@ -98,3 +97,126 @@
     background: #000;
   }
 }
+
+@media screen and (max-device-width:480px) and (orientation: portrait) {
+  #cart {
+    .items {
+      > header {
+        width: 100%;
+        font-weight: normal;
+
+        > div {
+          padding: 0;
+        }
+
+        .name {
+          width: 80px;
+          margin: 0 10px 0 0;
+        }
+
+        .quantity {
+          width: 70px
+        }
+
+        .total {
+          display: none;
+        }
+      }
+
+      div > .name {
+        width: 90px;
+
+        img {
+          max-width: 80px;
+        }
+
+        .right {
+          width: 90px;
+          padding: 0;
+
+          span {
+            width: 100%;
+            font: 13px/18px "Helvetica LT Std", sans-serif;
+            letter-spacing: 1px;
+            color: #000000;
+            margin: 0 0 3px;
+
+            &.name {
+              font: 14px/18px "Helvetica LT Std", sans-serif;
+              padding: 0 0 2px;
+            }
+          }
+        }
+      }
+
+      div.row {
+        div {
+          padding: 0;
+        }
+
+        .total {
+          display: none;
+        }
+      }
+
+      footer {
+        font-weight: normal;
+      }
+    }
+
+    > a {
+      width: 160px;
+      margin: 0 auto;
+      padding: 0;
+      font: 16px/38px "Bebas Neue", sans-serif;
+    }
+  }
+
+  #delivery-options {
+    header {
+
+      div {
+        padding: 0 0 0 0;
+      }
+
+      > .name {
+        display: none;
+      }
+    }
+
+    .items div {
+      > .name {
+        margin: 0 0 20px;
+        width: 250px;
+
+        img {
+          max-width: 100px;
+        }
+
+        .right {
+          width: 135px;
+
+          span.name {
+            font: 16px/18px "Helvetica LT Std", sans-serif;
+            padding: 0;
+            margin: 0 0 8px;
+          }
+        }
+      }
+
+      div {
+        padding: 0;
+      }
+    }
+
+    .service {
+      width: 100%;
+      
+      label {
+        margin: 0 0 12px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+

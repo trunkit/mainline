@@ -1,7 +1,7 @@
 .notification.error {
   width: 660px;
   margin: 0 auto 20px;
-  padding: 10px 10px 6px;
+  padding: 10px 10px 10px;
   border: 2px solid #000;
   font: 16px/22px "Helvetica LT Std", sans-serif;
   letter-spacing: 0px;
@@ -11,5 +11,12 @@
     color: #DF1A22;
     font-style: normal;
     text-transform: uppercase;
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .notification.error {
+    width: 98%;
+    padding: 10px 0px 10px;
   }
 }

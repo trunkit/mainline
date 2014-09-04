@@ -39,3 +39,23 @@ form#discover-search {
     li:before { content: '- '; }
   }
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  form#discover-search {
+    text-align: center;
+
+    input[type=search] {
+      width: 200px;
+      margin: 0 0 0 15px;
+      -webkit-appearance: none; 
+      -webkit-border-radius:0;
+      border-radius:0;
+    } 
+  }
+
+  .discover.no-results {
+    img {
+      display: none;
+    }
+  }
+}

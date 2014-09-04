@@ -44,14 +44,14 @@
   form {
     div {
       float: left;
-      width: 100%;
+      width: 345px;
       padding: 0 0 20px;
 
       label {
         float: left;
         width: 100px;
-        padding: 0 10px 0 20px;
-        font: 16px/32px "Helvetica LT Std", sans-serif;
+        padding: 0 10px 0 0px;
+        font: 16px/38px "Helvetica LT Std", sans-serif;
         text-align: right;
 
         &:first-child { padding-left: 0; }
@@ -61,21 +61,53 @@
         float: left;
         width: 200px;
         height: 30px;
-        padding: 0 5px;
+        padding: 0 5px 5px;
+        margin: 0 0  12px;
+        font: 16px "Helvetica LT Std", sans-serif;
         border: 2px solid #000000;
       }
     }
 
     input[type=submit] {
       width: 160px;
-      margin: 0 0 0 280px;
-      padding: 5px 20px;
+      height: 36px;
+      margin: 0 80px 0 135px;
       border: 0;
-      font: 16px/20px "Bebas Neue", sans-serif;
+      font: 16px "Bebas Neue", sans-serif;
       letter-spacing: 4px;
       text-align: center;
       background: #000;
       color: #FFFFFF;
+      border-radius: 0;
+    }
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  #shipping {
+    address {
+      padding: 0 0 20px 20px;
+    }
+
+    form {
+      div {
+        padding: 0;
+        width: 100%;
+
+        label {
+          padding: 0 10px 0 0;
+          text-align: left;
+          font: 16px/24px "Helvetica LT Std", sans-serif;;
+        }
+
+        input[type=text] {
+          border-radius: 0;
+        }
+      }
+      input[type=submit] {
+        height: 36px;
+        margin: 5px 0;
+      }
     }
   }
 }

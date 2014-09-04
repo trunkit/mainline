@@ -39,3 +39,26 @@
     }
   }
 }
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .catalog-notification {
+    width: 96%;
+
+    span {
+      font: 14px "Helvetica LT Std", sans-serif;
+      letter-spacing: 1px;
+      margin: 4px;
+      height: 38px;
+
+      &.message {
+        width: 65%;
+        height: 38px;
+        white-space: normal;
+      }
+    }
+
+    div.photo {
+      display: none;
+    }
+  }
+}

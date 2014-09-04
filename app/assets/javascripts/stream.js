@@ -14,9 +14,11 @@ SiteBindings.stream = {
       if(quantityForm.is(":visible")) {
         quantityForm.hide();
         $(this).text("Edit");
+        $(this).removeClass("closeMobile");
       } else {
         quantityForm.show();
         $(this).text("Close");
+        $(this).addClass("closeMobile");
       }
 
       return false;

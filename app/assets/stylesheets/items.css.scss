@@ -1,6 +1,6 @@
 article.item {
   position: relative;
-  width: 100%;
+  width: 820px;
   margin: 0 auto;
 
   .photos {
@@ -55,7 +55,7 @@ article.item {
 
       button, a.out-of-stock {
         float: right;
-        margin: 2px 0 5px;
+        margin: 0 0 5px;
         padding: 0 0 0 6px;
         font: 16px/33px "Bebas Neue", sans-serif;
         letter-spacing: 6px;
@@ -63,6 +63,7 @@ article.item {
         color: #fff;
         background: #000;
         text-decoration: none;
+        width: 154px;
       }
     }
 
@@ -119,7 +120,7 @@ article.item {
   }
 
   .topLine {
-      margin: 10px 0 6px 0;
+      margin: 10px 0 5px 0;
     }
 }
 
@@ -159,6 +160,10 @@ div.item-quantity {
 }
 
 #item form {
+  div.hideMobile {
+    display: none;
+  }
+
   div.separator {
     float: left;
     width: 100%;
@@ -243,7 +248,13 @@ div.item-quantity {
           padding: 0 2.5% 0 0;
         }
 
-        input[type="text"], textarea, select { width: 60%; }
+        input[type="text"], 
+        textarea, 
+        select { 
+          width: 60%;
+          border: solid 2px #000;
+          border-radius: 0; 
+        }
 
         &.brand-add {
           display: none;
@@ -307,5 +318,99 @@ div.item-quantity {
     letter-spacing: 4px;
     color: #000;
     text-align: center;
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  article.item {
+    width: 250px;
+
+    .photos {
+      width: 250px;
+      float: none;
+
+      img {
+        max-width: 250px;
+      }
+    }
+
+    .info {
+      width: 250px;
+      float: none;
+
+      h1 {
+        font: 18px "Bebas Neue", sans-serif;
+      }
+
+      h2 {
+        font: 15px "Helvetica LT Std", sans-serif;
+      }
+
+      div.cart form {
+        select {
+          margin: 4px 5px 0 0;
+        }
+
+        button {
+          width: 160px;
+          height: 40px;
+          float: left;
+          margin: 8px 0 8px;
+        }
+      }
+    }
+  }
+
+  #item form {
+    input[type="submit"] {
+      border-radius: 0;
+    }
+
+    div.row {   
+      label {
+        text-align: left;
+      }
+
+      input {
+        border-radius: 0;
+      }
+
+      > div {
+        float: none;
+      }
+
+      > div.col-2 {
+        width: 96%;
+        margin: 4px auto;
+
+        label {
+          width: 50%;
+        }
+
+        input[type="text"],
+        textarea,
+        select
+        {
+          border-radius: 0;
+          padding: 5px;
+        }
+      }
+    }
+  }
+
+  div.item-quantity {
+    .row {
+      input {
+        border-radius: 0;
+      }
+    }
+  }
+
+  #declined-boutiques {
+    width: 100%;
+
+    h1 {
+      font: 40px/50px "Helvetica LT Std", sans-serif;
+    }
   }
 }
