@@ -23,3 +23,9 @@
 
 # Ignore the bundler ruby cache
 /vendor/ruby
+
+bin/rails
+
+bin/rake
+
+bin/rake
