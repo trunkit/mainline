@@ -39,7 +39,7 @@ class ItemsController < CatalogAbstractController
     @item  = current_user.items.build(item_params)
 
     respond_to do |format|
-      format.html {
+      format.html do
         @item.save ? redirect_to([:edit, @item]) : render(action: :new)
       end
 
@@ -59,7 +59,7 @@ class ItemsController < CatalogAbstractController
     @item = current_user.items.find(params[:id])
 
     respond_to do |format|
-      format.html {
+      format.html do
         @item.update_attributes(item_params) ?
           redirect_to([:edit, @item]) :
           render(action: :new)
