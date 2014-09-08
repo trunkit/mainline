@@ -21,6 +21,7 @@ Trunkit::Application.routes.draw do
   end
 
   resources :brands, only: [:index, :create]
+  resources :categories, only: [:index]
 
   resources :boutiques, :brands, only: [:show] do
     get 'search',   on: :collection
