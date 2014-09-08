@@ -3,11 +3,22 @@ class ItemPhotosController < ApplicationController
     @item = current_user.items.find(params[:item_id])
   end
 
+  def index
+    respond_to do |format|
+      format.json { render(json: @item.photos) }
+    end
+  end
+
   def create
     render(nothing: true, status: 200) if params[:photo].try(:[], :url).blank?
 
     params[:photo][:url].each do |file|
       @item.photos.create(url: file)
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @item.photos) }
     end
   end
 
@@ -16,10 +27,18 @@ class ItemPhotosController < ApplicationController
       @item.photos.find(photo_id).set_list_position(i + 1)
     end
 
-    render("create")
+    respond_to do |format|
+      format.html { render("create") }
+      format.json { render(json: @item.photos) }
+    end
   end
 
   def destroy
     @item.photos.find(params[:id]).destroy
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @item.photos) }
+    end
   end
 end

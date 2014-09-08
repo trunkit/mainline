@@ -7,6 +7,11 @@ class StreamController < CatalogAbstractController
       @category      = @category.parent unless @category.root?
       @subcategories = @category.children
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @activity_items) }
+    end
   end
 
   def following

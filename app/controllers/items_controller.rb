@@ -8,8 +8,14 @@ class ItemsController < CatalogAbstractController
 
   def index
     boutique = current_user.parent
+
     @items = params[:supported].to_s =~ /^?(t|true)$/ ? boutique.supported_items : boutique.items
     @items = @items.for_category(params[:category]) if params.key?(:category)
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @items) }
+    end
   end
 
   def show
@@ -17,7 +23,12 @@ class ItemsController < CatalogAbstractController
     @activity  = Activity.find(params[:activity_id]) if params[:activity_id]
     @cart_item = CartItem.new
 
-    render(nothing: true, status: 404) unless @activity || current_user.parent_type.present?
+    return render(nothing: true, status: 404) unless @activity || current_user.parent_type.present?
+
+    respond_to do |format|
+      format.html
+      format.json { render(json: @item.to_json(methods: :photos)) }
+    end
   end
 
   def new
@@ -25,12 +36,18 @@ class ItemsController < CatalogAbstractController
   end
 
   def create
-    @item = current_user.items.build(item_params)
+    @item  = current_user.items.build(item_params)
 
-    if @item.save
-      redirect_to([:edit, @item])
-    else
-      render(action: :new)
+    respond_to do |format|
+      format.html {
+        @item.save ? redirect_to([:edit, @item]) : render(action: :new)
+      end
+
+      format.json do
+        @item.save ?
+          render(json: @item.to_json(methods: :photos)) :
+          render(json: @item.errors, status: 422)
+      end
     end
   end
 
@@ -41,16 +58,28 @@ class ItemsController < CatalogAbstractController
   def update
     @item = current_user.items.find(params[:id])
 
-    if @item.update_attributes(item_params)
-      redirect_to([:edit, @item])
-    else
-      render(action: :edit)
+    respond_to do |format|
+      format.html {
+        @item.update_attributes(item_params) ?
+          redirect_to([:edit, @item]) :
+          render(action: :new)
+      end
+
+      format.json do
+        @item.update_attributes(item_params) ?
+          render(json: @item.to_json(methods: :photos)) :
+          render(json: @item.errors, status: 422)
+      end
     end
   end
 
   def destroy
     current_user.items.find(params[:id]).destroy
-    redirect_to items_path
+
+    respond_to do |format|
+      format.html { redirect_to(items_path) }
+      format.json { render(nothing: true, status: 200) }
+    end
   end
 
   def support
