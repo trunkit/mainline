@@ -1,3 +1,8 @@
+.spaceLine {
+      float: right;
+      margin: 26px;
+    }
+
 body.public {
   > header {
 
@@ -5,16 +10,13 @@ body.public {
       float: right; 
     }
     
-    a.boutiqueSite {float: right;}
+    a.boutiqueSite {
+      float: right;
+    }
 
     a.tagline {
       position: absolute;
       top: 0;
-    }
-
-    .spaceLine {
-      float: right;
-      margin: 26px;
     }
   }
 }
@@ -177,13 +179,47 @@ body {
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
+  body.public .bodyWrapper > header {
+    height: 98px;
+    padding: 0 0 0;
+
+    > .content {
+      height: 43px;
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .menuButton {
+      display: none;
+    }
+
+    a.tagline {
+      padding: 12px 0 8px;
+      display: block;
+      width: 100%;
+
+      img {
+        display: block;
+      }
+    }
+
+    .signInNav {
+      margin:  4px 26px 0 0px;
+    }
+
+    .right {
+      display: inline-block;
+    }
+  }
+
+  .spaceLine {
+    margin: 0 10px 0 6px;
+  }
+
   body.public, body {
     width: 100%;
     margin: 0 auto;
-
-    > header .spaceLine {
-      margin: 0 10px 0 6px;
-    }
 
     #content {
       #boutique-search {

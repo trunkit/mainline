@@ -23,6 +23,18 @@
 
     <%= csrf_meta_tags %>
 
+    <script type="text/javascript" src="/assets/jquery.mmenu.min.all.js"></script>
+    <link href="/assets/jquery.mmenu.all.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+      $(function() {  
+        $("nav#boutique").clone().attr('id', 'menu-original' ).addClass("hidden-xs").insertBefore("#boutique");
+        $("nav#boutique").mmenu({
+               "header": true
+            });
+      });
+
+    </script>
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,32 +45,32 @@
       ga('send', 'pageview');
 
     </script>
-    <script src="js/modernizr.custom.js"></script>
+
   </head>
 
   <%= content_tag(:body, class: (!current_user ? 'public' : nil)) do %>
-    <header>
-      <div class="content">
-        <%= link_to(image_tag("header/logo.png"), "/", class: "tagline") %>
-        <%= main_nav %>
+    <div class="bodyWrapper">  
+      <header>
+        <a href="#boutique" class="menuButton">
+          <span></span>
+        </a>
+        <div class="content">
+          <%= link_to(image_tag("header/logo.png"), "/", class: "tagline") %>
+          <%= main_nav %>
+        </div>
+      </header>
+
+      <div id="container">
+        <%= content_tag(:div, yield, id: "content") %>
+
+        <footer>
+          <span class="copyright">&copy; 2014 Swayly LLC. All rights reserved.</span>
+        </footer>
       </div>
-    </header>
-
-    <div id="container">
-      <%= content_tag(:div, yield, id: "content") %>
-
-      <footer>
-        <span class="copyright">&copy; 2014 Swayly LLC. All rights reserved.</span>
-      </footer>
     </div>
 
     <script>
-    $(function() { $("a.fancybox").fancybox(); });
-    </script>
-    <script src="js/classie.js"></script>
-    <script src="js/mlpushmenu.js"></script>
-    <script>
-      new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+      $(function() { $("a.fancybox").fancybox(); });
     </script>
   <% end %>
 </html>

@@ -1,24 +1,35 @@
-<div class="menu1"> 
-  <nav>
-    <%= content_tag(:ul) do %>
-      <%= content_tag(:li, class: active_css_class(/^\/(stream|items)/)) do %>
-        <%= link_to("Stream", stream_path, class: "stream") %>
+<nav id="boutique">
+  <%= content_tag(:ul) do %>
+    <%= content_tag(:li, class: active_css_class(/^\/(stream|items)/)) do %>
+      <%= link_to("Stream", stream_path, class: "stream") %>
 
-        <ul>
-          <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class("/stream/category/#{category.to_param}"))) %>
-          <% end %>
-          <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
-        </ul>
-      <% end %>
+      <ul>
+        <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
+        <% categories.each do |category| %>
+        <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class("/stream/category/#{category.to_param}"))) %>
+        <% end %>
+        <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
+      </ul>
+    <% end %>
 
-      <%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
+    <%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
 
-      <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
-    <% end unless params[:controller] =~ /checkout/ %>
-  </nav>
-</div>
+    <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
+
+    <%= content_tag(:li, class: active_css_class("supported=false"), class: "userMenu") do %>
+      <%= link_to(truncate(current_user.first_name, length: 11), items_path(supported: false)) %>
+
+      <ul>
+        <%= content_tag(:li, link_to("My Orders", orders_path)) %>
+        <%= content_tag(:li, link_to("Settings", settings_user_path)) %>
+        <%= content_tag(:li, link_to("Help", "https://trunkit.zendesk.com/hc/en-us/categories/200051529-Shopper-Questions", target: "_blank")) %>
+        <%= content_tag(:li, link_to("About", "/about-trunkit")) %>
+        <%= content_tag(:li, link_to("Terms", "/terms-of-use")) %>
+        <%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
+      </ul>
+    <% end %>
+  <% end unless params[:controller] =~ /checkout/ %>
+</nav>
 
 <div class="right menu1">
   <%= link_to(image_tag("header/bag.png", class: "shoppingbag_icon"), cart_path, class: "cart fancybox fancybox.ajax") unless params[:controller] =~ /checkout/ %>
@@ -36,54 +47,5 @@
       <%= content_tag(:li, link_to("Terms", "/terms-of-use")) %>
       <%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
     </ul>
-  </div>
-</div>
-
-<div class="menu2">
-  <div class="container">
-    <div class="mp-pusher" id="mp-pusher">
-      <nav id="mp-menu" class="mp-menu">
-        <div class="mp-level">
-        <%= content_tag(:ul) do %>
-          <%= content_tag(:li, class: active_css_class(/^\/(stream|items)/)) do %>
-            <%= link_to("Stream", stream_path) %>
-
-            <div class="mp-level">
-              <ul>
-                <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
-                <% categories.each do |category| %>
-                <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class("/stream/category/#{category.to_param}"))) %>
-                <% end %>
-                <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
-              </ul>
-            </div>
-            <div class="mp-level">
-              <ul>
-                <%= content_tag(:li, link_to("My Orders", orders_path)) %>
-                <%= content_tag(:li, link_to("Settings", settings_user_path)) %>
-                <%= content_tag(:li, link_to("Help", "https://trunkit.zendesk.com/hc/en-us/categories/200051529-Shopper-Questions", target: "_blank")) %>
-                <%= content_tag(:li, link_to("About", "/about-trunkit")) %>
-                <%= content_tag(:li, link_to("Terms", "/terms-of-use")) %>
-                <%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
-              </ul>
-            </div>
-          <% end %>
-
-          <%= content_tag(:li, link_to("Favorites", favorites_path, class: "favorites"), class: active_css_class(/^\/favorites/)) %>
-
-          <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
-        <% end unless params[:controller] =~ /checkout/ %>
-      </nav>
-    </div>
-  </div>
-
-  <div class="scroller">
-    <div class="scroller-inner">
-      <div class="content">
-        <div class="block">
-          <a href="#" id="trigger" class="menu-trigger">Open/Close Menu</a>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

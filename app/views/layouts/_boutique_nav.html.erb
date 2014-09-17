@@ -1,112 +1,69 @@
-<div class="menu1">
-  <nav class="boutique">
-    <ul>
-      <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
+<nav id="boutique">
+  <ul>
+    <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
 
-      <%= content_tag(:li, class: active_css_class(/^\/(stream|favorites)/)) do %>
-        <%= link_to("Stream", stream_path, class: "stream") %>
+    <%= content_tag(:li, class: active_css_class(/^\/(stream|favorites)/)) do %>
+      <%= link_to("Stream", stream_path, class: "stream") %>
 
-        <ul>
-          <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class(category.to_param))) %>
-          <% end %>
+      <ul>
+        <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
+        <% categories.each do |category| %>
+        <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class(category.to_param))) %>
+        <% end %>
 
-          <%= content_tag(:li, link_to("Favorites", favorites_path, class: "button #{active_css_class(/^\/favorites\/?$/)}")) %>
-          <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
-        </ul>
-      <% end %>
+        <%= content_tag(:li, link_to("Favorites", favorites_path, class: "button #{active_css_class(/^\/favorites\/?$/)}")) %>
+        <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
+      </ul>
+    <% end %>
 
-      <%= content_tag(:li, class: active_css_class("supported=true")) do %>
-        <%= link_to("Curated", items_path(supported: true)) %>
+    <%= content_tag(:li, class: active_css_class("supported=true")) do %>
+      <%= link_to("Curated", items_path(supported: true)) %>
 
-        <ul>
-          <%= content_tag(:li, link_to("All", items_path(supported: true))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category), class: active_css_class(category.to_param))) %>
-          <% end %>
-        </ul>
-      <% end %>
+      <ul>
+        <%= content_tag(:li, link_to("All", items_path(supported: true))) %>
+        <% categories.each do |category| %>
+        <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category), class: active_css_class(category.to_param))) %>
+        <% end %>
+      </ul>
+    <% end %>
 
-      <%= content_tag(:li, class: active_css_class("supported=false")) do %>
-        <%= link_to("Supplied", items_path(supported: false)) %>
+    <%= content_tag(:li, class: active_css_class("supported=false")) do %>
+      <%= link_to("Supplied", items_path(supported: false)) %>
 
-        <ul>
-          <%= content_tag(:li, link_to("All", items_path(curated: true))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, items_path(curated: true, category: category), class: active_css_class(category.to_param))) %>
-          <% end %>
-          <%= content_tag(:li, link_to("Supply an Item", new_item_path, class: "button")) %>
-        </ul>
-      <% end %>
+      <ul>
+        <%= content_tag(:li, link_to("All", items_path(curated: true))) %>
+        <% categories.each do |category| %>
+        <%= content_tag(:li, link_to(category.name, items_path(curated: true, category: category), class: active_css_class(category.to_param))) %>
+        <% end %>
+        <%= content_tag(:li, link_to("Supply an Item", new_item_path, class: "button")) %>
+      </ul>
+    <% end %>
 
-      <%= content_tag(:li, class: active_css_class(/^\/(orders)/)) do %>
-        <%= link_to("Orders", orders_path) %>
+    <%= content_tag(:li, class: active_css_class(/^\/(orders)/)) do %>
+      <%= link_to("Orders", orders_path) %>
 
-        <ul>
-          <%= content_tag(:li, link_to("Supplied", orders_path(type: "supplied"))) %>
-          <%= content_tag(:li, link_to("Curated", orders_path(type: "supported"))) %>
-          <%= content_tag(:li, link_to("Returned", orders_path(type: "returned"))) %>
-        </ul>
-      <% end %>
-    </ul>
-  </nav>
-</div>
+      <ul>
+        <%= content_tag(:li, link_to("Supplied", orders_path(type: "supplied"))) %>
+        <%= content_tag(:li, link_to("Curated", orders_path(type: "supported"))) %>
+        <%= content_tag(:li, link_to("Returned", orders_path(type: "returned"))) %>
+      </ul>
+    <% end %>
 
-<!--<div class="menu2">
-  <nav class="boutique">
-    <ul>
-      <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
+    <%= content_tag(:li, notifications_widget, class: "notifcationWidget")%>
 
-      <%= content_tag(:li, class: active_css_class(/^\/(stream|favorites)/)) do %>
-        <%= link_to("Stream", stream_path, class: "stream") %>
+    <%= content_tag(:li, class: active_css_class("supported=false"), class: "userMenu") do %>
+      <%= link_to(truncate(current_user.first_name, length: 11), items_path(supported: false)) %>
 
-        <ul>
-          <%= content_tag(:li, link_to("All", stream_path, class: active_css_class(/^\/stream\/?$/))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, [:stream, category], class: active_css_class(category.to_param))) %>
-          <% end %>
-
-          <%= content_tag(:li, link_to("Favorites", favorites_path, class: "button #{active_css_class(/^\/favorites\/?$/)}")) %>
-          <%= content_tag(:li, link_to("Following", stream_following_path, class: "button #{active_css_class('/stream/following')}")) %>
-        </ul>
-      <% end %>
-
-      <%= content_tag(:li, class: active_css_class("supported=true")) do %>
-        <%= link_to("Curated", items_path(supported: true)) %>
-
-        <ul>
-          <%= content_tag(:li, link_to("All", items_path(supported: true))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, items_path(supported: true, category: category), class: active_css_class(category.to_param))) %>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <%= content_tag(:li, class: active_css_class("supported=false")) do %>
-        <%= link_to("Supplied", items_path(supported: false)) %>
-
-        <ul>
-          <%= content_tag(:li, link_to("All", items_path(curated: true))) %>
-          <% categories.each do |category| %>
-          <%= content_tag(:li, link_to(category.name, items_path(curated: true, category: category), class: active_css_class(category.to_param))) %>
-          <% end %>
-          <%= content_tag(:li, link_to("Supply an Item", new_item_path, class: "button")) %>
-        </ul>
-      <% end %>
-
-      <%= content_tag(:li, class: active_css_class(/^\/(orders)/)) do %>
-        <%= link_to("Orders", orders_path) %>
-
-        <ul>
-          <%= content_tag(:li, link_to("Supplied", orders_path(type: "supplied"))) %>
-          <%= content_tag(:li, link_to("Curated", orders_path(type: "supported"))) %>
-          <%= content_tag(:li, link_to("Returned", orders_path(type: "returned"))) %>
-        </ul>
-      <% end %>
-    </ul>
-  </nav>
-</div>-->
+      <ul>
+        <%= content_tag(:li, link_to("Settings", settings_user_path)) %>
+        <%= content_tag(:li, link_to("Payments", payments_company_path)) %>
+        <%= content_tag(:li, link_to("Help", "https://trunkit.zendesk.com/hc/en-us/categories/200066289-Boutique-Questions", target: "_blank")) %>
+        <%= content_tag(:li, link_to("Terms", "/terms-of-use")) %>
+        <%= content_tag(:li, link_to("Sign Out", destroy_user_session_path, method: :delete, class: "button")) %>
+      </ul>
+    <% end %>
+  </ul>
+</nav>
 
 <div class="right">
   <%= notifications_widget%>

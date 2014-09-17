@@ -3,137 +3,156 @@ html, body {
   height: 100%;
 }
 
-body {
-  background: #fff;
-  .menu2 {
+li.notifcationWidget {
     display: none;
-  }
+}
 
-  > header {
-    z-index: 100;
+body {
+
+  background: #fff;
+  
+  .bodyWrapper {
     width: 100%;
-    height: 70px;
-    background: rgba(255,255,255,1);
-    margin: auto;
+    height: 100%;
 
-    > .content {
-      width: 906px;
-      height: 75px;
-      margin: 0 auto 0 auto;
-    }
+    > header {
+      z-index: 100;
+      width: 100%;
+      height: 70px;
+      background: rgba(255,255,255,1);
+      margin: auto;
+      position: fixed;
 
-    a.tagline {
-      float: left;
-      padding-top: 15px;
-      font: 100 40px/40px "Helvetica Neue", sans-serif;
-      color: #000;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-
-      img {
-        width: 168px;
-      }
-    }
-
-    a.login,
-    a.signup {
-      float: right;
-      padding: 28px 0 0;
-      font: 16px/19px "Bebas Neue", sans-serif;
-      letter-spacing: 4px;
-      text-decoration: none;
-      color: #000;
-    }
-
-    nav {
-      float: left;
-      margin: 0 0 0 120px;
-      font: 16px "Bebas Neue", sans-serif;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-
-      &.boutique { margin-left: 35px; }
-
-      &.system   {
-        margin-left: 10px;
-        > ul > li { padding: 0 17px; }
+      .menuButton {
+        display: none;
       }
 
-      ul {
-        list-style: none;
-        text-align: center;
+      > .content {
+        width: 906px;
+        height: 75px;
       }
 
-      > ul {
-        margin: 0;
-        padding: 0;
+      a.tagline {
+        float: left;
+        padding-top: 15px;
+        font: 100 40px/40px "Helvetica Neue", sans-serif;
+        color: #000;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 4px;
 
-        > li {
-          position: relative;
-          float: left;
-          padding: 0 20px;
+        img {
+          width: 168px;
+        }
+      }
 
-          > ul, > span { display: none; }
+      a.login,
+      a.signup {
+        float: right;
+        padding: 28px 0 0;
+        font: 16px/19px "Bebas Neue", sans-serif;
+        letter-spacing: 4px;
+        text-decoration: none;
+        color: #000;
+      }
 
-          > a {
-            display: block;
+      nav {
+        float: left;
+        margin: 0 0 0 40px;
+        font: 16px "Bebas Neue", sans-serif;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+
+        &.boutique { margin-left: 35px; }
+
+        &.system   {
+          margin-left: 10px;
+          > ul > li { padding: 0 17px; }
+        }
+
+        ul {
+          list-style: none;
+          text-align: center;
+        }
+
+        > ul {
+          margin: 0;
+          padding: 0;
+
+          .userMenu {
+            display: none;
+          }
+
+          > li {
+            position: relative;
             float: left;
-            width: 100%;
-            padding: 25px 0;
-            line-height: 18px;
-            text-decoration: none;
-            color: #000;
-          }
+            padding: 0 20px;
 
-          &.active > a, &:hover > a {
-            margin: 0 0 24px;
-            padding: 25px 0 0;
-            border-bottom: 2px solid #000;
-            text-decoration: none;
-            color: #000;
-          }
+            .notificationWidget {
+              display: none;
+            }
 
-          &.active ul li a.active { color: #000; }
+            > ul, > span { display: none; }
 
-          &:hover {
-            > ul {
-              display: block !important;
-              position: absolute;
-              z-index: 10;
-              top: 56px;
-              left: -15px;
-              width: 160px;
-              padding: 10px 8px 8px;
-              background: #fff;
+            > a {
+              display: block;
+              float: left;
+              width: 100%;
+              padding: 25px 0;
+              line-height: 18px;
+              text-decoration: none;
+              color: #000;
+            }
 
-              li {
-                float: left;
-                width: 100%;
-                font: 14px/24px "Bebas Neue", sans-serif;
-                text-align: left;
-                letter-spacing: 3px;
+            &.active > a, &:hover > a {
+              margin: 0 0 24px;
+              padding: 25px 0 0;
+              border-bottom: 2px solid #000;
+              text-decoration: none;
+              color: #000;
+            }
 
-                a {
-                  display: block;
-                  padding: 0;
-                  color: #9E9E9E;
-                  text-decoration: none;
+            &.active ul li a.active { color: #000; }
 
-                  &:hover { color: #000; }
+            &:hover {
+              > ul {
+                display: block !important;
+                position: absolute;
+                z-index: 10;
+                top: 56px;
+                left: -15px;
+                width: 160px;
+                padding: 10px 8px 8px;
+                background: #fff;
 
-                  &.button {
-                    margin-top: 5px;
-                    background: #000;
-                    color: #fff;
-                    text-align: center;
+                li {
+                  float: left;
+                  width: 100%;
+                  font: 14px/24px "Bebas Neue", sans-serif;
+                  text-align: left;
+                  letter-spacing: 3px;
 
-                    &.active {
-                      width: 156px;
-                      line-height: 22px;
-                      background: #fff;
-                      border: 2px solid #000;
-                      color: #000;
+                  a {
+                    display: block;
+                    padding: 0;
+                    color: #9E9E9E;
+                    text-decoration: none;
+
+                    &:hover { color: #000; }
+
+                    &.button {
+                      margin-top: 5px;
+                      background: #000;
+                      color: #fff;
+                      text-align: center;
+
+                      &.active {
+                        width: 156px;
+                        line-height: 22px;
+                        background: #fff;
+                        border: 2px solid #000;
+                        color: #000;
+                      }
                     }
                   }
                 }
@@ -142,448 +161,201 @@ body {
           }
         }
       }
-    }
 
-    .right {
-      float: right;
-      padding-top: 15px;
+      .right {
+        float: right;
+        padding-top: 15px;
 
-      .cart {
-        position: relative;
-        float: left;
-        width: 17px;
-        height: 20px;
-        margin-top: 11px;
-        margin-right: 8px;
+        .cart {
+          position: relative;
+          float: left;
+          width: 17px;
+          height: 20px;
+          margin-top: 11px;
+          margin-right: 8px;
 
-        .shoppingbag_icon {
-          width: 15px;
-        }
-      }
-
-      .user {
-        position: relative;
-        vertical-align: top;
-        float: left;
-        top: -25px;
-        margin: 2px;
-        padding: 30px 8px 8px;
-        line-height: 25px;
-
-        img {
-          vertical-align: middle; 
-          width: 25px;
-        }
-
-        > span {
-          padding-top: 70px;
-          margin: 15px 15px;
-          font-family: "Bebas Neue", sans-serif;
-          letter-spacing: 2px;
-          text-align: left;
-        }
-
-        .dropdown_icon {
-          width: 14px;
-          height:10px;
-        }
-
-        ul {
-          display: none;
-          position: absolute;
-          z-index: 2;
-          top: 56px;
-          right: 0;
-          width: 130px;
-          padding: 17px 10px 10px;
-          margin: 0;
-          list-style: none;
-          background: #fff;
-
-          li {
-            float: left;
-            width: 100%;
-
-            a {
-              display: block;
-              float: left;
-              width: 120px;
-              padding: 5px;
-              font: 14px/14px "Bebas Neue", sans-serif;
-              letter-spacing: 3px;
-              color: #9e9e9e;
-              text-decoration: none;
-
-              &:hover {
-                color: #000;
-              }
-
-              &.button {
-                margin-top: 5px;
-                background: #000;
-                color: #fff;
-                text-align: center;
-              }
-            }
+          .shoppingbag_icon {
+            width: 15px;
           }
         }
 
-        &:hover {
-          background: rgba(255,255,255,0.0);
-          color: #000;
-          ul { display: block; }
+        .user {
+          position: relative;
+          vertical-align: top;
+          float: left;
+          top: -25px;
+          margin: 2px;
+          padding: 30px 8px 8px;
+          line-height: 25px;
+
+          img {
+            vertical-align: middle; 
+            width: 25px;
+          }
+
+          > span {
+            padding-top: 70px;
+            margin: 15px 15px;
+            font-family: "Bebas Neue", sans-serif;
+            letter-spacing: 2px;
+            text-align: left;
+          }
+
+          .dropdown_icon {
+            width: 14px;
+            height:10px;
+          }
+
+          ul {
+            display: none;
+            position: absolute;
+            z-index: 2;
+            top: 56px;
+            right: 0;
+            width: 130px;
+            padding: 17px 10px 10px;
+            margin: 0;
+            list-style: none;
+            background: #fff;
+
+            li {
+              float: left;
+              width: 100%;
+
+              a {
+                display: block;
+                float: left;
+                width: 120px;
+                padding: 5px;
+                font: 14px/14px "Bebas Neue", sans-serif;
+                letter-spacing: 3px;
+                color: #9e9e9e;
+                text-decoration: none;
+
+                &:hover {
+                  color: #000;
+                }
+
+                &.button {
+                  margin-top: 5px;
+                  background: #000;
+                  color: #fff;
+                  text-align: center;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            background: rgba(255,255,255,0.0);
+            color: #000;
+            ul { display: block; }
+          }
         }
       }
     }
-  }
 
-  #container {
-    width: 906px;
-    margin: 0 auto;
-    padding: 70px 0 0;
+    #container {
+      width: 906px;
+      margin: 0 auto;
+      padding: 70px 0 0;
 
-    > footer {
-      float: left;
-      width: 100%;
-      padding: 10px 0;
-      font: 12px/18px Lato, sans-serif;
+      > footer {
+        float: left;
+        width: 100%;
+        padding: 10px 0;
+        font: 12px/18px Lato, sans-serif;
+      }
     }
   }
 }
 
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   body{
-    .menu1 {
-      display: none;
-    }
+    .bodyWrapper {
+      > header {
+        height: 56px;
+        padding: 10px 0 0;
 
-    .menu2 {
-      display: none;
+        > .content {
+          height: 43px;
+          display: inline-block;
+          width: 168px;
+          margin: 0 0 0 22px;
+        }
 
-      /**,
-      *:after,
-      *::before {
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-      }
+        .hidden-xs {
+          display: none;
+        }
 
-      html, body, .container, .scroller {
-        height: 100%;
-      }
+        .menuButton {
+          display: inline-block;
+          width: 30px;
+          height: 24px;
+          margin: 10px;
 
-      .scroller {
-        overflow-y: scroll;
-      }
+          &::before,
+          &::after,
+          span {
+            background: #000;
+            content: '';
+            display: block;
+            width: 30px;
+            height: 4px;
+            position: relative;
+            margin: 4px 0;
+            transition: none 0.5s ease 0.5s;
+            transition-property: transform, top, bottom, left, opacity;
+          }
 
-      .scroller,
-      .scroller-inner {
-        position: relative;
-      }
+          &::before {
+            top: 0;
+          }
 
-      .container {
-        position: relative;
-        overflow: hidden;
-        background: #34495e;
-      }
+          &::after {
+            bottom: 0;
+          }
+        }
 
-      .menu-trigger {
-        position: relative;
-        padding-left: 60px;
-        font-size: 0.9em;
-      }
+        a.tagline {
+          width: 168px;
+          float: none;
+          
+          img {
+            display: inline-block;
+            margin: 0 auto;
+          }
+        }
 
-      .menu-trigger:before {
-        position: absolute;
-        top: 30px;
-        left: 0;
-        width: 100px;
-        height: 20px;
-        background: #fff;
-        content: '';
-        display: block;
-        font: 100px;
-      }
+        .signInNav {
+          margin: 68px 26px 0 0px;
+        }
 
-      .mp-pusher {
-        position: relative;
-        left: 0;
-        height: 100%;
-      }
+        a.login,
+        a.signup {
+          padding: 3px 0 0;
+          font: 15px/19px "Bebas Neue", sans-serif;
+        }
 
-      .mp-menu {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: 300px;
-        height: 100%;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        -moz-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-
-      .mp-level {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #336ca6;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        -moz-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-
-      .mp-pusher::after,
-      .mp-level::after,
-      .mp-level::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 0;
-        height: 0;
-        content: '';
-        opacity: 0;
-      }
-
-      .mp-pusher::after,
-      .mp-level::after {
-        background: rgba(0,0,0,0.3);
-        -webkit-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
-        -moz-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
-        transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
-      }
-
-      .mp-level::after {
-        z-index: -1;
-      }
-
-      .mp-pusher.mp-pushed::after,
-      .mp-level.mp-level-overlay::after {
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        -webkit-transition: opacity 0.3s;
-        -moz-transition: opacity 0.3s;
-        transition: opacity 0.3s;
-      }
-
-      .mp-level.mp-level-overlay {
-        cursor: pointer;
-      }
-
-      .mp-level.mp-level-overlay.mp-level::before {
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        opacity: 1;
-      }
-
-      .mp-pusher,
-      .mp-level {
-        -webkit-transition: all 0.5s;
-        -moz-transition: all 0.5s;
-        transition: all 0.5s;
-      }
-
-      .mp-overlap .mp-level.mp-level-open {
-        box-shadow: 1px 0 2px rgba(0,0,0,0.2);
-        -webkit-transform: translate3d(-40px, 0, 0);
-        -moz-transform: translate3d(-40px, 0, 0);
-        transform: translate3d(-40px, 0, 0);
-      }
-
-      .mp-menu > .mp-level,
-      .mp-menu > .mp-level.mp-level-open,
-      .mp-menu.mp-overlap > .mp-level,
-      .mp-menu.mp-overlap > .mp-level.mp-level-open {
-        box-shadow: none;
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-      }
-
-      .mp-cover .mp-level.mp-level-open {
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-      }
-
-      .mp-cover .mp-level.mp-level-open > ul > li > .mp-level:not(.mp-level-open) {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        -moz-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-
-      .mp-menu ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .mp-menu h2 {
-        margin: 0;
-        padding: 1em;
-        color: rgba(0,0,0,0.4);
-        text-shadow: 0 0 1px rgba(0,0,0,0.1);
-        font-weight: 300;
-        font-size: 2em;
-      }
-
-      .mp-menu.mp-overlap h2::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-right: 8px;
-        font-size: 75%;
-        line-height: 1.8;
-        opacity: 0;
-        -webkit-transition: opacity 0.3s, -webkit-transform 0.1s 0.3s;
-        -moz-transition: opacity 0.3s, -moz-transform 0.1s 0.3s;
-        transition: opacity 0.3s, transform 0.1s 0.3s;
-        -webkit-transform: translateX(-100%);
-        -moz-transform: translateX(-100%);
-        transform: translateX(-100%);
-      }
-
-      .mp-menu.mp-cover h2 {
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 1px;
-        font-size: 1em;
-      }
-
-      .mp-overlap .mp-level.mp-level-overlay > h2::before {
-        opacity: 1;
-        -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
-        -moz-transition: -moz-transform 0.3s, opacity 0.3s;
-        transition: transform 0.3s, opacity 0.3s;
-        -webkit-transform: translateX(0);
-        -moz-transform: translateX(0);
-        transform: translateX(0);
-      }
-
-      .mp-menu ul li > a {
-        display: block;
-        padding: 0.7em 1em 0.7em 1.8em;
-        outline: none;
-        box-shadow: inset 0 -1px rgba(0,0,0,0.2);
-        text-shadow: 0 0 1px rgba(255,255,255,0.1);
-        font-size: 1.4em;
-        -webkit-transition: background 0.3s, box-shadow 0.3s;
-        -moz-transition: background 0.3s, box-shadow 0.3s;
-        transition: background 0.3s, box-shadow 0.3s;
-      }
-
-      .mp-menu ul li::before {
-        position: absolute;
-        left: 10px;
-        z-index: -1;
-        color: rgba(0,0,0,0.2);
-        line-height: 3.5;
-      }
-
-      .mp-level > ul > li:first-child > a {
-        box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
-      }
-
-      .mp-menu ul li a:hover,
-      .mp-level > ul > li:first-child > a:hover {
-        background: rgba(0,0,0,0.2);
-        box-shadow: inset 0 -1px rgba(0,0,0,0);
-      }
-
-      .mp-menu .mp-level.mp-level-overlay > ul > li > a,
-      .mp-level.mp-level-overlay > ul > li:first-child > a {
-        box-shadow: inset 0 -1px rgba(0,0,0,0);
-      }
-
-      .mp-level > ul > li:first-child > a:hover,
-      .mp-level.mp-level-overlay > ul > li:first-child > a {
-        box-shadow: inset 0 -1px rgba(0,0,0,0), inset 0 1px rgba(0,0,0,0);
-      } 
-
-      .mp-back {
-        background: rgba(0,0,0,0.1);
-        outline: none;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        display: block;
-        font-size: 0.8em;
-        padding: 1em;
-        position: relative;
-        box-shadow: inset 0 1px rgba(0,0,0,0.1);
-        -webkit-transition: background 0.3s;
-        -moz-transition: background 0.3s;
-        transition: background 0.3s;
-      }
-
-      .mp-back::after {
-        font-family: 'linecons';
-        position: absolute;
-        content: "\e037";
-        right: 10px;
-        font-size: 1.3em;
-        color: rgba(0,0,0,0.3);
-      }
-
-      .mp-menu .mp-level.mp-level-overlay > .mp-back,
-      .mp-menu .mp-level.mp-level-overlay > .mp-back::after {
-        background: transparent;
-        box-shadow: none;
-        color: transparent;
-      }
-
-      .no-csstransforms3d .mp-pusher,
-      .no-js .mp-pusher {
-        padding-left: 300px;
-      }
-
-      .no-csstransforms3d .mp-menu .mp-level,
-      .no-js .mp-menu .mp-level {
-        display: none;
-      }
-
-      .no-csstransforms3d .mp-menu > .mp-level,
-      .no-js .mp-menu > .mp-level {
-        display: block;
-      } */
-    }
-
-    > header {
-      height: 98px;
-
-      a.tagline {
-        width: 100%;
-        
-        img {
-          display: block;
-          margin: 0 auto;
+        .right {
+          display: none;
         }
       }
 
-      .signInNav {
-        margin: 68px 26px 0 0px;
-      }
-
-      a.login,
-      a.signup {
-        padding: 3px 0 0;
-        font: 15px/19px "Bebas Neue", sans-serif;
-      }
-
-      > .content {
+      #container {
         width: 100%;
-        height: 98px;
+        padding: 90px 0 0 0;
       }
     }
+  }
 
-    #container {
-      width: 100%;
-      padding: 100px 0 0 0;
+  .mm-list > li > a.cart {
+    img {
+      display: none;
+    }
+
+    &::after {
+      content: "Notifications";
     }
   }
 }
