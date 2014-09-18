@@ -27,7 +27,3 @@
 bin/rails
 
 bin/rake
-
-bin/rake
-
-app/assets/stylesheets/application.css.scss
