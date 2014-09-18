@@ -1,5 +1,5 @@
-<nav id="boutique">
-  <ul>
+<nav id="boutique" class="boutiqueMenu">
+  <ul class="boutiqueMenu">
     <%= content_tag(:li, link_to("Search", new_discover_path, class: "discover"), class: active_css_class(/^\/discover/)) %>
 
     <%= content_tag(:li, class: active_css_class(/^\/(stream|favorites)/)) do %>

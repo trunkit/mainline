@@ -3,25 +3,28 @@
     <span>Photos</span>
   </div>
 
-  <div class="row photo">
-    <div id="item-photos">
-      <%= render(partial: "items/item_photo", collection: @item.photos, as: :photo) %>
-    </div>
+  <div class="centerPic">
+    <div class="row photo">
+      <div id="item-photos">
+        <%= render(partial: "items/item_photo", collection: @item.photos, as: :photo) %>
+      </div>
 
-    <%= content_tag(:span, class: "button") do %>
-      <span>Add New Photo(s)</span>
-      <%= f.file_field(:url, multiple: true) %>
-    <% end %>
+      <%= content_tag(:span, class: "button") do %>
+        <span>Add New Photo(s)</span>
+        <%= f.file_field(:url, multiple: true) %>
+      <% end %>
+    </div>
   </div>
+
 <% end if @item.persisted? %>
 
 <%= form_for(@item) do |f| %>
   <div class="separator">
-    <span>Supply a new item</span>
+    <span>Basic Item Information</span>
   </div>
 
   <div class="row brand-select">
-    <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] } << ["(Add a New Brand)", -1], :prompt => "Designer") %>
+    <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] } << ["(ADD A NEW DESIGNER)", -1], :prompt => "Designer") %>
   </div>
 
   <div class="row brand-add">
@@ -38,14 +41,14 @@
   </div>
 
   <div class="separator">
-    <span>Required: Sizes &amp; Quantities</span>
+    <span>The Details</span>
   </div>
 
   <div class="row category-select">
     <%= f.select(:primary_category_id, @primary_categories.map{|c| [c.name, c.id] }, {:prompt => "Primary Category"}, required: true, class: "required") %>
   </div>
 
-  <div class="row">
+  <div class="row secondary-category">
     <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
   </div>
 
@@ -54,20 +57,20 @@
   </div>
 
   <div class="row">
-      <%= f.text_area(:fit, :placeholder => "Fit") %>
+      <%= f.text_area(:fit, :placeholder => "How does it fit? (Optional)") %>
   </div>
 
   <div class="row">
-    <%= f.text_area(:construction, :placeholder => "Material") %>
+    <%= f.text_area(:construction, :placeholder => "What is it made of? (Optional)") %>
   </div>
 
   <div class="separator">
-    <span>Optional: Details</span>
+    <span>Sizes &amp; Quantity</span>
   </div>
 
   <div class="row">
     <p>
-      Enter the size and quantity for each item.<br>
+      Enter the size and quantity for each item. 
       For "Size", type in size exactly as show on product tag. (e.g. S, Small, 1)
   </div>
 

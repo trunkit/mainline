@@ -21,7 +21,7 @@ class StreamPhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    process resize_to_fit: [62, 62]
+    process resize_to_fit: [84, 84]
   end
 
   def extension_white_list

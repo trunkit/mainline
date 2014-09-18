@@ -180,5 +180,20 @@ SiteBindings.item = {
 
       return false;
     });
+
+    $("#item_primary_category_id").change(function() {
+      if ($('#item_primary_category_id:selected').text() == ""){
+        $('.secondary-category').show();
+        $('#item_primary_category_id').css({"color": "#000"});
+      }
+      return true;
+    });
+
+    $("#item_brand_id").change(function() {
+      if ($('#item_brand_id:selected').text() == ""){
+        $('#item_brand_id').css({"color": "#000"});
+      }
+      return true;
+    });
   }
 };

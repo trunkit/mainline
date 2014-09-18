@@ -1,3 +1,18 @@
+button.btn.btn-xs.btn-primary {
+  display: block;
+  width: 366px;
+  margin: 4px auto;
+  height: 40px;
+  font: 16px/37px "Bebas Neue", sans-serif;
+  letter-spacing: 6px;
+  border: 0;
+  color: #fff;
+  background: #000;
+  text-align: center;
+  text-decoration: none;
+}
+
+
 article.item {
   position: relative;
   width: 820px;
@@ -167,9 +182,9 @@ div.item-quantity {
   div.separator {
     float: left;
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     padding: 2px 0;
-    font: 14px/18px "Bebas Neue", sans-serif;
+    font: 14px/22px "Bebas Neue", sans-serif;
     letter-spacing: 2px;
     text-indent: 2px;
 
@@ -181,29 +196,75 @@ div.item-quantity {
 
   div.row {
     display: block;
-    margin: 0 auto 10px;
+    margin: 0 auto 8px;
     width: 100%;
     font: 14px/20px "Helvetica LT Std", sans-serif;
     letter-spacing: 1px;
 
+    a.increase,
+    a.decrease {
+      display: none;
+    }
+
     p {
-      margin: 0;
+      margin: 0 auto;
       padding: 0 0 7px;
+      text-align: center;
+      width: 350px;
     }
 
     label, input, select, textarea {
       display: block;
-      margin: 0 auto; 
+      margin: 0 auto 8px;
+      width: 350px;
+      height: 36px;
+      border: 2px solid #000;
+      font: 15px/18px "Helvetica LT Std", sans-serif;
+      letter-spacing: 1px;
+      padding: 0 6px;
+      border-radius: 0;
+      -webkit-appearance: none;
     }
-    label { text-align: right; }
+
+    select {
+      width: 366px;
+      height: 40px;
+      background: url(/assets/header/dropdown-arrow.png) no-repeat right 10px center;
+      background-size: 17px 12px;
+      color: #999;
+    }
+
+    label { 
+      text-align: right; 
+    }
+
+    textarea {
+      height: 80px;
+      padding: 6px 6px 0px;
+    }
+
+    &.secondary-category {
+      display: none;
+
+      select {
+        color: #000;
+      }
+    }
+
+    &.brand-add {
+      display: none;
+    }
+
 
     &.photo {
+      height: 121px;
+
       div.item-photo {
         position: relative;
         float: left;
-        margin: 0 10px 0 0;
-        width: 62px;
-        height: 62px;
+        margin: 0 8px 0 0;
+        width: 84px;
+        height: 84px;
 
         a.delete {
           display: none;
@@ -218,7 +279,27 @@ div.item-quantity {
           text-transform: uppercase;
         }
 
-        &:hover a.delete { display: block; }
+        .fancybox {
+          img {
+            width: 80px;
+            border: 2px solid #000;
+          }
+        }
+
+        &:hover a.delete { 
+          display: block; 
+          font: 14px/26px "Bebas Neue", sans-serif;
+          letter-spacing: 2px;
+          bottom: 0px;
+          height: 26px;
+          width: 80px;
+          color: #000;
+          background: #fff;
+          border: 2px solid #000;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
       }
 
       .button {
@@ -291,6 +372,26 @@ div.item-quantity {
     background: #000;
   }
 
+  div.item-quantity {
+    width: 100%;
+    height: 40px;
+
+    div.row {
+      width: 365px;
+      float: none;
+
+      #name {
+        width: 262px;
+        margin: 0;
+      }
+
+      #quantity {
+        width: 73px;
+        margin: 0 0 8px -2px;
+      }
+    }
+  }
+
   input[type="submit"],
   a.remove {
     display: block;
@@ -298,7 +399,7 @@ div.item-quantity {
     clear: both;
     width: 200px;
     margin: 0 auto 10px;
-    padding: 0 20px;
+    height: 40px;
     font: 16px/36px "Bebas Neue", sans-serif;
     letter-spacing: 6px;
     border: 0;
@@ -374,8 +475,15 @@ div.item-quantity {
         text-align: left;
       }
 
-      input {
+      select {
+        width: 300px;
+      }
+
+      input,
+      textarea,
+      p {
         border-radius: 0;
+        width: 284px;
       }
 
       > div {
@@ -399,12 +507,21 @@ div.item-quantity {
         }
       }
     }
-  }
 
-  div.item-quantity {
-    .row {
-      input {
-        border-radius: 0;
+    div.item-quantity {
+      div.row {
+        width: 284px;
+
+        #name {
+          width: 190px;
+        }
+
+        #quantity {
+          width: 64px;
+        }
+        input {
+          border-radius: 0;
+        }
       }
     }
   }
@@ -415,5 +532,10 @@ div.item-quantity {
     h1 {
       font: 40px/50px "Helvetica LT Std", sans-serif;
     }
+  }
+
+  button.btn.btn-xs.btn-primary {
+    width: 300px;
+    height: 40px;
   }
 }
