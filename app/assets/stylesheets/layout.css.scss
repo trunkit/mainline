@@ -270,7 +270,7 @@ body {
   }
 }
 
-@media screen and (max-device-width: 480px) and (orientation: portrait), (max-width: 480px){
+@media screen and (max-device-width: 480px) and (orientation: portrait){
   body{
     .bodyWrapper {
       > header {
