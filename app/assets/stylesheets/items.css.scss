@@ -180,9 +180,9 @@ div.item-quantity {
   }
 
   div.row {
-    float: left;
+    display: block;
+    margin: 0 auto 10px;
     width: 100%;
-    margin: 0 0 10px;
     font: 14px/20px "Helvetica LT Std", sans-serif;
     letter-spacing: 1px;
 
@@ -191,7 +191,10 @@ div.item-quantity {
       padding: 0 0 7px;
     }
 
-    label, input, select, textarea { float: left; }
+    label, input, select, textarea {
+      display: block;
+      margin: 0 auto; 
+    }
     label { text-align: right; }
 
     &.photo {

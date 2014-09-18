@@ -17,53 +17,52 @@
 
 <%= form_for(@item) do |f| %>
   <div class="separator">
-    <span>Required: Basic Info</span>
+    <span>Supply a new item</span>
+  </div>
+
+  <div class="row brand-select">
+    <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] } << ["(Add a New Brand)", -1], :prompt => "Designer") %>
+  </div>
+
+  <div class="row brand-add">
+    <%= text_field_tag(:brand_name, "", placeholder: "Add a new Designer", class: "form-control") %>
+    <%= content_tag(:span, button_tag("Add Designer", class: "btn btn-xs btn-primary"), class: "input-group-addon", id: "add-brand") %>
   </div>
 
   <div class="row">
-    <div class="col-2">
-      <%= f.label(:name) %>
-      <%= f.text_field(:name, required: true, class: "required") %>
-    </div>
-
-    <div class="col-2">
-      <%= f.label(:price) %>
-      <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, class: "required") %>
-    </div>
+      <%= f.text_field(:name, required: true, :placeholder => "Item Name", class: "required") %>
   </div>
 
   <div class="row">
-    <div class="col-2">
-      <%= f.label(:description) %>
-      <%= f.text_area(:description, required: true, class: "required") %>
-    </div>
-
-    <div class="col-2 brand-select">
-      <%= f.label(:brand_id) %>
-      <%= f.select(:brand_id, @brands.map{|b| [b.name, b.id] } << ["(Add a New Brand)", -1]) %>
-    </div>
-
-    <div class="col-2 brand-add">
-      <%= label_tag(:brand_name, "Add a New Brand") %>
-      <%= text_field_tag(:brand_name, "", placeholder: "Before continuing, add a new brand", class: "form-control") %>
-      <%= content_tag(:span, button_tag("Add Brand", class: "btn btn-xs btn-primary"), class: "input-group-addon", id: "add-brand") %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <%= f.label(:primary_category_id) %>
-      <%= f.select(:primary_category_id, @primary_categories.map{|c| [c.name, c.id] }, {}, required: true, class: "required") %>
-    </div>
-
-    <div class="col-2">
-      <%= f.label(:secondary_category_id) %>
-      <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
-    </div>
+    <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, :placeholder => "Price", class: "required") %>
   </div>
 
   <div class="separator">
     <span>Required: Sizes &amp; Quantities</span>
+  </div>
+
+  <div class="row category-select">
+    <%= f.select(:primary_category_id, @primary_categories.map{|c| [c.name, c.id] }, {:prompt => "Primary Category"}, required: true, class: "required") %>
+  </div>
+
+  <div class="row">
+    <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
+  </div>
+
+  <div class="row">
+    <%= f.text_area(:description, required: true, :placeholder => "Description", class: "required") %>
+  </div>
+
+  <div class="row">
+      <%= f.text_area(:fit, :placeholder => "Fit") %>
+  </div>
+
+  <div class="row">
+    <%= f.text_area(:construction, :placeholder => "Material") %>
+  </div>
+
+  <div class="separator">
+    <span>Optional: Details</span>
   </div>
 
   <div class="row">
@@ -73,22 +72,6 @@
   </div>
 
   <%= render("items/quantity", item: @item) %>
-
-  <div class="separator">
-    <span>Optional: Details</span>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <%= f.label(:fit) %>
-      <%= f.text_area(:fit) %>
-    </div>
-
-    <div class="col-2">
-      <%= f.label(:construction, "Material") %>
-      <%= f.text_area(:construction) %>
-    </div>
-  </div>
   
   <div class="hideMobile">
     <div class="separator">
