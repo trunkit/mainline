@@ -23,10 +23,8 @@
 
     <%= csrf_meta_tags %>
 
-    <script type="text/javascript" src="/assets/jquery.mmenu.min.all.js"></script>
-    <link href="/assets/jquery.mmenu.all.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript">
-      $(function() {  
+      $(function() {
         $("nav#boutique").clone().attr('id', 'menu-original' ).addClass("hidden-xs").insertBefore("#boutique");
         $("nav#boutique").mmenu({
                "header": true
@@ -49,7 +47,7 @@
   </head>
 
   <%= content_tag(:body, class: (!current_user ? 'public' : nil)) do %>
-    <div class="bodyWrapper">  
+    <div class="bodyWrapper">
       <header>
         <a href="#boutique" class="menuButton">
           <span></span>
