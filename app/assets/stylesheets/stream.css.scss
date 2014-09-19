@@ -240,10 +240,6 @@
       &:hover > div.details { display: block; }
     }
 
-    &:nth-child(3n+3) {
-      form.item-quantity { left: -302px; }
-    }
-
     form.item-quantity {
       display: none;
       position: absolute;
@@ -375,10 +371,6 @@
         input[type="submit"] {
           border-radius: 0;
         }
-      }
-
-      &:nth-child(3n+3) {
-        form.item-quantity { left: 0; }
       }
     }
   }
