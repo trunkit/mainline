@@ -13,6 +13,7 @@ button.btn.btn-xs.btn-primary {
 }
 
 
+
 article.item {
   position: relative;
   width: 820px;
@@ -263,8 +264,9 @@ div.item-quantity {
         position: relative;
         float: left;
         margin: 0 8px 0 0;
-        width: 84px;
-        height: 84px;
+        width: 80px;
+        height: 80px;
+        border: 2px solid #000;
 
         a.delete {
           display: none;
@@ -279,11 +281,15 @@ div.item-quantity {
           text-transform: uppercase;
         }
 
-        .fancybox {
+        a.fancybox {
+          width: 80px;
+          height: 80px;
+          display: block;
+
           img {
-            width: 80px;
-            height: 80px;
-            border: 2px solid #000;
+            min-width: 100%;
+            min-height: 100%;
+            overflow: hidden;
           }
         }
 
@@ -296,7 +302,7 @@ div.item-quantity {
           width: 80px;
           color: #000;
           background: #fff;
-          border: 2px solid #000;
+          border-top: 2px solid #000;
           text-align: center;
           text-decoration: none;
           text-transform: uppercase;
