@@ -50,6 +50,7 @@
       <%= render("items/quantity", item: item)  %>
       <%= submit_tag("Update Quantities") %>
       <%= link_to("Edit Item", [:edit, item]) %>
+      <%= link_to("Close", "#", class: "buy button edit item-#{item.id} closeButton") if current_user_owns_item?(item) %>
     <% end %>
   <% end %>
 <% end %>

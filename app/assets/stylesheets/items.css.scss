@@ -141,23 +141,28 @@ article.item {
 }
 
 div.item-quantity {
-  width: 290px;
+  width: 100%;
 
   .row {
-    float: left;
-    width: 100%;
-    padding: 0 0 5px;
+    display: block;
+    width: 284px;
+    margin: 4px auto 4px;
+    height: 32px;
 
     input {
       float: left;
       width: 48px;
       height: 28px;
-      margin: 0 0 0 5px;
+      margin: 0 0 0 0px;
       padding: 0 5px;
       border: 2px solid #000;
       font-family: "Helvetica LT Std", sans-serif;
 
-      &:first-child { width: 130px; }
+      &#quantity {
+        margin-left: -2px;
+      }
+
+      &:first-child { width: 136px; }
     }
 
     a {

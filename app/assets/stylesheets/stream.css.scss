@@ -249,20 +249,18 @@
       position: absolute;
       z-index: 3;
       top: -2px;
-      left: 298px;
       width: 296px;
-      height: 348px;
-      padding: 5px 2px;
+      height: 358px;
       border: 2px solid #000;
       border-left: 0;
       background: #fff;
 
       input[type="submit"],
       > a {
-        float: left;
-        width: 286px;
+        display: block;
+        margin: 0 auto 4px;
+        width: 284px;
         height: 40px;
-        margin: 0 0 5px 4px;
         padding: 0;
         border: 0;
         font: 16px/41px "Bebas Neue", sans-serif;
@@ -271,6 +269,16 @@
         text-align: center;
         text-decoration: none;
         background: #000;
+      }
+
+      >a.closeButton {
+        display: block;
+        width: 280px;
+        background: #fff;
+        border: solid 2px #000;
+        color: #000;
+        height: 36px;
+        font: 16px/38px "Bebas Neue", sans-serif;
       }
     }
   }
@@ -356,21 +364,9 @@
         a.favorite {
           padding: 5px;
         }
-
-        a.buy.button.edit.closeMobile {
-          top: 312px;
-          z-index: 100;
-          width: 286px;
-          left: 0;
-          margin: 0 0 0 4px;
-        }
       }
 
       form.item-quantity {
-        width: 296px;
-        padding: 5px 0;
-        left: 0;
-
         div.item-quantity .row input {
           border-radius: 0;
         }
