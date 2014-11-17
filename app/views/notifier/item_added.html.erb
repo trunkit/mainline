@@ -3,7 +3,7 @@
 <p>
 	Item Name: <%= @item.name %>
 	<br>
-	Brand: <%= @item.brand_name %>
+	Brand: <%= @item.brand_id %>
 </p>
 
 <p>
@@ -21,6 +21,5 @@
 </p>
 
 <p>
-
 	Photos: <%= render(partial: "items/photo", collection: @item.photos, as: :photo) %>
 </p>
