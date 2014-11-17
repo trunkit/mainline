@@ -1,26 +1,25 @@
 <p>Boutique Name: <%= @user.name %></p>
 
 <p>
-	Item Name: <%= @item.name %>
+	<strong>Item Name:</strong> <%= @item.name %>
 	<br>
-	Brand: <%= @item.brand_id %>
+	<strong>Brand:</strong> <%= @item.brand_name %>
 </p>
 
 <p>
-	Price: <%= @item.price %>
+	<strong>Price:</strong> <%= @item.price %>
 	<br>
-	Category: <%= @item.primary_category_id %>
+	<strong>Category:</strong> <%= @item.primary_category_id %>
 	<br>
-	Sub Category: <%= @item.secondary_category_id %>
+	<strong>Sub Category:</strong> <%= @item.secondary_category_id %>
 	p<br>
-	Description: <%= @item.description %>
+	<strong>Description:</strong> <%= @item.description %>
 	<br>
-	Fit: <%= @item.fit %>
+	<strong>Fit:</strong> <%= @item.fit %>
 	<br>
-	Material: <%= @item.construction %>
+	<strong>Material:</strong> <%= @item.construction %>
 </p>
 
 <p>
-
-	Photos: <%= render(partial: "items/photo", collection: @item.photos, as: :photo) %>
+	<strong>Photos:</strong> <%= render(partial: "items/photo", collection: @item.photos, as: :photo) %>
 </p>
