@@ -58,17 +58,17 @@ class ItemsController < CatalogAbstractController
   def update
     @item = current_user.items.find(params[:id])
 
-    respond_to do |format|
-      format.html do
-        @item.update_attributes(item_params) ?
-          redirect_to([:edit, @item]) :
-          render(action: :new)
+    if @item.update_attributes(item_params) 
+      # send email
+      Notifier.item_added(@item, current_user).deliver
+      respond_to do |format|
+        format.html { redirect_to([:edit, @item]) }
+        format.json { render(json: @item.to_json(methods: :photos)) }
       end
-
-      format.json do
-        @item.update_attributes(item_params) ?
-          render(json: @item.to_json(methods: :photos)) :
-          render(json: @item.errors, status: 422)
+    else
+      respond_to do |format|
+        format.html { render(action: :new) }
+        format.json { render(json: @item.errors, status: 422) }
       end
     end
   end

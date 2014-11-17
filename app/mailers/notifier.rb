@@ -55,4 +55,14 @@ class Notifier < ActionMailer::Base
       subject: "#{@item.name} has been restocked on Trunkit"
     })
   end
+
+  def item_added(item, user)
+    @item = item
+    @user = user
+
+    mail({
+      to: ["team@thetrunksale.com"],
+      subject: "#{@user.name} Listed #{item.name}"
+    })
+  end
 end
