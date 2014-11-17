@@ -12,7 +12,7 @@
 	Category: <%= @item.primary_category_id %>
 	<br>
 	Sub Category: <%= @item.secondary_category_id %>
-	<br>
+	p<br>
 	Description: <%= @item.description %>
 	<br>
 	Fit: <%= @item.fit %>
@@ -21,5 +21,6 @@
 </p>
 
 <p>
-	Photos: <%= @item.photos =>
+
+	Photos: <%= render(partial: "items/photo", collection: @item.photos, as: :photo) %>
 </p>
