@@ -235,7 +235,7 @@ div.item-quantity {
     select {
       width: 366px;
       height: 40px;
-      background: url(/assets/header/dropdown-arrow.png) no-repeat right 10px center;
+      background: url(/assets/header/dropdown-arrows.png) no-repeat right 10px center;
       background-size: 17px 12px;
       color: #999;
     }
@@ -245,12 +245,11 @@ div.item-quantity {
     }
 
     textarea {
-      height: 80px;
+      height: 50px;
       padding: 6px 6px 0px;
     }
 
     &.secondary-category {
-      display: none;
 
       select {
         color: #000;
@@ -410,15 +409,16 @@ div.item-quantity {
     float: none;
     clear: both;
     width: 200px;
-    margin: 0 auto 10px;
+    margin: 10px auto;
     height: 40px;
-    font: 16px/36px "Bebas Neue", sans-serif;
+    font: 16px/42px "Bebas Neue", sans-serif;
     letter-spacing: 6px;
     border: 0;
     color: #fff;
     background: #000;
     text-align: center;
     text-decoration: none;
+    padding: 0 !important;
   }
 
   a.remove { padding: 0; }
