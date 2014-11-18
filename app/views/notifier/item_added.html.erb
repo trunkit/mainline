@@ -1,4 +1,8 @@
-<p>Boutique Name: <%= @item.boutique.name %></p>
+<% user.name %> from <%= @item.boutique.name %></p> submitted the following item:
+
+<p>
+	Boutique Name: <%= @item.boutique.name %>
+</p>
 
 <p>
 	Item Name: <%= @item.name %>
@@ -12,7 +16,7 @@
 	Category: <%= @item.primary_category.name %>
 	<br>
 	Sub Category: <%= @item.secondary_category.name %>
-	p<br>
+	<br>
 	Description: <%= @item.description %>
 	<br>
 	Fit: <%= @item.fit %>
