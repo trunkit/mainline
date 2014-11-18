@@ -197,3 +197,10 @@ SiteBindings.item = {
     });
   }
 };
+
+// $(document).ready(function () {
+//     // Handler for .ready() called.
+//     $('html, body').animate({
+//         scrollTop: $('.photographs').offset().top
+//     }, 'slow');
+// });
