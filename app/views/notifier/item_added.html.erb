@@ -6,22 +6,24 @@
 
 <p>
 	Item Name: <%= @item.name %>
-	<br>
-	Brand: <%= @item.brand.name %>
 </p>
 
 <p>
-	Price: <%= @item.price %>
-	<br>
-	Category: <%= @item.primary_category.name %>
-	<br>
-	Sub Category: <%= @item.secondary_category.name %>
-	<br>
 	Description: <%= @item.description %>
 	<br>
 	Fit: <%= @item.fit %>
 	<br>
 	Material: <%= @item.construction %>
+	<br>
+	Brand: <%= @item.brand.name %>
+	<br>
+	Category: <%= @item.primary_category.name %>
+	<br>
+	Sub Category: <%= @item.secondary_category.name %>
+	<br>
+	Price: <%= @item.price %>
+	<br>
+	Discount Amount: <%= @item.discount_amount %>
 	<br>
 	Sizes: <%= @item.sizes %>
 </p>
