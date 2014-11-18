@@ -9,9 +9,9 @@
 <p>
 	Price: <%= @item.price %>
 	<br>
-	Category: <%= @item.primary_category_id %>
+	Category: <%= @item.primary_category.name %>
 	<br>
-	Sub Category: <%= @item.secondary_category_id %>
+	Sub Category: <%= @item.secondary_category.name %>
 	p<br>
 	Description: <%= @item.description %>
 	<br>
