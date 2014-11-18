@@ -14,8 +14,8 @@ configatron.twitter do |t|
 end
 
 configatron.s3 do |s3|
-  s3.access_key_id     = "AKIAIVXNOE4PA6LP7BJQ"
-  s3.secret_access_key = "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"
+  s3.access_key_id     = "AKIAJESZBS3BIWGW6F3Q"
+  s3.secret_access_key = "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"
 end
 
 configatron.stripe do |s|
