@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908005924) do
+ActiveRecord::Schema.define(version: 20141118222311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+  enable_extension "pg_stat_statements"
 
   create_table "activities", force: true do |t|
     t.integer  "owner_id"
@@ -181,6 +182,7 @@ ActiveRecord::Schema.define(version: 20140908005924) do
     t.decimal  "packaging_length",      precision: 9, scale: 2, default: 12.0
     t.text     "parcel_id"
     t.integer  "declined_boutique_ids",                                                      array: true
+    t.decimal  "discount_amount"
   end
 
   create_table "ledger_entries", force: true do |t|

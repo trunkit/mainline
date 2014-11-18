@@ -1,3 +1,22 @@
+<%= form_for(:photo, url: [@item, :photos], multipart: true, html: { id: "photo-upload" }) do |f| %>
+  <div class="separator photographs">
+    <span>Photos</span>
+  </div>
+
+  <div class="centerPic">
+    <div class="row photo">
+      <div id="item-photos">
+        <%= render(partial: "items/item_photo", collection: @item.photos, as: :photo) %>
+      </div>
+
+      <%= content_tag(:span, class: "button") do %>
+        <span>Add New Photo(s)</span>
+        <%= f.file_field(:url, multiple: true) %>
+      <% end %>
+    </div>
+  </div>
+<% end if @item.persisted? %>
+
 <%= form_for(@item) do |f| %>
   <div class="separator">
     <span>Basic Item Information</span>
@@ -55,6 +74,13 @@
   </div>
 
   <%= render("items/quantity", item: @item) %>
+
+  <div class="separator">
+    <span>Trunksale Discount</span>
+  </div>
+  <div class="row">
+    <%= f.text_field(:discount_amount, value: number_to_percentage(@item.discount_amount, unit: "", :precision => 0), :placeholder => "Discount Amount", class: "required") %>
+  </div>
   
   <div class="hideMobile">
     <div class="separator">
@@ -120,28 +146,11 @@
   </div>
   <hr>
 
-  <%= submit_tag(@item.persisted? ? "Update Item" : "Add Item") %>
-  <%= link_to("Remove Item", item_path, method: :delete, data: { confirm: "Are you sure that you want to remove #{@item.name}?" }, class: "remove") if @item.persisted? %>
+  <div class="finishForm finish1">
+    <%= submit_tag(@item.persisted? ? "Update Item" : "Add Item") %>
+    <%= link_to("Remove Item", item_path, method: :delete, data: { confirm: "Are you sure that you want to remove #{@item.name}?" }, class: "remove") if @item.persisted? %>
+  </div>
 <% end %>
-<%= form_for(:photo, url: [@item, :photos], multipart: true, html: { id: "photo-upload" }) do |f| %>
-  <div class="separator photographs">
-    <span>Photos</span>
-  </div>
-
-  <div class="centerPic">
-    <div class="row photo">
-      <div id="item-photos">
-        <%= render(partial: "items/item_photo", collection: @item.photos, as: :photo) %>
-      </div>
-
-      <%= content_tag(:span, class: "button") do %>
-        <span>Add New Photo(s)</span>
-        <%= f.file_field(:url, multiple: true) %>
-      <% end %>
-    </div>
-  </div>
-
-<% end if @item.persisted? %>
 
 <script>
 $(function() {
@@ -150,3 +159,5 @@ $(function() {
   SiteBindings.item.brands();
 });
 </script>
+
+
