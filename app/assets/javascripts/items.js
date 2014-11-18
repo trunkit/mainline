@@ -1,3 +1,17 @@
+// $(document).ready(function () {
+//     // Handler for .ready() called.
+//     $('html, body').animate({
+//         scrollTop: $('.photographs').offset().top
+//     }, 'slow');
+// });
+
+$(document).ready(function() {
+    if  ($('.finish2').is(":visible")) {
+        $(".finish1").hide();
+    }
+});
+
+
 SiteBindings.item = {
   form: function(itemId, secondaryCategoryId, secondaryCategories) {
     $("#item_primary_category_id").change(function() {
@@ -197,10 +211,3 @@ SiteBindings.item = {
     });
   }
 };
-
-// $(document).ready(function () {
-//     // Handler for .ready() called.
-//     $('html, body').animate({
-//         scrollTop: $('.photographs').offset().top
-//     }, 'slow');
-// });
