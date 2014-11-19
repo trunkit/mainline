@@ -12,14 +12,14 @@ $(document).ready(function() {
     $(".edit_item").submit();
   });
 
-  $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .finish1, .finish2").hide();
+  $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .finish1, .finish2, .displayName").hide();
 
   $(".update1").click(function() {
     $(".aboutItem").show();
     $('html, body').animate({
       scrollTop: $('.aboutItem').offset().top
     }, 'slow');
-    $('.update1').hide();
+    $('.update1, .step1').hide();
   })
 
   $(".update2").click(function() {
@@ -27,7 +27,7 @@ $(document).ready(function() {
     $('html, body').animate({
       scrollTop: $('.sizeQuantity').offset().top
     }, 'slow');
-    $('.update2').hide();
+    $('.update2, .step2').hide();
   })
 
   $(".update3").click(function() {
@@ -35,13 +35,36 @@ $(document).ready(function() {
     $('html, body').animate({
       scrollTop: $('.trunksaleDiscount').offset().top
     }, 'slow');
-    $('.update3').hide();
+    $('.update3, .step3').hide();
   })
 
   if ($(".edit_item").is(":visible")) {
     $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .updateItem, .finish2").show();
-    $(".update1, .update2, .update3").hide();
+    $(".update1, .update2, .update3, .step1, .step2, .step3, .step4").hide();
+    $("#item_discount_amount").on('keyup', function() {
+      $('.displayName').show();
+      var commission = $('#item_discount_amount').val() * .08;
+      var discount = ($('#item_price').val() - ($('#item_discount_amount').val() * 1.08)) / $('#item_price').val() * 100;
+      var listPrice = $('#item_discount_amount').val() * 1.08;
+      var proceeds = $('#item_discount_amount').val() * 1;
+      $(".displayAmount2").text(discount.toFixed(2) + '%');
+      $(".displayAmount1").text('$' + listPrice.toFixed(2));
+      $(".displayAmount3").text('$' + commission.toFixed(2));
+      $(".displayAmount4").text('$' + proceeds.toFixed(2));
+    });
   }
+
+  $("#item_discount_amount").on('keyup', function() {
+    $('.displayName').show();
+    var commission = $('#item_discount_amount').val() * .08;
+    var discount = ($('#item_price').val() - ($('#item_discount_amount').val() * 1.08)) / $('#item_price').val() * 100;
+    var listPrice = $('#item_discount_amount').val() * 1.08;
+    var proceeds = $('#item_discount_amount').val() * 1;
+    $(".displayAmount2").text(discount.toFixed(2) + '%');
+    $(".displayAmount1").text('$' + listPrice.toFixed(2));
+    $(".displayAmount3").text('$' + commission.toFixed(2));
+    $(".displayAmount4").text('$' + proceeds.toFixed(2));
+  });
 });
 
 SiteBindings.item = {

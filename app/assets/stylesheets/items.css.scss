@@ -185,6 +185,26 @@ div.item-quantity {
     display: none;
   }
 
+  .aboutItem,
+  .sizeQuantity {
+    margin: 30px 0 0;
+  }
+
+  .trunksaleDiscount {
+    margin: 30px 0 30px;
+
+    .pricingResults {
+      width: 364px;
+      margin: 0 auto;
+      font: 14px "Helvetica LT Std", Helvetica, sans-serif;
+      letter-spacing: 1px;
+
+      div .displayAmount {
+        float: right;
+      }
+    }
+  }
+
   div.separator {
     float: left;
     width: 100%;
@@ -389,10 +409,10 @@ div.item-quantity {
 
   div.item-quantity {
     width: 100%;
-    height: 40px;
 
     div.row {
       width: 365px;
+      height: 40px;
       float: none;
 
       #name {
@@ -406,6 +426,7 @@ div.item-quantity {
       }
     }
   }
+
   .finishForm,
   .nextStep {
     display: block;
@@ -428,9 +449,40 @@ div.item-quantity {
       text-decoration: none;
       padding: 0 !important;
       cursor: pointer;
+      -webkit-transition: background-color .2s ease-in-out;
+      -moz-transition: background-color .2s ease-in-out;
+      -o-transition: background-color .2s ease-in-out;
+      transition: background-color .2s ease-in-out;
+      
+      &:hover {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+        line-height: 38px;
+      }
     }
 
+    input[type="submit"]:hover {
+      height: 40px;
+      width: 200px;
+    }
+
+    a.remove:hover,
+    div#updateItem:hover {
+        height: 36px;
+        width: 196px;
+    }
+
+    
+
     a.remove { padding: 0; }
+
+    .steps {
+      text-align: center;
+      font: 15px "Bebas Neue", helvetica, sans-serif;
+      letter-spacing: 3px;
+      color: #aaa;
+    }
   }
 }
 
@@ -453,9 +505,19 @@ div.item-quantity {
     text-align: center;
     text-decoration: none;
     padding: 0 !important;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
 
     &:hover {
       cursor: pointer;
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+      height: 36px;
+      width: 196px;
+      line-height: 38px;
     }
   }
 

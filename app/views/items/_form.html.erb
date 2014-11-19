@@ -32,6 +32,7 @@
     <div id="updateItem" class="update1">
       Continue
     </div>
+    <div class="steps step1">Step 1 of 5</div>
   </div>
 
   <div class="aboutItem">
@@ -55,6 +56,7 @@
       <div id="updateItem" class="update2">
         Continue
       </div>
+      <div class="steps step2">Step 2 of 5</div>
     </div>
   </div>
 
@@ -76,6 +78,7 @@
       <div id="updateItem" class="update3">
         Continue
       </div>
+      <div class="steps step3">Step 3 of 5</div>
     </div>
   </div>
 
@@ -85,12 +88,29 @@
     </div>
     <div class="row">
       <p>
-        Enter the amount you'd like to discount the item by.<br> 
-        The Trunksale commission and the shipping price is factored into the list price of the item, so you won't bare any further costs.
+        Enter the base price (the amount you would like to get paid for the item).
       </p>
     </div>
     <div class="row">
-      <%= f.text_field(:discount_amount, value: number_to_percentage(@item.discount_amount, unit: "", :precision => 0), :placeholder => "Discount Amount. 50% off tends to sell the best.", class: "required") %>
+      <%= f.text_field(:discount_amount, value: number_to_percentage(@item.discount_amount, unit: "", :precision => 0), :placeholder => "Base Price", class: "required") %>
+    </div>
+    <div class="pricingResults">
+      <div class="discount">
+        <span class="displayName">Discount Amount</span>
+        <span class="displayAmount displayAmount2"></span>
+      </div>
+      <div class="listPrice">
+        <span class="displayName">List Price</span>
+        <span class="displayAmount displayAmount1"></span>
+      </div>
+      <div class="commission">
+        <span class="displayName">Trunksale Commission</span>
+        <span class="displayAmount displayAmount3"></span>
+      </div>
+      <div class="proceeds">
+        <span class="displayName">Your Proceeds</span>
+        <span class="displayAmount displayAmount4"></span>
+      </div>
     </div>
   </div>
   
@@ -159,8 +179,9 @@
   <hr>
 
   <div class="finishForm finish1">
-    <%= submit_tag(@item.persisted? ? "Update Item" : "Add Item") %>
+    <%= submit_tag(@item.persisted? ? "Update Item" : "Continue") %>
     <%= link_to("Remove Item", item_path, method: :delete, data: { confirm: "Are you sure that you want to remove #{@item.name}?" }, class: "remove") if @item.persisted? %>
+    <div class="steps step4">Step 4 of 5</div>
   </div>
 <% end %>
 <%= form_for(:photo, url: [@item, :photos], multipart: true, html: { id: "photo-upload" }) do |f| %>
@@ -184,7 +205,7 @@
 
 <div class="finishForm finish2">
   <div id="updateItem" class="update4">
-    Update Item
+    Complete
   </div>
   <%= link_to("Remove Item", item_path, method: :delete, data: { confirm: "Are you sure that you want to remove #{@item.name}?" }, class: "remove") if @item.persisted? %>
 </div>
