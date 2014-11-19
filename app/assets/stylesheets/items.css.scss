@@ -197,9 +197,9 @@ div.item-quantity {
       top: 2px solid #000;
       bottom: 2px solid #000;
     }
-   /* &.photographs {
+    &.photographs {
       border-top: 0px solid;
-    }*/
+    }
   }
 
   div.row {
@@ -240,6 +240,7 @@ div.item-quantity {
       background: url(header/dropdown-arrowed.png) no-repeat right 10px center;
       background-size: 17px 12px;
       color: #999;
+      cursor: pointer;
     }
 
     label { 
@@ -264,7 +265,8 @@ div.item-quantity {
 
 
     &.photo {
-      height: 121px;
+      height: 128px;
+      border-bottom: 2px solid #000;
 
       div.item-photo {
         position: relative;
@@ -427,6 +429,34 @@ div.item-quantity {
 
     a.remove { padding: 0; }
   }
+}
+
+.finishForm {
+  display: block;
+
+  a.remove,
+  div#updateItem {
+    display: block;
+    float: none;
+    clear: both;
+    width: 200px;
+    margin: 10px auto;
+    height: 40px;
+    font: 16px/42px "Bebas Neue", sans-serif;
+    letter-spacing: 6px;
+    border: 0;
+    color: #fff;
+    background: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 !important;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  a.remove { padding: 0; }
 }
 
 #declined-boutiques {

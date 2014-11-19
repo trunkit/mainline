@@ -1,16 +1,16 @@
-// $(document).ready(function () {
-//     // Handler for .ready() called.
-//     $('html, body').animate({
-//         scrollTop: $('.photographs').offset().top
-//     }, 'slow');
-// });
-
 $(document).ready(function() {
+  if ($('.photographs').length) {
     if  ($('.finish2').is(":visible")) {
-        $(".finish1").hide();
+      $(".finish1").hide();
+      $('html, body').animate({
+          scrollTop: $('.photographs').offset().top
+      }, 'slow');
     }
+  }
+  $("#updateItem").click(function() {
+    $(".edit_item").submit();
+  });
 });
-
 
 SiteBindings.item = {
   form: function(itemId, secondaryCategoryId, secondaryCategories) {
