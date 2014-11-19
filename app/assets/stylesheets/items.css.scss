@@ -406,11 +406,13 @@ div.item-quantity {
       }
     }
   }
-  .finishForm {
+  .finishForm,
+  .nextStep {
     display: block;
 
     input[type="submit"],
-    a.remove {
+    a.remove,
+    div#updateItem {
       display: block;
       float: none;
       clear: both;
@@ -425,6 +427,7 @@ div.item-quantity {
       text-align: center;
       text-decoration: none;
       padding: 0 !important;
+      cursor: pointer;
     }
 
     a.remove { padding: 0; }

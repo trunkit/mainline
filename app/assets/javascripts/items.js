@@ -1,15 +1,47 @@
 $(document).ready(function() {
   if ($('.photographs').length) {
-    if  ($('.finish2').is(":visible")) {
+    if ($('.finish2').is(":visible")) {
       $(".finish1").hide();
       $('html, body').animate({
           scrollTop: $('.photographs').offset().top
       }, 'slow');
     }
   }
-  $("#updateItem").click(function() {
+  
+  $(".update4").click(function() {
     $(".edit_item").submit();
   });
+
+  $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .finish1, .finish2").hide();
+
+  $(".update1").click(function() {
+    $(".aboutItem").show();
+    $('html, body').animate({
+      scrollTop: $('.aboutItem').offset().top
+    }, 'slow');
+    $('.update1').hide();
+  })
+
+  $(".update2").click(function() {
+    $(".sizeQuantity").show();
+    $('html, body').animate({
+      scrollTop: $('.sizeQuantity').offset().top
+    }, 'slow');
+    $('.update2').hide();
+  })
+
+  $(".update3").click(function() {
+    $(".trunksaleDiscount, .finish1").show();
+    $('html, body').animate({
+      scrollTop: $('.trunksaleDiscount').offset().top
+    }, 'slow');
+    $('.update3').hide();
+  })
+
+  if ($(".edit_item").is(":visible")) {
+    $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .updateItem, .finish2").show();
+    $(".update1, .update2, .update3").hide();
+  }
 });
 
 SiteBindings.item = {
