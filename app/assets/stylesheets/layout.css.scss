@@ -379,3 +379,7 @@ body {
     }
   }
 }
+
+body .bodyWrapper > header nav > ul > li:hover > ul li:last-child a.button {
+  margin: -2px 0 4px;
+}

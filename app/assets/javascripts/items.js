@@ -52,6 +52,7 @@ $(document).ready(function() {
       $(".displayAmount3").text('$' + commission.toFixed(2));
       $(".displayAmount4").text('$' + proceeds.toFixed(2));
     });
+    $("#item > form > div.row > select").css("color","#000");
   }
 
   $("#item_discount_amount").on('keyup', function() {
