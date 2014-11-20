@@ -125,29 +125,46 @@ body {
                 top: 56px;
                 left: -15px;
                 width: 160px;
-                padding: 10px 8px 8px;
+                padding: 4px 8px 2px;
                 background: #fff;
+                border: 2px solid #000;
 
                 li {
+                  padding: 3px 0;
                   float: left;
                   width: 100%;
-                  font: 14px/24px "Bebas Neue", sans-serif;
+                  font: 14px/18px "Bebas Neue", sans-serif;
                   text-align: left;
                   letter-spacing: 3px;
 
                   a {
                     display: block;
                     padding: 0;
-                    color: #9E9E9E;
+                    color: #000;
                     text-decoration: none;
+                    -webkit-transition: background-color .2s ease-in-out;
+                    -moz-transition: background-color .2s ease-in-out;
+                    -o-transition: background-color .2s ease-in-out;
+                    transition: background-color .2s ease-in-out;
 
-                    &:hover { color: #000; }
+                    &:hover { color: #9E9E9E; }
 
                     &.button {
-                      margin-top: 5px;
+                      margin: 0px 0 4px;
                       background: #000;
                       color: #fff;
                       text-align: center;
+                      line-height: 30px;
+                      height: 30px;
+
+                      &:hover {
+                        border: 2px solid #000;
+                        color: #000;
+                        background: #fff;
+                        width: 156px;
+                        height: 26px;
+                        line-height: 26px;
+                      }
 
                       &.active {
                         width: 156px;

@@ -17,7 +17,10 @@
   </div>
 
   <div class="row">
-    <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, :placeholder => "Price", class: "required") %>
+    <div class="moneyField">
+      <div class="dollarBefore">$</div>
+      <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, :placeholder => "Price", class: "required") %>
+    </div>
   </div>
 
   <div class="row category-select">
@@ -92,7 +95,10 @@
       </p>
     </div>
     <div class="row">
-      <%= f.text_field(:discount_amount, value: number_to_percentage(@item.discount_amount, unit: "", :precision => 0), :placeholder => "Base Price", class: "required") %>
+      <div class="moneyField">
+        <div class="dollarBefore">$</div>
+        <%= f.text_field(:discount_amount, value: number_to_currency(@item.discount_amount, unit: ""), :placeholder => "Base Price", class: "required") %>
+      </div>
     </div>
     <div class="pricingResults">
       <div class="discount">

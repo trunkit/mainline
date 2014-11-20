@@ -226,8 +226,37 @@ div.item-quantity {
     display: block;
     margin: 0 auto 8px;
     width: 100%;
-    font: 14px/20px "Helvetica LT Std", sans-serif;
+    font: 14px/20px "Helvetica LT Std", "Helvetica", sans-serif;
     letter-spacing: 1px;
+
+    .moneyField {
+      width: 366px;
+      float: none;
+      display: block;
+      height: 40px;
+      margin: 0 auto;
+
+      .dollarBefore {
+        width: 20px;
+        height: 36px;
+        float: left;
+        border: 2px solid #000;
+        border-right: none;
+        line-height: 38px;
+        text-align: center;
+        font: 16px/38px "Bebas Neue", Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
+        padding-right: 2px; 
+      }
+
+      input {
+        width: 330px;
+        float: left;
+        margin: 0 0 0 -2px;
+        border-left: none;
+      }
+    }
 
     a.increase,
     a.decrease {
