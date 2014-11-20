@@ -12,8 +12,6 @@ button.btn.btn-xs.btn-primary {
   text-decoration: none;
 }
 
-
-
 article.item {
   position: relative;
   width: 820px;
@@ -190,17 +188,19 @@ div.item-quantity {
     margin: 30px 0 0;
   }
 
-  .trunksaleDiscount {
+  .trunksaleDiscountSection {
     margin: 30px 0 30px;
 
-    .pricingResults {
-      width: 364px;
-      margin: 0 auto;
-      font: 14px "Helvetica LT Std", Helvetica, sans-serif;
-      letter-spacing: 1px;
+    .trunksaleDiscountEntry {
+      .pricingResults {
+        width: 364px;
+        margin: 0 auto;
+        font: 14px "Helvetica LT Std", Helvetica, sans-serif;
+        letter-spacing: 1px;
 
-      div .displayAmount {
-        float: right;
+        div .displayAmount {
+          float: right;
+        }
       }
     }
   }

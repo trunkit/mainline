@@ -84,8 +84,7 @@
       <div class="steps step3">Step 3 of 5</div>
     </div>
   </div>
-
-  <div class="trunksaleDiscount">
+  <div class="trunksaleDiscountSection">
     <div class="separator">
       <span>List on The Trunksale</span>
     </div>
@@ -94,35 +93,38 @@
         Would you like to list this item on the Trunksale?
       </p>
     </div>
-      <div class="row secondary-category">
-      </div>
-    <div class="row">
-      <p>
-        Enter the base price (the amount you would like to get paid for the item).
-      </p>
+    <div class="row secondary-category">
+      <%= f.select(:list_on_trunksale, [['No', 1], ['Yes', 2]]) %>
     </div>
-    <div class="row">
-      <div class="moneyField">
-        <div class="dollarBefore">$</div>
-        <%= f.text_field(:discount_amount, value: number_to_currency(@item.discount_amount, unit: ""), :placeholder => "Base Price", class: "required") %>
+    <div class="trunksaleDiscountEntry">
+      <div class="row">
+        <p>
+          Enter the base price (the amount you would like to get paid for the item).
+        </p>
+      </div class="trunksaleDiscount">
+      <div class="row">
+        <div class="moneyField">
+          <div class="dollarBefore">$</div>
+          <%= f.text_field(:discount_amount, value: number_to_currency(@item.discount_amount, unit: ""), :placeholder => "Base Price", class: "required") %>
+        </div>
       </div>
-    </div>
-    <div class="pricingResults">
-      <div class="discount">
-        <span class="displayName">Discount Amount</span>
-        <span class="displayAmount displayAmount2"></span>
-      </div>
-      <div class="listPrice">
-        <span class="displayName">List Price</span>
-        <span class="displayAmount displayAmount1"></span>
-      </div>
-      <div class="commission">
-        <span class="displayName">Trunksale Commission</span>
-        <span class="displayAmount displayAmount3"></span>
-      </div>
-      <div class="proceeds">
-        <span class="displayName">Your Proceeds</span>
-        <span class="displayAmount displayAmount4"></span>
+      <div class="pricingResults">
+        <div class="discount">
+          <span class="displayName">Discount Amount</span>
+          <span class="displayAmount displayAmount2"></span>
+        </div>
+        <div class="listPrice">
+          <span class="displayName">List Price</span>
+          <span class="displayAmount displayAmount1"></span>
+        </div>
+        <div class="commission">
+          <span class="displayName">Trunksale Commission</span>
+          <span class="displayAmount displayAmount3"></span>
+        </div>
+        <div class="proceeds">
+          <span class="displayName">Your Proceeds</span>
+          <span class="displayAmount displayAmount4"></span>
+        </div>
       </div>
     </div>
   </div>

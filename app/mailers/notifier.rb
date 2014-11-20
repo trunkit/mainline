@@ -62,7 +62,7 @@ class Notifier < ActionMailer::Base
 
     mail({
       to: ["team@thetrunksale.com"],
-      subject: "#{@user.name} Listed #{item.name}"
+      subject: "#{@item.boutique.name} Listed #{item.name}"
     })
   end
 end

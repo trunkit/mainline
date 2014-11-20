@@ -12,7 +12,7 @@ $(document).ready(function() {
     $(".edit_item").submit();
   });
 
-  $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .finish1, .finish2, .displayName").hide();
+  $(".aboutItem, .sizeQuantity, .trunksaleDiscountSection, .finish1, .finish2, .displayName").hide();
 
   $(".update1").click(function() {
     $(".aboutItem").show();
@@ -31,15 +31,15 @@ $(document).ready(function() {
   })
 
   $(".update3").click(function() {
-    $(".trunksaleDiscount, .finish1").show();
+    $(".trunksaleDiscountSection, .finish1").show();
     $('html, body').animate({
-      scrollTop: $('.trunksaleDiscount').offset().top
+      scrollTop: $('.trunksaleDiscountSection').offset().top
     }, 'slow');
-    $('.update3, .step3').hide();
+    $('.update3, .step3, .trunksaleDiscountEntry').hide();
   })
 
   if ($(".edit_item").is(":visible")) {
-    $(".aboutItem, .sizeQuantity, .trunksaleDiscount, .updateItem, .finish2").show();
+    $(".aboutItem, .sizeQuantity, .trunksaleDiscountSection, .updateItem, .finish2").show();
     $(".update1, .update2, .update3, .step1, .step2, .step3, .step4").hide();
     $("#item_discount_amount").on('keyup', function() {
       $('.displayName').show();
@@ -53,6 +53,13 @@ $(document).ready(function() {
       $(".displayAmount4").text('$' + proceeds.toFixed(2));
     });
     $("#item > form > div.row > select").css("color","#000");
+    $('#item_list_on_trunksale').change(function () {
+      if ($(this).val() == '2') {
+          $('.trunksaleDiscountEntry').show();
+      } else {
+          $('.trunksaleDiscountEntry').hide();
+      }
+    });
   }
 
   $("#item_discount_amount").on('keyup', function() {
@@ -65,6 +72,14 @@ $(document).ready(function() {
     $(".displayAmount1").text('$' + listPrice.toFixed(2));
     $(".displayAmount3").text('$' + commission.toFixed(2));
     $(".displayAmount4").text('$' + proceeds.toFixed(2));
+  });
+
+  $('#item_list_on_trunksale').change(function () {
+    if ($(this).val() == '2') {
+        $('.trunksaleDiscountEntry').show();
+    } else {
+        $('.trunksaleDiscountEntry').hide();
+    }
   });
 });
 

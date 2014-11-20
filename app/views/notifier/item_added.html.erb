@@ -1,4 +1,9 @@
 <p><%= @user.name %> from <%= @item.boutique.name %> submitted the following item:</p>
+<% if @item.list_on_trunksale == 2 %>
+	<p><%= @item.boutique.name %> WOULD like this item listed on the Trunksale</p>
+<% else %>
+	<p><%= @item.boutique.name %> WOULD NOT like this item listed on the Trunksale</p>
+<% end %>
 
 <p>
 	Boutique Name: <%= @item.boutique.name %>
@@ -23,7 +28,7 @@
 	<br>
 	Price: <%= @item.price %>
 	<br>
-	Discount Amount: <%= @item.discount_amount %>
+	Base Price: <%= @item.discount_amount * 1.08 %>
 	<br>
 	Sizes: <%= @item.sizes %>
 </p>
