@@ -316,6 +316,14 @@ div.item-quantity {
     &.photo {
       height: 128px;
       border-bottom: 2px solid #000;
+      text-align: center;
+
+      .item-photos, 
+      .button {
+        text-align: left;
+        display: inline-block;
+        position: relative;
+      }
 
       div.item-photo {
         position: relative;
