@@ -41,6 +41,12 @@ $(document).ready(function() {
   if ($(".edit_item").is(":visible")) {
     $(".aboutItem, .sizeQuantity, .trunksaleDiscountSection, .updateItem, .finish2").show();
     $(".update1, .update2, .update3, .step1, .step2, .step3, .step4").hide();
+    if ($('#item_list_on_trunksale').val() == '2') {
+      $('.trunksaleDiscountEntry').show();
+    } else {
+      $('.trunksaleDiscountEntry').hide();
+    }
+
     $("#item_discount_amount").on('keyup', function() {
       $('.displayName').show();
       var commission = $('#item_discount_amount').val() * .08;

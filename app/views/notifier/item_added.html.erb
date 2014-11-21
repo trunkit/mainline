@@ -28,7 +28,9 @@
 	<br>
 	Price: <%= @item.price %>
 	<br>
-	Base Price: <%= @item.discount_amount * 1.08 %>
+	<% if @item.list_on_trunksale == 2 %>
+		Base Price: <%= @item.discount_amount * 1.08 %>
+	<% end %>
 	<br>
 	Sizes: <%= @item.sizes %>
 </p>

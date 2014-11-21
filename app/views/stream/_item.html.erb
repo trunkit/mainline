@@ -3,7 +3,15 @@
     <div class="img">
       <%= link_to(image_tag(item.primary_photo.url.stream), item_path(item, activity_id: activity), class: "img fancybox fancybox.ajax") %>
     </div>
-
+    <% if item.list_on_trunksale == 2 %>
+      <div class="discountAmountBox">
+        <div>
+          <%= content_tag(:span, "#{((item.price - item.discount_amount) / item.price * 100).ceil}".html_safe, class: "percentNumber") %><span>%</span>
+          <br>
+          <span>Off</span>
+        </div>
+      </div>
+    <% end %>
     <div class="details">
       <%= link_to(image_tag("feed/favorite#{'-selected' if current_user.favorite_item_activity_ids.include?(activity.id)}.png"), favorites_path(activity_id: activity.id), method: :post, remote: true, class: "favorite item-activity-#{activity.id}") if current_user && activity %>
 
