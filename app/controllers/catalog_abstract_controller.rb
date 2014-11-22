@@ -7,7 +7,7 @@ class CatalogAbstractController < ApplicationController
   private
 
   def authenticate_user_from_token!
-    user_token = params[:api_token].presence
+    user_token = params[:api_key].presence
     user       = user_token && User.where(api_token: user_token.to_s).first
 
     sign_in user, store: false if user
