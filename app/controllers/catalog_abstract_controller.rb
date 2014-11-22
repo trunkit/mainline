@@ -1,9 +1,19 @@
 class CatalogAbstractController < ApplicationController
+  before_filter :authenticate_user_from_token!
   before_filter :authenticate_user!, :check_roles, :validate_boutique
 
   helper_method :current_cart
 
   private
+
+  def authenticate_user_from_token!
+    user_token = params[:api_token].presence
+    user       = user_token && User.where(api_token: user_token.to_s).first
+
+    sign_in user, store: false if user
+
+    true
+  end
 
   def current_cart(reload = false)
     return @current_cart if @current_cart || reload

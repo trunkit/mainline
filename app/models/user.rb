@@ -18,9 +18,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
-  validates_uniqueness_of :email, scope: :deleted_at
+  validates_uniqueness_of :email, :api_token, scope: :deleted_at
 
-  before_validation :generate_password, :generate_token
+  before_validation :generate_password
+  before_save       :ensure_api_token
   after_create      :welcome_email
 
   mount_uploader :photo, UserPhotoUploader
@@ -158,7 +159,14 @@ private
       Devise.friendly_token.first(8)
   end
 
-  def generate_token
-    self.api_token = Digest::SHA2.hexdigest(Time.now.to_s.split.sort_by {|a| rand }.join(' ') + ('a'..'z').to_a.sample(20).join)
+  def ensure_api_token
+    self.api_token = generate_api_token if api_token.blank?
+  end
+
+  def generate_api_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(api_token: token).first
+    end
   end
 end
