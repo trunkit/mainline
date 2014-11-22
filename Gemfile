@@ -65,9 +65,8 @@ gem 'asset_sync'
 gem 'airbrake'
 gem 'newrelic_rpm'
 
-group :development do
-  gem 'swagger-docs'
-end
+# API documentation
+gem 'swagger-docs'
 
 group :staging, :production do
   gem 'unicorn'
