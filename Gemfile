@@ -65,6 +65,10 @@ gem 'asset_sync'
 gem 'airbrake'
 gem 'newrelic_rpm'
 
+group :development do
+  gem 'swagger-docs'
+end
+
 group :staging, :production do
   gem 'unicorn'
   gem 'unicorn-worker-killer'
