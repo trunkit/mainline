@@ -1,8 +1,7 @@
 Swagger::Docs::Config.register_apis({
   "1.0" => {
-    api_extension_type: :json,
     api_file_path: "public/api/v1",
-    base_path: "http://www.trunkit.com/api/v1",
+    base_path: (Rails.env.production? ? "http://www.trunkit.com" : "http://localhost:3000"),
     clean_directory: false,
     attributes: {
       info: {
@@ -12,4 +11,11 @@ Swagger::Docs::Config.register_apis({
       }
     }
   }
-}) if defined?(Swagger)
+})
+
+class Swagger::Docs::Config
+  def self.transform_path(path, api_version)
+    host = (Rails.env.production? ? "http://www.trunkit.com/api/v1" : "http://localhost:3000/api/v1")
+    "#{host}/#{path}"
+  end
+end
