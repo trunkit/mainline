@@ -1,7 +1,7 @@
 Swagger::Docs::Config.register_apis({
   "1.0" => {
     api_file_path: "public/api/v1",
-    base_path: (Rails.env.production? ? "http://www.trunkit.com" : "http://localhost:3000"),
+    base_path: (Rails.env.production? ? "https://www.trunkit.com" : "http://localhost:3000"),
     clean_directory: false,
     attributes: {
       info: {
