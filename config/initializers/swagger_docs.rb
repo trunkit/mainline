@@ -2,7 +2,7 @@ Swagger::Docs::Config.register_apis({
   "1.0" => {
     api_extension_type: :json,
     api_file_path: "public/api/v1",
-    base_path: "http://www.trunkit.com",
+    base_path: "http://www.trunkit.com/api/v1",
     clean_directory: false,
     attributes: {
       info: {
