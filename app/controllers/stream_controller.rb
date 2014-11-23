@@ -2,8 +2,8 @@ class StreamController < CatalogAbstractController
   swagger_controller :stream, "Product Stream"
 
   swagger_api :index do
-    summary "Fetches all items in stream"
-    notes "The return output is paginated"
+    summary "Fetches all activity items in stream"
+    notes "The return output is an array containing two-item arrays of the following format: [Activity, Item] where activity represents the activity that caused the item to show in the stream."
 
     param :query, :category, :integer, :optional, "Category ID"
     param :query, :boutique_id, :integer, :optional, "Boutique ID"
