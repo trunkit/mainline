@@ -1,3 +1,5 @@
+require 'cors_middleware'
+
 Trunkit::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -26,4 +28,7 @@ Trunkit::Application.configure do
 
   # Configure ActionMailer
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # Middleware for settings CORS headers (for dev testing API with swagger UI
+  config.middleware.insert_before ActionDispatch::Static, CorsMiddleware
 end
