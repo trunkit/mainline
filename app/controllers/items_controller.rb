@@ -1,9 +1,24 @@
 class ItemsController < CatalogAbstractController
+  swagger_controller :item, "Product Stream"
+
   before_filter only: [:new, :create, :edit, :update] do
     @brands               = Brand.order(:name)
     @boutiques            = Boutique.order(:name)
     @primary_categories   = Category.where(parent_id: nil).order(:name)
     @secondary_categories = Category.where.not(parent_id: nil).order(:name).group_by(&:parent_id)
+  end
+
+  swagger_api :index do
+    summary "Fetches all items that are either supplied or supported by a boutique"
+
+    param :query, :supported, :boolean, :optional, "Boutique ID"
+    param :query, :category, :integer, :optional, "Category ID"
+
+    type :Item
+
+    response :unauthorized
+    response :not_acceptable
+    response :unprocessable_entity
   end
 
   def index
@@ -35,6 +50,16 @@ class ItemsController < CatalogAbstractController
     @item = current_user.items.build
   end
 
+  swagger_api :create do
+    summary "Add a supplied item for a boutique"
+
+    param :body, :body, :string, :required, "Item"
+
+    response :unauthorized
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
   def create
     @item  = current_user.items.build(item_params)
 
@@ -58,7 +83,7 @@ class ItemsController < CatalogAbstractController
   def update
     @item = current_user.items.find(params[:id])
 
-    if @item.update_attributes(item_params) 
+    if @item.update_attributes(item_params)
       # send email
       Notifier.item_added(@item, current_user).deliver
       respond_to do |format|
@@ -98,5 +123,14 @@ private
     params.require(:item).permit([:name, :price, :discount_amount, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id, :list_on_trunksale]).tap do |whitelisted|
       whitelisted[:sizes] = params[:item][:sizes]
     end
+  end
+
+  swagger_model :Item do
+    description "Item model"
+    property :id, :integer, :required, "User ID"
+    property :name, :string, :required, "Item Name"
+    property :price, :number, :required, "Price"
+    property :description, :string, :required, "Item Description"
+    property :construction, :string, :optional, "Description of the item's construction"
   end
 end
