@@ -18,6 +18,9 @@
 /log/*.log
 /tmp
 
+# Ignore the API docs cache
+/public/api/v*
+
 # Ignore the local cache from carrierwave
 /public/uploads
 
