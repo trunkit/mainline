@@ -1,0 +1,11 @@
+<%= render("admin/common/error", model: @customer_order) if @customer_order.errors.present? %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= content_tag(:h5, "Update #{@customer_order.name}") %>
+  </div>
+
+  <div class="panel-body">
+    <%= render("form") %>
+  </div>
+</div>

@@ -33,6 +33,7 @@ class Boutique < ActiveRecord::Base
   has_one  :address, as: :parent, dependent: :destroy
   has_many :users,   as: :parent, dependent: :destroy
   has_many :items,   dependent: :destroy
+  has_many :customer_orders
 
   has_many :owner_activities,   as: :owner,   class_name: "Activity", dependent: :destroy
   has_many :subject_activities, as: :subject, class_name: "Activity", dependent: :destroy

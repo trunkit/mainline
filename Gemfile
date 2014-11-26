@@ -34,7 +34,7 @@ gem 'cancan'
 # File upload support
 gem 'fog'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'mini_magick', '3.5.0'
 gem 'jquery-fileupload-rails'
 
 # Social Networks

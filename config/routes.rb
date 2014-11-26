@@ -22,6 +22,7 @@ Trunkit::Application.routes.draw do
 
   resources :brands, only: [:index, :create]
   resources :categories, only: [:index]
+  resources :categories, only: [:index]
 
   resources :boutiques, :brands, only: [:show] do
     get 'search',   on: :collection
@@ -55,7 +56,9 @@ Trunkit::Application.routes.draw do
   resources :addresses
 
   # Boutique Management Interfaces
-  resources :notifications, :orders, only: [:index]
+  resources :notifications, :customer_orders, only: [:index]
+  resources :customer_orders
+  
 
   scope("order_items/:id", as: :order_item) do
     resource :cancellation, only: [:new, :create], controller: "order_item_cancellations"
@@ -75,8 +78,7 @@ Trunkit::Application.routes.draw do
 
   namespace :admin do
     resources :boutiques
-
-    resources :brands, :categories, :orders
+    resources :brands, :categories, :customer_orders
 
     resources :items do
       put :approve, :unapprove, on: :member
@@ -92,7 +94,7 @@ Trunkit::Application.routes.draw do
     end
   end
 
-  get "admin" => redirect("/admin/orders")
+  get "admin" => redirect("/admin/customer_orders")
 
   post "boutique_sign_up" => "boutique_sign_up#create"
 

@@ -39,15 +39,7 @@
       </ul>
     <% end %>
 
-    <%= content_tag(:li, class: active_css_class(/^\/(orders)/)) do %>
-      <%= link_to("Orders", orders_path) %>
-
-      <ul>
-        <%= content_tag(:li, link_to("Supplied", orders_path(type: "supplied"))) %>
-        <%= content_tag(:li, link_to("Curated", orders_path(type: "supported"))) %>
-        <%= content_tag(:li, link_to("Returned", orders_path(type: "returned"))) %>
-      </ul>
-    <% end %>
+    <%= content_tag(:li, link_to("Orders", [:customer_orders])) %>
 
     <%= content_tag(:li, notifications_widget, class: "notifcationWidget")%>
 

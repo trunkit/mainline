@@ -1,0 +1,62 @@
+<%= form_for([:admin, @customer_order], role: "form") do |f| %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:order_number) %>
+        <%= f.text_field(:name, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:customer_name) %>
+        <%= f.text_field(:customer_name, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:boutique_id) %>
+        <%= f.select(:boutique_id, @boutiques.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:item) %>
+        <%= f.select(:item, @items.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:fulfillment_status) %>
+        <%= f.select(:fulfillment_status, [['Unfilfilled', 1], ['Fulfilled', 2]], class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <%= f.label(:shipping_label) %>
+        <%= f.file_field(:shipping_label, class: "form-control") %>
+        <%= link_to(image_tag(@customer_order.shipping_label.url), @customer_order.shipping_label.url, target: "_blank") %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <%= button_tag((@customer_order.persisted? ? "Update Order" : "Create Order"), class: "btn btn-default") %>
+<% end %>

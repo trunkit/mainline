@@ -1,0 +1,28 @@
+<div class="customerOrder">
+	<div class="orderInfo">
+		<div >
+			<%= @customer_order.customer_name %>
+		</div>
+		<div>
+			Order Number: <%= @customer_order.name %>
+		</div>
+		<div>
+			<%= @customer_order.item %>
+		</div>
+		<div>
+			<a href="<%= @customer_order.shipping_label %>"target="_blank" >Get Shipping Label</a>
+		</div>
+	</div>
+
+	<%= form_for (@customer_order) do |f| %>
+		<div class="separator">
+		  <span>Order Status</span>
+		</div>
+		<div class="row secondary-category">
+	    <%= f.select(:fulfillment_status, [['Unfulfilled', 1], ['Fulfilled', 2]]) %>
+		</div>
+		<div class="finishForm">
+	  	<%= submit_tag(@customer_order.persisted? ? "Update Order" : "Continue") %>
+	  </div>
+	<% end %>
+</div>
