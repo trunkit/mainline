@@ -1,13 +1,6 @@
 class Admin::CustomerOrdersController < Admin::AbstractController
-
-  before_filter do
-    @boutiques = Boutique.order(:name)
-    @items = Item.order(:name)
-  end
-
   def index
-    boutique = current_user.parent
-    @customer_orders = boutique.customer_orders
+    @customer_orders = CustomerOrder.order(:name)
   end
 
   def new
