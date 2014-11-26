@@ -1,4 +1,9 @@
 class Admin::CustomerOrdersController < Admin::AbstractController
+  before_filter do
+    @boutiques = Boutique.order(:name)
+    @items = Item.order(:name)
+  end
+
   def index
     @customer_orders = CustomerOrder.order(:name)
   end
