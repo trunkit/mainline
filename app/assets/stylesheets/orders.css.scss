@@ -188,3 +188,155 @@
     border: 0;
   }
 }
+
+.ordersTable {
+  width: 100%; 
+  thead {
+    tr {
+      height: 40px;
+      border-bottom: 2px solid #000;
+
+      th {
+        font: 16px "Bebas Neue", Helvetica, sans-serif;
+        letter-spacing: 3px;
+        text-align: left;
+      }
+    }
+  }
+  tbody {
+    font: 15px "Helvetica LT Std", Helvetica, sans-serif;
+    letter-spacing: 1px;
+
+    tr {
+      height: 45px;
+      border-bottom: 2px solid #000;
+
+      td a {
+        background: #000;
+        color: #fff;
+        font: 14px/30px "Bebas Neue", Helvetica, sans-serif;
+        letter-spacing: 3px;
+        text-decoration: none;
+        height: 30px;
+        width: 160px;
+        display: block;
+        text-align: center;
+        -webkit-transition: background-color .2s ease-in-out;
+        -moz-transition: background-color .2s ease-in-out;
+        -o-transition: background-color .2s ease-in-out;
+        transition: background-color .2s ease-in-out;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+          height: 26px;
+          width: 156px;
+          border: 2px solid #000;
+          line-height: 26px;
+        }
+      }
+    }
+  }
+}
+
+.customerOrder {
+  font: 16px "Bebas Neue", Helvetica, sans-serif;
+  text-align: center;
+  letter-spacing: 3px;
+  width: 450px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  padding: 30px 0;
+
+  .orderInfo {
+    div{
+      &:first-child {
+        font-size: 24px;
+        letter-spacing: 4px;
+      }
+
+      &:nth-child(2) {
+        font: 14px "Helvetica LT Std", Helvetica, sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      a {
+        margin: 20px auto 40px;
+        background: #CC0019;
+        color: #fff;
+        font: 15px/42px "Bebas Neue", Helvetica, sans-serif;
+        letter-spacing: 5px;
+        text-decoration: none;
+        height: 40px;
+        width: 220px;
+        padding: 0 0 0 6px;
+        display: block;
+        -webkit-transition: background-color .2s ease-in-out;
+        -moz-transition: background-color .2s ease-in-out;
+        -o-transition: background-color .2s ease-in-out;
+        transition: background-color .2s ease-in-out;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+          height: 36px;
+          width: 216px;
+          border: 2px solid #000;
+          line-height: 38px;
+        }
+      }
+    }
+  }
+
+  form {
+    border-top: 2px solid #000;
+    padding: 20px 0 0;
+
+    div {
+      select {
+        margin: 10px 0;
+        width: 300px;
+        height: 40px;
+        background: url(header/dropdown-arrowed.png) no-repeat right 10px center;
+        background-size: 17px 12px;
+        color: #999;
+        cursor: pointer;
+        -webkit-appearance: none;
+        border-radius: 0;
+        border: 2px solid #000;
+        padding: 0 6px;
+        color: #999;
+        font: 15px/18px "Helvetica LT Std", sans-serif;
+        letter-spacing: 1px;
+      }
+
+      input {
+        margin: 0px auto 5px;
+        background: #000;
+        color: #fff;
+        font: 15px/42px "Bebas Neue", Helvetica, sans-serif;
+        letter-spacing: 5px;
+        text-decoration: none;
+        height: 40px;
+        width: 220px;
+        padding: 0 0 0 6px;
+        display: block;
+        -webkit-transition: background-color .2s ease-in-out;
+        -moz-transition: background-color .2s ease-in-out;
+        -o-transition: background-color .2s ease-in-out;
+        transition: background-color .2s ease-in-out;
+        -webkit-appearance: none;
+        border: none;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+          border: 2px solid #000;
+          line-height: 38px;
+        }
+      }
+    }
+  }
+}
+
