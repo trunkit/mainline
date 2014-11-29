@@ -19,7 +19,7 @@
       <tr>
         <%= content_tag(:td, customer_order.name) %>
         <%= content_tag(:td, customer_order.customer_name) %>
-        <%= content_tag(:td, customer_order.item.name ) %>
+        <%= content_tag(:td, customer_order.boutique.name ) %>
         <%= content_tag(:td, customer_order.created_at) %>
         <%= content_tag(:td, (customer_order.fulfillment_status == 1 ? "Unfulfilled" : "Fulfilled")) %>
         <% if customer_order.fulfillment_status == 1 %>

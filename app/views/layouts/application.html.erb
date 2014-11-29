@@ -21,11 +21,6 @@
     <%= javascript_include_tag("//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js") if current_user.try(:has_role?, :system) %>
     <%= javascript_include_tag("application") %>
 
-    <!-- vide plugin -->
-    <script src="assets/jquery.vide.min.js"></script>
-    <script src="assets/modernizr.custom.js"></script>
-    <script src="assets/jquery.imagefit.js"></script>
-
     <%= csrf_meta_tags %>
 
     <script type="text/javascript">

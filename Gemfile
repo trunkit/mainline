@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.1.1'
 
-gem 'vider', github: 'wazery/vider'
-
 # Core framework
 gem 'rails', '4.1.8'
 

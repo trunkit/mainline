@@ -60,7 +60,7 @@ class Item < ActiveRecord::Base
 
   belongs_to :boutique, counter_cache: true
   belongs_to :brand
-  has_many :customer_orders
+  belongs_to :customer_order
 
   has_many :photos, -> { order("position ASC") }, class_name: "ItemPhoto"
 

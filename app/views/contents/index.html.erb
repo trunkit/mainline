@@ -1,90 +1,20 @@
-<div class="section1">
-  <h1>The retail world has changed for good</h1>
-  <h3>
-    Start selling online. Supply the inventory and we do the rest.
-  </h3>
-  <a href="https://trunkit.typeform.com/to/QBT5cl">
-    <div class="startButton">
-      Learn More
-    </div>
-  </a>
-  <div class="videoBackground">
-      <%= image_tag("home/boutique.jpg", :class => "backImage") %>
-      <%= image_tag("home/triangle.png", :class => "triangle") %>
-  </div>
+<section id="boutique-search">
+  <%= form_tag(search_boutiques_path, method: :get, class: "search", data: { remote: true }) do %>
+    <h2>Connect with boutiques you love</h2>
+    <span>Shop the inventory they love</span>
+
+    <%= text_field_tag(:q, "", placeholder: "Search for boutiques by boutique name, city, state or brand") %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</section>
+
+<%= content_tag(:h3, "Boutiques") if @boutiques.present? %>
+<div class="underLine">
+	<%= image_tag "home/underline.png"%>
 </div>
-<div class="belowFold">
-  <h2>One platform. Two services.<br>The end of your inventory problems.
-  </h2>
-  <div class="section2 container">
-    <div class="theServices">
-      <a href="#">
-        <div class="trunkit">
-          <%= image_tag("home/LogoBlack.png") %>
-          <p>For those times when your customer needs that other size.</p>
-          <p class="button">Learn More ></p>
-        </div>
-      </a>
-      <a href="#">
-        <div class="trunksale">
-          <%= image_tag("home/TheTrunksaleLogo.png") %>
-          <p>For those times when that inventory needs to go on sale.</p>
-          <p class="button">Learn More ></p>
-        </div>
-      </a>
-    </div>
-  </div>
-  <div class="featured">
-    <h2>Featured Boutiques</h2>
-  </div>
-  <div class="section3 grid">
-        <figure class="effect-sadie">
-      <%= image_tag("home/cedar.jpg") %>
-      <figcaption>
-        <h2>Cedar & Hyde</h2>
-        <p>Boulder, CO</p>
-        <a href="#">View more</a>
-      </figcaption>     
-    </figure>
-    <figure class="effect-sadie">
-      <%= image_tag("home/willow.jpg") %>
-      <figcaption>
-        <h2>Willow</h2>
-        <p>Boulder, CO</p>
-        <a href="#">View more</a>
-      </figcaption>     
-    </figure>
-    <figure class="effect-sadie">
-      <%= image_tag("home/pink.png") %>
-      <figcaption>
-        <h2>Pink Lagoon</h2>
-        <p>La Jolla, CA</p>
-        <a href="#">View more</a>
-      </figcaption>     
-    </figure>
-  </div>
-  <%= image_tag("home/clothing.png", :class => "clothingPic") %>
-  <div class="section4">
-    <h2 class="signUp">Join boutiques across the USA and start using the Trunkit platform</h2>
-    <a href="https://trunkit.typeform.com/to/QBT5cl">
-      <div class="startButton">
-        Get Started
-      </div>
-    </a>
-  </div>
-  <div class="foot">
-    <ul class="theBiz">
-      <li><a href="">Support Center</a></li>
-      <li><a href="">Contact the Team</a></li>
-      <li><a href="">About Us</a></li>
-    </ul>
-    <ul class="theSocial">
-      <li><a href="http://facebook.com/thetrunksale"><%= image_tag("home/fb.png") %></a></li>
-      <li><a href="http://twitter.com/teamtrunkit"><%= image_tag("home/twit.png") %></a></li>
-      <li><a href="http://instagram.com/teamtrunksale"><%= image_tag("home/insta.png") %></a></li>
-      <li><a href="http://www.pinterest.com/thetrunksale/"><%= image_tag("home/pin.png") %></a></li>
-      <li><a href="http://thetrunksale.tumblr.com/"><%= image_tag("home/tumblr.png") %></a></li>
-    </ul>
-    <p>© 2014 Swayly LLC. All rights reserved.</p>
-  </div>
-</div>
+
+<section id="stream">
+  <% @boutiques.each do |boutique| %>
+    <%= render("stream/boutique", boutique: boutique) %>
+  <% end %>
+</section>
