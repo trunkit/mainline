@@ -2,6 +2,7 @@
 //= require jquery-fileupload/basic
 //= require_self
 //= require_tree
+//= require jquery.vide
 
 window.SiteBindings = {};
 
