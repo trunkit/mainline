@@ -90,6 +90,11 @@ body.public {
           position: absolute !important;
           top: 0;
           z-index: -1;
+          background: url(home/boutique.jpg) no-repeat center center fixed; 
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
 
           .backImage {
             width: 100%;

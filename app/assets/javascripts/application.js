@@ -6,7 +6,7 @@
 window.SiteBindings = {};
 
 $(document).ready(function () {
-	$('#h5').bind('load', function(){
+	$(window).bind('load', function(){
 	    $('.videoBackground').imagefit();
 	});
 })
