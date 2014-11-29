@@ -2,6 +2,3 @@ development:
   adapter: postgresql
   host: localhost
   database: trunkit_development
-adapter: postgresql
-  host: localhost
-  database: test
