@@ -1,2 +1,2 @@
 require 'configatron'
-Configatron::Integrations::Rails
+Configatron::Rails.init
