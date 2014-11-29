@@ -29,8 +29,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label(:item) %>
-        <%= f.select(:item, @items.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
+        <%= f.label(:item_id) %>
+        <%= f.select(:item_id, @items.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
       </div>
     </div>
   </div>

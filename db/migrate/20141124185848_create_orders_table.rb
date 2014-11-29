@@ -9,7 +9,7 @@ class CreateOrdersTable < ActiveRecord::Migration
    		t.datetime :updated_at
    		t.string :shipping_label
       t.integer :fulfillment_status
-      t.string :item
+      t.integer :item
     end
   end
 end

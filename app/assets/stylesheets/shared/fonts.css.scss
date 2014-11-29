@@ -95,3 +95,34 @@
        asset-url('bebas.ttf') format('truetype'),
        asset-url('bebas.svg#bebasregular') format('svg');
 }
+
+@font-face {
+  font: {
+    family: "Bebas Neue Regular";
+    weight: normal;
+    style: normal;
+  }
+
+    src: url('bebasneue_regular-webfont.eot');
+    src: url('bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('bebasneue_regular-webfont.woff2') format('woff2'),
+         url('bebasneue_regular-webfont.woff') format('woff'),
+         url('bebasneue_regular-webfont.ttf') format('truetype'),
+         url('bebasneue_regular-webfont.svg#bebas_neue_regularregular') format('svg');
+}
+
+@font-face {
+  font: {
+    family: "Bebas Neue Book";
+    weight: normal;
+    style: normal;
+  }
+
+    
+    src: url('bebasneue_book-webfont.eot');
+    src: url('bebasneue_book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('bebasneue_book-webfont.woff2') format('woff2'),
+         url('bebasneue_book-webfont.woff') format('woff'),
+         url('bebasneue_book-webfont.ttf') format('truetype'),
+         url('bebasneue_book-webfont.svg#bebas_neuebook') format('svg');
+}

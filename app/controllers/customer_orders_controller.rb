@@ -8,6 +8,8 @@ class CustomerOrdersController < CatalogAbstractController
   def index
     boutique = current_user.parent
     @customer_orders = boutique.customer_orders
+    item = current_user.parent
+    @customer_orders = item.customer_orders
   end
 
   def create
@@ -37,6 +39,6 @@ class CustomerOrdersController < CatalogAbstractController
   
   private
   def customer_order_params
-    params.require(:customer_order).permit([:name, :order_number, :boutique_id, :customer_name, :fulfillment_status, :created_at, :shipping_label, :item])
+    params.require(:customer_order).permit([:name, :order_number, :boutique_id, :item_id, :customer_name, :fulfillment_status, :created_at, :shipping_label])
   end
 end

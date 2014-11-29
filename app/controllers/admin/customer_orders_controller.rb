@@ -6,6 +6,7 @@ class Admin::CustomerOrdersController < Admin::AbstractController
 
   def index
     @customer_orders = CustomerOrder.order(:name)
+    @items = Item.order(:name)
   end
 
   def new
@@ -39,6 +40,6 @@ class Admin::CustomerOrdersController < Admin::AbstractController
 
   private
   def customer_order_params
-    params.require(:customer_order).permit([:name, :order_number, :boutique_id, :customer_name, :fulfillment_status, :created_at, :shipping_label, :item])
+    params.require(:customer_order).permit([:name, :order_number, :boutique_id, :item_id, :customer_name, :fulfillment_status, :created_at, :shipping_label])
   end
 end
