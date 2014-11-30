@@ -90,7 +90,7 @@ body.public {
           position: absolute !important;
           top: 0;
           z-index: -1;
-          background: url(home/boutique.jpg) no-repeat center center fixed; 
+          background: url(home/boutique.jpg) no-repeat center center; 
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
@@ -208,9 +208,6 @@ body.public {
         }
       }
 
-      .clothingPic {
-        width: 100%;
-      }
 
       .featured {
         h2 {
@@ -219,6 +216,13 @@ body.public {
           font: 30px "Bebas Neue", Helvetica, sans-serif;
           letter-spacing: 3px;
         }
+      }
+
+      .clothingPic {
+        width: 100%;
+        max-height: 367px;
+        height: auto;
+        overflow: hidden;
       }
 
       .section4 {
@@ -315,7 +319,7 @@ body.public {
   }
 }
 
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
+@media screen and (max-device-width: 480px) {
   body.public .bodyWrapper > header {
     height: 98px;
     padding: 0 0 0;
@@ -325,6 +329,7 @@ body.public {
       display: block;
       width: 100%;
       margin: 0 auto;
+      text-align: center;
     }
 
     .menuButton {
@@ -342,7 +347,8 @@ body.public {
     }
 
     .signInNav {
-      margin:  4px 26px 0 0px;
+      margin:  4px auto 0 0px;
+      display: inline-block;
     }
 
     .right {
@@ -354,59 +360,71 @@ body.public {
     margin: 0 10px 0 6px;
   }
 
-  body.public, body {
-    width: 100%;
-    margin: 0 auto;
-
-    #content {
-      #boutique-search {
-        width: 100%;
-        margin: 0 auto;
-
-        > form.search {
-          width: 100%;
-          margin: 35px auto 0;
-
-          h2 {
-            font: 32px/38px "Bebas Neue", helvetica, sans-serif;
+  body.public {
+    #container {
+      #content {
+        .section1 {
+          h1 {
+            font: 32px/32px "Bebas Neue", helvetica, sans-serif;
+            padding: 240px 0 15px;
           }
 
-          input[type=text] {
-            display: block;
-            width: 280px;
-            margin: 0 auto;
-            border-radius: 0;
+          h3 {
+            font: 20px "helvetica LT Std", helvetica, sans-serif;
+            width: 90%;
           }
 
-          input[type=submit] {
-            display: block;
-            width: 230px;
-            margin: 20px auto 0;
-            float: none;
-            border-radius: 0;
+          .videoBackground {
+            background: url(home/boutique.jpg) no-repeat center center;
           }
         }
-      }
 
-      > h3 {
-        float: left;
-        width: 100%;
-        margin: 10px auto;
-      }
+        h2 {
+          height: auto;
+          padding: 30px 0;
+          font: 23px "Bebas Neue", helvetica, sans-serif;
+        }
 
-      .underLine {
-        float: left;
-        margin: -13px auto 8px;
-        width: 100%;
+        .section2 {
+          height: 800px;
 
-        img {
+          .theServices a div {
+            width: 100%;
+            height: 400px;
+
+            img {
+              top: 140px;
+            }
+
+            p {
+              top: 210px;
+            }
+
+            p.button {
+              top: 256px;
+            }
+          }
+        }
+
+        .featured h2 {
+          padding: 50px 0 0;
+        }
+
+        .grid {
+          width: 100%;
           margin: 0 auto;
-          padding: 0 4px 0 0;
-          display: block;
+          height: 100%;
+        }
+
+        .section4 {
+          .signUp {
+            width: 100%;
+          }
         }
       }
     }
   }
+
 }
 footer {
   display: none;
