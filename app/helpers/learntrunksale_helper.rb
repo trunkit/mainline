@@ -1,0 +1,2 @@
+module LearntrunksaleHelper
+end

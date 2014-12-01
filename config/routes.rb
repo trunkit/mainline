@@ -1,4 +1,10 @@
 Trunkit::Application.routes.draw do
+  get 'learn_more/learn_trunksale'
+
+  get 'learntrunksale/learntrunksale'
+
+  get 'learn_trunkit/learn_trunkit'
+
   root to: "contents#index"
 
   # Catalog
