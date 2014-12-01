@@ -3,9 +3,17 @@ html {
 }
 
 .spaceLine {
-      float: right;
-      margin: 26px 26px 26px 22px;
-    }
+  float: right;
+  margin: 26px 26px 26px 22px;
+}
+
+.fancybox-wrap {
+  top: 116px !important;
+}
+
+.group.half-width {
+  display: none;
+}
 
 body.public {
   header {
