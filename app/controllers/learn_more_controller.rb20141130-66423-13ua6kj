@@ -1,4 +1,0 @@
-class LearnMoreController < ApplicationController
-  def learn_trunkit
-  end
-end

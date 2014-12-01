@@ -1,4 +1,6 @@
 Trunkit::Application.routes.draw do
+  get 'learn_more/learn_trunkit'
+
   get 'learn_more/learn_trunksale'
 
   get 'learntrunksale/learntrunksale'

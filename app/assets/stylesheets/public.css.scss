@@ -273,6 +273,7 @@ body.public {
           &.theBiz {
             padding: 60px 0 0;
             height: auto;
+            margin: 0;
 
             li {
               padding: 0 0 0 3px;
@@ -478,8 +479,41 @@ figure.effect-sadie:hover p {
   transform: translate3d(0,0,0);
 }
 
+body.public #container #content {
+  .section1.trunkit {
+    .logo {
+      width: 372px;
+      margin: 172px auto 0;
+      display: block;
+    }
+
+    .videoBackground {
+      background: #282828;
+
+      h3 {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        font: 18px "Bebas Neue", Helvetica, sans-serif;
+        letter-spacing: 3px;
+      }
+    }
+
+    h1 {
+      padding: 0;
+      margin: 30px auto 0;
+    }
+
+    h3 {
+      margin: 14px auto;
+    }
+  }
+}
+
 body.public #container #content { 
   .section1.trunksale {
+    .background: #282828;
     .logo {
       width: 422px;
       margin: 172px auto 0;
@@ -509,7 +543,7 @@ body.public #container #content {
       }
 
       .howExplained {
-        font: 16px "HelveticaLTStd-LightCond", Helvetica, sans-serif;
+        font: 16px "Helvetica Lt Std", Helvetica, sans-serif;
         letter-spacing: 1px;
         margin: 8px auto 0;
         text-align: center;
@@ -549,7 +583,7 @@ body.public #container #content {
           }
 
           .explainSub {
-            font: 16px "HelveticaLTStd-LightCond", Helvetica, sans-serif;
+            font: 16px "Helvetica LT Std", Helvetica, sans-serif;
             letter-spacing: 1px;
             margin: 16px auto 0;
           }
@@ -731,6 +765,34 @@ body.public #container #content {
           .videoBackground {
             background: url(home/boutique.jpg) no-repeat center center;
           }
+
+          &.trunksale {
+            .logo {
+              width: 284px;
+              margin: 120px auto 0;
+            }
+          }
+
+          &.trunkit {
+            .logo {
+              width: 284px;
+              margin: 120px auto 0;
+            }
+
+            h1 {
+              margin: 16px auto 0;
+            }
+
+            h3 {
+              margin: 6px auto;
+            }
+
+            .videoBackground {
+              h3 {
+                bottom: 0px;
+              }
+            }
+          }
         }
 
         h2 {
@@ -785,6 +847,73 @@ body.public #container #content {
           .signUp {
             width: 100%;
             margin: 40px auto 0;
+          }
+        }
+
+        .belowFold {
+          .howItWorks {
+            .how {
+              padding: 30px 0 0;
+            }
+
+            .showSteps {
+              .steps {
+                float: none;
+                display: inline-block;
+
+                .explainSub {
+                  margin: 0px auto 28px;
+                }
+              }
+
+              .step1,
+              .step2 {
+                margin: 0;
+              }
+            }
+          }
+
+          .teamTrunkit {
+            
+            .how {
+              padding: 30px 0 0;
+            }
+
+            .features {
+              text-align: center;
+
+              .feature {
+                display: inline-block;
+                float: none;
+                margin: 40px 0 0;
+
+                .explainHeader {
+                  margin: 10px 0 2px;
+                }
+
+                &.creditCard {
+                  margin: 40px 0 0;
+
+                  .explainHeader {
+                    margin: 10px 0 2px;
+                  }
+                }
+
+                &.cashMoney {
+                  margin: 40px 0 0;
+
+                  .explainHeader {
+                    margin: 10px 0 2px;
+                  }
+                }
+              }
+            }
+          }
+
+          .foot {
+            ul.theBiz {
+              padding: 40px 0 0;
+            }
           }
         }
       }
