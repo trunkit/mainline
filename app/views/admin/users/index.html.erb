@@ -8,6 +8,7 @@
         <th>Email</th>
         <th>Provider</th>
         <th>External ID</th>
+        <th>API Key</th>
         <th>Created At </th>
         <th>&nbsp;</th>
       </tr>
@@ -22,6 +23,7 @@
         <%= content_tag(:td, user.email) %>
         <%= content_tag(:td, user.provider || 'N/A') %>
         <%= content_tag(:td, user.uid || 'N/A') %>
+        <%= content_tag(:td, user.api_token) %>
         <%= content_tag(:td, user.created_at.strftime("%m/%d/%Y %I:%M %p")) %>
         <td>
           <div class="dropdown">
