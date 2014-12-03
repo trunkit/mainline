@@ -20,8 +20,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email, :api_token, scope: :deleted_at
 
-  before_validation :generate_password
-  before_save       :ensure_api_token
+  before_validation :generate_password, :ensure_api_token
   after_create      :welcome_email
 
   mount_uploader :photo, UserPhotoUploader
