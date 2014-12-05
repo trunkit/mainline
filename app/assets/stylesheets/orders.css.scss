@@ -206,6 +206,7 @@
   tbody {
     font: 15px "Helvetica LT Std", Helvetica, sans-serif;
     letter-spacing: 1px;
+    text-transform: capitalize;
 
     tr {
       height: 45px;
@@ -244,7 +245,7 @@
   text-align: center;
   letter-spacing: 3px;
   width: 450px;
-  margin: 0 auto;
+  margin: 20px auto 40px;
   border: 2px solid #000;
   padding: 30px 0;
 

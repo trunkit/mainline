@@ -120,7 +120,7 @@ class ItemsController < CatalogAbstractController
 private
 
   def item_params
-    params.require(:item).permit([:name, :price, :discount_amount, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id, :list_on_trunksale]).tap do |whitelisted|
+    params.require(:item).permit([:name, :style_number, :price, :discount_amount, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id, :list_on_trunksale]).tap do |whitelisted|
       whitelisted[:sizes] = params[:item][:sizes]
     end
   end

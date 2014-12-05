@@ -6,8 +6,12 @@
 		<div>
 			Order Number: <%= @customer_order.name %>
 		</div>
+		<br>
 		<div>
-			<%= @customer_order.item %>
+			Style Number: <%= @customer_order.item.style_number %>
+		</div>
+		<div>
+			Size: <%= @customer_order.item_size %>
 		</div>
 		<div>
 			<a href="<%= @customer_order.shipping_label %>"target="_blank" >Get Shipping Label</a>

@@ -29,12 +29,22 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label(:item) %>
-        <%= f.select(:item, @items.map{|b| [b.name, b.id] }, {}, class: "form-control") %>
+        <%= f.label(:item_id) %>
+        <%= f.select(:item_id, @items.map{|b| [b.style_number, b.id] }, {}, class: "form-control") %>
       </div>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label(:item_size) %>
+        <%= f.text_field(:item_size, class: "form-control") %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
   <div class="row">
     <div class="col-xs-12">
       <div class="form-group">
@@ -43,8 +53,6 @@
       </div>
     </div>
   </div>
-
-  <hr>
 
   <div class="row">
     <div class="col-md-6 col-xs-12">
