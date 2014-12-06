@@ -30,7 +30,7 @@
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label(:item_id) %>
-        <%= f.select(:item_id, @items.map{|b| [b.style_number, b.id] }, {}, class: "form-control") %>
+        <%= f.select(:item_id, @items.map{|b| [b.style, b.id] }, {}, class: "form-control") %>
       </div>
     </div>
   </div>

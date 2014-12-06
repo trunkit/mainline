@@ -120,7 +120,7 @@ class ItemsController < CatalogAbstractController
 private
 
   def item_params
-    params.require(:item).permit([:name, :style_number, :price, :discount_amount, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id, :list_on_trunksale]).tap do |whitelisted|
+    params.require(:item).permit([:name, :style, :price, :discount_amount, :description, :fit, :construction, :model_height, :model_chest, :model_hips, :model_waist, :model_size, :brand_id, :primary_category_id, :secondary_category_id, :list_on_trunksale]).tap do |whitelisted|
       whitelisted[:sizes] = params[:item][:sizes]
     end
   end
@@ -128,6 +128,7 @@ private
   swagger_model :Item do
     description "Item model"
     property :id, :integer, :required, "User ID"
+    property :style_number, :string, :require, "Style Number"
     property :name, :string, :required, "Item Name"
     property :price, :number, :required, "Price"
     property :description, :string, :required, "Item Description"
