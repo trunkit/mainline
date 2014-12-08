@@ -23,16 +23,8 @@
   <div class="row">
     <div class="moneyField">
       <div class="dollarBefore">$</div>
-      <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, :placeholder => "Price", class: "required") %>
+      <%= f.text_field(:price, value: number_to_currency(@item.price, unit: ""), required: true, :placeholder => " Retail Price", class: "required") %>
     </div>
-  </div>
-
-  <div class="row category-select">
-    <%= f.select(:primary_category_id, @primary_categories.map{|c| [c.name, c.id] }, {:prompt => "Primary Category"}, required: true, class: "required") %>
-  </div>
-
-  <div class="row secondary-category">
-    <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
   </div>
 
   <div class="nextStep">
@@ -45,6 +37,14 @@
   <div class="aboutItem">
     <div class="separator">
       <span>About the Item</span>
+    </div>
+
+    <div class="row category-select">
+      <%= f.select(:primary_category_id, @primary_categories.map{|c| [c.name, c.id] }, {:prompt => "Primary Category"}, required: true, class: "required") %>
+    </div>
+
+    <div class="row secondary-category">
+      <%= f.select(:secondary_category_id, [], {}, required: true, class: "required") %>
     </div>
 
     <div class="row">
