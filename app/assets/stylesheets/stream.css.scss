@@ -151,13 +151,10 @@
         }
 
         p.name {
-          position: absolute;
-          top: 30px;
-          left: 5px;
-          width: 290px;
-          font-weight: 100;
+          position: relative;
           letter-spacing: 1px;
           text-align: center;
+          margin: 80px auto 0;
 
           a {
             font: 16px/22px "Helvetica LT Std", sans-serif;
@@ -168,7 +165,6 @@
             &:first-child {
               display: block;
               overflow: hidden;
-              height: 22px;
               text-overflow: ellipsis;
               font: 100 18px/20px "Bebas Neue", sans-serif;
               letter-spacing: 4px;
@@ -178,20 +174,18 @@
         }
 
         span.price {
-          position: absolute;
-          top: 125px;
-          left: 0;
-          width: 296px;
-          margin: 5px 0 0;
+          margin: 10px auto 0;
           font: 17px "Bebas Neue", sans-serif;
           letter-spacing: 3px;
           color: #fff;
+          display: block;
 
           em {
             font-style: normal;
             padding: 2px 0;
             border-top: 2px solid #fff;
             border-bottom: 2px solid #fff;
+            display: inline-block;
           }
         }
 
@@ -207,19 +201,17 @@
 
         a.buy {
           display: block;
-          position: absolute;
-          top: 200px;
-          left: 68px;
+          position: relative;
+          margin: 10px auto;
           width: 160px;
-          height: 34px;
-          font: 16px/27px "Bebas Neue", sans-serif;
+          height: 40px;
+          font: 16px/42px "Bebas Neue", sans-serif;
           letter-spacing: 6px;
           text-transform: uppercase;
           text-decoration: none;
           text-indent: 2px;
           background: rgba(0, 0, 0, 0.9);
           color: #fff;
-          padding-top: 7px;
           -webkit-transition: background-color .2s ease-in-out;
           -moz-transition: background-color .2s ease-in-out;
           -o-transition: background-color .2s ease-in-out;
@@ -230,18 +222,14 @@
             color: #000;
             border: 2px solid #000;
             width: 156px;
-            height: 30px;
-            line-height: 25px;
-          }
-
-          &.edit {
-            top: 155px;
+            height: 36px;
+            line-height: 38px;
           }
 
           &.unsupport {
             width: 156px;
-            height: 30px;
-            line-height: 23px;
+            height: 36px;
+            line-height: 38px;
             border: 2px solid #000;
             background: rgba(255,255,255,.95);
             color: #000;
@@ -250,6 +238,10 @@
                 background: rgba(255,255,255,1);
             }
           }
+        }
+
+        a.support {
+          display: none;
         }
 
         div.social {

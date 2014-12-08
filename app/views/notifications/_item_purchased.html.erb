@@ -1,4 +1,4 @@
-<%= link_to(orders_path(type: "supplied"), class: "catalog-notification") do %>
+<%= link_to(customer_orders_path(type: "supplied"), class: "catalog-notification") do %>
   <%= content_tag(:div, image_tag(notification.owner.photo.url), class: "photo") %>
   <%= content_tag(:span, "#{notification.owner.name} purchased #{notification.subject.name}", class: "message") %>
   <%= notification_time_in_words(notification) %>

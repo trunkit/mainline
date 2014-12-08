@@ -216,9 +216,11 @@ body {
           height: 20px;
           margin-top: 11px;
           margin-right: 8px;
+          display: none;
 
           .shoppingbag_icon {
             width: 15px;
+            display: block;
           }
         }
 
