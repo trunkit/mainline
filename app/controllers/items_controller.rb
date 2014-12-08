@@ -128,7 +128,7 @@ private
   swagger_model :Item do
     description "Item model"
     property :id, :integer, :required, "User ID"
-    property :style_number, :string, :require, "Style Number"
+    property :style, :string, :require, "Style Number"
     property :name, :string, :required, "Item Name"
     property :price, :number, :required, "Price"
     property :description, :string, :required, "Item Description"
