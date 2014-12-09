@@ -1,6 +1,7 @@
 class CatalogAbstractController < ApplicationController
   before_filter :authenticate_user_from_token!
-  before_filter :authenticate_user!, :check_roles, :validate_boutique
+  before_filter :authenticate_user!, :check_roles 
+  # before_filter :validate_boutique
 
   helper_method :current_cart
 

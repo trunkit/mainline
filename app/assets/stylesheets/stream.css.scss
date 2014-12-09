@@ -173,7 +173,8 @@
           }
         }
 
-        span.price {
+        span.price
+        , .strike {
           margin: 10px auto 0;
           font: 17px "Bebas Neue", sans-serif;
           letter-spacing: 3px;
@@ -187,6 +188,12 @@
             border-bottom: 2px solid #fff;
             display: inline-block;
           }
+        }
+
+        .strike {
+          text-decoration: line-through;
+          margin: 5px auto 0;
+          font-style: normal !important;
         }
 
         p.sizes {

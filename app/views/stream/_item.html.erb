@@ -20,7 +20,12 @@
         <%= link_to("Designed by #{item.brand.name}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax") %>
       </p>
 
-      <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
+      <% if item.list_on_trunksale == 2 %>
+        <%= content_tag(:span, "<em>#{number_to_currency(item.discount_amount)}</em>".html_safe, class: "price") %>
+        <%= content_tag(:span, "#{number_to_currency(item.price)}".html_safe, class: "strike") %>
+      <% else %>
+        <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
+      <% end %>
 
       <%= link_to("Edit", "#", class: "buy button edit item-#{item.id}") if current_user_owns_item?(item) %>
 

@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
     if current_user
       current_user.has_role?(:system) ?
         redirect_to(:admin) :
-        redirect_to(stream_path)
+        redirect_to(items_path(supported: false))
     else
       @boutiques = Boutique.order(name: :asc)
     end
