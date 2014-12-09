@@ -1,6 +1,6 @@
 .notification.error {
   width: 660px;
-  margin: 0 auto 20px;
+  margin: 20px auto;
   padding: 10px 10px 10px;
   border: 2px solid #000;
   font: 16px/22px "Helvetica LT Std", sans-serif;
@@ -11,6 +11,34 @@
     color: #DF1A22;
     font-style: normal;
     text-transform: uppercase;
+  }
+
+  .button {
+    display: block;
+    position: relative;
+    margin: 12px auto 8px;
+    width: 200px;
+    height: 40px;
+    font: 16px/42px "Bebas Neue", sans-serif;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-indent: 2px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+
+    &:hover {
+      background: rgba(255,255,255,0.95);
+      color: #000;
+      border: 2px solid #000;
+      width: 196px;
+      height: 36px;
+      line-height: 38px;
+    }
   }
 }
 
