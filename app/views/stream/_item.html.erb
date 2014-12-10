@@ -1,9 +1,16 @@
+<div class="tableHeadings">
+  <h5>Brand</h5>
+  <h5>Item</h5>
+  <h5>Style Number</h5>
+  <h5>Retail</h5>
+  <h5>Base</h5>
+</div>
 <%= content_tag(:article, class: "item", id: "stream-item-#{item.id}") do %>
   <div>
     <div class="img">
-      <%= link_to(image_tag(item.primary_photo.url.stream), item_path(item, activity_id: activity), class: "img fancybox fancybox.ajax") %>
+      <%= link_to(image_tag(item.primary_photo.url.stream, class: "imagen"), item_path(item, activity_id: activity), class: "img fancybox fancybox.ajax") %>
     </div>
-    <% if item.list_on_trunksale == 2 %>
+   <!-- <% if item.list_on_trunksale == 2 %>
       <div class="discountAmountBox">
         <div>
           <%= content_tag(:span, "#{((item.price - item.discount_amount) / item.price * 100).round(0).to_i}".html_safe, class: "percentNumber") %><span>%</span>
@@ -11,20 +18,22 @@
           <span>Off</span>
         </div>
       </div>
-    <% end %>
+    <% end %> -->    
     <div class="details">
       <%= link_to(image_tag("feed/favorite#{'-selected' if current_user.favorite_item_activity_ids.include?(activity.id)}.png"), favorites_path(activity_id: activity.id), method: :post, remote: true, class: "favorite item-activity-#{activity.id}") if current_user && activity %>
 
       <p class="name">
         <%= link_to(item.name, (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax name") %>
-        <%= link_to("Designed by #{item.brand.name}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax") %>
+        <%= link_to("#{item.brand.name}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax") %>
+        <%= link_to("#{item.style}", (current_user ? item_path(item, activity_id: activity) : new_user_session_path), class: "fancybox fancybox.ajax name") %>
       </p>
 
       <% if item.list_on_trunksale == 2 %>
-        <%= content_tag(:span, "<em>#{number_to_currency(item.discount_amount)}</em>".html_safe, class: "price") %>
         <%= content_tag(:span, "#{number_to_currency(item.price)}".html_safe, class: "strike") %>
+        <%= content_tag(:span, "#{number_to_currency(item.discount_amount)}".html_safe, class: "price") %>
       <% else %>
-        <%= content_tag(:span, "<em>#{number_to_currency(item.price)}</em>".html_safe, class: "price") %>
+        <%= content_tag(:span, "#{number_to_currency(item.price)}".html_safe, class: "price") %>
+        <%= content_tag(:span, "-", class: "noDiscount") %>
       <% end %>
 
       <%= link_to("Edit", "#", class: "buy button edit item-#{item.id}") if current_user_owns_item?(item) %>
@@ -44,8 +53,8 @@
       <% end %>
     </div>
 
-    <div class="info">
-      <% if activity && activity.action == 'support' %>
+    <!-- <div class="info">
+    <% if activity && activity.action == 'support' %>
       <%= link_to("Curated by #{activity.owner.name}", activity.owner, class: "curator") %>
       <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier") %>
       <% else %>
@@ -54,15 +63,15 @@
         <% else %>
           <%= link_to("Supplied by #{item.boutique.name}", item.boutique, class: "supplier one-line") %>
         <% end %>
-      <% end %>
-    </div>
+      <% end %> 
+    </div> -->
   </div>
 
   <% if current_user_owns_item?(item) %>
     <%= form_for(item, remote: true, html: { class: "item-quantity" }) do |f| %>
+      <%= link_to("Edit Details", [:edit, item]) %>
       <%= render("items/quantity", item: item)  %>
       <%= submit_tag("Update Quantities") %>
-      <%= link_to("Edit Item", [:edit, item]) %>
       <%= link_to("Close", "#", class: "buy button edit item-#{item.id} closeButton") if current_user_owns_item?(item) %>
     <% end %>
   <% end %>

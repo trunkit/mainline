@@ -14,13 +14,22 @@ SiteBindings.stream = {
       if(quantityForm.is(":visible")) {
         quantityForm.hide();
         $(this).removeClass("closeMobile");
-      } else {
+        $(this).removeClass("closeButton");
+        $(this).html("Edit");
+      } 
+      else {
         quantityForm.show();
         $(this).addClass("closeMobile");
+        $(this).addClass("closeButton");
+        $(this).html("Close");
       }
 
       return false;
     });
+
+    if ($('imagen', this).attr('src') != '') {
+      $('.imagen').replaceWith("<img src='/assets/feed/placeholder.jpg'>")
+    }
 
     $('form.item-quantity').on("ajax:beforeSend", function() {
       $.fancybox.showLoading();

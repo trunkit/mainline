@@ -1,23 +1,23 @@
 <table class="ordersTable">
-    <thead>
-      <tr>
-        <th>Order Number</th>
-        <th>Customer Name</th>
-        <th>Order Created</th>
-        <th>Fulfillment Status</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Order Number</th>
+      <th>Customer Name</th>
+      <th>Order Created</th>
+      <th>Fulfillment Status</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @customer_orders.each do |customer_order| %>
-      <tr>
-        <%= content_tag(:td, "#{customer_order.name}") %>
-        <%= content_tag(:td, "#{customer_order.customer_name}") %>
-        <%= content_tag(:td, "#{customer_order.created_at}") %>
-        <%= content_tag(:td, "#{customer_order.fulfillment_status == 1 ? 'Unfulfilled' : 'Fulfilled'}") %>
-        <%= content_tag(:td, link_to(customer_order.fulfillment_status == 1 ? "Complete Order" : "Review Order", [:edit, customer_order])) %>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <tbody>
+    <% @customer_orders.each do |customer_order| %>
+    <tr>
+      <%= content_tag(:td, "#{customer_order.name}") %>
+      <%= content_tag(:td, "#{customer_order.customer_name}") %>
+      <%= content_tag(:td, "#{customer_order.created_at}") %>
+      <%= content_tag(:td, "#{customer_order.fulfillment_status == 1 ? 'Unfulfilled' : 'Fulfilled'}") %>
+      <%= content_tag(:td, link_to(customer_order.fulfillment_status == 1 ? "Complete Order" : "Review Order", [:edit, customer_order])) %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
