@@ -34,6 +34,11 @@ SiteBindings.stream = {
       $(this).find("input[type=text]").removeAttr("disabled");
       $(this).children("input[type=hidden]").remove();
     });
+
+    var conHeight = $(".img").height();
+    var imgHeight = $(".img img").height();
+    var gap = (imgHeight - conHeight) / 2;
+    $(".img img").css("margin-top", -gap);
   },
   watcher: function(nextURL) {
     $("#stream-watcher").bind("inview", function( event, isInView, visiblePartX, visiblePartY ) {

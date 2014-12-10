@@ -89,18 +89,24 @@
       height: 66px;
 
       .img {
-        max-width: 46px;
-        max-height: 46px;
         width: 46px;
         height: 46px;
         overflow: hidden;
         border: 2px solid #000;
         display: inline-block;
         top: 8px;
-        position: absolute;
+        position: relative;
         left: 0;
         background-image: url('/assets/feed/placeholder.jpg');
         background-size: 46px 46px;
+        float: left;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0; 
+          width: 100%;
+        }
       }
 
       > div.info {
