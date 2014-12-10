@@ -152,19 +152,16 @@
             text-align: left;
             text-overflow: ellipsis;
             overflow: hidden;
+            white-space: nowrap;
 
             &:first-child {
-              display: inline;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
               left: 62px;
-              width: 190px;
+              width: 121px;
             }
 
             &:nth-child(2) {
               left: 197px;
-              width: 170px;
+              width: 190px;
             }
 
             &:nth-child(3) {
