@@ -27,8 +27,8 @@
       </p>
 
       <% if item.list_on_trunksale == 2 %>
-        <%= content_tag(:span, "#{number_to_currency(item.price)}".html_safe, class: "strike") %>
-        <%= content_tag(:span, "#{number_to_currency(item.discount_amount)}".html_safe, class: "price") %>
+        <%= content_tag(:span, "#{number_to_currency(item.price)}".html_safe, class: "price") %>
+        <%= content_tag(:span, "#{number_to_currency(item.discount_amount)}".html_safe, class: "strike") %>
       <% else %>
         <%= content_tag(:span, "#{number_to_currency(item.price)}".html_safe, class: "price") %>
         <%= content_tag(:span, "-", class: "noDiscount") %>
