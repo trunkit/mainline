@@ -35,10 +35,8 @@ SiteBindings.stream = {
       $(this).children("input[type=hidden]").remove();
     });
 
-    var conHeight = $(".img").height();
-    var imgHeight = $(".img img").height();
-    var gap = (imgHeight - conHeight) / 2;
-    $(".img img").css("margin-top", -gap);
+    $('.imagen:not([src=""])').show();
+    $('.imagen[src=""]').attr("src", 'assets/feed/placeholder.jpg');
   },
   watcher: function(nextURL) {
     $("#stream-watcher").bind("inview", function( event, isInView, visiblePartX, visiblePartY ) {

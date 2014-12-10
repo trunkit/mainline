@@ -7,7 +7,7 @@
 </div>
 <%= content_tag(:article, class: "item", id: "stream-item-#{item.id}") do %>
   <div>
-    <%= link_to(image_tag(item.primary_photo.url.stream), item_path(item, activity_id: activity), class: "img fancybox fancybox.ajax") %>
+    <%= link_to(image_tag(item.primary_photo.url.stream, class: "imagen"), item_path(item, activity_id: activity), class: "img fancybox fancybox.ajax") %>
     <!-- <% if item.list_on_trunksale == 2 %>
       <div class="discountAmountBox">
         <div>
