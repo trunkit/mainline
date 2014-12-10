@@ -27,10 +27,6 @@ SiteBindings.stream = {
       return false;
     });
 
-    if ($('imagen', this).attr('src') != '') {
-      $('.imagen').replaceWith("<img src='/assets/feed/placeholder.jpg'>")
-    }
-
     $('form.item-quantity').on("ajax:beforeSend", function() {
       $.fancybox.showLoading();
     }).on("ajax:complete", function() {
