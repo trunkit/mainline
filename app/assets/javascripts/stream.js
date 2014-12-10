@@ -36,7 +36,7 @@ SiteBindings.stream = {
     });
 
     $('.imagen:not([src=""])').show();
-    $('.imagen[src=""]').attr("src", 'assets/feed/placeholder.jpg');
+    $('.imagen[src=""]').attr("src", 'assets/items/placeholder.jpg');
   },
   watcher: function(nextURL) {
     $("#stream-watcher").bind("inview", function( event, isInView, visiblePartX, visiblePartY ) {
