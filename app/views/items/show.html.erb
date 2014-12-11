@@ -12,11 +12,19 @@
   <section class="info">
     <%= content_tag(:h1, @item.name) %>
     <%= content_tag(:h2, "Designed by #{@item.brand.name}") %>
-    <%= content_tag(:span, number_to_currency(@item.price)) %>
+    <div class="price">
+      <%= content_tag(:div, number_to_currency(@item.price)) %>
+      <% if @item.discount_amount != nil %>
+        <%= content_tag(:div, number_to_currency(@item.discount_amount)) %>
+        <div><%= number_to_percentage((@item.price - @item.discount_amount) / @item.price * 100, :precision => 0) %> Off</div>
+      <% end %>
+    </div>
+
+
 
     <hr class="topLine">
 
-    <div class="cart">
+    <!-- <div class="cart">
       <%= form_for([:cart, @cart_item], remote: true) do |f| %>
         <% if @item.out_of_stock? %>
           <%= content_tag(:span, "Out of Stock", class: "out-of-stock") %>
@@ -45,7 +53,7 @@
         <% end %>
       <% end %>
     </div>
-    <hr>
+    <hr> -->
     <%= content_tag(:div, class: "description") do %>
       <span>About the Clothes:</span>
       <%= markdown(@item.description) %>

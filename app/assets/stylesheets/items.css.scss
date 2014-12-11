@@ -31,22 +31,34 @@ article.item {
     h1 {
       margin: 0;
       padding: 0;
-      font: 20px "Bebas Neue", sans-serif;
+      font: 22px "Bebas Neue", sans-serif;
       letter-spacing: 4px;
     }
 
     h2 {
-      margin: 0 0 9px;
-      padding: 2px 0;
+      margin: 6px 0 0;
       font-size: 16px;
       font-weight: 100;
     }
 
-    > span {
+    > .price {
       font: 16px "Bebas Neue", sans-serif;
       letter-spacing: 2px;
-      padding: 4px 8px;
-      border: 2px solid #000;
+      margin: 6px 0;
+      
+      div {
+        display: inline;
+
+        &:first-child {
+          font-size: 20px;
+        }
+
+        &:nth-child(2) {
+          margin: 0 5px 0 10px;
+          color: #9E9E9E;
+          text-decoration: line-through;
+        }
+      }
     }
 
     .social {
