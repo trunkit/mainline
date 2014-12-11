@@ -20,6 +20,10 @@ article.item {
   .photos {
     float: left;
     width: 288px;
+
+    img {
+      width: 288px;
+    }
   }
 
   .info {

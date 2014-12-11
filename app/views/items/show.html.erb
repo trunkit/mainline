@@ -1,6 +1,6 @@
 <article class="item">
   <section class="photos">
-    <%= image_tag(@item.primary_photo.url.details, class: "funstuff") %>
+    <%= image_tag(@item.primary_photo.url.details.present? ? @item.primary_photo.url.details : "feed/placeholder2.jpg" , class: "funstuff") %>
 
     <div class="thumbs">
       <% @item.photos.each do |photo| %>
