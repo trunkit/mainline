@@ -16,3 +16,12 @@ SiteBindings.users = {
     });
   }
 }
+
+if($('body').hasClass('public')) {
+  $('.login').click(function() {
+    alert("The paragraph was clicked.");
+    $( '.fancybox-wrap' ).each(function () {
+      this.style.setProperty( 'top', '116px', 'important' );
+    });
+  });
+}
