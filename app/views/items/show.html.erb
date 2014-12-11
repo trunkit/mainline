@@ -1,6 +1,6 @@
 <article class="item">
   <section class="photos">
-    <%= image_tag(@item.primary_photo.url.details) %>
+    <%= image_tag(@item.primary_photo.url.details, class: "funstuff") %>
 
     <div class="thumbs">
       <% @item.photos.each do |photo| %>
