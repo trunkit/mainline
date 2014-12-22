@@ -1,21 +1,29 @@
 form#discover-search {
-  margin: 10px 0;
-
-  input[type=search] {
-    width: 295px;
-    margin: 0 0 0 320px;
-    padding: 0 25px 0 0;
-    border: 0;
-    border-bottom: 2px solid #000;
-    font: 16px "Helvetica LT Std", sans-serif;
-    letter-spacing: 0px;
-
-    &:focus { outline: none; }
-  }
-
-  input[type="image"] {
+  
+  .search {
+    width: 290px;
+    height: 36px;
+    margin: 0 auto;
     position: relative;
-    left: -20px;
+
+
+    input[type=search] {
+      width: 255px;
+      height: 32px;
+      padding: 0 25px 0 6px;
+      border: 2px solid #000;
+      font: 16px "Helvetica LT Std", sans-serif;
+      letter-spacing: 0px;
+      position: absolute;
+
+      &:focus { outline: none; }
+    }
+
+    input[type="image"] {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
   }
 }
 
