@@ -49,9 +49,9 @@ $(document).ready(function() {
 
     $("#item_discount_amount").on('keyup', function() {
       $('.displayName').show();
-      var commission = $('#item_discount_amount').val() * .08;
-      var discount = ($('#item_price').val() - ($('#item_discount_amount').val() * 1.08)) / $('#item_price').val() * 100;
-      var listPrice = $('#item_discount_amount').val() * 1.08;
+      var commission = $('#item_discount_amount').val() * .11;
+      var discount = ($('#item_price').val() - ($('#item_discount_amount').val() * 1.11)) / $('#item_price').val() * 100;
+      var listPrice = $('#item_discount_amount').val() * 1.11;
       var proceeds = $('#item_discount_amount').val() * 1;
       $(".displayAmount2").text(discount.toFixed(2) + '%');
       $(".displayAmount1").text('$' + listPrice.toFixed(2));
@@ -70,9 +70,9 @@ $(document).ready(function() {
 
   $("#item_discount_amount").on('keyup', function() {
     $('.displayName').show();
-    var commission = $('#item_discount_amount').val() * .08;
-    var discount = ($('#item_price').val() - ($('#item_discount_amount').val() * 1.08)) / $('#item_price').val() * 100;
-    var listPrice = $('#item_discount_amount').val() * 1.08;
+    var commission = $('#item_discount_amount').val() * .11;
+    var discount = ($('#item_price').val() - ($('#item_discount_amount').val() * 1.11)) / $('#item_price').val() * 100;
+    var listPrice = $('#item_discount_amount').val() * 1.11;
     var proceeds = $('#item_discount_amount').val() * 1;
     $(".displayAmount2").text(discount.toFixed(2) + '%');
     $(".displayAmount1").text('$' + listPrice.toFixed(2));
