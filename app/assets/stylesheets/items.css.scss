@@ -302,6 +302,27 @@ div.item-quantity {
       width: 60%;
     }
 
+    .instructions {
+      display: block;
+      float: none;
+      clear: both;
+      width: 416px;
+      margin: 10px auto;
+      height: 40px;
+      font: 16px/42px "Bebas Neue", sans-serif;
+      letter-spacing: 6px;
+      border: 0;
+      color: #fff;
+      background: #000;
+      text-align: center;
+      text-decoration: none;
+      padding: 0 !important;
+      -webkit-transition: background-color .2s ease-in-out;
+      -moz-transition: background-color .2s ease-in-out;
+      -o-transition: background-color .2s ease-in-out;
+      transition: background-color .2s ease-in-out;
+    }
+
     label, input, select, textarea {
       display: block;
       margin: 0 auto 8px;
